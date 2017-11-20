@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Context
     {
         readonly Dictionary<string, Employee> _personsList = new Dictionary<string, Employee>();
@@ -66,14 +67,17 @@ namespace MATeV2
             {
                 return _ctx;
             }
-            if (File.Exists("-Context.MATe"))
+            if (File.Exists("_-Context.MATe"))
             {
                 _ctx = (Context)Serialization.Deserialize();
                 return _ctx;
             }
             else
             {
-                return null;
+                _ctx = new Context("Default");
+                _ctx.Boss = _ctx.getBoss();
+                Serialization.Serialize(_ctx);
+                return _ctx;
             }
         }
 

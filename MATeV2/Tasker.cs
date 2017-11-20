@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Tasker
     {
         string _name;

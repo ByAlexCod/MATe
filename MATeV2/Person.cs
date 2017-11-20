@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Person
     {
         readonly Context _ctx;
