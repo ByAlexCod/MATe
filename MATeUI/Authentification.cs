@@ -27,7 +27,7 @@ namespace MATeUI
         {
             if(userNameTbx.Text.Trim().Equals("") && passwordTbx.Text.Trim().Equals(""))
             {
-                MessageBox.Show("Renseignez les champs Adresse Mail etMot de Passe");
+                MessageBox.Show("Fill in the fields Mail address and Password");
                 return;
             }
             Person person = Service.GetPersonByID(userNameTbx.Text, passwordTbx.Text);
