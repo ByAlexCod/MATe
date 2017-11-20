@@ -67,17 +67,14 @@ namespace MATeV2
             {
                 return _ctx;
             }
-            if (File.Exists("_-Context.MATe"))
+            if (File.Exists("-Context.MATe"))
             {
                 _ctx = (Context)Serialization.Deserialize();
                 return _ctx;
             }
             else
             {
-                _ctx = new Context("Default");
-                _ctx.Boss = _ctx.getBoss();
-                Serialization.Serialize(_ctx);
-                return _ctx;
+                return null;
             }
         }
 
