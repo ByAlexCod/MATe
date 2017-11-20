@@ -1,0 +1,36 @@
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe.config
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\MATeV2.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\MATeV2.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csprojResolveAssemblyReference.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.MainForm.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.Properties.Resources.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.GenerateResource.Cache
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.CoreCompileInputs.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe.config
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\TestFichierBinaire.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\MATeV2.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\bin\Debug\MATeV2.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csprojResolveAssemblyReference.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.MainForm.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.Properties.Resources.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.GenerateResource.Cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.CoreCompileInputs.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\TestFichierBinaire\obj\Debug\TestFichierBinaire.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe.config
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\bin\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\bin\Debug\TestFichierBinaire.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\bin\Debug\MATeV2.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\bin\Debug\MATeV2.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.csprojResolveAssemblyReference.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.MainForm.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.Properties.Resources.resources
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.GenerateResource.Cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.csproj.CoreCompileInputs.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\TestFichierBinaire\obj\Debug\TestFichierBinaire.pdb

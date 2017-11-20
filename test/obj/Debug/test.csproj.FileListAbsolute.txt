@@ -1,0 +1,9 @@
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\bin\Debug\test.exe.config
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\bin\Debug\test.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\bin\Debug\test.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\bin\Debug\MaTe.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\bin\Debug\MaTe.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\obj\Debug\test.exe
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\obj\Debug\test.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI\ITIProjet\test\obj\Debug\test.csproj.CoreCompileInputs.cache

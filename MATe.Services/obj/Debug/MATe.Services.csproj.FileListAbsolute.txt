@@ -1,0 +1,11 @@
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\MATe.Services\bin\Debug\MATe.Services.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\MATe.Services\bin\Debug\MATe.Services.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\MATe.Services\obj\Debug\MATe.Services.csproj.CoreCompileInputs.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\MATe.Services\obj\Debug\MATe.Services.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\MATe-PI\ITIProjet\MATe.Services\obj\Debug\MATe.Services.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\bin\Debug\MATe.Services.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\bin\Debug\MATe.Services.pdb
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\obj\Debug\MATe.Services.csprojResolveAssemblyReference.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\obj\Debug\MATe.Services.csproj.CoreCompileInputs.cache
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\obj\Debug\MATe.Services.dll
+Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATe.Services\obj\Debug\MATe.Services.pdb
