@@ -89,3 +89,28 @@ Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATeUI\obj\Debu
 Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATeUI\obj\Debug\MATeUI.csproj.CoreCompileInputs.cache
 Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATeUI\obj\Debug\MATeUI.exe
 Z:\DossierIntech\ITI.MATe\MATe-PI - Copy\ITIProjet - 17 Nov 2017\MATeUI\obj\Debug\MATeUI.pdb
+C:\dev\MATe\MATe.Rep.V2\MATeUI\bin\Debug\MATeUI.exe.config
+C:\dev\MATe\MATe.Rep.V2\MATeUI\bin\Debug\MATeUI.exe
+C:\dev\MATe\MATe.Rep.V2\MATeUI\bin\Debug\MATeUI.pdb
+C:\dev\MATe\MATe.Rep.V2\MATeUI\bin\Debug\MATeV2.dll
+C:\dev\MATe\MATe.Rep.V2\MATeUI\bin\Debug\MATeV2.pdb
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.csprojResolveAssemblyReference.cache
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.AcceuilBoss.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.BodyUC.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.Colaborators.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.CreateEmployeeForm.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.CreateEmployeeUC.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.CreatProject.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.DetailProjectUC.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.Authentification.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.NewEmployeeForm.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.FormAddNewProject.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.GestionProjet.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.ListeDesProjets.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.memberManagerForm.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.ProjectManagement.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.ProjectManager.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.Properties.Resources.resources
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.csproj.GenerateResource.Cache
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.exe
+C:\dev\MATe\MATe.Rep.V2\MATeUI\obj\Debug\MATeUI.pdb

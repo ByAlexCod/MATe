@@ -34,10 +34,7 @@ namespace MATeUI
         }     
         private void Valid_Click(object sender, EventArgs e)
         {
-            int index = selectManager.CurrentRow.Index;
-
-            //MessageBox.Show(index + "");
-            
+            int index = selectManager.CurrentRow.Index;            
             if (CreatPN.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Please enter a valid Project Name.");
@@ -61,10 +58,7 @@ namespace MATeUI
                 }
                 
                 Context.GetContext().ProjectsList.Add(p.Name, p);
-                
-                MessageBox.Show(p.Name +" "+ p.DateBegin.ToString()+" "+p.DateLimit.ToString());
-                Close();
-                //MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date "+StartDate.Value.Date+" end time "+limitDate.Value.Date);
+                MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date "+StartDate.Value.Date+" end date "+limitDate.Value.Date);
             }
         }
     }
