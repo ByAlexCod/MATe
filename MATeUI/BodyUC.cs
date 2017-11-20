@@ -46,7 +46,7 @@ namespace MATeUI
             
             if (p == null)
             {
-                MessageBox.Show("SELECTIONNEZ D'ABORD UN PROJET", "WARNING");
+                MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
                 return;
             }
             DialogResult res = MessageBox.Show("Are you sure you delete this Project", "Confirmation",
@@ -71,7 +71,7 @@ namespace MATeUI
         {
             if(p == null)
             {
-                MessageBox.Show("SELECTIONNEZ D'ABORD UN PROJET", "WARNING");
+                MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
                 return;
             }
             DialogResult res = MessageBox.Show("Are you sure you change the Project Manager", "Confirmation",
@@ -90,17 +90,17 @@ namespace MATeUI
         {
             if(p == null)
             {
-                MessageBox.Show("SELECTIONNEZ D'ABORD UN PROJECT", "WARNING");
+                MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
                 return;
             }
             if(detailProjectOnBody._taskNameTbx.Text.Trim().Equals(""))
             {
-                MessageBox.Show("LE NOM D'UNE TACHE NE DOIT PAS ETRE VIDE", "WARNING");
+                MessageBox.Show("THE NAME OF A TASK MUST NOT BE EMPTY", "WARNING");
                 return;
             }
             if (detailProjectOnBody._taskDate.Value > p.DateLimit)
             {
-                MessageBox.Show("LA DATE DE FIN DE LA TACHE NE DOIT PAS DEPASSER CELLE DU PROJET", "WARNING");
+                MessageBox.Show("THE DATE OF THE END OF THE TASK MUST NOT EXCEED THE PROJECT", "WARNING");
                 return;
             }
             Tasker tasker = new Tasker(detailProjectOnBody._taskNameTbx.Text, detailProjectOnBody._taskDate.Value);
@@ -132,14 +132,14 @@ namespace MATeUI
         {
             if(p == null)
             {
-                MessageBox.Show("SELECTIONNEZ D'ABORD UN PROJET");
+                MessageBox.Show("FIRST SELECT A PROJECT");
                 return;
             }
             int index = detailProjectOnBody._dgEmployees.CurrentRow.Index;
             Employee emp = employeesFree.ElementAt(index);
             if(emp.CurrentWorkingProject != null)
             {
-                MessageBox.Show("CET EMPLOYEE EST DEJA DANS UN PROJET");
+                MessageBox.Show("THIS EMPLOYEE IS ALREADY IN A PROJECT");
                 return;
             }
             
@@ -157,7 +157,7 @@ namespace MATeUI
         {
             if (p == null)
             {
-                MessageBox.Show("SELECTIONNEZ D'ABORD UN PROJET");
+                MessageBox.Show("FIRST SELECT A PROJECT");
                 return;
             }
             int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
@@ -168,7 +168,7 @@ namespace MATeUI
                 return;
             if (emp.Firstname.Equals(p.Projectmanager.Firstname) && emp.Lastname.Equals(p.Projectmanager.Lastname))
             {
-                MessageBox.Show("IMPOSSIBLE DE SUPRIMER LE CHEF DE PROJET");
+                MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
                 return;
             }
             p.Members.RemoveAt(index);
@@ -193,7 +193,7 @@ namespace MATeUI
         {
             if (p == null)
             {
-                MessageBox.Show("Selectionnez d'abord un projet");
+                MessageBox.Show("FIRST SELECT A PROJECT");
                 return;
             }
             else
@@ -233,7 +233,7 @@ namespace MATeUI
                         p.Members.Add(emp);
                     }
                    // projectManagementOnBody._projectListCbx.DataSource = _projects.ToArray();
-                    MessageBox.Show("Mise a jour effectuee");
+                    MessageBox.Show("Update completed");
                     return;
                 }
 

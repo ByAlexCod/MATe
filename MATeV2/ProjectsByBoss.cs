@@ -23,7 +23,20 @@ namespace MATeV2
             if (this.Contx.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
             this.Contx.ProjectsList.Add(newproject.Name, newproject);
-            newproject.Contx = this.Contx;
+            //newproject.Contx = this.Contx;
+            return newproject;
+        }
+
+        public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader, List<Employee> listperson)
+        {
+            if (this.Contx.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
+            Project newproject = new Project(name, datebegin, datelimit, leader);
+            foreach (Employee e in listperson)
+            {
+                newproject.Members.Add(e);
+            }
+            this.Contx.ProjectsList.Add(newproject.Name, newproject);
+            //newproject.Contx = this.Contx;
             return newproject;
         }
 
@@ -50,20 +63,21 @@ namespace MATeV2
         /// <param name="projectmanager"></param>
         /// <param name="listem"></param>
         /// <returns></returns>
-        public Project AddEmployeToProject(Project p, Employee projectmanager, List<Employee> listem)
+        public Project ModifyProject(Project p, Employee projectmanager, List<Employee> listem)
         {
             if (projectmanager != null)
             {
-                if (projectmanager.Project != null) throw new ArgumentException("this employee is having a project remove him from his project before continue");
-                p.Projectmanager.Project = null;
-                projectmanager.Project = p;
-                p.Projectmanager = (ProjectManager)projectmanager;
+                if (projectmanager.CurrentWorkingProject != null) throw new ArgumentException("this employee is having a project remove him from his project before continue");
+                if (p.Projectmanager != null) p.Projectmanager.CurrentWorkingProject = null;
+                projectmanager.CurrentWorkingProject = p;
+                p.Projectmanager = projectmanager;
             }
             if (listem != null)
             {
                 foreach (Employee e in listem)
                 {
                     p.Members.Add(e);
+                    e.CurrentWorkingProject = p;
                 }
             }
             return p;
@@ -78,7 +92,7 @@ namespace MATeV2
         public Project DeleteProjectManager(Project p, Employee projectmanager)
         {
             p.Projectmanager = null;
-            projectmanager.Project = null;
+            projectmanager.CurrentWorkingProject = null;
             return p;
         }
 
@@ -90,7 +104,7 @@ namespace MATeV2
         /// <returns></returns>
         public Project DeleteMember(Project p,Employee e)
         {
-            e.Project = null;
+            e.CurrentWorkingProject = null;
             p.Members.Remove(e);
             return p;
         }
@@ -105,16 +119,16 @@ namespace MATeV2
         public Boolean DeleteProject(Project p)
         {
             if (p == null) return false;
-            p.Projectmanager.Project = null;
+            p.Projectmanager.CurrentWorkingProject = null;
             foreach (Employee e in p.Members)
             {
-                e.Project = null;
+                e.CurrentWorkingProject = null;
             }
             foreach (Tasker t in p.Tasks)
             {
                 t.DeleteTask();
             }
-            p.Contx.ProjectsList.Remove(p.Name);
+            Context.GetContext().ProjectsList.Remove(p.Name);
             return true;
         }
     }

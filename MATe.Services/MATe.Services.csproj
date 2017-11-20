@@ -43,5 +43,15 @@
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MATeUI\MATeUI.csproj">
+      <Project>{2ef48b8d-c8f2-42b0-8f6f-e658241e3f05}</Project>
+      <Name>MATeUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MATeV2\MATeV2.csproj">
+      <Project>{ed2108ae-7636-4bd8-9261-5bc309054aee}</Project>
+      <Name>MATeV2</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

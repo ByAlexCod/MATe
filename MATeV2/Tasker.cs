@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Tasker
     {
         string _name;
         DateTime _datelimit; 
         readonly List<SubTask> _subtasks;
         Boolean _state;
+        Project _project;
 
         public Tasker(string name,DateTime datelimit)
         {
@@ -19,6 +21,16 @@ namespace MATeV2
             DateLimit = datelimit;
             _subtasks = new List<SubTask>();
             _state = false;
+        }
+
+        public Tasker(Project p,string name, DateTime datelimit)
+        {
+            Project = p;
+            Name = name;
+            DateLimit = datelimit;
+            _subtasks = new List<SubTask>();
+            _state = false;
+            p.Tasks.Add(this);
         }
 
         public string Name
@@ -39,6 +51,21 @@ namespace MATeV2
         {
             get { return _state; }
             set { _state = value; }
+        }
+
+        public Project Project
+        {
+            get { return _project; }
+            set { _project = value; }
+        }
+
+        internal void DeleteTask()
+        {
+            foreach(SubTask st in this.SubTasks)
+            {
+                st.DeleteSubTask();
+                SubTasks.Remove(st);
+            }
         }
     }
 }

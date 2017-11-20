@@ -8,7 +8,7 @@ namespace MATeV2
 {
     public class ProjectManager: Employee
     {
-        public ProjectManager(string firstname, string lastname, string mail, string pass) : base(firstname, lastname, mail, pass)
+        public ProjectManager(Context c,string firstname, string lastname, string mail, string pass) : base(c,firstname, lastname, mail, pass)
         {
         }
         /// <summary>

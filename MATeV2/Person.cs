@@ -6,27 +6,23 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Person
     {
+        readonly Context _ctx;
         string _firstname;
         string _lastname;
         string _password;
         string _mail;
         string _ip;
-        readonly Context _ctx;
 
-        public Person(Context c, string firstname, string lastname, string mail, string password)
+        public Person( Context c, string firstname, string lastname, string mail, string password)
         {
             _ctx = c;
             _firstname = firstname;
             _lastname = lastname;
             _mail = mail;
             _password = password;
-        }
-
-        public Person()
-        {
-            
         }
 
         public string Firstname
@@ -50,16 +46,13 @@ namespace MATeV2
             get { return _password; }
             set { _password = value; }
         }
-        public Context Contx
-        {
-            get { return _ctx; }
-        }
-
-        public string Ip
+        public string IP
         {
             get { return _ip; }
             set { _ip = value; }
         }
+        public Context Contx => _ctx;
+      
 
         public void ModifyProfile(string firstname, string lastname, string mail, string password)
         {

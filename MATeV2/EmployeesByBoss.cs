@@ -20,7 +20,7 @@ namespace MATeV2
         {
             Employee e;
             string pass = RandomPassword();
-            e = new Employee(firstname, lastname, mail, pass);
+            e = new Employee(this.Contx,firstname, lastname, mail, pass);
             this.Contx.PersonList.Add(e.Mail, e);
             return e;
         }
@@ -33,10 +33,10 @@ namespace MATeV2
         public void DeleteEmployee(Employee e)
         {
             this.Contx.PersonList.Remove(e.Mail);
-            if (e.Project != null) 
+            if (e.CurrentWorkingProject != null) 
             {
-                if (e.Project.Projectmanager == e) this.DeleteProjectManager(e.Project, e);
-                else this.DeleteMember(e.Project, e);
+                if (e.CurrentWorkingProject.Projectmanager == e) this.DeleteProjectManager(e.CurrentWorkingProject, e);
+                else this.DeleteMember(e.CurrentWorkingProject, e);
             }
         }
 

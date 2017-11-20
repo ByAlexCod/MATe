@@ -6,25 +6,14 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
-    public class Employee: Person
+    [Serializable]
+    public partial class Employee: Person
     {
         Project _workingproject;
-        /// <summary>
-        /// Ce champs permet de savoir si l'employee est à sa première connexion
-        /// pour initialiser son compte et l'envoyer le fichier contexte une fois ses données reinitialisées
-        /// </summary>
-        bool _firstConnexion;
 
-        public Employee(Context c,string firstname, string lastname, string mail, string password) : base(c,firstname, lastname, mail, password)
+        public Employee(Context c,string firstname, string lastname, string mail, string pass) : base(c,firstname, lastname, mail, pass)
         {
             _workingproject = null;
-            _firstConnexion = true;
-        }
-
-        public Employee() : base()
-        {
-            _workingproject = null;
-            _firstConnexion = true;
         }
 
         public Project CurrentWorkingProject
@@ -33,25 +22,11 @@ namespace MATeV2
             set { _workingproject = value; }
         }
 
-        public bool FirstConnexion
-        {
-            get { return _firstConnexion; }
-            set { _firstConnexion = value; }
-        }
+        bool IsProjectManager => Contx.ProjectsList.Values.Any(p => p.Projectmanager == this);
         
-        /// <summary>
-        /// need write after.
-        /// </summary>
-        /// <param name="i"></param>
-        /// <returns></returns>
-        public SubTask ModifyStateSubTask(int i)
-        {
-            return null;
-        }
-
         public override string ToString()
         {
-            return Firstname + " " + Lastname;
+            return Firstname +" "+Lastname+" ";
         }
     }
 }
