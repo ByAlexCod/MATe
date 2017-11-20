@@ -15,8 +15,8 @@ namespace MATeUI
     {
        
         List<Employee> _members = new List<Employee>();
-        static Context ctx = new Context("cnt");
-        Boss b = new Boss(ctx, "tot", "tot", "tot", "tot");
+        //static Context ctx = new Context("cnt");
+        Boss b = new Boss(Context.GetContext(), "tot", "tot", "tot", "tot");
         public CreatProject()
         {
 
@@ -57,7 +57,7 @@ namespace MATeUI
                     p.Members.Add(ind);             
                 }
                 
-                Context.GetContext().ProjectsList.Add(p.Name, p);
+               // Context.GetContext().ProjectsList.Add(p.Name, p);
                 MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date "+StartDate.Value.Date+" end date "+limitDate.Value.Date);
             }
         }
