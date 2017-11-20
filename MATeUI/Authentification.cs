@@ -8,14 +8,26 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MATeV2;
+using System.Net;
 
 namespace MATeUI
 {
     public partial class Authentification : Form
     {
+        IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+
         public Authentification()
         {
             InitializeComponent();
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            foreach(IPAddress ip in localIPs)
+            {
+                ListIpCmb.Items.Add(ip.ToString());
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
