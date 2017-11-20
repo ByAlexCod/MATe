@@ -11,7 +11,7 @@ namespace MATeV2
         string _name;
         DateTime _datelimit;
         DateTime _datebegin;
-        Employee _projectManager;
+        Employee _projectmanager;
         List<Employee> _members;
         List<Tasker> _tasks;
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
@@ -19,16 +19,17 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            _projectManager = projectmanager;
+            _projectmanager = projectmanager;
             _members = new List<Employee>();
             _tasks = new List<Tasker>();
+            if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
         }
-
         public Project(string name, DateTime datebegin, DateTime datelimit)
         {
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
+            
             _members = new List<Employee>();
             _tasks = new List<Tasker>();
         }
@@ -53,17 +54,23 @@ namespace MATeV2
 
         public Employee Projectmanager
         {
-            get { return _projectManager; }
-            set { _projectManager = value; }
+            get { return _projectmanager; }
+            set { _projectmanager = value; }
         }
 
         public List<Employee> Members => _members;
 
         public List<Tasker> Tasks => _tasks;
 
+        //public Context Contx
+        //{
+        //    get { return _ctx; }
+        //    set { _ctx = value; }
+        //}
+
         public override string ToString()
         {
-            return _name;
+            return Name;
         }
     }
 }

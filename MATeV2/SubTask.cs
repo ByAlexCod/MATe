@@ -12,6 +12,7 @@ namespace MATeV2
         DateTime _datelimit;
         Employee _worker;
         Boolean _status;
+        Tasker _currenttask;
         
         public SubTask(string name,DateTime datelimit,Employee worker = null)
         {
@@ -43,6 +44,19 @@ namespace MATeV2
         {
             get { return _status; }
             set { _status = value; }
+        }
+
+        public Tasker CurrentTask
+        {
+            get { return _currenttask; }
+            set { _currenttask = value; }
+        }
+        /// <summary>
+        /// to write after 
+        /// </summary>
+        internal void DeleteSubTask()
+        {
+            throw new NotImplementedException();
         }
     }
 }
