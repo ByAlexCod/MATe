@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,7 +42,7 @@ namespace MATeV2
         public Person Login(string mail, string password)
         {
             Employee value;
-            if (mail == Context.GetContext().Boss.Mail && password == Context.GetContext().Boss.Password) return _boss;
+            if (mail == this.Boss.Mail && password == this.Boss.Password) return _boss;
             else if (_personsList.TryGetValue(mail, out value) && value.Password == password) return value;
             return null;
         }
@@ -60,10 +62,19 @@ namespace MATeV2
 
         public static Context GetContext()
         {
-            if (_ctx != null) return _ctx;
-            _ctx = new Context("default");
-            _ctx.Boss = _ctx.getBoss();
-            return _ctx;
+            if (_ctx != null)
+            {
+                return _ctx;
+            }
+            if (File.Exists("-Context.MATe"))
+            {
+                _ctx = (Context)Serialization.Deserialize();
+                return _ctx;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         internal void Tester()
