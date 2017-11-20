@@ -6,3 +6,4 @@ bin/
 obj/
 /.vs/ITIProjet/v15/.suo
 /.vs/ITIProjet/v15/sqlite3/storage.ide
+.vs/
