@@ -17,7 +17,15 @@ namespace MATe.Services
             if (Context.GetContext().Login(mail, password) != null)
             {
                 //MultiThreading
-                return Context.GetContext().Login(mail, password);
+                Person a = Context.GetContext().Login(mail, password);
+                if(a == Context.GetContext().getBoss())
+                {
+
+                }else
+                {
+                    // nothing now
+                }
+                return a;
             }
             else return null;
             
