@@ -72,7 +72,9 @@
     <Compile Include="CreatProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatProject.Designer.cs" />
+    <Compile Include="CreatProject.Designer.cs">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailProjectUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +92,12 @@
     </Compile>
     <Compile Include="Authentification.Designer.cs">
       <DependentUpon>Authentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="head.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="head.Designer.cs">
+      <DependentUpon>head.cs</DependentUpon>
     </Compile>
     <Compile Include="NewEmployeeForm.cs">
       <SubType>Form</SubType>
@@ -148,13 +156,18 @@
     <EmbeddedResource Include="CreateEmployeeUC.resx">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatProject.resx" />
+    <EmbeddedResource Include="CreatProject.resx">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailProjectUC.resx">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Authentification.resx">
       <DependentUpon>Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="head.resx">
+      <DependentUpon>head.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
