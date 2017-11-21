@@ -56,7 +56,6 @@ namespace MATeUI
                     p.Members.Add(ind);             
                 }
                 
-                Context.GetContext().ProjectsList.Add(p.Name, p);
                 MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date "+StartDate.Value.Date+" end date "+limitDate.Value.Date);
             }
         }
