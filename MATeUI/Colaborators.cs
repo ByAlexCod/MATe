@@ -43,22 +43,7 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            //Employee em;
-            //Boss b = new Boss(ctx, "test", "1", "test@1", "123");
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    em = b.CreateEmployee("Antoine", i.ToString(), "Antoine@" + i.ToString());
-            //    if ((i == 3) || (i == 4)) em.CurrentWorkingProject = new Project("test", DateTime.Today, DateTime.Now);
-            //}
-            //foreach(Employee emp in ctx.PersonList.Values)
-            //{
-            //    ListViewItem newitem = new ListViewItem(emp.Mail);
-            //    newitem.SubItems.Add(emp.Firstname);
-            //    newitem.SubItems.Add(emp.Lastname);
-            //    if (emp.CurrentWorkingProject == null) newitem.SubItems.Add("free");
-            //    else newitem.SubItems.Add("busy");
-            //    ListEmployee.Items.Add(newitem);
-            //}
+            Refreshtable();
         }
 
         private void AddEmployeeBtn_Click(object sender, EventArgs e)
@@ -107,5 +92,6 @@ namespace MATeUI
                 ListEmployee.Items.Add(newitem);
             }
         }
+        
     }
 }
