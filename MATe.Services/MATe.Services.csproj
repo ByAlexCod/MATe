@@ -44,13 +44,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MATeUI\MATeUI.csproj">
-      <Project>{2ef48b8d-c8f2-42b0-8f6f-e658241e3f05}</Project>
-      <Name>MATeUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MATeV2\MATeV2.csproj">
       <Project>{ed2108ae-7636-4bd8-9261-5bc309054aee}</Project>
       <Name>MATeV2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Network\Network.csproj">
+      <Project>{2a52ce08-39bc-4b4d-89dc-7418feecd197}</Project>
+      <Name>Network</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
