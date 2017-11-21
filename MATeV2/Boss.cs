@@ -6,14 +6,11 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public partial class Boss: Person
     {
         public Boss(Context c,string firstname, string lastname, string mail, string password) : base(c,firstname, lastname, mail, password)
         {
         }
-
-        
-
-
     }
 }

@@ -23,7 +23,8 @@ namespace MATeUI
             Context ctx = Context.GetContext();
             ctx.Boss = ctx.getBoss();
             Employee emp = Context.GetContext().Boss.CreateEmployee(FirstNameTextBox.Text, LastNameTextBox.Text, MailTextBox.Text);
-           // Context.GetContext().PersonList.Add(emp.Mail, emp);
+            // Context.GetContext().PersonList.Add(emp.Mail, emp);
+            MessageBox.Show("LE MDP EST : " + emp.Password);
             Form tmp = this.FindForm();
             tmp.Close();
             tmp.Dispose();

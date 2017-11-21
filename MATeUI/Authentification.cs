@@ -8,15 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MATeV2;
+using MATe.Services;
+using System.Net;
 
 namespace MATeUI
 {
     public partial class Authentification : Form
     {
+        IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+
         public Authentification()
         {
             InitializeComponent();
         }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            foreach(IPAddress ip in localIPs)
+            {
+                ListIpCmb.Items.Add(ip.ToString());
+            }
+        }
+
+        
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -38,9 +53,14 @@ namespace MATeUI
             }
             if (person is Boss)
             {
+                MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
+                this.Visible = false;
                 ProjectManager pm = new ProjectManager();
                 pm.ShowDialog();
                 Close();
+            } else if (person is Employee)
+            {
+                MessageBox.Show(person.Firstname + " vous êtes un employé.");
             }
         }
     }

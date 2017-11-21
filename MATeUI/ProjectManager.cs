@@ -36,5 +36,10 @@ namespace MATeUI
         {
 
         }
+
+        private void ProjectManager_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
