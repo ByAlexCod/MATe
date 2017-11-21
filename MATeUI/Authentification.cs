@@ -31,6 +31,15 @@ namespace MATeUI
             }
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            foreach(IPAddress ip in localIPs)
+            {
+                ListIpCmb.Items.Add(ip.ToString());
+            }
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 
