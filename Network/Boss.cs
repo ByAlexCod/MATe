@@ -84,7 +84,8 @@ namespace Network
                 Socket cc = new Socket(AddressFamily.InterNetwork,
         SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
                 cc.Connect(_incomingIP, _basicPort + 1);
-                cc.SendFile(_ctx.Name + "-Session.MATe");
+                Serialization.Serialize(_ctx);
+                cc.SendFile("-Context.MATe");
                 cc.Shutdown(SocketShutdown.Both);
                 cc.Close();
                 ///

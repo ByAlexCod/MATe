@@ -23,6 +23,7 @@ namespace MATe.Services
                 if (a == Context.GetContext().getBoss())
                 {
                     Network.Boss bobo = new Network.Boss(Context.GetContext(), ipIndex);
+
                     Thread lii = new Thread(bobo.Start);
                     lii.IsBackground = true;
                     lii.Start();

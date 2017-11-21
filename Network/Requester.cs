@@ -73,7 +73,7 @@ namespace Network
 
                 using (var client = _listener.AcceptTcpClient())
                 using (var stream = client.GetStream())
-                using (var output = File.Create("-Session.MATe"))
+                using (var output = File.Create("-Context.MATe"))
                 {
                     Console.WriteLine("Client connected. Starting to receive the file");
 
