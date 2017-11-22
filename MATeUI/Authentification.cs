@@ -58,6 +58,9 @@ namespace MATeUI
                 ProjectManager pm = new ProjectManager();
                 pm.ShowDialog();
                 Close();
+            } else if (person is Employee)
+            {
+                MessageBox.Show(person.Firstname + " vous êtes un employé.");
             }
         }
     }

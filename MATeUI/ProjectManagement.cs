@@ -97,7 +97,7 @@ namespace MATeUI
 
 
 
-            //_projectListCbx.DataSource = _projects;
+            _projectListCbx.DataSource = Context.GetContext().ProjectsList.Values.ToArray();
             _projectListCbx.SelectedItem = null;
             _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
 

@@ -45,21 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodyUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="BodyUC.cs" />
     <Compile Include="BodyUC.Designer.cs">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Colaborators.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Colaborators.cs" />
     <Compile Include="Colaborators.Designer.cs">
       <DependentUpon>Colaborators.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEmployeeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="CreateEmployeeForm.cs" />
     <Compile Include="CreateEmployeeForm.Designer.cs">
       <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
     </Compile>
@@ -69,19 +63,13 @@
     <Compile Include="CreateEmployeeUC.Designer.cs">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="CreatProject.cs" />
     <Compile Include="CreatProject.Designer.cs" />
-    <Compile Include="DetailProjectUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="DetailProjectUC.cs" />
     <Compile Include="DetailProjectUC.Designer.cs">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="FooterUC.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="FooterUC.cs" />
     <Compile Include="FooterUC.Designer.cs">
       <DependentUpon>FooterUC.cs</DependentUpon>
     </Compile>
@@ -91,46 +79,40 @@
     <Compile Include="Authentification.Designer.cs">
       <DependentUpon>Authentification.cs</DependentUpon>
     </Compile>
+    <Compile Include="head.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="head.designer.cs">
+      <DependentUpon>head.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NewEmployeeForm.Designer.cs">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddNewProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="FormAddNewProject.cs" />
     <Compile Include="FormAddNewProject.Designer.cs">
       <DependentUpon>FormAddNewProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionProjet.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="GestionProjet.cs" />
     <Compile Include="GestionProjet.Designer.cs">
       <DependentUpon>GestionProjet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeDesProjets.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ListeDesProjets.cs" />
     <Compile Include="ListeDesProjets.Designer.cs">
       <DependentUpon>ListeDesProjets.cs</DependentUpon>
     </Compile>
-    <Compile Include="memberManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="memberManagerForm.cs" />
     <Compile Include="memberManagerForm.Designer.cs">
       <DependentUpon>memberManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="ProjectManagement.cs" />
     <Compile Include="ProjectManagement.Designer.cs">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ProjectManager.cs" />
     <Compile Include="ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
@@ -155,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Authentification.resx">
       <DependentUpon>Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="head.resx">
+      <DependentUpon>head.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
