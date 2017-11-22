@@ -13,7 +13,7 @@ namespace Network
 {
     public class Boss
     {
-        Context _ctx;
+        ContextManager _ctx;
         string localComuterName = Dns.GetHostName();
         static IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         IPAddress _locAdd;
@@ -25,9 +25,9 @@ namespace Network
         bool _continue;
         int _ipIndex;
 
-        public Boss(Context ctx, int ipIndex)
+        public Boss ( object ctx, int ipIndex)
         {
-            _ctx = ctx;
+            _ctx = (ContextManager)ctx;
             _ipIndex = ipIndex;
             _locAdd = localIPs[ipIndex];
             
@@ -65,13 +65,19 @@ namespace Network
             string[] comingChain = _incoming.Split('#');
             string mail = comingChain[0];
             string password = comingChain[1];
-            if (_ctx.PersonList.ContainsKey(mail))
+
+            using (var c = _ctx.ObtainAccessor())
             {
-                _incomingIP = comingChain[2];
-                if (_ctx.PersonList.TryGetValue(mail, out Employee value) && value.Password == password) return true;
+                if (c.Context.PersonList.ContainsKey(mail))
+                {
+
+                    _incomingIP = comingChain[2];
+                    if (c.Context.PersonList.TryGetValue(mail, out Employee value) && value.Password == password) return true;
+                    else return false;
+                }
+
                 else return false;
             }
-            else return false;
         }
 
         internal void SendContext(bool valid)
@@ -84,7 +90,10 @@ namespace Network
                 Socket cc = new Socket(AddressFamily.InterNetwork,
         SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
                 cc.Connect(_incomingIP, _basicPort + 1);
-                Serialization.Serialize(_ctx);
+                using (var c = _ctx.ObtainAccessor())
+                {
+                    Serialization.Serialize(c.Context);
+                }
                 cc.SendFile("-Context.MATe");
                 cc.Shutdown(SocketShutdown.Both);
                 cc.Close();
