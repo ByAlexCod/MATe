@@ -22,8 +22,11 @@ namespace MATe.Services
                 Person a = Context.GetContext().Login(mail, password);
                 if (a == Context.GetContext().getBoss())
                 {
-                    Network.Boss bobo = new Network.Boss(Context.GetContext(), ipIndex);
+                    ContextManager c = new ContextManager();
+                    c.Load(Context.GetContext());
+                    Network.Boss bobo = new Network.Boss(c, ipIndex);
 
+                    
                     Thread lii = new Thread(bobo.Start);
                     lii.IsBackground = true;
                     lii.Start();

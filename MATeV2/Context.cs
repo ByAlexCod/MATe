@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MATeV2
@@ -83,4 +84,86 @@ namespace MATeV2
 
         }
     }
+    
+
+    public interface IContextAccessor : IDisposable
+    {
+        Context Context { get; }
+    }
+
+
+    public class ContextManager
+    {
+        readonly object _lock;
+        Context _context;
+
+        class ContextAccessor : IContextAccessor
+        {
+            readonly ContextManager _m;
+            bool _disposed;
+
+            internal ContextAccessor(ContextManager manager)
+            {
+                _m = manager;
+                _m.Lock();
+            }
+            public Context Context
+            {
+                get
+                {
+                    if (_disposed) throw new ObjectDisposedException("ContextAccessor");
+                    return _m._context;
+                }
+            }
+
+            public void Dispose()
+            {
+                _disposed = true;
+                _m.Unlock();
+            }
+        }
+
+        public ContextManager()
+        {
+            _lock = new object();
+        }
+
+        public void Load(Context ctx)
+        {
+            Context newC = ctx;
+
+            Lock();
+            _context = newC;
+            Unlock();
+        }
+
+        void Lock()
+        {
+            Monitor.Enter(_lock);
+        }
+
+        void Unlock()
+        {
+            Monitor.Exit(_lock);
+        }
+
+        public IContextAccessor ObtainAccessor()
+        {
+            return new ContextAccessor(this);
+        }
+
+        public void Save(string path)
+        {
+            Lock();
+            try
+            {
+                //.... POF!!
+            }
+            finally
+            {
+                Unlock();
+            }
+        }
+    }
+
 }
