@@ -45,15 +45,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodyUC.cs" />
+    <Compile Include="BodyUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="BodyUC.Designer.cs">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="Colaborators.cs" />
+    <Compile Include="Colaborators.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Colaborators.Designer.cs">
       <DependentUpon>Colaborators.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEmployeeForm.cs" />
+    <Compile Include="CreateEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CreateEmployeeForm.Designer.cs">
       <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
     </Compile>
@@ -63,13 +69,21 @@
     <Compile Include="CreateEmployeeUC.Designer.cs">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatProject.cs" />
-    <Compile Include="CreatProject.Designer.cs" />
-    <Compile Include="DetailProjectUC.cs" />
+    <Compile Include="CreatProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatProject.designer.cs">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailProjectUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="DetailProjectUC.Designer.cs">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="FooterUC.cs" />
+    <Compile Include="FooterUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="FooterUC.Designer.cs">
       <DependentUpon>FooterUC.cs</DependentUpon>
     </Compile>
@@ -82,7 +96,7 @@
     <Compile Include="head.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="head.designer.cs">
+    <Compile Include="head.Designer.cs">
       <DependentUpon>head.cs</DependentUpon>
     </Compile>
     <Compile Include="NewEmployeeForm.cs">
@@ -91,28 +105,40 @@
     <Compile Include="NewEmployeeForm.Designer.cs">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddNewProject.cs" />
+    <Compile Include="FormAddNewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormAddNewProject.Designer.cs">
       <DependentUpon>FormAddNewProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="GestionProjet.cs" />
+    <Compile Include="GestionProjet.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GestionProjet.Designer.cs">
       <DependentUpon>GestionProjet.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListeDesProjets.cs" />
+    <Compile Include="ListeDesProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ListeDesProjets.Designer.cs">
       <DependentUpon>ListeDesProjets.cs</DependentUpon>
     </Compile>
-    <Compile Include="memberManagerForm.cs" />
+    <Compile Include="memberManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="memberManagerForm.Designer.cs">
       <DependentUpon>memberManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectManagement.cs" />
+    <Compile Include="ProjectManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ProjectManagement.Designer.cs">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectManager.cs" />
+    <Compile Include="ProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
@@ -130,7 +156,9 @@
     <EmbeddedResource Include="CreateEmployeeUC.resx">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatProject.resx" />
+    <EmbeddedResource Include="CreatProject.resx">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailProjectUC.resx">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
       <SubType>Designer</SubType>
