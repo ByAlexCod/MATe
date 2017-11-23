@@ -51,7 +51,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(64, 148);
+            this.label2.Location = new System.Drawing.Point(64, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 13);
             this.label2.TabIndex = 1;
@@ -88,7 +88,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 193);
+            this.label3.Location = new System.Drawing.Point(64, 200);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 7;
@@ -99,9 +99,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(64, 240);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(116, 13);
+            this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Confirm New Password";
+            this.label4.Text = "Mail";
             // 
             // btnChange
             // 
