@@ -33,7 +33,7 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
             this.txtpwd = new System.Windows.Forms.TextBox();
-            this.txtConPwd = new System.Windows.Forms.TextBox();
+            this.txtMail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnChange = new System.Windows.Forms.Button();
@@ -78,12 +78,12 @@
             this.txtpwd.Size = new System.Drawing.Size(290, 20);
             this.txtpwd.TabIndex = 4;
             // 
-            // txtConPwd
+            // txtMail
             // 
-            this.txtConPwd.Location = new System.Drawing.Point(214, 233);
-            this.txtConPwd.Name = "txtConPwd";
-            this.txtConPwd.Size = new System.Drawing.Size(290, 20);
-            this.txtConPwd.TabIndex = 5;
+            this.txtMail.Location = new System.Drawing.Point(214, 233);
+            this.txtMail.Name = "txtMail";
+            this.txtMail.Size = new System.Drawing.Size(290, 20);
+            this.txtMail.TabIndex = 5;
             // 
             // label3
             // 
@@ -120,7 +120,7 @@
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtConPwd);
+            this.Controls.Add(this.txtMail);
             this.Controls.Add(this.txtpwd);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtName);
@@ -140,7 +140,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtLastName;
         private System.Windows.Forms.TextBox txtpwd;
-        private System.Windows.Forms.TextBox txtConPwd;
+        private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnChange;

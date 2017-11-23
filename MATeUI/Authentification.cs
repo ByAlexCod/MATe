@@ -15,6 +15,7 @@ namespace MATeUI
 {
     public partial class Authentification : Form
     {
+        public static Person p = null;
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
 
         public Authentification()
@@ -53,6 +54,7 @@ namespace MATeUI
             }
             if (person is Boss)
             {
+                p = (Boss)person;
                 MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
                 ProjectManager pm = new ProjectManager();
@@ -60,6 +62,7 @@ namespace MATeUI
                 Close();
             } else if (person is Employee)
             {
+                p = (Employee)person;
                 MessageBox.Show(person.Firstname + " vous êtes un employé.");
             }
         }

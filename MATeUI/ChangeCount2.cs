@@ -18,8 +18,8 @@ namespace MATeUI
         }
 
         private void btnChange_Click(object sender, EventArgs e)
-        {
-            
+        {   
+            Authentification.p.ModifyProfile(txtName.Text, txtLastName.Text, txtMail.Text, txtpwd.Text);   
         }
     }
 }
