@@ -21,7 +21,7 @@ namespace MATeUI
         private void CreateEmployeeBtn_Click(object sender, EventArgs e)
         {
             Context ctx = Context.GetContext();
-            ctx.Boss = ctx.getBoss();
+            ctx.Boss = ctx.GetBoss();
             Employee emp = Context.GetContext().Boss.CreateEmployee(FirstNameTextBox.Text, LastNameTextBox.Text, MailTextBox.Text);
             // Context.GetContext().PersonList.Add(emp.Mail, emp);
             MessageBox.Show("LE MDP EST : " + emp.Password);

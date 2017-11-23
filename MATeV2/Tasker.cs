@@ -23,15 +23,15 @@ namespace MATeV2
             _state = false;
         }
 
-        public Tasker(Project p,string name, DateTime datelimit)
-        {
-            Project = p;
-            Name = name;
-            DateLimit = datelimit;
-            _subtasks = new List<SubTask>();
-            _state = false;
-            p.Tasks.Add(this);
-        }
+        //public Tasker(Project p,string name, DateTime datelimit)
+        //{
+        //    Project = p;
+        //    Name = name;
+        //    DateLimit = datelimit;
+        //    _subtasks = new List<SubTask>();
+        //    _state = false;
+        //    p.Tasks.Add(this);
+        //}
 
         public string Name
         {

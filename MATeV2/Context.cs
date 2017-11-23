@@ -26,7 +26,7 @@ namespace MATeV2
         {
             _name = name;
             _firstExchangePort = new Random().Next(1, 6666);
-            _boss = getBoss();
+            _boss = GetBoss();
         }
 
         public Dictionary<string, Employee> PersonList => _personsList;
@@ -49,7 +49,7 @@ namespace MATeV2
             return null;
         }
 
-        public Boss getBoss()
+        public Boss GetBoss()
         {
             if (_boss != null) return _boss;
             _boss = new Boss(this,"default", "boss", "b", "b");

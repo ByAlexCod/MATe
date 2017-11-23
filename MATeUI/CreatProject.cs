@@ -15,7 +15,7 @@ namespace MATeUI
     {
        
         List<Employee> _members = new List<Employee>();
-        Boss b = Context.GetContext().getBoss();
+        Boss b = Context.GetContext().GetBoss();
         public CreatProject()
         {
 

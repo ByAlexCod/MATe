@@ -68,7 +68,7 @@ namespace MATeUI
             {
                 string mail = ListEmployee.SelectedItems[0].Text.ToString();
                 Employee employ = ctx.PersonList[mail];
-                ctx.Boss = ctx.getBoss();
+                ctx.Boss = ctx.GetBoss();
                 ctx.Boss.DeleteEmployee(employ);
                 FirstNameTextBox.Clear();
                 LastNameTextBox.Clear();

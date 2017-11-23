@@ -24,6 +24,7 @@ namespace MATeV2
             _projectmanager = projectmanager;
             _members = new List<Employee>();
             _tasks = new List<Tasker>();
+            _state = false;
             if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
         }
         public Project(string name, DateTime datebegin, DateTime datelimit)
@@ -31,7 +32,7 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            
+            _state = false;
             _members = new List<Employee>();
             _tasks = new List<Tasker>();
         }
@@ -58,6 +59,12 @@ namespace MATeV2
         {
             get { return _projectmanager; }
             set { _projectmanager = value; }
+        }
+
+        public Boolean State
+        {
+            get { return _state; }
+            set { _state = value; }
         }
 
         public List<Employee> Members => _members;

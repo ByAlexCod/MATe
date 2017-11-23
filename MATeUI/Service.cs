@@ -11,9 +11,9 @@ namespace MATeUI
     {
         public static Person GetPersonByID(string mail,string password)
         {
-            if(mail.Equals(Context.GetContext().getBoss().Mail) && password.Equals(Context.GetContext().getBoss().Password))
+            if(mail.Equals(Context.GetContext().GetBoss().Mail) && password.Equals(Context.GetContext().GetBoss().Password))
             {
-                return Context.GetContext().getBoss();
+                return Context.GetContext().GetBoss();
             }
             else
             {

@@ -20,7 +20,7 @@ namespace MATe.Services
             {
                 //MultiThreading
                 Person a = Context.GetContext().Login(mail, password);
-                if (a == Context.GetContext().getBoss())
+                if (a == Context.GetContext().GetBoss())
                 {
                     ContextManager c = new ContextManager();
                     c.Load(Context.GetContext());
