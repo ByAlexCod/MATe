@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2EF48B8D-C8F2-42B0-8F6F-E658241E3F05}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MATeUI</RootNamespace>
+    <AssemblyName>MATeUI</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AcceuilBoss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AcceuilBoss.Designer.cs">
+      <DependentUpon>AcceuilBoss.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BodyUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BodyUC.Designer.cs">
+      <DependentUpon>BodyUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Colaborators.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Colaborators.Designer.cs">
+      <DependentUpon>Colaborators.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateEmployeeForm.Designer.cs">
+      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreateEmployeeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CreateEmployeeUC.Designer.cs">
+      <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreatProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreatProject.designer.cs">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DetailProjectUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailProjectUC.Designer.cs">
+      <DependentUpon>DetailProjectUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FooterUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FooterUC.Designer.cs">
+      <DependentUpon>FooterUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authentification.Designer.cs">
+      <DependentUpon>Authentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEmployeeForm.Designer.cs">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddNewProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddNewProject.Designer.cs">
+      <DependentUpon>FormAddNewProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GestionProjet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GestionProjet.Designer.cs">
+      <DependentUpon>GestionProjet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeDesProjets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeDesProjets.Designer.cs">
+      <DependentUpon>ListeDesProjets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="memberManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="memberManagerForm.Designer.cs">
+      <DependentUpon>memberManagerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="ProjectManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProjectManagement.Designer.cs">
+      <DependentUpon>ProjectManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectManager.Designer.cs">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service.cs" />
+    <EmbeddedResource Include="AcceuilBoss.resx">
+      <DependentUpon>AcceuilBoss.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BodyUC.resx">
+      <DependentUpon>BodyUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Colaborators.resx">
+      <DependentUpon>Colaborators.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateEmployeeForm.resx">
+      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateEmployeeUC.resx">
+      <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreatProject.resx">
+      <DependentUpon>CreatProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DetailProjectUC.resx">
+      <DependentUpon>DetailProjectUC.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authentification.resx">
+      <DependentUpon>Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEmployeeForm.resx">
+      <DependentUpon>NewEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddNewProject.resx">
+      <DependentUpon>FormAddNewProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GestionProjet.resx">
+      <DependentUpon>GestionProjet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeDesProjets.resx">
+      <DependentUpon>ListeDesProjets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="memberManagerForm.resx">
+      <DependentUpon>memberManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectManagement.resx">
+      <DependentUpon>ProjectManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectManager.resx">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MATeV2\MATeV2.csproj">
+      <Project>{ed2108ae-7636-4bd8-9261-5bc309054aee}</Project>
+      <Name>MATeV2</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\LOGO MATe.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
