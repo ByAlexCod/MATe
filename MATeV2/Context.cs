@@ -12,6 +12,7 @@ namespace MATeV2
     [Serializable]
     public class Context
     {
+        DateTime _modifyTime;
         readonly Dictionary<string, Employee> _personsList = new Dictionary<string, Employee>();
         readonly Dictionary<string, Project> _projectsList = new Dictionary<string, Project>();
         Boss _boss;
@@ -29,6 +30,12 @@ namespace MATeV2
             _boss = GetBoss();
         }
 
+        public DateTime SetModifyDate()
+        {
+            _modifyTime = DateTime.Now;
+            return _modifyTime;
+        }
+        public DateTime ModifyDate => _modifyTime;
         public Dictionary<string, Employee> PersonList => _personsList;
         public Dictionary<string, Project> ProjectsList => _projectsList;
         public Dictionary<string, Employee> WaitingPersonList => _waitingPersonsList;
@@ -59,7 +66,10 @@ namespace MATeV2
         public Boss Boss
         {
             get { return _boss; }
-            set { _boss = value; }
+            set { _boss = value;
+                _modifyTime = DateTime.Now;
+
+            }
         }
 
         public static Context GetContext()
