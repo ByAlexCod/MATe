@@ -15,6 +15,7 @@ namespace MATeV2
         Employee _projectmanager;
         List<Employee> _members;
         List<Tasker> _tasks;
+        Boolean _state;
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;

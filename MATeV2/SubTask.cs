@@ -12,7 +12,7 @@ namespace MATeV2
         string _name;
         DateTime _datelimit;
         Employee _worker;
-        Boolean _status;
+        int _status;
         Tasker _currenttask;
         
         public SubTask(string name,DateTime datelimit,Employee worker = null)
@@ -20,7 +20,7 @@ namespace MATeV2
             Name = name;
             DateLimit = datelimit;
             Worker = worker;
-            _status = false;
+            _status = 0;
         }
 
         public string Name
@@ -41,7 +41,7 @@ namespace MATeV2
             set { _worker = value; }
         }
 
-        public Boolean State
+        public int State
         {
             get { return _status; }
             set { _status = value; }

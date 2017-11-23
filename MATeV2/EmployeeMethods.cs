@@ -64,7 +64,7 @@ namespace MATeV2
             return s;
         }
 
-        public SubTask ModifySubtask(SubTask s, Boolean b)
+        public SubTask ModifySubtask(SubTask s, int b)
         {
             s.State = b;
             return null;
