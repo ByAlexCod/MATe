@@ -94,13 +94,10 @@ namespace MATeUI
             //{
             //    _context.PersonList.Add(emp.Mail, emp);
             //}
-
-
-
+            if (Context.GetContext().PersonList == null) MessageBox.Show("dkm day roi");
             _projectListCbx.DataSource = Context.GetContext().ProjectsList.Values.ToArray();
-            _projectListCbx.SelectedItem = null;
+            //_projectListCbx.SelectedItem = null;
             _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
-
         }
 
        

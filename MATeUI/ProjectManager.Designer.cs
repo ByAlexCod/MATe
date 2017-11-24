@@ -28,9 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bodyUC1 = new MATeUI.BodyUC();
             this.head1 = new MATeUI.head();
+            this.bodyUC1 = new MATeUI.BodyUC();
             this.SuspendLayout();
+            // 
+            // head1
+            // 
+            this.head1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.head1.Location = new System.Drawing.Point(0, 0);
+            this.head1.Name = "head1";
+            this.head1.Size = new System.Drawing.Size(1407, 56);
+            this.head1.TabIndex = 1;
             // 
             // bodyUC1
             // 
@@ -40,14 +48,6 @@
             this.bodyUC1.Size = new System.Drawing.Size(1407, 623);
             this.bodyUC1.TabIndex = 0;
             this.bodyUC1.Load += new System.EventHandler(this.bodyUC1_Load_1);
-            // 
-            // head1
-            // 
-            this.head1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.head1.Location = new System.Drawing.Point(0, 0);
-            this.head1.Name = "head1";
-            this.head1.Size = new System.Drawing.Size(1407, 56);
-            this.head1.TabIndex = 1;
             // 
             // ProjectManager
             // 

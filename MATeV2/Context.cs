@@ -13,8 +13,8 @@ namespace MATeV2
     public class Context
     {
         DateTime _modifyTime;
-        readonly Dictionary<string, Employee> _personsList = new Dictionary<string, Employee>();
-        readonly Dictionary<string, Project> _projectsList = new Dictionary<string, Project>();
+        readonly Dictionary<string, Employee> _personsList;
+        readonly Dictionary<string, Project> _projectsList;
         Boss _boss;
         string _name;
         readonly int _firstExchangePort;
@@ -28,6 +28,8 @@ namespace MATeV2
             _name = name;
             _firstExchangePort = new Random().Next(1, 6666);
             _boss = GetBoss();
+            _personsList = new Dictionary<string, Employee>();
+            _projectsList = new Dictionary<string, Project>();
         }
 
         public DateTime SetModifyDate()
@@ -50,9 +52,8 @@ namespace MATeV2
         /// <returns></returns>
         public Person Login(string mail, string password)
         {
-            Employee value;
             if (mail == this.Boss.Mail && password == this.Boss.Password) return _boss;
-            else if (_personsList.TryGetValue(mail, out value) && value.Password == password) return value;
+            else if (_personsList.TryGetValue(mail, out Employee value) && value.Password == password) return value;
             return null;
         }
 
@@ -80,12 +81,15 @@ namespace MATeV2
             }
             if (File.Exists("-Context.MATe"))
             {
+
                 _ctx = (Context)Serialization.Deserialize();
                 return _ctx;
             }
             else
             {
-                return null;
+                //_ctx = new Context("test new");
+                //Serialization.Serialize(_ctx);
+                return _ctx;
             }
         }
 

@@ -82,7 +82,7 @@ namespace MATeUI
         {
             ListEmployee.Items.Clear();
             
-            foreach (Employee emp in ctx.PersonList.Values)
+            foreach (Employee emp in ctx.PersonList.Values.ToList())
             {
                 ListViewItem newitem = new ListViewItem(emp.Mail);
                 newitem.SubItems.Add(emp.Firstname);

@@ -31,14 +31,7 @@ namespace MATeUI
             }
         }
 
-        
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void connexionBtn_Click(object sender, EventArgs e)
+        private void ConnexionBtn_Click(object sender, EventArgs e)
         {
             if(userNameTbx.Text.Trim().Equals("") && passwordTbx.Text.Trim().Equals(""))
             {
@@ -55,7 +48,7 @@ namespace MATeUI
             {
                 MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
-                ProjectManager pm = new ProjectManager();
+                ProjectManager pm = new ProjectManager(person);
                 pm.ShowDialog();
                 Close();
             } else if (person is Employee)

@@ -47,7 +47,7 @@
             this.connexionBtn.TabIndex = 0;
             this.connexionBtn.Text = "Log In";
             this.connexionBtn.UseVisualStyleBackColor = true;
-            this.connexionBtn.Click += new System.EventHandler(this.connexionBtn_Click);
+            this.connexionBtn.Click += new System.EventHandler(this.ConnexionBtn_Click);
             // 
             // userNameTbx
             // 
