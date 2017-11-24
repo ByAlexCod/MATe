@@ -57,7 +57,7 @@ namespace MATeUI
                 p = (Boss)person;
                 MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
-                ProjectManager pm = new ProjectManager();
+                ProjectManager pm = new ProjectManager(p);
                 pm.ShowDialog();
                 Close();
             } else if (person is Employee)

@@ -54,12 +54,14 @@ namespace MATeV2
         public Context Contx => _ctx;
       
 
-        public void ModifyProfile(string firstname, string lastname, string mail, string password)
+        static public void ModifyProfile(Person own, string firstname, string lastname, string mail, string password)
         {
-            if (firstname != null) _firstname = firstname;
-            if (lastname != null) _lastname = lastname;
-            if (mail != null) _mail = mail;
-            if (password != null) _password = password;
+            // modifier les information de la person own
+
+            if (firstname != null) own.Firstname = firstname;
+            if (lastname != null) own.Lastname = lastname;
+            if (mail != null) own.Mail = mail;
+            if (password != null) own.Password = password;
         }
     }
 }

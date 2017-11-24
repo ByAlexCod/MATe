@@ -7,17 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MATeV2;
 
 namespace MATeUI
 {
     public partial class ProjectManager : Form
     {
-        
-        public ProjectManager()
+        Person _actualUser;
+        public ProjectManager(Person actualUser)
         {
-            
+            _actualUser = actualUser;
             InitializeComponent();
-            
         }
 
         
