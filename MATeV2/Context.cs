@@ -13,8 +13,8 @@ namespace MATeV2
     public class Context
     {
         DateTime _modifyTime;
-        readonly Dictionary<string, Employee> _personsList = new Dictionary<string, Employee>();
-        readonly Dictionary<string, Project> _projectsList = new Dictionary<string, Project>();
+        readonly Dictionary<string, Employee> _personsList ;
+        readonly Dictionary<string, Project> _projectsList ;
         Boss _boss;
         string _name;
         readonly int _firstExchangePort;
@@ -28,6 +28,8 @@ namespace MATeV2
             _name = name;
             _firstExchangePort = new Random().Next(1, 6666);
             _boss = getBoss();
+            _personsList = new Dictionary<string, Employee>();
+            _projectsList = new Dictionary<string, Project>();
         }
 
         public DateTime SetModifyDate()

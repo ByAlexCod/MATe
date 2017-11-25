@@ -127,7 +127,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ChangeCount2";
-            this.Size = new System.Drawing.Size(1052, 467);
+            this.Size = new System.Drawing.Size(649, 467);
             this.ResumeLayout(false);
             this.PerformLayout();
 

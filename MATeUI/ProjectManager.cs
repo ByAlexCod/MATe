@@ -18,6 +18,7 @@ namespace MATeUI
         {
             _actualUser = actualUser;
             InitializeComponent();
+            this.head1.CurrentUser = _actualUser;
         }
 
         

@@ -54,7 +54,7 @@ namespace MATeUI
             }
             if (person is Boss)
             {
-                p = (Boss)person;
+                p = person;
                 MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
                 ProjectManager pm = new ProjectManager(p);

@@ -32,5 +32,13 @@ namespace MATeUI
         {
             
         }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+            ChangeCount pm = new ChangeCount(CurrentUser);
+            pm.ShowDialog();
+        }
+
+        public Person CurrentUser { get; set; }
     }
 }

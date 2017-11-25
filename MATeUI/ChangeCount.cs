@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MATeV2;
 namespace MATeUI
 {
     public partial class ChangeCount: Form
     {
-        public ChangeCount()
+        public ChangeCount(Person user)
         {
+            this.changeCount21.User = user;
             InitializeComponent();
         }
     }

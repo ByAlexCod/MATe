@@ -63,5 +63,12 @@ namespace MATeV2
             if (mail != null) own.Mail = mail;
             if (password != null) own.Password = password;
         }
+        public void ModifyProfile(string firstname, string lastname, string mail, string password)
+        {
+            if (firstname != null) _firstname = firstname;
+            if (lastname != null) _lastname = lastname;
+            if (mail != null) _mail = mail;
+            if (password != null) _password = password;
+        }
     }
 }
