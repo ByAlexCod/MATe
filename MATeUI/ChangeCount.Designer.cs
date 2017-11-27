@@ -36,14 +36,16 @@
             this.changeCount21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.changeCount21.Location = new System.Drawing.Point(0, 0);
             this.changeCount21.Name = "changeCount21";
-            this.changeCount21.Size = new System.Drawing.Size(1242, 490);
+            this.changeCount21.Size = new System.Drawing.Size(675, 413);
             this.changeCount21.TabIndex = 0;
+            this.changeCount21.User = null;
+            this.changeCount21.Load += new System.EventHandler(this.changeCount21_Load);
             // 
             // ChangeCount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1242, 490);
+            this.ClientSize = new System.Drawing.Size(675, 413);
             this.Controls.Add(this.changeCount21);
             this.Name = "ChangeCount";
             this.Text = "ChangeCount";
@@ -53,6 +55,6 @@
 
         #endregion
 
-        private ChangeCount2 changeCount21;
+        internal ChangeCount2 changeCount21;
     }
 }

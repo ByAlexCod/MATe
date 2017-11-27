@@ -63,6 +63,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(290, 20);
             this.txtName.TabIndex = 2;
+            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // txtLastName
             // 
@@ -111,7 +112,6 @@
             this.btnChange.TabIndex = 9;
             this.btnChange.Text = "Change";
             this.btnChange.UseVisualStyleBackColor = true;
-            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // ChangeCount2
             // 
@@ -137,12 +137,12 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtLastName;
-        private System.Windows.Forms.TextBox txtpwd;
-        private System.Windows.Forms.TextBox txtMail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnChange;
+        internal System.Windows.Forms.TextBox txtName;
+        internal System.Windows.Forms.TextBox txtLastName;
+        internal System.Windows.Forms.TextBox txtpwd;
+        internal System.Windows.Forms.TextBox txtMail;
+        internal System.Windows.Forms.Button btnChange;
     }
 }

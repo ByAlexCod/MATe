@@ -15,15 +15,25 @@ namespace MATeUI
         public ChangeCount2()
         {
             InitializeComponent();
+        }     
+        public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
+        public event ButtonClickedEventHandler ChangeButton;
+        private void ButtonChange(object sender, EventArgs e) {
+            if(ChangeButton != null)
+            {
+                ChangeButton(this, e);
+            }
         }
-
-        private void btnChange_Click(object sender, EventArgs e)
-        {   
-            //Authentification.p.ModifyProfile(txtName.Text, txtLastName.Text, txtMail.Text, txtpwd.Text);   
-            User.ModifyProfile(txtName.Text, txtLastName.Text, txtMail.Text, txtpwd.Text);
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            btnChange.Click += new EventHandler(ButtonChange);
         }
-
         public Person User { get; set; }
-        
+
+        private void txtName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
