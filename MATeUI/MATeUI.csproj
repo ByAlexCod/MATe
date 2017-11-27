@@ -57,12 +57,6 @@
     <Compile Include="ChangeCount.Designer.cs">
       <DependentUpon>ChangeCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeCount1.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ChangeCount1.Designer.cs">
-      <DependentUpon>ChangeCount1.cs</DependentUpon>
-    </Compile>
     <Compile Include="ChangeCount2.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,9 +161,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeCount.resx">
       <DependentUpon>ChangeCount.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChangeCount1.resx">
-      <DependentUpon>ChangeCount1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeCount2.resx">
       <DependentUpon>ChangeCount2.cs</DependentUpon>

@@ -53,16 +53,6 @@ namespace MATeV2
         }
         public Context Contx => _ctx;
       
-
-        static public void ModifyProfile(Person own, string firstname, string lastname, string mail, string password)
-        {
-            // modifier les information de la person own
-
-            if (firstname != null) own.Firstname = firstname;
-            if (lastname != null) own.Lastname = lastname;
-            if (mail != null) own.Mail = mail;
-            if (password != null) own.Password = password;
-        }
         public void ModifyProfile(string firstname, string lastname, string mail, string password)
         {
             if (firstname != null) _firstname = firstname;

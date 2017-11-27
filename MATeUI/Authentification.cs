@@ -57,12 +57,18 @@ namespace MATeUI
                 p = person;
                 MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
+                //ChangeCount pm = new ChangeCount(p);
                 ProjectManager pm = new ProjectManager(p);
                 pm.ShowDialog();
                 Close();
+                /* ProjectManager pm = new ProjectManager(p);
+                pm.ShowDialog();
+                Close();*/
             } else if (person is Employee)
             {
                 p = (Employee)person;
+                ChangeCount pm = new ChangeCount(p);
+                pm.ShowDialog();
                 MessageBox.Show(person.Firstname + " vous êtes un employé.");
             }
         }

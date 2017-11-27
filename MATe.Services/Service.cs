@@ -34,6 +34,7 @@ namespace MATe.Services
                 }
                 else
                 {
+                    a = Context.GetContext().Login(mail, password);
                     // nothing now
                 }
                 return a;

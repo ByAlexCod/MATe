@@ -14,20 +14,36 @@ namespace MATeUI
     {
         public ChangeCount(Person user)
         {
-            //this.changeCount21.User = user;            
             InitializeComponent();
         }
-
+        Authentification auth = new Authentification();
         private void changeCount21_Load(object sender, EventArgs e)
         {
             changeCount21.ChangeButton += new ChangeCount2.ButtonClickedEventHandler(ChangeCount22);
+            changeCount21.txtName.Text = Authentification.p.Firstname;
+            changeCount21.txtLastName.Text = Authentification.p.Lastname;
+            changeCount21.txtMail.Text = Authentification.p.Mail;
+            changeCount21.txtpwd.Text = Authentification.p.Password;
         }
 
         private void ChangeCount22(object sender, EventArgs e)
         {
             Person p = Authentification.p;
-            //Authentification.p.ModifyProfile(changeCount21.txtName.Text, changeCount21.txtLastName.Text, changeCount21.txtMail.Text, changeCount21.txtpwd.Text);
             
+            int i = 0;
+            foreach (var item in Context.GetContext().PersonList.Values)
+            {
+                if(item.Mail.Equals(p.Mail))
+                {
+                    Context.GetContext().PersonList.Values.ElementAt(i).Mail = changeCount21.txtMail.Text;
+                    Context.GetContext().PersonList.Values.ElementAt(i).Firstname = changeCount21.txtName.Text;
+                    Context.GetContext().PersonList.Values.ElementAt(i).Lastname = changeCount21.txtLastName.Text;
+                    Context.GetContext().PersonList.Values.ElementAt(i).Password = changeCount21.txtpwd.Text;
+                    break;
+                }
+                i++;
+            }
+
             MessageBox.Show("Profile Change");
         }
     }
