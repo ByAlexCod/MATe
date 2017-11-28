@@ -22,7 +22,7 @@ namespace MATeV2
             set { _workingproject = value; }
         }
 
-        bool IsProjectManager => Contx.ProjectsList.Values.Any(p => p.Projectmanager == this);
+        bool IsProjectManager => Context.ProjectsList.Values.Any(p => p.Projectmanager == this);
         
         public override string ToString()
         {

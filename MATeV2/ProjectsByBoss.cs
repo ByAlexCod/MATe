@@ -20,22 +20,22 @@ namespace MATeV2
         /// <returns></returns>
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
         {
-            if (this.Contx.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
+            if (this.Context.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
-            this.Contx.ProjectsList.Add(newproject.Name, newproject);
+            this.Context.ProjectsList.Add(newproject.Name, newproject);
             //newproject.Contx = this.Contx;
             return newproject;
         }
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader, List<Employee> listperson)
         {
-            if (this.Contx.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
+            if (this.Context.ProjectsList.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
             foreach (Employee e in listperson)
             {
                 newproject.Members.Add(e);
             }
-            this.Contx.ProjectsList.Add(newproject.Name, newproject);
+            this.Context.ProjectsList.Add(newproject.Name, newproject);
             //newproject.Contx = this.Contx;
             return newproject;
         }
@@ -128,7 +128,7 @@ namespace MATeV2
             {
                 t.DeleteTask();
             }
-            Context.GetContext().ProjectsList.Remove(p.Name);
+            MATeV2.Context.GetContext().ProjectsList.Remove(p.Name);
             return true;
         }
     }

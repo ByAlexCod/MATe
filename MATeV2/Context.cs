@@ -16,33 +16,45 @@ namespace MATeV2
         readonly Dictionary<string, Employee> _personsList ;
         readonly Dictionary<string, Project> _projectsList ;
         Boss _boss;
-        string _name;
+        string _companyName;
         readonly int _firstExchangePort;
+        bool _isDirty;
         static Context _ctx;
         readonly Dictionary<string, Employee> _waitingPersonsList = new Dictionary<string, Employee>();
         /// <summary>
         /// Create context and create initialize first Exchange port as a random number.
         /// </summary>
-        public Context(string name)
+        internal Context(string name)
         {
-            _name = name;
+            _companyName = name;
             _firstExchangePort = new Random().Next(1, 6666);
-            _boss = getBoss();
+            _boss = new Boss(this, "default", "boss", "b", "b");
             _personsList = new Dictionary<string, Employee>();
             _projectsList = new Dictionary<string, Project>();
         }
 
-        public DateTime SetModifyDate()
+        public DateTime SetDirty( bool reset = false )
         {
-            _modifyTime = DateTime.Now;
+            if( reset )
+            {
+                _isDirty = false;
+            }
+            else
+            {
+                _modifyTime = DateTime.Now;
+                _isDirty = true;
+            }
             return _modifyTime;
         }
+
+        public bool IsDirty => _isDirty;
+
         public DateTime ModifyDate => _modifyTime;
         public Dictionary<string, Employee> PersonList => _personsList;
         public Dictionary<string, Project> ProjectsList => _projectsList;
         public Dictionary<string, Employee> WaitingPersonList => _waitingPersonsList;
         public int FirstExchangePort => _firstExchangePort;
-        public string Name => _name;
+        public string CompanyName => _companyName;
 
         /// <summary>
         /// Login user (Boss or Employee) and return person or null if mail or password is not correct
@@ -58,124 +70,15 @@ namespace MATeV2
             return null;
         }
 
-        public Boss getBoss()
-        {
-            if (_boss != null) return _boss;
-            _boss = new Boss(this,"default", "boss", "b", "b");
-            return _boss;
-        }
-
         public Boss Boss
         {
             get { return _boss; }
-            set { _boss = value;
-                _modifyTime = DateTime.Now;
-
-            }
         }
 
-        public static Context GetContext()
-        {
-            if (_ctx != null)
-            {
-                return _ctx;
-            }
-            if (File.Exists("-Context.MATe"))
-            {
-                _ctx = (Context)Serialization.Deserialize();
-                return _ctx;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        internal void Tester()
-        {
-
-        }
     }
     
 
-    public interface IContextAccessor : IDisposable
-    {
-        Context Context { get; }
-    }
 
 
-    public class ContextManager
-    {
-        readonly object _lock;
-        Context _context;
-
-        class ContextAccessor : IContextAccessor
-        {
-            readonly ContextManager _m;
-            bool _disposed;
-
-            internal ContextAccessor(ContextManager manager)
-            {
-                _m = manager;
-                _m.Lock();
-            }
-            public Context Context
-            {
-                get
-                {
-                    if (_disposed) throw new ObjectDisposedException("ContextAccessor");
-                    return _m._context;
-                }
-            }
-
-            public void Dispose()
-            {
-                _disposed = true;
-                _m.Unlock();
-            }
-        }
-
-        public ContextManager()
-        {
-            _lock = new object();
-        }
-
-        public void Load(Context ctx)
-        {
-            Context newC = ctx;
-
-            Lock();
-            _context = newC;
-            Unlock();
-        }
-
-        void Lock()
-        {
-            Monitor.Enter(_lock);
-        }
-
-        void Unlock()
-        {
-            Monitor.Exit(_lock);
-        }
-
-        public IContextAccessor ObtainAccessor()
-        {
-            return new ContextAccessor(this);
-        }
-
-        public void Save(string path)
-        {
-            Lock();
-            try
-            {
-                //.... POF!!
-            }
-            finally
-            {
-                Unlock();
-            }
-        }
-    }
 
 }

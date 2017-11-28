@@ -28,7 +28,14 @@ namespace MATeV2
         public string Firstname
         {
             get { return _firstname; }
-            set { _firstname = value; }
+            set
+            {
+                if( _firstname != value )
+                {
+                    _firstname = value;
+                    _ctx.SetDirty();
+                }
+            }
         }
 
         public string Lastname
@@ -51,14 +58,14 @@ namespace MATeV2
             get { return _ip; }
             set { _ip = value; }
         }
-        public Context Contx => _ctx;
+        public Context Context => _ctx;
       
         public void ModifyProfile(string firstname, string lastname, string mail, string password)
         {
-            if (firstname != null) _firstname = firstname;
-            if (lastname != null) _lastname = lastname;
-            if (mail != null) _mail = mail;
-            if (password != null) _password = password;
+            Firstname = firstname;
+            Lastname = lastname;
+            Mail = mail;
+            Password = password;
         }
     }
 }

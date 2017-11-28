@@ -16,7 +16,7 @@ namespace MATeUI
         {
             InitializeComponent();
         }
-        Authentification auth = new Authentification();
+        
         private void changeCount21_Load(object sender, EventArgs e)
         {
             changeCount21.ChangeButton += new ChangeCount2.ButtonClickedEventHandler(ChangeCount22);
@@ -29,7 +29,9 @@ namespace MATeUI
         private void ChangeCount22(object sender, EventArgs e)
         {
             Person p = Authentification.p;
-            
+            if (Authentification.p.Mail.Equals(Context.GetContext().getBoss().Mail)){
+                Boss b = new Boss(Context.GetContext() , changeCount21.txtName.Text, changeCount21.txtLastName.Text, changeCount21.txtMail.Text, changeCount21.txtpwd.Text);
+            }
             int i = 0;
             foreach (var item in Context.GetContext().PersonList.Values)
             {
