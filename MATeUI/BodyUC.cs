@@ -16,7 +16,7 @@ namespace MATeUI
     {
         List<Employee> employeesFree = null;
         Project p = null;
-        Context _context = Context.GetContext();
+        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         ICollection<Project> _projects = new List<Project>();
         ICollection<Employee> _employeeInProject = new List<Employee>();
         ICollection<Employee> _employees = new List<Employee>();
@@ -43,30 +43,33 @@ namespace MATeUI
 
         private void DeleteSelectedProject(object sender, EventArgs e)
         {
-            
-            if (p == null)
-            {
-                MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
-                return;
-            }
-            DialogResult res = MessageBox.Show("Are you sure you delete this Project", "Confirmation",
-               MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (res == DialogResult.Cancel)
-                return;
-            Context.GetContext().ProjectsList.Remove(p.Name);
-            projectManagementOnBody._projectListCbx.DataSource = Context.GetContext().ProjectsList.Values.ToArray();
-            detailProjectOnBody._dgMemberInProject.Rows.Clear();
-            detailProjectOnBody._dgTasks.Rows.Clear();
-            detailProjectOnBody._lastNameLbl.Text = "---------------";
-            detailProjectOnBody._mailLbl.Text = "---------------";
-            detailProjectOnBody._firstNameLbl.Text = "---------------";
-            detailProjectOnBody.ProjectName.Text = "";
-            detailProjectOnBody._projectBeginDate.Value = DateTime.Now;
-            detailProjectOnBody._projectEndDate.Value = DateTime.Now;
-            projectManagementOnBody._projectListCbx.SelectedItem = null;
-            p = null;
-        }
+            using (var ct = _ctxuser.ObtainAccessor())
 
+            {
+                Context ctx = ct.Context;
+                if (p == null)
+                {
+                    MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
+                    return;
+                }
+                DialogResult res = MessageBox.Show("Are you sure you delete this Project", "Confirmation",
+                   MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                    return;
+                ctx.ProjectsDictionary.Remove(p.Name);
+                projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                detailProjectOnBody._dgMemberInProject.Rows.Clear();
+                detailProjectOnBody._dgTasks.Rows.Clear();
+                detailProjectOnBody._lastNameLbl.Text = "---------------";
+                detailProjectOnBody._mailLbl.Text = "---------------";
+                detailProjectOnBody._firstNameLbl.Text = "---------------";
+                detailProjectOnBody.ProjectName.Text = "";
+                detailProjectOnBody._projectBeginDate.Value = DateTime.Now;
+                detailProjectOnBody._projectEndDate.Value = DateTime.Now;
+                projectManagementOnBody._projectListCbx.SelectedItem = null;
+                p = null;
+            }
+        }
         private void OnChangeProjectManger(object sender, EventArgs e)
         {
             if(p == null)
@@ -111,21 +114,24 @@ namespace MATeUI
 
         private void OnRefreshPage(object sender, EventArgs e)
         {
-            projectManagementOnBody._projectListCbx.DataSource = Context.GetContext().ProjectsList.Values.ToArray();
-            projectManagementOnBody._projectListCbx.SelectedItem = Context.GetContext().ProjectsList.Values.LastOrDefault();
-            detailProjectOnBody._dgEmployees.Rows.Clear();
-            employeesFree = new List<Employee>();
-            foreach (Employee item in Context.GetContext().PersonList.Values)
+            using (var ct = _ctxuser.ObtainAccessor())
             {
-                //if (item.CurrentWorkingProject == null)
+                Context ctx = ct.Context;
+                projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                detailProjectOnBody._dgEmployees.Rows.Clear();
+                employeesFree = new List<Employee>();
+                foreach (Employee item in ctx.PersonsDictionary.Values)
+                {
+                    //if (item.CurrentWorkingProject == null)
                     employeesFree.Add(item);
-            }
-            foreach (Employee item in Context.GetContext().PersonList.Values)
-            {
-                detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail);
-            }
-            
+                }
+                foreach (Employee item in ctx.PersonsDictionary.Values)
+                {
+                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail);
+                }
 
+            }
         }
 
         private void OnAddMemberInProject(object sender, EventArgs e)
@@ -191,52 +197,56 @@ namespace MATeUI
 
         private void OnUpdateButtonClicked(object sender, EventArgs e)
         {
-            if (p == null)
+            using (var ct = _ctxuser.ObtainAccessor())
             {
-                MessageBox.Show("FIRST SELECT A PROJECT");
-                return;
-            }
-            else
-            {
-                p.Name = detailProjectOnBody.ProjectName.Text;
-                p.DateBegin = detailProjectOnBody._projectBeginDate.Value;
-                p.DateLimit = detailProjectOnBody._projectEndDate.Value;
-                projectManagementOnBody._projectListCbx.SelectedItem = p;
-
-                bool trouve = false;
-                foreach(Project pr in _context.ProjectsList.Values)
-                {           
-                    if (pr.Name.Equals(p.Name))
-                    {
-                        p = pr;
-                        trouve = true;
-                        break;
-                    }
-                }
-                if(trouve)
+                Context ctx = ct.Context;
+                if (p == null)
                 {
-                    //_context.ProjectsList.Remove(p.Name);
-                    //_context.ProjectsList.Add(p.Name, p);
-                    _projects = _context.ProjectsList.Values;
-                    //projectManagementOnBody._projectListCbx.SelectedItem = p;
-                    
-                    projectManagementOnBody._projectListCbx.DataSource = _projects.ToArray();
-                    p.Members.Clear();
-                    detailProjectOnBody._dgMemberInProject.Rows.Clear();
-                    foreach (Employee emp in _employeeInProject)
-                    {
-                        p.Members.Add(emp);
-                        detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
-                    }
-                    foreach (Employee emp in _employees)
-                    {
-                        p.Members.Add(emp);
-                    }
-                   // projectManagementOnBody._projectListCbx.DataSource = _projects.ToArray();
-                    MessageBox.Show("Update completed");
+                    MessageBox.Show("FIRST SELECT A PROJECT");
                     return;
                 }
+                else
+                {
+                    p.Name = detailProjectOnBody.ProjectName.Text;
+                    p.DateBegin = detailProjectOnBody._projectBeginDate.Value;
+                    p.DateLimit = detailProjectOnBody._projectEndDate.Value;
+                    projectManagementOnBody._projectListCbx.SelectedItem = p;
 
+                    bool trouve = false;
+                    foreach (Project pr in ctx.ProjectsDictionary.Values)
+                    {
+                        if (pr.Name.Equals(p.Name))
+                        {
+                            p = pr;
+                            trouve = true;
+                            break;
+                        }
+                    }
+                    if (trouve)
+                    {
+                        //_context.ProjectsList.Remove(p.Name);
+                        //_context.ProjectsList.Add(p.Name, p);
+                        _projects = ctx.ProjectsDictionary.Values;
+                        //projectManagementOnBody._projectListCbx.SelectedItem = p;
+
+                        projectManagementOnBody._projectListCbx.DataSource = _projects.ToArray();
+                        p.Members.Clear();
+                        detailProjectOnBody._dgMemberInProject.Rows.Clear();
+                        foreach (Employee emp in _employeeInProject)
+                        {
+                            p.Members.Add(emp);
+                            detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
+                        }
+                        foreach (Employee emp in _employees)
+                        {
+                            p.Members.Add(emp);
+                        }
+                        // projectManagementOnBody._projectListCbx.DataSource = _projects.ToArray();
+                        MessageBox.Show("Update completed");
+                        return;
+                    }
+
+                }
             }
 
         }

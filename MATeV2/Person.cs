@@ -12,23 +12,28 @@ namespace MATeV2
         readonly Context _ctx;
         string _firstname;
         string _lastname;
-        string _password;
         string _mail;
         string _ip;
 
-        public Person( Context c, string firstname, string lastname, string mail, string password)
+        public Person( Context c, string firstname, string lastname, string mail)
         {
             _ctx = c;
             _firstname = firstname;
             _lastname = lastname;
             _mail = mail;
-            _password = password;
         }
 
         public string Firstname
         {
             get { return _firstname; }
-            set { _firstname = value; }
+            set
+            {
+                if( _firstname != value )
+                {
+                    _firstname = value;
+                    _ctx.SetDirty();
+                }
+            }
         }
 
         public string Lastname
@@ -41,25 +46,20 @@ namespace MATeV2
             get { return _mail; }
             set { _mail = value; }
         }
-        public string Password
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
+        
         public string IP
         {
             get { return _ip; }
             set { _ip = value; }
         }
-        public Context Contx => _ctx;
+        public Context Context => _ctx;
       
-
         public void ModifyProfile(string firstname, string lastname, string mail, string password)
         {
-            if (firstname != null) _firstname = firstname;
-            if (lastname != null) _lastname = lastname;
-            if (mail != null) _mail = mail;
-            if (password != null) _password = password;
+            Firstname = firstname;
+            Lastname = lastname;
+            Mail = mail;
+            
         }
     }
 }

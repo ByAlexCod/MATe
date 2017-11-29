@@ -51,6 +51,18 @@
     <Compile Include="BodyUC.Designer.cs">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChangeCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChangeCount.Designer.cs">
+      <DependentUpon>ChangeCount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChangeCount2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChangeCount2.Designer.cs">
+      <DependentUpon>ChangeCount2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Colaborators.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +158,12 @@
     <Compile Include="Service.cs" />
     <EmbeddedResource Include="BodyUC.resx">
       <DependentUpon>BodyUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeCount.resx">
+      <DependentUpon>ChangeCount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChangeCount2.resx">
+      <DependentUpon>ChangeCount2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Colaborators.resx">
       <DependentUpon>Colaborators.cs</DependentUpon>

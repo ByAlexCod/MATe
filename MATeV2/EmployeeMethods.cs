@@ -14,9 +14,7 @@ namespace MATeV2
 
         public Tasker CreateTask(Project p, string name, DateTime datelimit)
         {
-            Tasker newtask = new Tasker(name, datelimit);
-            newtask.Project = p;
-            p.Tasks.Add(newtask);
+            Tasker newtask = new Tasker(p, name, datelimit);
             return newtask;
         }
 
@@ -66,7 +64,7 @@ namespace MATeV2
             return s;
         }
 
-        public SubTask ModifySubTask(SubTask s, State b)
+        public SubTask ModifySubtask(SubTask s, int b)
         {
             s.State = b;
             return null;

@@ -15,12 +15,15 @@ namespace MATeUI
 {
     public partial class Authentification : Form
     {
+        public static Person p = null;
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
+        static ContextAndUserManager _currentCtx;
 
         public Authentification()
         {
             InitializeComponent();
         }
+        public static ContextAndUserManager CurrentCtxUser => _currentCtx;
 
         protected override void OnLoad(EventArgs e)
         {
@@ -37,30 +40,48 @@ namespace MATeUI
         {
 
         }
-
+        internal void CreateTestContext()
+        {
+            ContextAndUserManager ctt = new ContextAndUserManager("In'Tech", true);
+            ctt.SaveAs("-Context.MATe");
+        }
         private void connexionBtn_Click(object sender, EventArgs e)
         {
-            if(userNameTbx.Text.Trim().Equals("") && passwordTbx.Text.Trim().Equals(""))
+            if (userNameTbx.Text.Trim().Equals("") && passwordTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Fill in the fields Mail address and Password");
                 return;
             }
-            Person person = Service.GetPersonByID(userNameTbx.Text, passwordTbx.Text);
-            if ( person == null)
+
+             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
+            _currentCtx.Load("-Context.MATe");
+            bool good = _currentCtx.Login(userNameTbx.Text);
+
+            
+            
+            if ( good == false)
             {
                 MessageBox.Show("username or/and password invalid ");
                 return;
             }
-            if (person is Boss)
+            if (_currentCtx.CurrentUser is Boss)
             {
-                MATe.Services.Service.Start(passwordTbx.Text.Trim(), userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
+                MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 this.Visible = false;
-                ProjectManager pm = new ProjectManager();
-                pm.ShowDialog();
-                Close();
-            } else if (person is Employee)
+                
+                if(_currentCtx.Login(userNameTbx.Text) == true)
+                {
+                    ProjectManager pm = new ProjectManager();
+                    pm.ShowDialog();
+                    Close();
+                }
+                
+            } else if (_currentCtx.CurrentUser is Employee)
             {
-                MessageBox.Show(person.Firstname + " vous êtes un employé.");
+                
+                //ChangeCount pm = new ChangeCount(p);
+                //pm.ShowDialog();
+                MessageBox.Show(_currentCtx.CurrentUser.Firstname + " vous êtes un employé.");
             }
         }
     }

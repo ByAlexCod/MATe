@@ -46,22 +46,22 @@ namespace MATeUI
             _employees.Remove(member);
         }
         Project _project = null;
-        protected override void OnLoad(EventArgs ev)
-        {
-            _ctx = new Context("Context 1");
-            _employees = new List<Employee>();
-            _project = new Project("MATe", DateTime.Now, new DateTime(2017, 12, 31));
-            base.OnLoad(ev);
-            for (int i = 6; i < 15; i++)
-            {
-                Employee employee = new Employee(_ctx,"employee" + i, i.ToString(), "mate@" + i.ToString() + ".com", i.ToString());
-                _employees.Add(employee);
-            }
-            foreach (Employee e in _employees)
-            {
-                _dgEmployees.Rows.Add(e.Firstname, e.Lastname, e.Mail);
-            }
-        }
+        //protected override void OnLoad(EventArgs ev)
+        //{
+        //    _ctx = new Context("Context 1");
+        //    _employees = new List<Employee>();
+        //    _project = new Project("MATe", DateTime.Now, new DateTime(2017, 12, 31));
+        //    base.OnLoad(ev);
+        //    for (int i = 6; i < 15; i++)
+        //    {
+        //        Employee employee = new Employee(_ctx,"employee" + i, i.ToString(), "mate@" + i.ToString() + ".com", i.ToString());
+        //        _employees.Add(employee);
+        //    }
+        //    foreach (Employee e in _employees)
+        //    {
+        //        _dgEmployees.Rows.Add(e.Firstname, e.Lastname, e.Mail);
+        //    }
+        //}
 
         private void _removeMemberInProjectBtn_Click(object sender, EventArgs e)
         {

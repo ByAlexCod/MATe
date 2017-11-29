@@ -13,29 +13,34 @@ namespace MATe.Services
     public class Service
     {
         
-        public static Person Start(string password, string mail, int ipIndex)
+        public static Person Start(ContextAndUserManager ctxuser, string mail, int ipIndex)
         {
             // only for boss for now
-            if (Context.GetContext().Login(mail, password) != null)
+            if (ctxuser.Login(mail) != false)
             {
                 //MultiThreading
-                Person a = Context.GetContext().Login(mail, password);
-                if (a == Context.GetContext().GetBoss())
+                Person a = ctxuser.CurrentUser;
+                using(var z = ctxuser.ObtainAccessor())
                 {
-                    ContextManager c = new ContextManager();
-                    c.Load(Context.GetContext());
-                    Network.Boss bobo = new Network.Boss(c, ipIndex);
+                    Context ctx = z.Context;
+                    if (a == ctx.Boss)
+                    {
+                        
+                        Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
 
-                    
-                    Thread lii = new Thread(bobo.Start);
-                    lii.IsBackground = true;
-                    lii.Start();
 
+                        Thread lii = new Thread(bobo.Start);
+                        lii.IsBackground = true;
+                        lii.Start();
+
+                    }
+                    else
+                    {
+                        
+                        // nothing now
+                    }
                 }
-                else
-                {
-                    // nothing now
-                }
+                
                 return a;
             }
             else return null;

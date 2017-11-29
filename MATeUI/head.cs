@@ -13,6 +13,7 @@ namespace MATeUI
 {
     public partial class head : UserControl
     {
+        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         public head()
         {
             InitializeComponent();
@@ -20,7 +21,7 @@ namespace MATeUI
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            Serialization.Serialize(Context.GetContext());
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,5 +33,13 @@ namespace MATeUI
         {
             
         }
+
+        private void modify_Click(object sender, EventArgs e)
+        {
+            ChangeCount pm = new ChangeCount(CurrentUser);
+            pm.ShowDialog();
+        }
+
+        public Person CurrentUser { get; set; }
     }
 }

@@ -7,20 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MATeV2;
 
 namespace MATeUI
 {
     public partial class ProjectManager : Form
     {
-        
+        ContextAndUserManager _currentCtx = Authentification.CurrentCtxUser;
         public ProjectManager()
         {
-            
             InitializeComponent();
-            
+            this.head1.CurrentUser = _currentCtx.CurrentUser;
         }
 
-        
         
         private void BodyUC1_Load(object sender, EventArgs e)
         {

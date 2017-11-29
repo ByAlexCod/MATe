@@ -13,6 +13,7 @@ namespace MATeUI
 {
     public partial class CreateEmployeeUC : UserControl
     {
+        ContextAndUserManager ctxuser = Authentification.CurrentCtxUser;
         public CreateEmployeeUC()
         {
             InitializeComponent();
@@ -20,14 +21,16 @@ namespace MATeUI
 
         private void CreateEmployeeBtn_Click(object sender, EventArgs e)
         {
-            Context ctx = Context.GetContext();
-            ctx.Boss = ctx.GetBoss();
-            Employee emp = Context.GetContext().Boss.CreateEmployee(FirstNameTextBox.Text, LastNameTextBox.Text, MailTextBox.Text);
+            using(var ct = ctxuser.ObtainAccessor())
+            {
+
+            Context ctx = ct.Context;
+            Employee emp = ctx.CreateEmployee(FirstNameTextBox.Text, LastNameTextBox.Text, MailTextBox.Text);
             // Context.GetContext().PersonList.Add(emp.Mail, emp);
-            MessageBox.Show("LE MDP EST : " + emp.Password);
             Form tmp = this.FindForm();
             tmp.Close();
             tmp.Dispose();
+            }
         }
     }
 }

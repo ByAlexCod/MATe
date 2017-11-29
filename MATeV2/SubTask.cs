@@ -6,16 +6,13 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
-    
     [Serializable]
-    public enum State { inwait, todo, finish };
     public class SubTask
     {
-        
         string _name;
         DateTime _datelimit;
         Employee _worker;
-        State _status;
+        int _status;
         Tasker _currenttask;
         
         public SubTask(string name,DateTime datelimit,Employee worker = null)
@@ -44,7 +41,7 @@ namespace MATeV2
             set { _worker = value; }
         }
 
-        public State State
+        public int State
         {
             get { return _status; }
             set { _status = value; }

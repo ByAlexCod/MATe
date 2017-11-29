@@ -13,7 +13,7 @@ namespace MATeUI
 {
     public partial class Colaborators : UserControl
     {
-        public Context ctx = Context.GetContext();
+        ContextAndUserManager ctx = Authentification.CurrentCtxUser;
         public Colaborators()
         {
             InitializeComponent();
@@ -21,22 +21,25 @@ namespace MATeUI
 
         private void ListEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ListEmployee.SelectedIndices.Count <= 0)
+            using (var ct = ctx.ObtainAccessor())
             {
-                return;
+                Context context = ct.Context;
+                if (ListEmployee.SelectedIndices.Count <= 0)
+                {
+                    return;
+                }
+                int intselectedindex = ListEmployee.SelectedIndices[0];
+                if (intselectedindex >= 0)
+                {
+                    string mail = ListEmployee.SelectedItems[0].Text.ToString();
+                    Employee employ = context.PersonsDictionary[mail];
+                    FirstNameTextBox.Text = employ.Firstname;
+                    LastNameTextBox.Text = employ.Lastname;
+                    MailTextBox.Text = employ.Mail;
+                    if (employ.CurrentWorkingProject != null) ProjectTextBox.Text = employ.CurrentWorkingProject.Name;
+                    else ProjectTextBox.Clear();
+                }
             }
-            int intselectedindex = ListEmployee.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                string mail = ListEmployee.SelectedItems[0].Text.ToString();
-                Employee employ = ctx.PersonList[mail];
-                FirstNameTextBox.Text = employ.Firstname;
-                LastNameTextBox.Text = employ.Lastname;
-                MailTextBox.Text = employ.Mail;
-                if (employ.CurrentWorkingProject != null) ProjectTextBox.Text = employ.CurrentWorkingProject.Name;
-                else ProjectTextBox.Clear();
-            }
-
 
         }
 
@@ -59,37 +62,44 @@ namespace MATeUI
 
         private void DeleteEmployeeBtn_Click(object sender, EventArgs e)
         {
-            if (ListEmployee.SelectedIndices.Count <= 0)
+            using (var ct = ctx.ObtainAccessor())
             {
-                return;
-            }
-            int intselectedindex = ListEmployee.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                string mail = ListEmployee.SelectedItems[0].Text.ToString();
-                Employee employ = ctx.PersonList[mail];
-                ctx.Boss = ctx.GetBoss();
-                ctx.Boss.DeleteEmployee(employ);
-                FirstNameTextBox.Clear();
-                LastNameTextBox.Clear();
-                MailTextBox.Clear();
-                ProjectTextBox.Clear();
-                Refreshtable();
+                Context context = ct.Context;
+                if (ListEmployee.SelectedIndices.Count <= 0)
+                {
+                    return;
+                }
+                int intselectedindex = ListEmployee.SelectedIndices[0];
+                if (intselectedindex >= 0)
+                {
+                    string mail = ListEmployee.SelectedItems[0].Text.ToString();
+                    Employee employ = context.PersonsDictionary[mail];
+                    context.DeleteEmployee(employ);
+                    FirstNameTextBox.Clear();
+                    LastNameTextBox.Clear();
+                    MailTextBox.Clear();
+                    ProjectTextBox.Clear();
+                    Refreshtable();
+                }
             }
         }
 
         private void Refreshtable()
         {
             ListEmployee.Items.Clear();
-            
-            foreach (Employee emp in ctx.PersonList.Values)
+            using (var ct = ctx.ObtainAccessor())
             {
-                ListViewItem newitem = new ListViewItem(emp.Mail);
-                newitem.SubItems.Add(emp.Firstname);
-                newitem.SubItems.Add(emp.Lastname);
-                if (emp.CurrentWorkingProject == null) newitem.SubItems.Add("free");
-                else newitem.SubItems.Add("busy");
-                ListEmployee.Items.Add(newitem);
+                Context context = ct.Context;
+
+                foreach (Employee emp in context.PersonsDictionary.Values)
+                {
+                    ListViewItem newitem = new ListViewItem(emp.Mail);
+                    newitem.SubItems.Add(emp.Firstname);
+                    newitem.SubItems.Add(emp.Lastname);
+                    if (emp.CurrentWorkingProject == null) newitem.SubItems.Add("free");
+                    else newitem.SubItems.Add("busy");
+                    ListEmployee.Items.Add(newitem);
+                }
             }
         }
         

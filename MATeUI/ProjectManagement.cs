@@ -19,7 +19,7 @@ namespace MATeUI
         
         ICollection<Project> _projects = new List<Project>();
         ICollection<Employee> _employees = new List<Employee>();
-        Context _context = Context.GetContext();
+        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         public ProjectManagement()
         {
             InitializeComponent();
@@ -96,10 +96,13 @@ namespace MATeUI
             //}
 
 
-
-            _projectListCbx.DataSource = Context.GetContext().ProjectsList.Values.ToArray();
-            _projectListCbx.SelectedItem = null;
-            _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                Context ctx = ct.Context;
+                _projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                _projectListCbx.SelectedItem = null;
+                _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
+            }
 
         }
 

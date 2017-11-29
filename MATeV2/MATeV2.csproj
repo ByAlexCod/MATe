@@ -42,12 +42,13 @@
   <ItemGroup>
     <Compile Include="Boss.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="ContextManager.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="EmployeeMethods.cs" />
-    <Compile Include="EmployeesByBoss.cs" />
+    <Compile Include="IContextAccessor.cs" />
+    <Compile Include="LoadContextResult.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Project.cs" />
-    <Compile Include="ProjectsByBoss.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization.cs" />
     <Compile Include="SubTask.cs" />

@@ -13,7 +13,7 @@ namespace Network
 {
     public class Boss
     {
-        ContextManager _ctx;
+        ContextAndUserManager _ctx;
         string localComuterName = Dns.GetHostName();
         static IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         IPAddress _locAdd;
@@ -27,7 +27,7 @@ namespace Network
 
         public Boss ( object ctx, int ipIndex)
         {
-            _ctx = (ContextManager)ctx;
+            _ctx = (ContextAndUserManager)ctx;
             _ipIndex = ipIndex;
             _locAdd = localIPs[ipIndex];
             
@@ -68,15 +68,15 @@ namespace Network
 
             using (var c = _ctx.ObtainAccessor())
             {
-                if (c.Context.PersonList.ContainsKey(mail))
+                if (c.Context.PersonsDictionary.ContainsKey(mail))
                 {
 
                     _incomingIP = comingChain[2];
-                    if (c.Context.PersonList.TryGetValue(mail, out Employee value) && value.Password == password) return true;
-                    else return false;
+                    return true;
                 }
-
                 else return false;
+                
+
             }
         }
 

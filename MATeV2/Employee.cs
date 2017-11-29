@@ -11,7 +11,7 @@ namespace MATeV2
     {
         Project _workingproject;
 
-        public Employee(Context c,string firstname, string lastname, string mail, string pass) : base(c,firstname, lastname, mail, pass)
+        public Employee(Context c,string firstname, string lastname, string mail) : base(c,firstname, lastname, mail)
         {
             _workingproject = null;
         }
@@ -22,7 +22,7 @@ namespace MATeV2
             set { _workingproject = value; }
         }
 
-        bool IsProjectManager => Contx.ProjectsList.Values.Any(p => p.Projectmanager == this);
+        bool IsProjectManager => Context.ProjectsDictionary.Values.Any(p => p.Projectmanager == this);
         
         public override string ToString()
         {

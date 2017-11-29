@@ -13,34 +13,55 @@ namespace MATeV2
     public class Context
     {
         DateTime _modifyTime;
-        readonly Dictionary<string, Employee> _personsList = new Dictionary<string, Employee>();
-        readonly Dictionary<string, Project> _projectsList = new Dictionary<string, Project>();
+        readonly Dictionary<string, Employee> _personsDictionary = new Dictionary<string, Employee>();
+        readonly Dictionary<string, Project> _projectsDictionary = new Dictionary<string, Project>();
         Boss _boss;
-        string _name;
+        string _companyName;
         readonly int _firstExchangePort;
-        static Context _ctx;
+        bool _isDirty;
+
         readonly Dictionary<string, Employee> _waitingPersonsList = new Dictionary<string, Employee>();
         /// <summary>
         /// Create context and create initialize first Exchange port as a random number.
         /// </summary>
-        public Context(string name)
+        internal Context(string name)
         {
-            _name = name;
+            _companyName = name;
             _firstExchangePort = new Random().Next(1, 6666);
-            _boss = GetBoss();
+            _boss = new Boss(this, "default", "boss", "b");
+            CreateEmployee("Alex", "Spitz", "a@ex.com");
+
+            
         }
 
-        public DateTime SetModifyDate()
+        public DateTime SetDirty( bool reset = false )
         {
-            _modifyTime = DateTime.Now;
+            if( reset )
+            {
+                _isDirty = false;
+            }
+            else
+            {
+                _modifyTime = DateTime.Now;
+                _isDirty = true;
+            }
             return _modifyTime;
         }
+
+        public bool IsDirty => _isDirty;
+
         public DateTime ModifyDate => _modifyTime;
-        public Dictionary<string, Employee> PersonList => _personsList;
-        public Dictionary<string, Project> ProjectsList => _projectsList;
-        public Dictionary<string, Employee> WaitingPersonList => _waitingPersonsList;
+
+
+        /*public Employee FindOrCreateEmployee( string email )
+        { }*/
+         
+
+        public Dictionary<string, Project> ProjectsDictionary => _projectsDictionary;
+        
+        public Dictionary<string, Employee> PersonsDictionary => _personsDictionary;
         public int FirstExchangePort => _firstExchangePort;
-        public string Name => _name;
+        public string CompanyName => _companyName;
 
         /// <summary>
         /// Login user (Boss or Employee) and return person or null if mail or password is not correct
@@ -48,132 +69,187 @@ namespace MATeV2
         /// <param name="mail">Mail to Tes</param>
         /// <param name="password">Password to Test</param>
         /// <returns></returns>
-        public Person Login(string mail, string password)
+        public Person Login(string mail)
         {
             Employee value;
-            if (mail == this.Boss.Mail && password == this.Boss.Password) return _boss;
-            else if (_personsList.TryGetValue(mail, out value) && value.Password == password) return value;
+            if (Boss.Mail == mail) return Boss;
+            if (PersonsDictionary.TryGetValue(mail, out value)) return value;
             return null;
-        }
-
-        public Boss GetBoss()
-        {
-            if (_boss != null) return _boss;
-            _boss = new Boss(this,"default", "boss", "b", "b");
-            return _boss;
         }
 
         public Boss Boss
         {
             get { return _boss; }
-            set { _boss = value;
-                _modifyTime = DateTime.Now;
-
-            }
         }
 
-        public static Context GetContext()
+
+
+
+
+        ///
+
+
+        public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
         {
-            if (_ctx != null)
-            {
-                return _ctx;
-            }
-            if (File.Exists("-Context.MATe"))
-            {
-                _ctx = (Context)Serialization.Deserialize();
-                return _ctx;
-            }
-            else
-            {
-                return null;
-            }
+            if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
+            Project newproject = new Project(name, datebegin, datelimit, leader);
+            ProjectsDictionary.Add(newproject.Name, newproject);
+            //newproject.Contx = this.Contx;
+            return newproject;
         }
 
-        internal void Tester()
+        public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader, List<Employee> listperson)
         {
-
+            if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
+            Project newproject = new Project(name, datebegin, datelimit, leader);
+            foreach (Employee e in listperson)
+            {
+                newproject.Members.Add(e);
+            }
+            ProjectsDictionary.Add(newproject.Name, newproject);
+            //newproject.Contx = this.Contx;
+            return newproject;
         }
+        /// <summary>
+        /// modify project by adding a new projectmanager or new members
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="projectmanager"></param>
+        /// <param name="listem"></param>
+        /// <returns></returns>
+        public Project ModifyProject(Project p, Employee projectmanager, List<Employee> listem)
+        {
+            if (projectmanager != null)
+            {
+                if (projectmanager.CurrentWorkingProject != null) throw new ArgumentException("this employee is having a project remove him from his project before continue");
+                if (p.Projectmanager != null) p.Projectmanager.CurrentWorkingProject = null;
+                projectmanager.CurrentWorkingProject = p;
+                p.Projectmanager = projectmanager;
+            }
+            if (listem != null)
+            {
+                foreach (Employee e in listem)
+                {
+                    p.Members.Add(e);
+                    e.CurrentWorkingProject = p;
+                }
+            }
+            return p;
+        }
+
+        public Project ModifyProject(Project p, string name, DateTime datebegin, DateTime datelimit)
+        {
+            if (name != null) p.Name = name;
+            if (datebegin != DateTime.MinValue) p.DateBegin = datebegin;
+            if (datelimit != DateTime.MinValue) p.DateLimit = datelimit;
+            return p;
+        }
+        /// <summary>
+        /// Remove a project manager from a project.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="projectmanager"></param>
+        /// <returns></returns>
+        public Project DeleteProjectManager(Project p, Employee projectmanager)
+        {
+            p.Projectmanager = null;
+            projectmanager.CurrentWorkingProject = null;
+            return p;
+        }
+
+        /// <summary>
+        /// Remove a member from a project.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        public Project RemoveMemberFromProject(Project p, Employee e)
+        {
+            e.CurrentWorkingProject = null;
+            p.Members.Remove(e);
+            return p;
+        }
+        /// <summary>
+        /// Delete a project = remove references to this project from projectmanagers,employees.
+        /// Also remove itself from list projects in context.
+        /// And also deletes the tasks in this project.
+        /// still not finish for first version because the fonctions deletetask(), deletesubtask() not write.
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        public Boolean DeleteProject(Project p)
+        {
+            if (p == null) return false;
+            p.Projectmanager.CurrentWorkingProject = null;
+            foreach (Employee e in p.Members)
+            {
+                e.CurrentWorkingProject = null;
+            }
+            foreach (Tasker t in p.Tasks)
+            {
+                t.DeleteTask();
+            }
+            ProjectsDictionary.Remove(p.Name);
+            return true;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ///
+
+
+
+        /// <summary>
+        /// boss create a new employee. Fill in first name, lastname and email of the employee
+        /// and get a random password made by fonction RandomPassword();
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="mail"></param>
+        /// <returns></returns>
+        public Employee CreateEmployee(string firstname, string lastname, string mail)
+        {
+            Employee e;
+            
+            e = new Employee(this, firstname, lastname, mail);
+            PersonsDictionary.Add(e.Mail, e);
+            return e;
+        }
+
+        /// <summary>
+        /// Remove an employee in the company
+        /// need add later: remove task,subtask linked with the employee
+        /// </summary>
+        /// <param name="e"></param>
+        public void DeleteEmployee(Employee e)
+        {
+            _personsDictionary.Remove(e.Mail);
+            if (e.CurrentWorkingProject != null)
+            {
+                if (e.CurrentWorkingProject.Projectmanager == e) this.DeleteProjectManager(e.CurrentWorkingProject, e);
+                else this.RemoveMemberFromProject(e.CurrentWorkingProject, e);
+            }
+        }
+
+        /// <summary>
+        /// create a random password with the length of 6
+        /// </summary>
+        /// <returns></returns>
+        
     }
     
 
-    public interface IContextAccessor : IDisposable
-    {
-        Context Context { get; }
-    }
 
 
-    public class ContextManager
-    {
-        readonly object _lock;
-        Context _context;
-
-        class ContextAccessor : IContextAccessor
-        {
-            readonly ContextManager _m;
-            bool _disposed;
-
-            internal ContextAccessor(ContextManager manager)
-            {
-                _m = manager;
-                _m.Lock();
-            }
-            public Context Context
-            {
-                get
-                {
-                    if (_disposed) throw new ObjectDisposedException("ContextAccessor");
-                    return _m._context;
-                }
-            }
-
-            public void Dispose()
-            {
-                _disposed = true;
-                _m.Unlock();
-            }
-        }
-
-        public ContextManager()
-        {
-            _lock = new object();
-        }
-
-        public void Load(Context ctx)
-        {
-            Context newC = ctx;
-
-            Lock();
-            _context = newC;
-            Unlock();
-        }
-
-        void Lock()
-        {
-            Monitor.Enter(_lock);
-        }
-
-        void Unlock()
-        {
-            Monitor.Exit(_lock);
-        }
-
-        public IContextAccessor ObtainAccessor()
-        {
-            return new ContextAccessor(this);
-        }
-
-        public void Save(string path)
-        {
-            Lock();
-            try
-            {
-                //.... POF!!
-            }
-            finally
-            {
-                Unlock();
-            }
-        }
-    }
 
 }
