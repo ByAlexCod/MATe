@@ -17,16 +17,7 @@ namespace MATeUI
         
         public DetailProjectUC()
         {
-           
-            //_updateProjectBtn.Click += new ButtonClickedEventHandler(UpdateProjectButonClick);
             InitializeComponent();
-        }
-
-        
-
-        private void DetailProjectUC_Load(object sender, EventArgs e)
-        {
-
         }
 
         protected override void OnLoad(EventArgs e)
@@ -38,30 +29,6 @@ namespace MATeUI
             _refreshPageBtn.Click += new EventHandler(OnRefreshButtonClicked);
             _addTaskToProject.Click += new EventHandler(OnAddTaskToProject);
             _changeLeaderBtn.Click += new EventHandler(OnChangeProjectManager);
-
-            //Employee emp1 = new Employee(Context.GetContext(), "Alass", "Tra", "mate@0255.com", "bla");
-            //Employee emp2 = new Employee(Context.GetContext(), "Fat", "Diarra", "mate@16.com", "bla");
-            //Employee emp3 = new Employee(Context.GetContext(), "Gaston", "Diarra", "mate@36.com", "bla");
-            //Employee emp4 = new Employee(Context.GetContext(), "Pape", "Konate", "mate@141.com", "bla");
-            //Employee emp5 = new Employee(Context.GetContext(), "Sadian", "Malle", "mate@152.com", "bla");
-            //Employee emp6 = new Employee(Context.GetContext(), "Paul", "Walker", "mate@676.com", "bla");
-            //Employee emp7 = new Employee(Context.GetContext(), "Pierre", "Ferro", "mate@96.com", "bla");
-            //Employee emp8 = new Employee(Context.GetContext(), "Moussa", "Berthe", "mate105@.com", "bla");
-            //Employee emp9 = new Employee(Context.GetContext(), "Mamou", "Diakiss", "diakiss@.com", "bla");
-            //Employee emp10 = new Employee(Context.GetContext(), "Dado", "Tra", "tra@.com", "bla");
-            //Context.GetContext().PersonList.Add(emp1.Mail, emp1); Context.GetContext().PersonList.Add(emp6.Mail, emp6);
-            //Context.GetContext().PersonList.Add(emp2.Mail, emp2); Context.GetContext().PersonList.Add(emp7.Mail, emp7);
-            //Context.GetContext().PersonList.Add(emp3.Mail, emp3); Context.GetContext().PersonList.Add(emp8.Mail, emp8);
-            //Context.GetContext().PersonList.Add(emp4.Mail, emp4); Context.GetContext().PersonList.Add(emp9.Mail, emp9);
-            //Context.GetContext().PersonList.Add(emp5.Mail, emp5);
-
-            //foreach (Employee emp in Context.GetContext().PersonList.Values)
-            //{
-            //    _dgEmployees.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
-            //}
-
-
-            //_updateProjectBtn.Click += new EventHandler(updateProjectButonClick);
         }
 
         

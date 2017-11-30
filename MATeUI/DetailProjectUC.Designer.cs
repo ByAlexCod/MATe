@@ -448,7 +448,6 @@
             this.Controls.Add(this.label1);
             this.Name = "DetailProjectUC";
             this.Size = new System.Drawing.Size(1021, 592);
-            this.Load += new System.EventHandler(this.DetailProjectUC_Load);
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();

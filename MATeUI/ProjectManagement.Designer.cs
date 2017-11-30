@@ -29,6 +29,7 @@
             this._deleteProjectBtn = new System.Windows.Forms.Button();
             this._projectListCbx = new System.Windows.Forms.ComboBox();
             this._addProjectBtn = new System.Windows.Forms.Button();
+            this._myAccountBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // _deleteProjectBtn
@@ -47,7 +48,6 @@
             this._projectListCbx.Name = "_projectListCbx";
             this._projectListCbx.Size = new System.Drawing.Size(279, 21);
             this._projectListCbx.TabIndex = 2;
-            this._projectListCbx.SelectedIndexChanged += new System.EventHandler(this._projectListCbx_SelectedIndexChanged);
             // 
             // _addProjectBtn
             // 
@@ -59,11 +59,22 @@
             this._addProjectBtn.UseVisualStyleBackColor = true;
             this._addProjectBtn.Click += new System.EventHandler(this._addProjectBtn_Click_1);
             // 
+            // _myAccountBtn
+            // 
+            this._myAccountBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this._myAccountBtn.Location = new System.Drawing.Point(956, 0);
+            this._myAccountBtn.Name = "_myAccountBtn";
+            this._myAccountBtn.Size = new System.Drawing.Size(75, 68);
+            this._myAccountBtn.TabIndex = 4;
+            this._myAccountBtn.Text = "My Account";
+            this._myAccountBtn.UseVisualStyleBackColor = true;
+            // 
             // ProjectManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this._myAccountBtn);
             this.Controls.Add(this._addProjectBtn);
             this.Controls.Add(this._projectListCbx);
             this.Controls.Add(this._deleteProjectBtn);
@@ -77,5 +88,6 @@
         public System.Windows.Forms.ComboBox _projectListCbx;
         internal System.Windows.Forms.Button _addProjectBtn;
         internal System.Windows.Forms.Button _deleteProjectBtn;
+        internal System.Windows.Forms.Button _myAccountBtn;
     }
 }

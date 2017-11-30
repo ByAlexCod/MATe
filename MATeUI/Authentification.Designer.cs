@@ -30,9 +30,7 @@
         {
             this.connexionBtn = new System.Windows.Forms.Button();
             this.userNameTbx = new System.Windows.Forms.TextBox();
-            this.passwordTbx = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.IpLb = new System.Windows.Forms.Label();
             this.ListIpCmb = new System.Windows.Forms.ComboBox();
@@ -56,15 +54,6 @@
             this.userNameTbx.TabIndex = 1;
             this.userNameTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // passwordTbx
-            // 
-            this.passwordTbx.Location = new System.Drawing.Point(203, 102);
-            this.passwordTbx.Name = "passwordTbx";
-            this.passwordTbx.PasswordChar = '*';
-            this.passwordTbx.Size = new System.Drawing.Size(233, 20);
-            this.passwordTbx.TabIndex = 2;
-            this.passwordTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -73,15 +62,6 @@
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Your Email Address";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(78, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Your Password";
             // 
             // label3
             // 
@@ -96,7 +76,7 @@
             // IpLb
             // 
             this.IpLb.AutoSize = true;
-            this.IpLb.Location = new System.Drawing.Point(82, 169);
+            this.IpLb.Location = new System.Drawing.Point(82, 115);
             this.IpLb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.IpLb.Name = "IpLb";
             this.IpLb.Size = new System.Drawing.Size(17, 13);
@@ -106,8 +86,8 @@
             // ListIpCmb
             // 
             this.ListIpCmb.FormattingEnabled = true;
-            this.ListIpCmb.Location = new System.Drawing.Point(203, 162);
-            this.ListIpCmb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ListIpCmb.Location = new System.Drawing.Point(203, 115);
+            this.ListIpCmb.Margin = new System.Windows.Forms.Padding(2);
             this.ListIpCmb.Name = "ListIpCmb";
             this.ListIpCmb.Size = new System.Drawing.Size(233, 21);
             this.ListIpCmb.TabIndex = 7;
@@ -119,13 +99,11 @@
             this.ClientSize = new System.Drawing.Size(659, 300);
             this.Controls.Add(this.ListIpCmb);
             this.Controls.Add(this.IpLb);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.passwordTbx);
             this.Controls.Add(this.userNameTbx);
             this.Controls.Add(this.connexionBtn);
             this.Controls.Add(this.label3);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Authentification";
             this.Text = "MATe - By IN\'TECH";
             this.ResumeLayout(false);
@@ -137,9 +115,7 @@
 
         private System.Windows.Forms.Button connexionBtn;
         private System.Windows.Forms.TextBox userNameTbx;
-        private System.Windows.Forms.TextBox passwordTbx;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label IpLb;
         private System.Windows.Forms.ComboBox ListIpCmb;

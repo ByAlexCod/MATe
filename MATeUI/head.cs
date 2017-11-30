@@ -19,27 +19,18 @@ namespace MATeUI
             InitializeComponent();
         }
 
-        private void SaveBtn_Click(object sender, EventArgs e)
+        protected override void OnLoad(EventArgs e)
         {
-            _ctxuser.SaveAs("-Context.MATe");
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //ProjectManagement.
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
+            base.OnLoad(e);
             
         }
 
-        private void modify_Click(object sender, EventArgs e)
+        private void SaveBtn_Click(object sender, EventArgs e)
         {
-            ChangeCount pm = new ChangeCount(CurrentUser);
-            pm.ShowDialog();
+            MessageBox.Show("SUCCESS");
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
-        public Person CurrentUser { get; set; }
+
     }
 }

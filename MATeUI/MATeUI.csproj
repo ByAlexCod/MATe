@@ -51,6 +51,12 @@
     <Compile Include="BodyUC.Designer.cs">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="BodyUIEmployeeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BodyUIEmployeeUC.designer.cs">
+      <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangeCount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,11 +93,23 @@
     <Compile Include="CreatProject.designer.cs">
       <DependentUpon>CreatProject.cs</DependentUpon>
     </Compile>
+    <Compile Include="DetailProjectEmployeeUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DetailProjectEmployeeUC.designer.cs">
+      <DependentUpon>DetailProjectEmployeeUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="DetailProjectUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DetailProjectUC.Designer.cs">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeUI.designer.cs">
+      <DependentUpon>EmployeeUI.cs</DependentUpon>
     </Compile>
     <Compile Include="FooterUC.cs">
       <SubType>UserControl</SubType>
@@ -117,30 +135,6 @@
     <Compile Include="NewEmployeeForm.Designer.cs">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormAddNewProject.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAddNewProject.Designer.cs">
-      <DependentUpon>FormAddNewProject.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GestionProjet.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GestionProjet.Designer.cs">
-      <DependentUpon>GestionProjet.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ListeDesProjets.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ListeDesProjets.Designer.cs">
-      <DependentUpon>ListeDesProjets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="memberManagerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="memberManagerForm.Designer.cs">
-      <DependentUpon>memberManagerForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectManagement.cs">
       <SubType>UserControl</SubType>
@@ -155,9 +149,18 @@
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SendFileOrMessageUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SendFileOrMessageUC.designer.cs">
+      <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Service.cs" />
     <EmbeddedResource Include="BodyUC.resx">
       <DependentUpon>BodyUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BodyUIEmployeeUC.resx">
+      <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeCount.resx">
       <DependentUpon>ChangeCount.cs</DependentUpon>
@@ -177,6 +180,9 @@
     <EmbeddedResource Include="CreatProject.resx">
       <DependentUpon>CreatProject.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DetailProjectEmployeeUC.resx">
+      <DependentUpon>DetailProjectEmployeeUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DetailProjectUC.resx">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -184,23 +190,14 @@
     <EmbeddedResource Include="Authentification.resx">
       <DependentUpon>Authentification.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeUI.resx">
+      <DependentUpon>EmployeeUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="head.resx">
       <DependentUpon>head.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormAddNewProject.resx">
-      <DependentUpon>FormAddNewProject.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GestionProjet.resx">
-      <DependentUpon>GestionProjet.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ListeDesProjets.resx">
-      <DependentUpon>ListeDesProjets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="memberManagerForm.resx">
-      <DependentUpon>memberManagerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectManagement.resx">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
@@ -218,6 +215,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SendFileOrMessageUC.resx">
+      <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

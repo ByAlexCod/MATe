@@ -7,14 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MATeV2;
 
 namespace MATeUI
 {
-    public partial class ProjectManager : Form
+    public partial class EmployeeUI : Form
     {
-        ContextAndUserManager _currentCtx = Authentification.CurrentCtxUser;
-        public ProjectManager()
+        public EmployeeUI()
         {
             InitializeComponent();
         }

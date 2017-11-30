@@ -15,7 +15,6 @@ namespace MATeUI
 {
     public partial class Authentification : Form
     {
-        public static Person p = null;
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         static ContextAndUserManager _currentCtx;
 
@@ -35,11 +34,6 @@ namespace MATeUI
         }
 
         
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
         internal void CreateTestContext()
         {
             ContextAndUserManager ctt = new ContextAndUserManager("In'Tech", true);
@@ -47,7 +41,7 @@ namespace MATeUI
         }
         private void connexionBtn_Click(object sender, EventArgs e)
         {
-            if (userNameTbx.Text.Trim().Equals("") && passwordTbx.Text.Trim().Equals(""))
+            if (userNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Fill in the fields Mail address and Password");
                 return;
@@ -78,10 +72,8 @@ namespace MATeUI
                 
             } else if (_currentCtx.CurrentUser is Employee)
             {
-                
-                //ChangeCount pm = new ChangeCount(p);
-                //pm.ShowDialog();
-                MessageBox.Show(_currentCtx.CurrentUser.Firstname + " vous êtes un employé.");
+                EmployeeUI eUI = new EmployeeUI();
+                eUI.ShowDialog();
             }
         }
     }
