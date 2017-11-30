@@ -28,7 +28,7 @@ namespace MATeUI
                 
                 foreach (Project item in ctx.ProjectsDictionary.Values)
                 {
-                    Employee emp = item.Members.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
+                    Employee emp = item.Members.Values.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
                     if(emp != null)
                     {
                         projectManagement1._projectListCbx.Items.Add(item);
@@ -53,7 +53,7 @@ namespace MATeUI
         {
             int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
             if (task == null) return;
-            SubTask sub = task.SubTasks[index];
+            SubTask sub = task.SubTasks.Values.ToList()[index];
             if (p == null) return;
             if (sub == null) return;
 
@@ -88,18 +88,18 @@ namespace MATeUI
                 Context ctx = ct.Context;
                 int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
                 if (task == null) return;
-                SubTask sub = task.SubTasks[index];
+                SubTask sub = task.SubTasks.Values.ToList()[index];
                 if (p == null) return;
                 if(!Authentification.CurrentCtxUser.CurrentUser.Mail.Equals(sub.Worker.Mail))
                 {
                     MessageBox.Show("This subtask did not give you");
                     return;
                 }
-                int currentState = p.Tasks.ElementAt(indexTask).SubTasks.ElementAt(index).State;
+                int currentState = p.Tasks.Values.ToList().ElementAt(indexTask).SubTasks.Values.ToList().ElementAt(index).State;
 
                 if (detailProjectEmployeeUC1._toDoRbtn.Checked)
                 {
-                    p.Tasks[indexTask].SubTasks[index].State = 0;
+                    p.Tasks.Values.ToList()[indexTask].SubTasks.Values.ToList()[index].State = 0;
                 }
                 if (detailProjectEmployeeUC1._doRbtn.Checked)
                 {
@@ -109,14 +109,14 @@ namespace MATeUI
                         detailProjectEmployeeUC1._toDoRbtn.Checked = true;
                         return;
                     }
-                    p.Tasks.ElementAt(indexTask).SubTasks.ElementAt(index).State = 2;
+                    p.Tasks.Values.ToList().ElementAt(indexTask).SubTasks.Values.ToList().ElementAt(index).State = 2;
                     detailProjectEmployeeUC1._inProgressRbtn.Enabled = false;
                     detailProjectEmployeeUC1._toDoRbtn.Enabled = false;
                     projectManagement1._projectListCbx.SelectedItem = p;
                 }
                 if (detailProjectEmployeeUC1._inProgressRbtn.Checked)
                 {
-                    p.Tasks.ElementAt(indexTask).SubTasks.ElementAt(index).State = 1;
+                    p.Tasks.Values.ToList().ElementAt(indexTask).SubTasks.Values.ToList().ElementAt(index).State = 1;
                     detailProjectEmployeeUC1._toDoRbtn.Enabled = false;
                     projectManagement1._projectListCbx.SelectedItem = p;
                 }
@@ -129,7 +129,7 @@ namespace MATeUI
             indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
             if(indexTask >= 0)
             {
-                task = p.Tasks.ElementAt(indexTask);
+                task = p.Tasks.Values.ToList().ElementAt(indexTask);
                 //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                 if(task != null)
                 {
@@ -138,7 +138,7 @@ namespace MATeUI
                     detailProjectEmployeeUC1._doRbtn.Enabled = true;
 
                     detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
-                    foreach (var item in task.SubTasks)
+                    foreach (var item in task.SubTasks.Values)
                     {
                         detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
                     }
@@ -160,7 +160,7 @@ namespace MATeUI
 
                 detailProjectEmployeeUC1._dgTasks.Rows.Clear();
                 detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
-                foreach (Tasker item in p.Tasks)
+                foreach (Tasker item in p.Tasks.Values)
                 {
                     detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit,item.Project);
                 }

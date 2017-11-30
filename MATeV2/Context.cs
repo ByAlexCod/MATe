@@ -104,7 +104,7 @@ namespace MATeV2
             Project newproject = new Project(name, datebegin, datelimit, leader);
             foreach (Employee e in listperson)
             {
-                newproject.Members.Add(e);
+                newproject.Members.Add(e.Mail,e);
             }
             ProjectsDictionary.Add(newproject.Name, newproject);
             //newproject.Contx = this.Contx;
@@ -130,7 +130,7 @@ namespace MATeV2
             {
                 foreach (Employee e in listem)
                 {
-                    p.Members.Add(e);
+                    p.Members.Add(e.Mail,e);
                     e.CurrentWorkingProject = p;
                 }
             }
@@ -166,7 +166,7 @@ namespace MATeV2
         public Project RemoveMemberFromProject(Project p, Employee e)
         {
             e.CurrentWorkingProject = null;
-            p.Members.Remove(e);
+            p.Members.Remove(e.Mail);
             return p;
         }
         /// <summary>
@@ -181,11 +181,11 @@ namespace MATeV2
         {
             if (p == null) return false;
             p.Projectmanager.CurrentWorkingProject = null;
-            foreach (Employee e in p.Members)
+            foreach (Employee e in p.Members.Values)
             {
                 e.CurrentWorkingProject = null;
             }
-            foreach (Tasker t in p.Tasks)
+            foreach (Tasker t in p.Tasks.Values)
             {
                 t.DeleteTask();
             }
