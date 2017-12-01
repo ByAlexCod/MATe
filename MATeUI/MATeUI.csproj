@@ -135,6 +135,18 @@
     <Compile Include="NewEmployeeForm.Designer.cs">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewTaskForm.Designer.cs">
+      <DependentUpon>NewTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewTaskUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewTaskUC.Designer.cs">
+      <DependentUpon>NewTaskUC.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectManagement.cs">
       <SubType>UserControl</SubType>
@@ -156,6 +168,12 @@
       <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
+    <Compile Include="TeamLeaderUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TeamLeaderUC.Designer.cs">
+      <DependentUpon>TeamLeaderUC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BodyUC.resx">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -199,6 +217,12 @@
     <EmbeddedResource Include="NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewTaskForm.resx">
+      <DependentUpon>NewTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewTaskUC.resx">
+      <DependentUpon>NewTaskUC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectManagement.resx">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </EmbeddedResource>
@@ -217,6 +241,9 @@
     </Compile>
     <EmbeddedResource Include="SendFileOrMessageUC.resx">
       <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeamLeaderUC.resx">
+      <DependentUpon>TeamLeaderUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -13,8 +13,8 @@ namespace MATeV2
         DateTime _datelimit;
         DateTime _datebegin;
         Employee _projectmanager;
-        List<Employee> _members;
-        List<Tasker> _tasks;
+        readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
+        readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
         Boolean _state;
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
@@ -22,8 +22,6 @@ namespace MATeV2
             DateBegin = datebegin;
             DateLimit = datelimit;
             _projectmanager = projectmanager;
-            _members = new List<Employee>();
-            _tasks = new List<Tasker>();
             if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
         }
         public Project(string name, DateTime datebegin, DateTime datelimit)
@@ -31,9 +29,6 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            
-            _members = new List<Employee>();
-            _tasks = new List<Tasker>();
         }
 
         public string Name
@@ -60,9 +55,9 @@ namespace MATeV2
             set { _projectmanager = value; }
         }
 
-        public List<Employee> Members => _members;
+        public Dictionary<string, Employee> Members => _members;
 
-        public List<Tasker> Tasks => _tasks;
+        public Dictionary<string, Tasker> Tasks => _tasks;
 
         //public Context Contx
         //{

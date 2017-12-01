@@ -26,23 +26,25 @@ namespace MATeUI
         
         private void DetailProjectOnBody_Load(object sender, EventArgs e)
         {
-            using (var ct = _ctxuser.ObtainAccessor())
+            if (_ctxuser != null)
             {
-                
-                Context ctx = ct.Context;
-                //Fill Combox Projects
-                foreach (Project item in ctx.ProjectsDictionary.Values)
+                using (var ct = _ctxuser.ObtainAccessor())
                 {
-                   projectManagementOnBody._projectListCbx.Items.Add(item);
-                }
-                // Fill DataGrid Employees
 
-                foreach (Employee item in ctx.PersonsDictionary.Values)
-                {
-                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                    Context ctx = ct.Context;
+                    //Fill Combox Projects
+                    foreach (Project item in ctx.ProjectsDictionary.Values)
+                    {
+                        projectManagementOnBody._projectListCbx.Items.Add(item);
+                    }
+                    // Fill DataGrid Employees
+
+                    foreach (Employee item in ctx.PersonsDictionary.Values)
+                    {
+                        detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                    }
                 }
             }
-
 
             projectManagementOnBody.ProjectItemChanged += new EventHandler(ShowDetailProject);
             projectManagementOnBody.DeleteSelectedProject += new ButtonClickedEventHandler(DeleteSelectedProject);
@@ -103,7 +105,7 @@ namespace MATeUI
             if (res == DialogResult.Cancel)
                 return;
             int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
-            p.Projectmanager = p.Members.ElementAt(index);
+            p.Projectmanager = p.Members.Values.ToList().ElementAt(index);
             projectManagementOnBody._projectListCbx.SelectedItem = p;
             detailProjectOnBody._firstNameLbl.Text = p.Projectmanager.Firstname;
             detailProjectOnBody._lastNameLbl.Text = p.Projectmanager.Lastname;
@@ -127,17 +129,6 @@ namespace MATeUI
                 MessageBox.Show("THE DATE OF THE END OF THE TASK MUST NOT EXCEED THE PROJECT", "WARNING");
                 return;
             }
-            Tasker tasker = new Tasker(detailProjectOnBody._taskNameTbx.Text, detailProjectOnBody._taskDate.Value);
-            SubTask sub = new SubTask("Gestion UI", DateTime.Now,p.Members.ElementAt(0));
-            SubTask sub2 = new SubTask("Gestion Rx", DateTime.Now, p.Members.ElementAt(0));
-            sub.CurrentTask = tasker;
-            sub2.CurrentTask = tasker;
-            tasker.Project = p;
-            tasker.SubTasks.Add(sub);
-            tasker.SubTasks.Add(sub2);
-            p.Tasks.Add(tasker);
-            projectManagementOnBody._projectListCbx.SelectedItem = p;
-            detailProjectOnBody._dgTasks.Rows.Add(tasker.Name,tasker.DateLimit);
         }
 
         private void OnRefreshPage(object sender, EventArgs e)
@@ -174,7 +165,7 @@ namespace MATeUI
                     MessageBox.Show("THIS EMPLOYEE IS ALREADY IN A PROJECT");
                     return;
                 }
-                p.Members.Add(emp);
+                p.Members.Add(emp.Mail, emp);
                 emp.CurrentWorkingProject = p;
                 ctx.PersonsDictionary.Values.ElementAt(index).CurrentWorkingProject = p;
                 projectManagementOnBody._projectListCbx.SelectedItem = p;
@@ -193,7 +184,7 @@ namespace MATeUI
                     return;
                 }
                 int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
-                Employee emp = p.Members.ElementAt(index);
+                Employee emp = p.Members.Values.ToList().ElementAt(index);
                 DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
@@ -203,22 +194,22 @@ namespace MATeUI
                     MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
                     return;
                 }
-                foreach (Tasker item in p.Tasks)
+                foreach (Tasker item in p.Tasks.Values)
                 {
-                    foreach (SubTask sub in item.SubTasks)
+                    foreach (SubTask sub in item.SubTasks.Values)
                     {
-                        if(p.Members.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 1)
+                        if(p.Members.Values.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 1)
                         {
                             MessageBox.Show("THIS EMPLOYEE CAN NOT BE DELETED BECAUSE HE IS WORKING ON A CURRENT SUB-TASK");
                             return;
                         }
-                        if (p.Members.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 0)
+                        if (p.Members.Values.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 0)
                         {
                             sub.Worker = null;
                         }
                     }
                 }
-                p.Members.RemoveAt(index);
+                p.Members.Remove(p.Members.Values.ToList()[index].Mail);
                 detailProjectOnBody._dgMemberInProject.Rows.RemoveAt(index);
                 projectManagementOnBody._projectListCbx.SelectedItem = p;
                 int i = 0;
@@ -291,11 +282,11 @@ namespace MATeUI
                 detailProjectOnBody._dgTasks.Rows.Clear();
                 detailProjectOnBody._dgMemberInProject.Rows.Clear();
                 
-                foreach (Tasker item in p.Tasks)
+                foreach (Tasker item in p.Tasks.Values)
                 {
                     detailProjectOnBody._dgTasks.Rows.Add(item.Name, item.DateLimit);
                 }
-                foreach (Employee emp in p.Members)
+                foreach (Employee emp in p.Members.Values)
                 {
                     detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
                 }

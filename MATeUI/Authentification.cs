@@ -39,7 +39,7 @@ namespace MATeUI
             ContextAndUserManager ctt = new ContextAndUserManager("In'Tech", true);
             ctt.SaveAs("-Context.MATe");
         }
-        private void connexionBtn_Click(object sender, EventArgs e)
+        private void ConnexionBtn_Click(object sender, EventArgs e)
         {
             if (userNameTbx.Text.Trim().Equals(""))
             {
