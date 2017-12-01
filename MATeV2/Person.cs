@@ -54,12 +54,23 @@ namespace MATeV2
         }
         public Context Context => _ctx;
       
-        public void ModifyProfile(string firstname, string lastname, string mail, string password)
+        public void ModifyProfile(string firstname, string lastname, string mail )
         {
-            Firstname = firstname;
-            Lastname = lastname;
-            Mail = mail;
-            
+            if (firstname != null) _firstname = firstname;
+            if (lastname != null) _lastname = lastname;
+            if (mail != null)
+            {
+                if (this is Employee)
+                {
+                    _ctx.PersonsDictionary.Remove(_mail);
+                    _mail = mail;
+                    _ctx.PersonsDictionary.Add(_mail, (Employee)this);
+                }
+                if (this is Boss)
+                {
+                    _ctx.Boss.Mail = mail;
+                }
+            }
         }
     }
 }
