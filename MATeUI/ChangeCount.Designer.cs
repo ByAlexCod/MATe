@@ -39,7 +39,7 @@
             this.head1.Name = "head1";
             this.head1.Size = new System.Drawing.Size(664, 46);
             this.head1.TabIndex = 0;
-            this.head1.Load += new System.EventHandler(this.head1_Load);
+            
             // 
             // changeCount21
             // 

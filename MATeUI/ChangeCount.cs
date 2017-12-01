@@ -36,37 +36,34 @@ namespace MATeUI
                 {
                     if (item.Mail.Equals(Authentification.CurrentCtxUser.CurrentUser.Mail))
                     {
-                        /*if (changeCount21.txtMail.Text == ctx.PersonsDictionary.Values.ElementAt(i).Mail && Authentification.CurrentCtxUser.CurrentUser.Mail != changeCount21.txtMail.Text)
+                        if ((changeCount21.txtMail.Text == ctx.PersonsDictionary.Values.ElementAt(i).Mail) && (Authentification.CurrentCtxUser.CurrentUser.Mail != changeCount21.txtMail.Text))
                         {
                             MessageBox.Show("this mail is already exist");
 
                         }
                         else
-                        {*/
+                        {
                             ctx.PersonsDictionary.Values.ElementAt(i).Mail = changeCount21.txtMail.Text;
                             ctx.PersonsDictionary.Values.ElementAt(i).Firstname = changeCount21.txtName.Text;
                             ctx.PersonsDictionary.Values.ElementAt(i).Lastname = changeCount21.txtLastName.Text;
                             break;
-                        //}
+                        }
                     }
                     i++;
                 }
-                
+
                 if (Authentification.CurrentCtxUser.CurrentUser is Boss)
                 {
                     ctx.Boss.Mail = changeCount21.txtMail.Text;
                     ctx.Boss.Firstname = changeCount21.txtName.Text;
                     ctx.Boss.Lastname = changeCount21.txtLastName.Text;
                 }
+
                 MessageBox.Show("Profile Change");
             }
             
         }
 
-        private void head1_Load(object sender, EventArgs e)
-        {
-
-           
-        }
+        
     }
 }
