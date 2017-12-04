@@ -14,7 +14,9 @@ namespace MATeUI
 {
     public partial class DetailProjectUC : UserControl
     {
-        
+        public delegate void DataGridViewCellMouseEventHandler(object sender, EventArgs e);
+        public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
+
         public DetailProjectUC()
         {
             InitializeComponent();
@@ -27,17 +29,18 @@ namespace MATeUI
             _removeMemberInProjectBtn.Click += new EventHandler(OnRemoveButtonClicked);
             _addToProjectBtn.Click += new EventHandler(OnAddButtonClicked);
             _refreshPageBtn.Click += new EventHandler(OnRefreshButtonClicked);
-            _addTaskToProject.Click += new EventHandler(OnAddTaskToProject);
             _changeLeaderBtn.Click += new EventHandler(OnChangeProjectManager);
+            _dgTasks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(CellTaskChanged);
         }
 
-        
+
         private void UpdateProjectButonClick(object sender, EventArgs e)
         {
             
         }
+        public event DataGridViewCellMouseEventHandler CellTaskClick;
+        private void CellTaskChanged(object sender, EventArgs e) => CellTaskClick?.Invoke(this, e);
 
-        public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
         public event ButtonClickedEventHandler UpdateProjectButtonClicked;
 
         /// <summary>

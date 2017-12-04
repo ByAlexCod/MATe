@@ -47,7 +47,7 @@ namespace MATeUI
                 return;
             }
 
-             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
+            _currentCtx = new ContextAndUserManager(userNameTbx.Text);
             _currentCtx.Load("-Context.MATe");
             bool good = _currentCtx.Login(userNameTbx.Text);
 
@@ -74,6 +74,7 @@ namespace MATeUI
             {
                 EmployeeUI eUI = new EmployeeUI();
                 eUI.ShowDialog();
+                Close();
             }
         }
     }

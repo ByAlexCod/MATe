@@ -15,7 +15,7 @@ namespace MATeV2
         Employee _projectmanager;
         readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
         readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
-        Boolean _state;
+        Boolean _isValidated;
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;
@@ -29,6 +29,12 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
+        }
+
+        public Boolean IsValidated
+        {
+            get { return _isValidated; }
+            set { _isValidated = value; }
         }
 
         public string Name

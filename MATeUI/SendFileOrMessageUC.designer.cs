@@ -35,16 +35,16 @@
             this._sendMessageRbtn = new System.Windows.Forms.RadioButton();
             this._sendFileRbtn = new System.Windows.Forms.RadioButton();
             this._dgEmployees = new System.Windows.Forms.DataGridView();
-            this._lvMessages = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._lvMessages = new System.Windows.Forms.ListView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this._panelSelectedFolder = new System.Windows.Forms.Panel();
-            this._chooseFolderLbl = new System.Windows.Forms.Label();
             this._pathFolderLbl = new System.Windows.Forms.Label();
+            this._chooseFolderLbl = new System.Windows.Forms.Label();
             this._panelMessage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
@@ -53,7 +53,7 @@
             // 
             // _sendBtn
             // 
-            this._sendBtn.Location = new System.Drawing.Point(247, 418);
+            this._sendBtn.Location = new System.Drawing.Point(340, 415);
             this._sendBtn.Name = "_sendBtn";
             this._sendBtn.Size = new System.Drawing.Size(75, 23);
             this._sendBtn.TabIndex = 19;
@@ -63,7 +63,7 @@
             // _panelMessage
             // 
             this._panelMessage.Controls.Add(this._messageText);
-            this._panelMessage.Location = new System.Drawing.Point(106, 249);
+            this._panelMessage.Location = new System.Drawing.Point(230, 249);
             this._panelMessage.Name = "_panelMessage";
             this._panelMessage.Size = new System.Drawing.Size(327, 149);
             this._panelMessage.TabIndex = 18;
@@ -80,7 +80,7 @@
             // 
             this.groupBox1.Controls.Add(this._sendMessageRbtn);
             this.groupBox1.Controls.Add(this._sendFileRbtn);
-            this.groupBox1.Location = new System.Drawing.Point(178, 198);
+            this.groupBox1.Location = new System.Drawing.Point(289, 198);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(200, 45);
             this.groupBox1.TabIndex = 17;
@@ -116,36 +116,10 @@
             this.lastName,
             this.mail,
             this.ip});
-            this._dgEmployees.Location = new System.Drawing.Point(67, 42);
+            this._dgEmployees.Location = new System.Drawing.Point(178, 42);
             this._dgEmployees.Name = "_dgEmployees";
-            this._dgEmployees.Size = new System.Drawing.Size(442, 150);
+            this._dgEmployees.Size = new System.Drawing.Size(439, 150);
             this._dgEmployees.TabIndex = 16;
-            // 
-            // _lvMessages
-            // 
-            this._lvMessages.Location = new System.Drawing.Point(534, 42);
-            this._lvMessages.Name = "_lvMessages";
-            this._lvMessages.Size = new System.Drawing.Size(202, 356);
-            this._lvMessages.TabIndex = 20;
-            this._lvMessages.UseCompatibleStateImageBehavior = false;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(139, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(84, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Employees\'s List";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(584, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Messages\'s List";
             // 
             // firstName
             // 
@@ -171,23 +145,40 @@
             this.ip.Name = "ip";
             this.ip.ReadOnly = true;
             // 
+            // _lvMessages
+            // 
+            this._lvMessages.Location = new System.Drawing.Point(649, 42);
+            this._lvMessages.Name = "_lvMessages";
+            this._lvMessages.Size = new System.Drawing.Size(149, 356);
+            this._lvMessages.TabIndex = 20;
+            this._lvMessages.UseCompatibleStateImageBehavior = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(354, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(84, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Employees\'s List";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(584, 12);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Messages\'s List";
+            // 
             // _panelSelectedFolder
             // 
             this._panelSelectedFolder.Controls.Add(this._pathFolderLbl);
             this._panelSelectedFolder.Controls.Add(this._chooseFolderLbl);
-            this._panelSelectedFolder.Location = new System.Drawing.Point(106, 249);
+            this._panelSelectedFolder.Location = new System.Drawing.Point(227, 249);
             this._panelSelectedFolder.Name = "_panelSelectedFolder";
             this._panelSelectedFolder.Size = new System.Drawing.Size(327, 149);
             this._panelSelectedFolder.TabIndex = 23;
-            // 
-            // _chooseFolderLbl
-            // 
-            this._chooseFolderLbl.Location = new System.Drawing.Point(14, 58);
-            this._chooseFolderLbl.Name = "_chooseFolderLbl";
-            this._chooseFolderLbl.Size = new System.Drawing.Size(100, 23);
-            this._chooseFolderLbl.TabIndex = 0;
-            this._chooseFolderLbl.Text = "Browse";
-            this._chooseFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // _pathFolderLbl
             // 
@@ -199,16 +190,25 @@
             this._pathFolderLbl.Text = "Path of Te Folder";
             this._pathFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // _chooseFolderLbl
+            // 
+            this._chooseFolderLbl.Location = new System.Drawing.Point(14, 58);
+            this._chooseFolderLbl.Name = "_chooseFolderLbl";
+            this._chooseFolderLbl.Size = new System.Drawing.Size(100, 23);
+            this._chooseFolderLbl.TabIndex = 0;
+            this._chooseFolderLbl.Text = "Browse";
+            this._chooseFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // SendFileOrMessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._panelSelectedFolder);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this._panelMessage);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._lvMessages);
             this.Controls.Add(this._sendBtn);
-            this.Controls.Add(this._panelMessage);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this._dgEmployees);
             this.Name = "SendFileOrMessageUC";

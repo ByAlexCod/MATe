@@ -29,6 +29,10 @@ namespace MATeUI
         public event DataGridViewCellMouseEventHandler CellSubTaskClick;
         public event ButtonClickedEventHandler SendButtonClicked;
         public event ButtonClickedEventHandler ChangeSubTaskButtonClicked;
+        public event ButtonClickedEventHandler CreateTaskButtonClicked;
+        public event ButtonClickedEventHandler CreateSubTaskButtonClicked;
+        public event ButtonClickedEventHandler ValidateTaskButtonClicked;
+        public event ButtonClickedEventHandler ValidateProjectButtonClicked;
 
 
         protected override void OnLoad(EventArgs e)
@@ -40,6 +44,10 @@ namespace MATeUI
             _dgSubTasks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(CellSubTaskChanged);
             sendFileOrMessageUCOnDetailUIEmployee._sendBtn.Click += new EventHandler(SendFileOrMessage);
             sendFileOrMessageUCOnDetailUIEmployee._chooseFolderLbl.Click += new EventHandler(OpenDialogue);
+            _createTaskBtn.Click += new EventHandler(ButtonCreateTaskClicked);
+            _createSubTaskBtn.Click += new EventHandler(ButtonCreateSubTaskClicked);
+            _validateTaskBtn.Click += new EventHandler(ButtonValidateTaskClicked);
+            _validateProjectBtn.Click += new EventHandler(ButtonValidateProjectClicked);
 
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
             using (var ct = _ctxuser.ObtainAccessor())
@@ -77,8 +85,16 @@ namespace MATeUI
 
         private void CellTaskChanged(object sender, EventArgs e) => CellTaskClick?.Invoke(this, e);
 
-      
-        
+        private void ButtonCreateTaskClicked(object sender, EventArgs e) => CreateTaskButtonClicked?.Invoke(this, e);
+
+        private void ButtonCreateSubTaskClicked(object sender, EventArgs e) => CreateSubTaskButtonClicked?.Invoke(this, e);
+
+        private void ButtonValidateTaskClicked(object sender, EventArgs e) => ValidateTaskButtonClicked?.Invoke(this, e);
+
+        private void ButtonValidateProjectClicked(object sender, EventArgs e) => ValidateProjectButtonClicked?.Invoke(this, e);
+
+
+
         /// <summary>
         /// Methode de l'evenement des changement des button radion Send File et Send Message 
         /// </summary>
