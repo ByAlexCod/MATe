@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MATeUI
 {
-    public partial class NewTaskForm : Form
+    public partial class TeamLeaderForm : Form
     {
-        public NewTaskForm()
+        public TeamLeaderForm()
         {
             InitializeComponent();
         }

@@ -40,23 +40,27 @@ namespace MATeUI
             _dgSubTasks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(CellSubTaskChanged);
             sendFileOrMessageUCOnDetailUIEmployee._sendBtn.Click += new EventHandler(SendFileOrMessage);
             sendFileOrMessageUCOnDetailUIEmployee._chooseFolderLbl.Click += new EventHandler(OpenDialogue);
-
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
-            using (var ct = _ctxuser.ObtainAccessor())
+            if (_ctxuser != null)
             {
-                Context ctx = ct.Context;
-                foreach (Employee item in ctx.PersonsDictionary.Values)
+                using (var ct = _ctxuser.ObtainAccessor())
                 {
-                    sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                    Context ctx = ct.Context;
+                    foreach (Employee item in ctx.PersonsDictionary.Values)
+                    {
+                        sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                    }
                 }
             }
         }
 
         private void OpenDialogue(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Texte (*.txt)|*.txt|Zip (*.zip)|*.zip|Tous (*.*)|*.*";
-            open.CheckFileExists = true;
+            OpenFileDialog open = new OpenFileDialog
+            {
+                Filter = "Texte (*.txt)|*.txt|Zip (*.zip)|*.zip|Tous (*.*)|*.*",
+                CheckFileExists = true
+            };
             DialogResult res = open.ShowDialog(this);
             if (res == DialogResult.OK)
             {
@@ -105,6 +109,9 @@ namespace MATeUI
             return;
         }
 
-        
+        private void sendFileOrMessageUCOnDetailUIEmployee_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

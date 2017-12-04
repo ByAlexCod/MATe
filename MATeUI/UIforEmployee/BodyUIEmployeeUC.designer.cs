@@ -37,27 +37,30 @@
             this.projectManagement1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.projectManagement1.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectManagement1.Location = new System.Drawing.Point(0, 0);
+            this.projectManagement1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.projectManagement1.Name = "projectManagement1";
-            this.projectManagement1.Size = new System.Drawing.Size(1014, 68);
+            this.projectManagement1.Size = new System.Drawing.Size(1450, 84);
             this.projectManagement1.TabIndex = 0;
             // 
             // detailProjectEmployeeUC1
             // 
             this.detailProjectEmployeeUC1.AutoScroll = true;
             this.detailProjectEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detailProjectEmployeeUC1.Location = new System.Drawing.Point(0, 68);
+            this.detailProjectEmployeeUC1.Location = new System.Drawing.Point(0, 84);
+            this.detailProjectEmployeeUC1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.detailProjectEmployeeUC1.Name = "detailProjectEmployeeUC1";
-            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1014, 346);
+            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1450, 754);
             this.detailProjectEmployeeUC1.TabIndex = 1;
             // 
             // BodyUIEmployeeUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.detailProjectEmployeeUC1);
             this.Controls.Add(this.projectManagement1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "BodyUIEmployeeUC";
-            this.Size = new System.Drawing.Size(1014, 414);
+            this.Size = new System.Drawing.Size(1450, 838);
             this.ResumeLayout(false);
 
         }

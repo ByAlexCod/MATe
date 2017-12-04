@@ -22,21 +22,23 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            using (var ct = _ctxuser.ObtainAccessor())
+            if (_ctxuser != null)
             {
-                Context ctx = ct.Context;
-                
-                foreach (Project item in ctx.ProjectsDictionary.Values)
+                using (var ct = _ctxuser.ObtainAccessor())
                 {
-                    Employee emp = item.Members.Values.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
-                    if(emp != null)
+                    Context ctx = ct.Context;
+
+                    foreach (Project item in ctx.ProjectsDictionary.Values)
                     {
-                        projectManagement1._projectListCbx.Items.Add(item);
+                        Employee emp = item.Members.Values.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
+                        if (emp != null)
+                        {
+                            projectManagement1._projectListCbx.Items.Add(item);
+                        }
+
                     }
-                    
                 }
             }
-            
 
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;

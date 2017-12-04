@@ -39,7 +39,7 @@ namespace MATeV2
         ///////////// SUBTASK METHODS /////////////////
         ///////////////////////////////////////////////
 
-        public SubTask CreateSubtask(Tasker t,string name,DateTime datelimit,Employee worker)
+        public SubTask CreateSubtask(Tasker t,string name,DateTime datelimit,Employee worker=null)
         {
             SubTask newsubtask = new SubTask(name, datelimit, worker);
             t.SubTasks.Add(newsubtask.Name, newsubtask);

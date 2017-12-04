@@ -17,9 +17,9 @@ namespace MATeV2
 
         public Tasker(Project p,string name, DateTime datelimit)
         {
-            Project = p;
-            Name = name;
-            DateLimit = datelimit;
+            _project = p;
+            _name = name;
+            _datelimit = datelimit;
             _state = false;
             p.Tasks.Add(this.Name, this);
         }

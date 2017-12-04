@@ -22,9 +22,6 @@ namespace MATeV2
             try
             {
                 formatter.Serialize(fs, c);
-                
-
-
             }
             catch (SerializationException e)
             {

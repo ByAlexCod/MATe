@@ -45,16 +45,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodyUC.cs">
+    <Compile Include="UIforBoss\BodyUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BodyUC.Designer.cs">
+    <Compile Include="UIforBoss\BodyUC.Designer.cs">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="BodyUIEmployeeUC.cs">
+    <Compile Include="UIforEmployee\BodyUIEmployeeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BodyUIEmployeeUC.designer.cs">
+    <Compile Include="UIforEmployee\BodyUIEmployeeUC.designer.cs">
       <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
     </Compile>
     <Compile Include="ChangeCount.cs">
@@ -69,46 +69,46 @@
     <Compile Include="ChangeCount2.Designer.cs">
       <DependentUpon>ChangeCount2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Colaborators.cs">
+    <Compile Include="UIforBoss\Colaborators.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Colaborators.Designer.cs">
+    <Compile Include="UIforBoss\Colaborators.Designer.cs">
       <DependentUpon>Colaborators.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEmployeeForm.cs">
+    <Compile Include="UIforBoss\CreateEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateEmployeeForm.Designer.cs">
+    <Compile Include="UIforBoss\CreateEmployeeForm.Designer.cs">
       <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEmployeeUC.cs">
+    <Compile Include="UIforBoss\CreateEmployeeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="CreateEmployeeUC.Designer.cs">
+    <Compile Include="UIforBoss\CreateEmployeeUC.Designer.cs">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreatProject.cs">
+    <Compile Include="UIforBoss\CreatProject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreatProject.designer.cs">
+    <Compile Include="UIforBoss\CreatProject.designer.cs">
       <DependentUpon>CreatProject.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailProjectEmployeeUC.cs">
+    <Compile Include="UIforEmployee\DetailProjectEmployeeUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DetailProjectEmployeeUC.designer.cs">
+    <Compile Include="UIforEmployee\DetailProjectEmployeeUC.designer.cs">
       <DependentUpon>DetailProjectEmployeeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="DetailProjectUC.cs">
+    <Compile Include="UIforBoss\DetailProjectUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="DetailProjectUC.Designer.cs">
+    <Compile Include="UIforBoss\DetailProjectUC.Designer.cs">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="EmployeeUI.cs">
+    <Compile Include="UIforEmployee\EmployeeUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EmployeeUI.designer.cs">
+    <Compile Include="UIforEmployee\EmployeeUI.designer.cs">
       <DependentUpon>EmployeeUI.cs</DependentUpon>
     </Compile>
     <Compile Include="FooterUC.cs">
@@ -129,35 +129,47 @@
     <Compile Include="head.Designer.cs">
       <DependentUpon>head.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewEmployeeForm.cs">
+    <Compile Include="UIforBoss\NewEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewEmployeeForm.Designer.cs">
+    <Compile Include="UIforBoss\NewEmployeeForm.Designer.cs">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewTaskForm.cs">
+    <Compile Include="UIforEmployee\NewSubTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewTaskForm.Designer.cs">
-      <DependentUpon>NewTaskForm.cs</DependentUpon>
+    <Compile Include="UIforEmployee\NewSubTaskForm.Designer.cs">
+      <DependentUpon>NewSubTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewTaskUC.cs">
+    <Compile Include="UIforEmployee\NewSubTaskUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NewTaskUC.Designer.cs">
+    <Compile Include="UIforEmployee\NewSubTaskUC.Designer.cs">
+      <DependentUpon>NewSubTaskUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIforEmployee\NewTaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIforEmployee\NewTaskForm.Designer.cs">
+      <DependentUpon>NewTaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIforEmployee\NewTaskUC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UIforEmployee\NewTaskUC.Designer.cs">
       <DependentUpon>NewTaskUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectManagement.cs">
+    <Compile Include="UIforBoss\ProjectManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ProjectManagement.Designer.cs">
+    <Compile Include="UIforBoss\ProjectManagement.Designer.cs">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectManager.cs">
+    <Compile Include="UIforBoss\ProjectManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectManager.Designer.cs">
+    <Compile Include="UIforBoss\ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,16 +180,22 @@
       <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="TeamLeaderUC.cs">
+    <Compile Include="UIforEmployee\TeamLeaderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UIforEmployee\TeamLeaderForm.Designer.cs">
+      <DependentUpon>TeamLeaderForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIforEmployee\TeamLeaderUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TeamLeaderUC.Designer.cs">
+    <Compile Include="UIforEmployee\TeamLeaderUC.Designer.cs">
       <DependentUpon>TeamLeaderUC.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BodyUC.resx">
+    <EmbeddedResource Include="UIforBoss\BodyUC.resx">
       <DependentUpon>BodyUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BodyUIEmployeeUC.resx">
+    <EmbeddedResource Include="UIforEmployee\BodyUIEmployeeUC.resx">
       <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangeCount.resx">
@@ -186,47 +204,53 @@
     <EmbeddedResource Include="ChangeCount2.resx">
       <DependentUpon>ChangeCount2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Colaborators.resx">
+    <EmbeddedResource Include="UIforBoss\Colaborators.resx">
       <DependentUpon>Colaborators.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateEmployeeForm.resx">
+    <EmbeddedResource Include="UIforBoss\CreateEmployeeForm.resx">
       <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateEmployeeUC.resx">
+    <EmbeddedResource Include="UIforBoss\CreateEmployeeUC.resx">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreatProject.resx">
+    <EmbeddedResource Include="UIforBoss\CreatProject.resx">
       <DependentUpon>CreatProject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DetailProjectEmployeeUC.resx">
+    <EmbeddedResource Include="UIforEmployee\DetailProjectEmployeeUC.resx">
       <DependentUpon>DetailProjectEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DetailProjectUC.resx">
+    <EmbeddedResource Include="UIforBoss\DetailProjectUC.resx">
       <DependentUpon>DetailProjectUC.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Authentification.resx">
       <DependentUpon>Authentification.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EmployeeUI.resx">
+    <EmbeddedResource Include="UIforEmployee\EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="head.resx">
       <DependentUpon>head.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewEmployeeForm.resx">
+    <EmbeddedResource Include="UIforBoss\NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewTaskForm.resx">
+    <EmbeddedResource Include="UIforEmployee\NewSubTaskForm.resx">
+      <DependentUpon>NewSubTaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIforEmployee\NewSubTaskUC.resx">
+      <DependentUpon>NewSubTaskUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIforEmployee\NewTaskForm.resx">
       <DependentUpon>NewTaskForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewTaskUC.resx">
+    <EmbeddedResource Include="UIforEmployee\NewTaskUC.resx">
       <DependentUpon>NewTaskUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectManagement.resx">
+    <EmbeddedResource Include="UIforBoss\ProjectManagement.resx">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectManager.resx">
+    <EmbeddedResource Include="UIforBoss\ProjectManager.resx">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -242,7 +266,10 @@
     <EmbeddedResource Include="SendFileOrMessageUC.resx">
       <DependentUpon>SendFileOrMessageUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeamLeaderUC.resx">
+    <EmbeddedResource Include="UIforEmployee\TeamLeaderForm.resx">
+      <DependentUpon>TeamLeaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UIforEmployee\TeamLeaderUC.resx">
       <DependentUpon>TeamLeaderUC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

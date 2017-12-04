@@ -89,8 +89,7 @@ namespace MATeV2
                     try
                     {
                         BinaryFormatter bf = new BinaryFormatter();
-                        loaded = (Context)bf.Deserialize(fs);
-                        _context = loaded;
+                        _context = bf.Deserialize(fs) as Context;
                     }
                     catch
                     {

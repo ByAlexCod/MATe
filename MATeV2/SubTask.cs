@@ -14,12 +14,12 @@ namespace MATeV2
         Employee _worker;
         int _status;
         Tasker _currenttask;
-        
-        public SubTask(string name,DateTime datelimit,Employee worker = null)
+
+        public SubTask(string name, DateTime datelimit, Employee worker)
         {
-            Name = name;
-            DateLimit = datelimit;
-            Worker = worker;
+            _name = name;
+            _datelimit = datelimit;
+            _worker = worker;
             _status = 0;
         }
 

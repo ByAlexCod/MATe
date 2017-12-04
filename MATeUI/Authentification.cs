@@ -74,6 +74,8 @@ namespace MATeUI
             {
                 EmployeeUI eUI = new EmployeeUI();
                 eUI.ShowDialog();
+                //TeamLeaderForm tl = new TeamLeaderForm();
+                //tl.ShowDialog();
             }
         }
     }

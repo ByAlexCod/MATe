@@ -18,17 +18,17 @@ namespace MATeV2
         Boolean _state;
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
-            Name = name;
-            DateBegin = datebegin;
-            DateLimit = datelimit;
+            _name = name;
+            _datebegin = datebegin;
+            _datelimit = datelimit;
             _projectmanager = projectmanager;
             if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
         }
         public Project(string name, DateTime datebegin, DateTime datelimit)
         {
-            Name = name;
-            DateBegin = datebegin;
-            DateLimit = datelimit;
+            _name = name;
+            _datebegin = datebegin;
+            _datelimit = datelimit;
         }
 
         public string Name
