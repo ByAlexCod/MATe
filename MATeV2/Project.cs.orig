@@ -13,23 +13,25 @@ namespace MATeV2
         DateTime _datelimit;
         DateTime _datebegin;
         Employee _projectmanager;
-        readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
-        readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
-        Boolean _isValidated;
+<<<<<<< HEAD
+        readonly List<Employee> _members;
+        readonly List<Tasker> _tasks;
+        Boolean _state;
         Context _context;
 
 
+=======
+        readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
+        readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
+        Boolean _isValidated;
+>>>>>>> afbd66f1191b73945f8b5fb95ed19dc56308de7b
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            if (projectmanager != null)
-            {
-                _projectmanager = projectmanager;
-                _members.Add(projectmanager.Mail, projectmanager);
-                projectmanager.CurrentWorkingProject = this;
-            }
+            _projectmanager = projectmanager;
+            if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
         }
         public Project(string name, DateTime datebegin, DateTime datelimit)
         {
@@ -84,6 +86,12 @@ namespace MATeV2
         {
             _tasks.Clear();
         }
+        //public Context Contx
+        //{
+        //    get { return _ctx; }
+        //    set { _ctx = value; }
+        //}
+
         public override string ToString()
         {
             return Name;
