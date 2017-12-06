@@ -9,13 +9,13 @@ namespace MATeV2
     [Serializable]
     public class Person
     {
-        readonly Context _ctx;
+        Context _ctx;
         string _firstname;
         string _lastname;
         string _mail;
         string _ip;
 
-        public Person( Context c, string firstname, string lastname, string mail)
+        public Person(Context c, string firstname, string lastname, string mail)
         {
             _ctx = c;
             _firstname = firstname;
@@ -28,7 +28,7 @@ namespace MATeV2
             get { return _firstname; }
             set
             {
-                if( _firstname != value )
+                if (_firstname != value)
                 {
                     _firstname = value;
                     _ctx.SetDirty();
@@ -46,13 +46,18 @@ namespace MATeV2
             get { return _mail; }
             set { _mail = value; }
         }
-        
+
         public string IP
         {
             get { return _ip; }
             set { _ip = value; }
         }
-        public Context Context => _ctx;
+        public Context Context
+        {
+            get { return _ctx; }
+            set { _ctx = value; }
+        }
+            
       
         public void ModifyProfile(string firstname, string lastname, string mail, string password)
         {

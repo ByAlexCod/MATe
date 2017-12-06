@@ -13,9 +13,12 @@ namespace MATeV2
         DateTime _datelimit;
         DateTime _datebegin;
         Employee _projectmanager;
-        List<Employee> _members;
-        List<Tasker> _tasks;
+        readonly List<Employee> _members;
+        readonly List<Tasker> _tasks;
         Boolean _state;
+        Context _context;
+
+
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;
@@ -42,6 +45,13 @@ namespace MATeV2
             set { _name = value; }
         }
 
+
+        public Context Context
+        {
+            get { return _context; }
+            set { _context = value; }
+        }
+
         public DateTime DateBegin
         {
             get { return _datebegin; }
@@ -64,6 +74,11 @@ namespace MATeV2
 
         public List<Tasker> Tasks => _tasks;
 
+
+        public void ClearTasks()
+        {
+            _tasks.Clear();
+        }
         //public Context Contx
         //{
         //    get { return _ctx; }
@@ -73,6 +88,22 @@ namespace MATeV2
         public override string ToString()
         {
             return Name;
+        }
+
+
+        public void Merge(Project prj)
+        {
+            if (prj == null) throw new ArgumentNullException("Given Project cannot be null", nameof(prj));
+            if (prj.Context.Owner.Mail == Context.Boss.Mail)
+            {
+                DateBegin = prj.DateBegin;
+                DateLimit = prj.DateLimit;
+                Projectmanager = prj.Projectmanager;
+                ClearTasks();
+
+                
+
+            }
         }
     }
 }

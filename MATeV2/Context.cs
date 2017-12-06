@@ -13,12 +13,14 @@ namespace MATeV2
     public class Context
     {
         DateTime _modifyTime;
+        DateTime _bossModifyTime;
         readonly Dictionary<string, Employee> _personsDictionary = new Dictionary<string, Employee>();
         readonly Dictionary<string, Project> _projectsDictionary = new Dictionary<string, Project>();
         Boss _boss;
         string _companyName;
         readonly int _firstExchangePort;
         bool _isDirty;
+        Person _owner;
 
         readonly Dictionary<string, Employee> _waitingPersonsList = new Dictionary<string, Employee>();
         /// <summary>
@@ -30,12 +32,14 @@ namespace MATeV2
             _firstExchangePort = new Random().Next(1, 6666);
             _boss = new Boss(this, "default", "boss", "b");
             CreateEmployee("Alex", "Spitz", "a@ex.com");
-
             
+
+
         }
 
         public DateTime SetDirty( bool reset = false )
         {
+            //if (Owner == null) throw new ArgumentNullException("You have to login a member / boss to have an owner.", nameof(Owner));
             if( reset )
             {
                 _isDirty = false;
@@ -44,8 +48,23 @@ namespace MATeV2
             {
                 _modifyTime = DateTime.Now;
                 _isDirty = true;
+                if (Owner == Boss) _bossModifyTime = DateTime.Now;
             }
             return _modifyTime;
+        }
+
+
+        public void ClearPersonDic()
+        {
+            SetDirty();
+
+            _personsDictionary.Clear();
+        }
+        public void ClearProjectsDic()
+        {
+            SetDirty();
+
+            _projectsDictionary.Clear();
         }
 
         public bool IsDirty => _isDirty;
@@ -60,6 +79,7 @@ namespace MATeV2
         public Dictionary<string, Project> ProjectsDictionary => _projectsDictionary;
         
         public Dictionary<string, Employee> PersonsDictionary => _personsDictionary;
+        public Person Owner => _owner;
         public int FirstExchangePort => _firstExchangePort;
         public string CompanyName => _companyName;
 
@@ -72,8 +92,21 @@ namespace MATeV2
         public Person Login(string mail)
         {
             Employee value;
-            if (Boss.Mail == mail) return Boss;
-            if (PersonsDictionary.TryGetValue(mail, out value)) return value;
+            if (Boss.Mail == mail)
+            {
+               
+
+                _owner = Boss;
+                SetDirty();
+                return Boss;
+            }
+            if (PersonsDictionary.TryGetValue(mail, out value))
+            {
+
+                _owner = value;
+                SetDirty();
+                return value;
+            }
             return null;
         }
 
@@ -91,6 +124,8 @@ namespace MATeV2
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
         {
+            SetDirty();
+
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
             ProjectsDictionary.Add(newproject.Name, newproject);
@@ -108,6 +143,8 @@ namespace MATeV2
             }
             ProjectsDictionary.Add(newproject.Name, newproject);
             //newproject.Contx = this.Contx;
+            SetDirty();
+
             return newproject;
         }
         /// <summary>
@@ -134,6 +171,8 @@ namespace MATeV2
                     e.CurrentWorkingProject = p;
                 }
             }
+            SetDirty();
+
             return p;
         }
 
@@ -142,6 +181,8 @@ namespace MATeV2
             if (name != null) p.Name = name;
             if (datebegin != DateTime.MinValue) p.DateBegin = datebegin;
             if (datelimit != DateTime.MinValue) p.DateLimit = datelimit;
+            SetDirty();
+
             return p;
         }
         /// <summary>
@@ -154,6 +195,8 @@ namespace MATeV2
         {
             p.Projectmanager = null;
             projectmanager.CurrentWorkingProject = null;
+            SetDirty();
+
             return p;
         }
 
@@ -167,6 +210,8 @@ namespace MATeV2
         {
             e.CurrentWorkingProject = null;
             p.Members.Remove(e);
+            SetDirty();
+
             return p;
         }
         /// <summary>
@@ -190,6 +235,8 @@ namespace MATeV2
                 t.DeleteTask();
             }
             ProjectsDictionary.Remove(p.Name);
+            SetDirty();
+
             return true;
         }
 
@@ -223,7 +270,10 @@ namespace MATeV2
             
             e = new Employee(this, firstname, lastname, mail);
             PersonsDictionary.Add(e.Mail, e);
+            SetDirty();
+
             return e;
+
         }
 
         /// <summary>
@@ -239,6 +289,7 @@ namespace MATeV2
                 if (e.CurrentWorkingProject.Projectmanager == e) this.DeleteProjectManager(e.CurrentWorkingProject, e);
                 else this.RemoveMemberFromProject(e.CurrentWorkingProject, e);
             }
+            SetDirty();
         }
 
         /// <summary>
@@ -246,6 +297,50 @@ namespace MATeV2
         /// </summary>
         /// <returns></returns>
         
+
+        public MergeResult Merge(Context otherContext)
+        {
+            if (CompanyName != otherContext.CompanyName) return MergeResult.CompanyNameMismatch;
+            //if (Boss.Mail == otherContext.Owner.Mail) _bossModifyTime = otherContext.ModifyDate;
+            
+
+            foreach(var emp in PersonsDictionary)
+            {
+                Employee e = emp.Value;
+                otherContext.PersonsDictionary.TryGetValue(e.Mail, out Employee value);
+                if(value != null)
+                {
+                    e.Merge(value);
+                }
+                
+                
+            }
+            Dictionary<string, Employee> copy = new Dictionary<string, Employee>(PersonsDictionary);
+
+            foreach(var emp in copy)
+            {
+                if (otherContext.Owner.Mail == Boss.Mail)
+                {
+                    if (!otherContext.PersonsDictionary.ContainsKey(emp.Value.Mail)) DeleteEmployee(emp.Value);
+                }
+            }
+
+
+            //PROJECTS LIST MERGE
+            foreach(var prj in ProjectsDictionary)
+            {
+                Project a = prj.Value;
+                otherContext.ProjectsDictionary.TryGetValue(a.Name, out Project value);
+                if (value != null)
+                {
+                    a.Merge(value);
+                }
+
+            }
+
+
+            return MergeResult.Success;
+        }
     }
     
 
