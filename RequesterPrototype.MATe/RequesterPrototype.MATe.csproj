@@ -48,6 +48,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MATeV2\MATeV2.csproj">
+      <Project>{ed2108ae-7636-4bd8-9261-5bc309054aee}</Project>
+      <Name>MATeV2</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Network\Network.csproj">
       <Project>{2a52ce08-39bc-4b4d-89dc-7418feecd197}</Project>
       <Name>Network</Name>
