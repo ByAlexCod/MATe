@@ -54,23 +54,28 @@ namespace MATeV2
         }
         public Context Context => _ctx;
       
-        public void ModifyProfile(string firstname, string lastname, string mail )
+        public void ModifyProfile(string firstname, string lastname)
         {
+            
             if (firstname != null) _firstname = firstname;
             if (lastname != null) _lastname = lastname;
-            if (mail != null)
-            {
-                if (this is Employee)
-                {
-                    _ctx.PersonsDictionary.Remove(_mail);
-                    _mail = mail;
-                    _ctx.PersonsDictionary.Add(_mail, (Employee)this);
-                }
-                if (this is Boss)
-                {
-                    _ctx.Boss.Mail = mail;
-                }
-            }
+            //if (mail != null)
+            //{
+            //    if(_ctx.PersonsDictionary.ContainsKey(mail))
+            //    {
+            //        throw new ArgumentException("this email already exists");
+            //    }
+            //    if (this is Employee)
+            //    {
+            //        _ctx.PersonsDictionary.Remove(_mail);
+            //        _mail = mail;
+            //        _ctx.PersonsDictionary.Add(_mail, (Employee)this);
+            //    }
+            //    if (this is Boss)
+            //    {
+            //        _ctx.Boss.Mail = mail;
+            //    }
+            //}
         }
     }
 }
