@@ -94,7 +94,6 @@ namespace MATeV2
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
             ProjectsDictionary.Add(newproject.Name, newproject);
-            //newproject.Contx = this.Contx;
             return newproject;
         }
 

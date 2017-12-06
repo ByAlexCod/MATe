@@ -21,8 +21,12 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            _projectmanager = projectmanager;
-            if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
+            if (projectmanager != null)
+            {
+                _projectmanager = projectmanager;
+                _members.Add(projectmanager.Mail, projectmanager);
+                projectmanager.CurrentWorkingProject = this;
+            }
         }
         public Project(string name, DateTime datebegin, DateTime datelimit)
         {
@@ -64,12 +68,6 @@ namespace MATeV2
         public Dictionary<string, Employee> Members => _members;
 
         public Dictionary<string, Tasker> Tasks => _tasks;
-
-        //public Context Contx
-        //{
-        //    get { return _ctx; }
-        //    set { _ctx = value; }
-        //}
 
         public override string ToString()
         {
