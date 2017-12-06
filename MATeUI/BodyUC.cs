@@ -275,7 +275,12 @@ namespace MATeUI
             p = sender as Project;
             if ((p != null))
             {
-                
+                bool isValided = p.IsValidated;
+                if (isValided)
+                    projectManagementOnBody._projectStatusLbl.Text = "Validated";
+                else
+                    projectManagementOnBody._projectStatusLbl.Text = "Not Validated";
+
                 detailProjectOnBody.ProjectName.Text = p.Name;
                 detailProjectOnBody._projectBeginDate.Value = p.DateBegin;
                 detailProjectOnBody._projectEndDate.Value = p.DateLimit;

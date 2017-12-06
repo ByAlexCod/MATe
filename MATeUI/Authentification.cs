@@ -10,11 +10,16 @@ using System.Windows.Forms;
 using MATeV2;
 using MATe.Services;
 using System.Net;
+using System.Net.Sockets;
 
 namespace MATeUI
 {
     public partial class Authentification : Form
     {
+        Socket socket;
+        EndPoint ipLocal, ipRemote;
+        byte[] buffer;
+
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         static ContextAndUserManager _currentCtx;
 
@@ -24,10 +29,27 @@ namespace MATeUI
         }
         public static ContextAndUserManager CurrentCtxUser => _currentCtx;
 
+
+
+        private string GetLocalIP()
+        {
+            IPHostEntry host;
+            host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (IPAddress ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                    return ip.ToString();
+            }
+            return "127.0.0.1";
+        }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            foreach(IPAddress ip in localIPs)
+            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
+
+
+            foreach (IPAddress ip in localIPs)
             {
                 ListIpCmb.Items.Add(ip.ToString());
             }
@@ -61,16 +83,12 @@ namespace MATeUI
             if (_currentCtx.CurrentUser is Boss)
             {
                 MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
-                this.Visible = false;
-                
-                if(_currentCtx.Login(userNameTbx.Text) == true)
-                {
-                    ProjectManager pm = new ProjectManager();
-                    pm.ShowDialog();
-                    Close();
-                }
-                
-            } else if (_currentCtx.CurrentUser is Employee)
+                this.Visible = false;    
+                 ProjectManager pm = new ProjectManager();
+                 pm.ShowDialog();
+                 Close();
+            }
+            else if (_currentCtx.CurrentUser is Employee)
             {
                 EmployeeUI eUI = new EmployeeUI();
                 eUI.ShowDialog();

@@ -30,6 +30,8 @@
             this._projectListCbx = new System.Windows.Forms.ComboBox();
             this._addProjectBtn = new System.Windows.Forms.Button();
             this._myAccountBtn = new System.Windows.Forms.Button();
+            this._projectStatusLbl = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // _deleteProjectBtn
@@ -69,11 +71,31 @@
             this._myAccountBtn.Text = "My Account";
             this._myAccountBtn.UseVisualStyleBackColor = true;
             // 
+            // _projectStatusLbl
+            // 
+            this._projectStatusLbl.AutoSize = true;
+            this._projectStatusLbl.Location = new System.Drawing.Point(671, 29);
+            this._projectStatusLbl.Name = "_projectStatusLbl";
+            this._projectStatusLbl.Size = new System.Drawing.Size(92, 13);
+            this._projectStatusLbl.TabIndex = 6;
+            this._projectStatusLbl.Text = "/////////////////";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(556, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(73, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Project Status";
+            // 
             // ProjectManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Controls.Add(this._projectStatusLbl);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this._myAccountBtn);
             this.Controls.Add(this._addProjectBtn);
             this.Controls.Add(this._projectListCbx);
@@ -81,6 +103,7 @@
             this.Name = "ProjectManagement";
             this.Size = new System.Drawing.Size(1031, 68);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -89,5 +112,7 @@
         internal System.Windows.Forms.Button _addProjectBtn;
         internal System.Windows.Forms.Button _deleteProjectBtn;
         internal System.Windows.Forms.Button _myAccountBtn;
+        internal System.Windows.Forms.Label _projectStatusLbl;
+        private System.Windows.Forms.Label label1;
     }
 }

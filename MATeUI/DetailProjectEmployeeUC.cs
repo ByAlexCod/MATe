@@ -33,6 +33,8 @@ namespace MATeUI
         public event ButtonClickedEventHandler CreateSubTaskButtonClicked;
         public event ButtonClickedEventHandler ValidateTaskButtonClicked;
         public event ButtonClickedEventHandler ValidateProjectButtonClicked;
+        public event ButtonClickedEventHandler DeleteTaskButtonClicked;
+        public event ButtonClickedEventHandler DeleteSubTaskButtonClicked;
 
 
         protected override void OnLoad(EventArgs e)
@@ -48,8 +50,11 @@ namespace MATeUI
             _createSubTaskBtn.Click += new EventHandler(ButtonCreateSubTaskClicked);
             _validateTaskBtn.Click += new EventHandler(ButtonValidateTaskClicked);
             _validateProjectBtn.Click += new EventHandler(ButtonValidateProjectClicked);
+            _deleteTaskBtn.Click += new EventHandler(ButtonDeleteTaskClicked);
+            _deleteSubTaskBtn.Click += new EventHandler(ButtonDeleteSubTaskClicked);
 
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
+            if (_ctxuser == null) return;
             using (var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
@@ -93,10 +98,14 @@ namespace MATeUI
 
         private void ButtonValidateProjectClicked(object sender, EventArgs e) => ValidateProjectButtonClicked?.Invoke(this, e);
 
+        private void ButtonDeleteTaskClicked(object sender, EventArgs e) => DeleteTaskButtonClicked?.Invoke(this, e);
+
+        private void ButtonDeleteSubTaskClicked(object sender, EventArgs e) => DeleteSubTaskButtonClicked?.Invoke(this, e);
+
 
 
         /// <summary>
-        /// Methode de l'evenement des changement des button radion Send File et Send Message 
+        /// Methode de l'evenement des changement des buttons radio Send File et Send Message 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -117,6 +126,11 @@ namespace MATeUI
 
         private void SendFileOrMessage(object sender, EventArgs e)
         {
+            if(sendFileOrMessageUCOnDetailUIEmployee._sendMessageRbtn.Checked)
+            {
+
+            }
+
             MessageBox.Show("NOT IMPLEMENTED YET");
             return;
         }
