@@ -32,9 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtpwd = new System.Windows.Forms.TextBox();
             this.txtMail = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnChange = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -72,33 +70,17 @@
             this.txtLastName.Size = new System.Drawing.Size(290, 20);
             this.txtLastName.TabIndex = 3;
             // 
-            // txtpwd
-            // 
-            this.txtpwd.Location = new System.Drawing.Point(214, 193);
-            this.txtpwd.Name = "txtpwd";
-            this.txtpwd.Size = new System.Drawing.Size(290, 20);
-            this.txtpwd.TabIndex = 4;
-            // 
             // txtMail
             // 
-            this.txtMail.Location = new System.Drawing.Point(214, 233);
+            this.txtMail.Location = new System.Drawing.Point(214, 195);
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(290, 20);
             this.txtMail.TabIndex = 5;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(64, 200);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "New Password";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 240);
+            this.label4.Location = new System.Drawing.Point(64, 202);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(26, 13);
             this.label4.TabIndex = 8;
@@ -106,7 +88,7 @@
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(214, 277);
+            this.btnChange.Location = new System.Drawing.Point(214, 248);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(290, 23);
             this.btnChange.TabIndex = 9;
@@ -119,9 +101,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnChange);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtMail);
-            this.Controls.Add(this.txtpwd);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
@@ -137,11 +117,9 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.TextBox txtLastName;
-        internal System.Windows.Forms.TextBox txtpwd;
         internal System.Windows.Forms.TextBox txtMail;
         internal System.Windows.Forms.Button btnChange;
     }

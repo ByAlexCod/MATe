@@ -11,26 +11,17 @@ namespace MATeV2
     {
         string _name;
         DateTime _datelimit; 
-        readonly List<SubTask> _subtasks;
-        Boolean _state;
+        readonly Dictionary<string, SubTask> _subtasks = new Dictionary<string, SubTask>();
+        Boolean _isValidated;
         Project _project;
-
-        public Tasker(string name,DateTime datelimit)
-        {
-            Name = name;
-            DateLimit = datelimit;
-            _subtasks = new List<SubTask>();
-            _state = false;
-        }
 
         public Tasker(Project p,string name, DateTime datelimit)
         {
             Project = p;
             Name = name;
             DateLimit = datelimit;
-            _subtasks = new List<SubTask>();
-            _state = false;
-            p.Tasks.Add(this);
+            _isValidated = false;
+            p.Tasks.Add(this.Name, this);
         }
 
         public string Name
@@ -45,12 +36,12 @@ namespace MATeV2
             set { _datelimit = value; }
         }
 
-        public List<SubTask> SubTasks => _subtasks;
+        public Dictionary<string, SubTask> SubTasks => _subtasks;
 
-        public Boolean State
+        public Boolean IsValidated
         {
-            get { return _state; }
-            set { _state = value; }
+            get { return _isValidated; }
+            set { _isValidated = value; }
         }
 
         public Project Project
@@ -61,10 +52,10 @@ namespace MATeV2
 
         internal void DeleteTask()
         {
-            foreach(SubTask st in this.SubTasks)
+            foreach(SubTask st in this.SubTasks.Values)
             {
                 st.DeleteSubTask();
-                SubTasks.Remove(st);
+                SubTasks.Remove(st.Name);
             }
         }
     }

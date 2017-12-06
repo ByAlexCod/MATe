@@ -87,18 +87,21 @@ namespace MATeUI
         private void Refreshtable()
         {
             ListEmployee.Items.Clear();
-            using (var ct = ctx.ObtainAccessor())
+            if (ctx != null)
             {
-                Context context = ct.Context;
-
-                foreach (Employee emp in context.PersonsDictionary.Values)
+                using (var ct = ctx.ObtainAccessor())
                 {
-                    ListViewItem newitem = new ListViewItem(emp.Mail);
-                    newitem.SubItems.Add(emp.Firstname);
-                    newitem.SubItems.Add(emp.Lastname);
-                    if (emp.CurrentWorkingProject == null) newitem.SubItems.Add("free");
-                    else newitem.SubItems.Add("busy");
-                    ListEmployee.Items.Add(newitem);
+                    Context context = ct.Context;
+
+                    foreach (Employee emp in context.PersonsDictionary.Values)
+                    {
+                        ListViewItem newitem = new ListViewItem(emp.Mail);
+                        newitem.SubItems.Add(emp.Firstname);
+                        newitem.SubItems.Add(emp.Lastname);
+                        if (emp.CurrentWorkingProject == null) newitem.SubItems.Add("free");
+                        else newitem.SubItems.Add("busy");
+                        ListEmployee.Items.Add(newitem);
+                    }
                 }
             }
         }

@@ -25,15 +25,15 @@ namespace MATeUI
             _deleteProjectBtn.Click += new EventHandler(DeleteSelectItem);
             _myAccountBtn.Click += new EventHandler(MyAccountButtonClicked);
             base.OnLoad(e);
-            
-            using (var ct = _ctxuser.ObtainAccessor())
+            if (_ctxuser != null)
             {
-                Context ctx = ct.Context;
-                //_projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
-                _projectListCbx.SelectedItem = null;
-                _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
+                using (var ct = _ctxuser.ObtainAccessor())
+                {
+                    Context ctx = ct.Context;
+                    _projectListCbx.SelectedItem = null;
+                    _projectListCbx.SelectedIndexChanged += new EventHandler(ItemProjectChanged);
+                }
             }
-
         }
 
         public delegate void ButtonClickedEvent(object sender, EventArgs e);

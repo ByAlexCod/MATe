@@ -209,9 +209,13 @@ namespace MATeV2
         public Project RemoveMemberFromProject(Project p, Employee e)
         {
             e.CurrentWorkingProject = null;
-            p.Members.Remove(e.Mail);
+<<<<<<< HEAD
+            p.Members.Remove(e);
             SetDirty();
 
+=======
+            p.Members.Remove(e.Mail);
+>>>>>>> afbd66f1191b73945f8b5fb95ed19dc56308de7b
             return p;
         }
         /// <summary>

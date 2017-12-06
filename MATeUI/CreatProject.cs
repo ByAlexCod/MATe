@@ -61,7 +61,7 @@ namespace MATeUI
                     foreach (Employee ind in checkEmployee.CheckedItems)
                     {
                         ind.CurrentWorkingProject = p;
-                        p.Members.Add(ind);
+                        p.Members.Add(ind.Mail, ind);
                     }
 
                     MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date " + StartDate.Value.Date + " end date " + limitDate.Value.Date);

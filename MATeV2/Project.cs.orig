@@ -13,12 +13,18 @@ namespace MATeV2
         DateTime _datelimit;
         DateTime _datebegin;
         Employee _projectmanager;
-        readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
-        readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
-        Boolean _isValidated;
+<<<<<<< HEAD
+        readonly List<Employee> _members;
+        readonly List<Tasker> _tasks;
+        Boolean _state;
         Context _context;
 
 
+=======
+        readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
+        readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
+        Boolean _isValidated;
+>>>>>>> afbd66f1191b73945f8b5fb95ed19dc56308de7b
         public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;
