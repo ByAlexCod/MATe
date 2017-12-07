@@ -49,9 +49,6 @@
             this.columnFirstName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnLastName2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.columnMail2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._dgTasks = new System.Windows.Forms.DataGridView();
-            this._taskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._endDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._changeLeaderBtn = new System.Windows.Forms.Button();
             this._updateProjectBtn = new System.Windows.Forms.Button();
             this._addToProjectBtn = new System.Windows.Forms.Button();
@@ -60,18 +57,22 @@
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this._refreshPageBtn = new System.Windows.Forms.Button();
-            this._taskDate = new System.Windows.Forms.DateTimePicker();
-            this._taskNameTbx = new System.Windows.Forms.TextBox();
+            this._dgTasks = new System.Windows.Forms.DataGridView();
+            this.taskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label11 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this._addTaskToProject = new System.Windows.Forms.Button();
+            this._dgSubTasks = new System.Windows.Forms.DataGridView();
+            this.subTaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.endDateSubTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.worker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).BeginInit();
             this.SuspendLayout();
             // 
             // _lastNameLbl
@@ -248,27 +249,6 @@
             this.columnMail2.HeaderText = "Mail";
             this.columnMail2.Name = "columnMail2";
             // 
-            // _dgTasks
-            // 
-            this._dgTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this._dgTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this._taskName,
-            this._endDate});
-            this._dgTasks.Location = new System.Drawing.Point(72, 458);
-            this._dgTasks.Name = "_dgTasks";
-            this._dgTasks.Size = new System.Drawing.Size(247, 100);
-            this._dgTasks.TabIndex = 55;
-            // 
-            // _taskName
-            // 
-            this._taskName.HeaderText = "Name";
-            this._taskName.Name = "_taskName";
-            // 
-            // _endDate
-            // 
-            this._endDate.HeaderText = "End Date";
-            this._endDate.Name = "_endDate";
-            // 
             // _changeLeaderBtn
             // 
             this._changeLeaderBtn.Location = new System.Drawing.Point(728, 325);
@@ -280,7 +260,7 @@
             // 
             // _updateProjectBtn
             // 
-            this._updateProjectBtn.Location = new System.Drawing.Point(592, 496);
+            this._updateProjectBtn.Location = new System.Drawing.Point(632, 597);
             this._updateProjectBtn.Name = "_updateProjectBtn";
             this._updateProjectBtn.Size = new System.Drawing.Size(197, 44);
             this._updateProjectBtn.TabIndex = 56;
@@ -332,15 +312,6 @@
             this.dataGridViewTextBoxColumn3.HeaderText = "Mail";
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(167, 426);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(50, 13);
-            this.label11.TabIndex = 61;
-            this.label11.Text = "Task List";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -352,83 +323,108 @@
             // 
             // _refreshPageBtn
             // 
-            this._refreshPageBtn.Location = new System.Drawing.Point(820, 496);
+            this._refreshPageBtn.Location = new System.Drawing.Point(860, 597);
             this._refreshPageBtn.Name = "_refreshPageBtn";
             this._refreshPageBtn.Size = new System.Drawing.Size(157, 44);
             this._refreshPageBtn.TabIndex = 63;
             this._refreshPageBtn.Text = "Refresh Page";
             this._refreshPageBtn.UseVisualStyleBackColor = true;
             // 
-            // _taskDate
+            // _dgTasks
             // 
-            this._taskDate.Location = new System.Drawing.Point(170, 374);
-            this._taskDate.Name = "_taskDate";
-            this._taskDate.Size = new System.Drawing.Size(163, 20);
-            this._taskDate.TabIndex = 67;
+            this._dgTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.taskName,
+            this.endDate,
+            this.project});
+            this._dgTasks.Location = new System.Drawing.Point(44, 357);
+            this._dgTasks.Name = "_dgTasks";
+            this._dgTasks.Size = new System.Drawing.Size(343, 92);
+            this._dgTasks.TabIndex = 67;
             // 
-            // _taskNameTbx
+            // taskName
             // 
-            this._taskNameTbx.Location = new System.Drawing.Point(170, 341);
-            this._taskNameTbx.Name = "_taskNameTbx";
-            this._taskNameTbx.Size = new System.Drawing.Size(163, 20);
-            this._taskNameTbx.TabIndex = 66;
+            this.taskName.HeaderText = "Task Name";
+            this.taskName.Name = "taskName";
+            this.taskName.ReadOnly = true;
+            // 
+            // endDate
+            // 
+            this.endDate.HeaderText = "End Date";
+            this.endDate.Name = "endDate";
+            this.endDate.ReadOnly = true;
+            // 
+            // project
+            // 
+            this.project.HeaderText = "Project";
+            this.project.Name = "project";
+            this.project.ReadOnly = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(144, 468);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(163, 13);
+            this.label11.TabIndex = 66;
+            this.label11.Text = "SubTasks Of The Selected Task";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(38, 382);
+            this.label13.Location = new System.Drawing.Point(154, 326);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 13);
+            this.label13.Size = new System.Drawing.Size(153, 13);
             this.label13.TabIndex = 65;
-            this.label13.Text = "End Date";
+            this.label13.Text = "Tasks Of The Selected Project";
             // 
-            // label14
+            // _dgSubTasks
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(37, 344);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(62, 13);
-            this.label14.TabIndex = 64;
-            this.label14.Text = "Task Name";
+            this._dgSubTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._dgSubTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.subTaskName,
+            this.endDateSubTask,
+            this.worker});
+            this._dgSubTasks.Location = new System.Drawing.Point(44, 503);
+            this._dgSubTasks.Name = "_dgSubTasks";
+            this._dgSubTasks.Size = new System.Drawing.Size(343, 98);
+            this._dgSubTasks.TabIndex = 64;
             // 
-            // label15
+            // subTaskName
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(206, 315);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 13);
-            this.label15.TabIndex = 68;
-            this.label15.Text = "Add New Task";
+            this.subTaskName.HeaderText = "SubTask Name";
+            this.subTaskName.Name = "subTaskName";
+            this.subTaskName.ReadOnly = true;
             // 
-            // _addTaskToProject
+            // endDateSubTask
             // 
-            this._addTaskToProject.Location = new System.Drawing.Point(354, 356);
-            this._addTaskToProject.Name = "_addTaskToProject";
-            this._addTaskToProject.Size = new System.Drawing.Size(110, 23);
-            this._addTaskToProject.TabIndex = 69;
-            this._addTaskToProject.Text = "Add Task";
-            this._addTaskToProject.UseVisualStyleBackColor = true;
+            this.endDateSubTask.HeaderText = "End Date";
+            this.endDateSubTask.Name = "endDateSubTask";
+            this.endDateSubTask.ReadOnly = true;
+            // 
+            // worker
+            // 
+            this.worker.HeaderText = "Worker";
+            this.worker.Name = "worker";
+            this.worker.ReadOnly = true;
             // 
             // DetailProjectUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this._addTaskToProject);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this._taskDate);
-            this.Controls.Add(this._taskNameTbx);
+            this.AutoScroll = true;
+            this.Controls.Add(this._dgTasks);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label13);
-            this.Controls.Add(this.label14);
+            this.Controls.Add(this._dgSubTasks);
             this.Controls.Add(this._refreshPageBtn);
             this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this._addToProjectBtn);
             this.Controls.Add(this.label9);
             this.Controls.Add(this._dgEmployees);
             this.Controls.Add(this._removeMemberInProjectBtn);
             this.Controls.Add(this.label10);
             this.Controls.Add(this._dgMemberInProject);
-            this.Controls.Add(this._dgTasks);
             this.Controls.Add(this._changeLeaderBtn);
             this.Controls.Add(this._updateProjectBtn);
             this.Controls.Add(this._lastNameLbl);
@@ -447,10 +443,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DetailProjectUC";
-            this.Size = new System.Drawing.Size(1083, 592);
+            this.Size = new System.Drawing.Size(1004, 627);
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -477,9 +474,6 @@
         internal System.Windows.Forms.Label _lastNameLbl;
         internal System.Windows.Forms.Label _mailLbl;
         internal System.Windows.Forms.DataGridView _dgMemberInProject;
-        internal System.Windows.Forms.DataGridView _dgTasks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _taskName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn _endDate;
         internal System.Windows.Forms.Button _updateProjectBtn;
         internal System.Windows.Forms.Button _removeMemberInProjectBtn;
         internal System.Windows.Forms.Button _addToProjectBtn;
@@ -488,15 +482,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         internal System.Windows.Forms.Button _refreshPageBtn;
-        internal System.Windows.Forms.DateTimePicker _taskDate;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        internal System.Windows.Forms.Button _addTaskToProject;
-        internal System.Windows.Forms.TextBox _taskNameTbx;
         internal System.Windows.Forms.Button _changeLeaderBtn;
+        internal System.Windows.Forms.DataGridView _dgTasks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn taskName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn project;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label13;
+        internal System.Windows.Forms.DataGridView _dgSubTasks;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTaskName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn endDateSubTask;
+        private System.Windows.Forms.DataGridViewTextBoxColumn worker;
     }
 }

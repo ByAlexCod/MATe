@@ -12,7 +12,7 @@ namespace MATeV2
         string _name;
         DateTime _datelimit; 
         readonly Dictionary<string, SubTask> _subtasks = new Dictionary<string, SubTask>();
-        Boolean _state;
+        Boolean _isValidated;
         Project _project;
 
         public Tasker(Project p,string name, DateTime datelimit)
@@ -20,7 +20,7 @@ namespace MATeV2
             Project = p;
             Name = name;
             DateLimit = datelimit;
-            _state = false;
+            _isValidated = false;
             p.Tasks.Add(this.Name, this);
         }
 
@@ -38,10 +38,10 @@ namespace MATeV2
 
         public Dictionary<string, SubTask> SubTasks => _subtasks;
 
-        public Boolean State
+        public Boolean IsValidated
         {
-            get { return _state; }
-            set { _state = value; }
+            get { return _isValidated; }
+            set { _isValidated = value; }
         }
 
         public Project Project

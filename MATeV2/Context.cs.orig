@@ -70,6 +70,10 @@ namespace MATeV2
         public bool IsDirty => _isDirty;
 
         public DateTime ModifyDate => _modifyTime;
+
+
+        /*public Employee FindOrCreateEmployee( string email )
+        { }*/
          
 
         public Dictionary<string, Project> ProjectsDictionary => _projectsDictionary;
@@ -110,7 +114,12 @@ namespace MATeV2
         {
             get { return _boss; }
         }
-      ///
+
+
+
+
+
+        ///
 
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
@@ -120,6 +129,7 @@ namespace MATeV2
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(name, datebegin, datelimit, leader);
             ProjectsDictionary.Add(newproject.Name, newproject);
+            //newproject.Contx = this.Contx;
             return newproject;
         }
 
@@ -199,9 +209,13 @@ namespace MATeV2
         public Project RemoveMemberFromProject(Project p, Employee e)
         {
             e.CurrentWorkingProject = null;
-            p.Members.Remove(e.Mail);
+<<<<<<< HEAD
+            p.Members.Remove(e);
             SetDirty();
 
+=======
+            p.Members.Remove(e.Mail);
+>>>>>>> afbd66f1191b73945f8b5fb95ed19dc56308de7b
             return p;
         }
         /// <summary>
@@ -229,7 +243,18 @@ namespace MATeV2
 
             return true;
         }
-        
+
+
+
+
+
+
+
+
+
+
+
+
 
         ///
 

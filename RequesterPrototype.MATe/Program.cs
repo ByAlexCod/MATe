@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Network;
 using System.Net;
 using System.Threading;
+using MATeV2;
 
 namespace RequesterPrototype.MATe
 {
@@ -13,34 +14,51 @@ namespace RequesterPrototype.MATe
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("===============================");
-            Console.WriteLine("==============MATe=============");
-            Console.WriteLine("===============================");
-            Console.WriteLine("");
-            int Count = 0;
-            IPAddress[] localsIP = Dns.GetHostAddresses(Dns.GetHostName());
-            foreach (var loc in localsIP)
+           
+            Console.WriteLine("Context 1 :");
+            ContextAndUserManager uno = new ContextAndUserManager("Context", true);
+            using(var ct = uno.ObtainAccessor())
             {
-                Console.WriteLine(Count + " - " + loc);
+                Context un = ct.Context;
+
+                un.CreateEmployee("Alex", "Spitz", "a@ex.comi");
+                un.CreateEmployee("Alexi", "Spitzi", "a@ex.comii");
+                un.CreateEmployee("Alexii", "Spitzii", "a@ex.comiii");
+
+
+
+
             }
-            Console.WriteLine("Etrez le numéro de l'ip que vous souhaitez utiliser");
-            int index = Convert.ToInt32(Console.ReadLine());
-
-
-            Console.Write("ENTREZ L'IP DU BOSS :");
-            string ipboss = Console.ReadLine();
-
-            Console.Write("ENTREZ VOTRE EMAIL :");
-            string eMail = Console.ReadLine();
-
-            Console.Write("ENTREZ VOTRE MDP :");
-            string mdp = Console.ReadLine();
-
-            Requester req = new Requester(ipboss, eMail, mdp, index);
-            req.Send();
+            uno.Login("a@ex.comi");
             Thread.Sleep(2000);
-            Console.ReadLine();
-            Console.WriteLine("JOB DONE");
+            ContextAndUserManager dos = new ContextAndUserManager("Context", true);
+            using (var ct = dos.ObtainAccessor())
+            {
+                Context un = ct.Context;
+
+                Employee i = un.CreateEmployee("Alex", "SPIR", "a@ex.comi");
+                un.CreateEmployee("Alexi", "Spitzi", "a@ex.comii");
+
+
+
+            }
+            dos.Login("b");
+            using (var ct = dos.ObtainAccessor())
+            using (var ct1 = uno.ObtainAccessor())
+            {
+                Context un = ct1.Context;
+                Context dosi = ct.Context;
+
+                un.Merge(dosi);
+                foreach(var emp in un.PersonsDictionary)
+                {
+                    Console.WriteLine(emp.Value.Firstname + emp.Value.Lastname);
+                }
+
+            }
+            Console.ReadKey();
+            
+
         }
     }
 }

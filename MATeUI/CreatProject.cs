@@ -58,13 +58,24 @@ namespace MATeUI
                 {
                     Project p = ctx.CreateProject(CreatPN.Text, StartDate.Value.Date, limitDate.Value.Date);
 
+                    Employee leader = selectManager.CurrentRow.DataBoundItem as Employee;
+
+                    if (leader != null)
+                    {
+                        p.Projectmanager = leader;
+                        p.Members.Add(leader.Mail, leader);
+                    }
+
                     foreach (Employee ind in checkEmployee.CheckedItems)
                     {
                         ind.CurrentWorkingProject = p;
                         p.Members.Add(ind.Mail, ind);
                     }
 
+                    
+
                     MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date " + StartDate.Value.Date + " end date " + limitDate.Value.Date);
+                    this.Close();
                 }
             }
         }

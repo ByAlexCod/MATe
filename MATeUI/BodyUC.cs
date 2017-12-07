@@ -53,9 +53,34 @@ namespace MATeUI
             detailProjectOnBody.AddMemberInProjectButtonClicked += new ButtonClickedEventHandler(OnAddMemberInProject);
             detailProjectOnBody.RefreshPageButtonClicked += new ButtonClickedEventHandler(OnRefreshPage);
             detailProjectOnBody.ButtonChangeProjectManager += new ButtonClickedEventHandler(OnChangeProjectManger);
-            detailProjectOnBody.AddTaskButton += new ButtonClickedEventHandler(OnAddTaskToProject);
+            detailProjectOnBody.CellTaskClick += new DetailProjectUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
             projectManagementOnBody.MyAccountManagementEvent += new ProjectManagement.ButtonClickedEvent(ShowFormChangeAccount);
             
+        }
+        int indexTask;
+        Tasker task = null;
+        private void ShowDetailTask(object sender, EventArgs e)
+        {
+            if (p != null)
+            {
+                if (p.Tasks.Count > 0)
+                {
+                    indexTask = detailProjectOnBody._dgTasks.CurrentRow.Index;
+                    if (indexTask >= 0)
+                    {
+                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                        //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
+                        if (task != null)
+                        {
+                            detailProjectOnBody._dgSubTasks.Rows.Clear();
+                            foreach (var item in task.SubTasks.Values)
+                            {
+                                detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         private void ShowFormChangeAccount(object sender, EventArgs e)
@@ -112,24 +137,7 @@ namespace MATeUI
             detailProjectOnBody._mailLbl.Text = p.Projectmanager.Mail;
         }
 
-        private void OnAddTaskToProject(object sender, EventArgs e)
-        {
-            if(p == null)
-            {
-                MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
-                return;
-            }
-            if(detailProjectOnBody._taskNameTbx.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("THE NAME OF A TASK MUST NOT BE EMPTY", "WARNING");
-                return;
-            }
-            if (detailProjectOnBody._taskDate.Value > p.DateLimit)
-            {
-                MessageBox.Show("THE DATE OF THE END OF THE TASK MUST NOT EXCEED THE PROJECT", "WARNING");
-                return;
-            }
-        }
+       
 
         private void OnRefreshPage(object sender, EventArgs e)
         {
@@ -249,18 +257,17 @@ namespace MATeUI
                     }
                     if (trouve)
                     {
+                        //p.IsValidated = true;
                         p.Name = detailProjectOnBody.ProjectName.Text;
                         p.DateBegin = detailProjectOnBody._projectBeginDate.Value;
                         p.DateLimit = detailProjectOnBody._projectEndDate.Value;
                         projectManagementOnBody._projectListCbx.SelectedItem = p;
-                        
+
                         MessageBox.Show("Update completed");
                         return;
                     }
-
                 }
             }
-
         }
 
         private void ShowDetailProject(object sender, EventArgs e)
@@ -268,6 +275,12 @@ namespace MATeUI
             p = sender as Project;
             if ((p != null))
             {
+                bool isValided = p.IsValidated;
+                if (isValided)
+                    projectManagementOnBody._projectStatusLbl.Text = "Validated";
+                else
+                    projectManagementOnBody._projectStatusLbl.Text = "Not Validated";
+
                 detailProjectOnBody.ProjectName.Text = p.Name;
                 detailProjectOnBody._projectBeginDate.Value = p.DateBegin;
                 detailProjectOnBody._projectEndDate.Value = p.DateLimit;
@@ -278,7 +291,7 @@ namespace MATeUI
                     detailProjectOnBody._mailLbl.Text = p.Projectmanager.Mail;
                     detailProjectOnBody._lastNameLbl.Text = p.Projectmanager.Lastname;
                 }
-
+                detailProjectOnBody._dgSubTasks.Rows.Clear();
                 detailProjectOnBody._dgTasks.Rows.Clear();
                 detailProjectOnBody._dgMemberInProject.Rows.Clear();
                 
@@ -290,8 +303,8 @@ namespace MATeUI
                 {
                     detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
                 }
-            }
-            
+                
+            }    
         }
 
         private void ProjectManagementOnBody_Load(object sender, EventArgs e)
