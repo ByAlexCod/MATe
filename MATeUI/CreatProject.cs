@@ -58,13 +58,13 @@ namespace MATeUI
                 {
                     Project p = ctx.CreateProject(CreatPN.Text, StartDate.Value.Date, limitDate.Value.Date);
 
-                    Employee leader = selectManager.CurrentRow.DataBoundItem as Employee;
+                    //Employee leader = selectManager.CurrentRow.DataBoundItem as Employee;
 
-                    if (leader != null)
-                    {
-                        p.Projectmanager = leader;
-                        p.Members.Add(leader.Mail, leader);
-                    }
+                    ///if (leader != null)
+                    //{
+                    //    p.Projectmanager = leader;
+                    //    p.Members.Add(leader.Mail, leader);
+                    //}
 
                     foreach (Employee ind in checkEmployee.CheckedItems)
                     {

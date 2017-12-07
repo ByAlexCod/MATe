@@ -16,10 +16,6 @@ namespace MATeUI
 {
     public partial class Authentification : Form
     {
-        Socket socket;
-        EndPoint ipLocal, ipRemote;
-        byte[] buffer;
-
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         static ContextAndUserManager _currentCtx;
 
@@ -45,10 +41,7 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-
-
+            
             foreach (IPAddress ip in localIPs)
             {
                 ListIpCmb.Items.Add(ip.ToString());

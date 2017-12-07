@@ -35,6 +35,8 @@ namespace MATeUI
         public event ButtonClickedEventHandler ValidateProjectButtonClicked;
         public event ButtonClickedEventHandler DeleteTaskButtonClicked;
         public event ButtonClickedEventHandler DeleteSubTaskButtonClicked;
+        public event ButtonClickedEventHandler ModifyTaskButtonClickeds;
+        public event ButtonClickedEventHandler ModifySubTaskButtonClicked;
 
 
         protected override void OnLoad(EventArgs e)
@@ -52,6 +54,10 @@ namespace MATeUI
             _validateProjectBtn.Click += new EventHandler(ButtonValidateProjectClicked);
             _deleteTaskBtn.Click += new EventHandler(ButtonDeleteTaskClicked);
             _deleteSubTaskBtn.Click += new EventHandler(ButtonDeleteSubTaskClicked);
+            _modifySubTaskBtn.Click += new EventHandler(ButtonModifySubTaskClicked);
+            _modifyTaskBtn.Click += new EventHandler(ButtonModifyTaskClicked);
+
+
 
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
             if (_ctxuser == null) return;
@@ -101,6 +107,10 @@ namespace MATeUI
         private void ButtonDeleteTaskClicked(object sender, EventArgs e) => DeleteTaskButtonClicked?.Invoke(this, e);
 
         private void ButtonDeleteSubTaskClicked(object sender, EventArgs e) => DeleteSubTaskButtonClicked?.Invoke(this, e);
+
+        private void ButtonModifyTaskClicked(object sender, EventArgs e) => ModifyTaskButtonClickeds?.Invoke(this, e);
+
+        private void ButtonModifySubTaskClicked(object sender, EventArgs e) => ModifySubTaskButtonClicked?.Invoke(this, e);
 
 
 

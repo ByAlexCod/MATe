@@ -43,6 +43,9 @@ namespace MATeUI
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;
 
+            detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
+            detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifySubTask);
+
             projectManagement1.ProjectItemChanged += new EventHandler(ShowDetailProject);
             detailProjectEmployeeUC1.CellTaskClick += new DetailProjectEmployeeUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
             detailProjectEmployeeUC1.CellSubTaskClick += new DetailProjectEmployeeUC.DataGridViewCellMouseEventHandler(ChangeSubTaskItem);
@@ -58,6 +61,27 @@ namespace MATeUI
             detailProjectEmployeeUC1.DeleteSubTaskButtonClicked += new ButtonClickedEventHandler(DeleteSelectedSubTask);
 
         }
+
+        /// <summary>
+        /// Modify Selected SubTask of the board subtasks
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ModifySubTask(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Modify  Selected Task of the board tasks
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ModifyTask(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Supprime la sous-tache selectionnée dans le datagrid  des tache et supprime toutes les
         /// Sous-tache ratachées à cette tache

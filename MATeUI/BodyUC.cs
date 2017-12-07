@@ -275,11 +275,24 @@ namespace MATeUI
             p = sender as Project;
             if ((p != null))
             {
+                detailProjectOnBody._addToProjectBtn.Enabled = true;
+                detailProjectOnBody._changeLeaderBtn.Enabled = true;
+                detailProjectOnBody._removeMemberInProjectBtn.Enabled = true;
+                detailProjectOnBody._updateProjectBtn.Enabled = true;
+
                 bool isValided = p.IsValidated;
                 if (isValided)
                     projectManagementOnBody._projectStatusLbl.Text = "Validated";
                 else
                     projectManagementOnBody._projectStatusLbl.Text = "Not Validated";
+                
+                if(isValided)
+                {
+                    detailProjectOnBody._addToProjectBtn.Enabled = false;
+                    detailProjectOnBody._changeLeaderBtn.Enabled = false;
+                    detailProjectOnBody._removeMemberInProjectBtn.Enabled = false;
+                    detailProjectOnBody._updateProjectBtn.Enabled = false;
+                }
 
                 detailProjectOnBody.ProjectName.Text = p.Name;
                 detailProjectOnBody._projectBeginDate.Value = p.DateBegin;
