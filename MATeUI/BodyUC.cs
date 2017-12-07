@@ -125,6 +125,11 @@ namespace MATeUI
                 MessageBox.Show("FIRST SELECT A PROJECT", "WARNING");
                 return;
             }
+            if(p.Members.Count == 0)
+            {
+                MessageBox.Show("THIS PROJECT CONTAINS ANY MEMBER", "WARNING");
+                return;
+            }
             DialogResult res = MessageBox.Show("Are you sure you change the Project Manager", "Confirmation",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (res == DialogResult.Cancel)
@@ -143,6 +148,9 @@ namespace MATeUI
         {
             using (var ct = _ctxuser.ObtainAccessor())
             {
+                DialogResult result = MessageBox.Show("Warning You Will Lose All Unsaved Data ", "Confirmation !", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel) return;
+
                 Context ctx = ct.Context;
                 projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
                 projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
@@ -191,6 +199,12 @@ namespace MATeUI
                     MessageBox.Show("FIRST SELECT A PROJECT");
                     return;
                 }
+                if (p.Members.Count == 0)
+                {
+                    MessageBox.Show("The Project Contains Any Members");
+                    return;
+                }
+
                 int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
                 Employee emp = p.Members.Values.ToList().ElementAt(index);
                 DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation",

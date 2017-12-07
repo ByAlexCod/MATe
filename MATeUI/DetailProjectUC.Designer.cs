@@ -260,7 +260,7 @@
             // 
             // _updateProjectBtn
             // 
-            this._updateProjectBtn.Location = new System.Drawing.Point(632, 597);
+            this._updateProjectBtn.Location = new System.Drawing.Point(783, 448);
             this._updateProjectBtn.Name = "_updateProjectBtn";
             this._updateProjectBtn.Size = new System.Drawing.Size(197, 44);
             this._updateProjectBtn.TabIndex = 56;
@@ -323,9 +323,9 @@
             // 
             // _refreshPageBtn
             // 
-            this._refreshPageBtn.Location = new System.Drawing.Point(860, 597);
+            this._refreshPageBtn.Location = new System.Drawing.Point(785, 498);
             this._refreshPageBtn.Name = "_refreshPageBtn";
-            this._refreshPageBtn.Size = new System.Drawing.Size(157, 44);
+            this._refreshPageBtn.Size = new System.Drawing.Size(195, 44);
             this._refreshPageBtn.TabIndex = 63;
             this._refreshPageBtn.Text = "Refresh Page";
             this._refreshPageBtn.UseVisualStyleBackColor = true;
@@ -337,9 +337,9 @@
             this.taskName,
             this.endDate,
             this.project});
-            this._dgTasks.Location = new System.Drawing.Point(44, 357);
+            this._dgTasks.Location = new System.Drawing.Point(19, 410);
             this._dgTasks.Name = "_dgTasks";
-            this._dgTasks.Size = new System.Drawing.Size(343, 92);
+            this._dgTasks.Size = new System.Drawing.Size(343, 149);
             this._dgTasks.TabIndex = 67;
             // 
             // taskName
@@ -363,7 +363,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(144, 468);
+            this.label11.Location = new System.Drawing.Point(534, 375);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 13);
             this.label11.TabIndex = 66;
@@ -372,7 +372,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(154, 326);
+            this.label13.Location = new System.Drawing.Point(129, 379);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(153, 13);
             this.label13.TabIndex = 65;
@@ -385,9 +385,9 @@
             this.subTaskName,
             this.endDateSubTask,
             this.worker});
-            this._dgSubTasks.Location = new System.Drawing.Point(44, 503);
+            this._dgSubTasks.Location = new System.Drawing.Point(434, 410);
             this._dgSubTasks.Name = "_dgSubTasks";
-            this._dgSubTasks.Size = new System.Drawing.Size(343, 98);
+            this._dgSubTasks.Size = new System.Drawing.Size(343, 149);
             this._dgSubTasks.TabIndex = 64;
             // 
             // subTaskName
@@ -443,7 +443,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DetailProjectUC";
-            this.Size = new System.Drawing.Size(1004, 627);
+            this.Size = new System.Drawing.Size(1004, 610);
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
