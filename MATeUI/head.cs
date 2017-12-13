@@ -27,8 +27,8 @@ namespace MATeUI
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("SUCCESS");
             _ctxuser.SaveAs("-Context.MATe");
+            MessageBox.Show("SUCCESS");
         }
 
 

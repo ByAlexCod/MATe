@@ -45,22 +45,26 @@
             this.endDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.project = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._taskGbx = new System.Windows.Forms.GroupBox();
-            this._createTaskBtn = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this._taskNameTbx = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this._deleteTaskBtn = new System.Windows.Forms.Button();
             this.endDateTaskDpk = new System.Windows.Forms.DateTimePicker();
+            this._validateTaskBtn = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this._taskNameTbx = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this._createTaskBtn = new System.Windows.Forms.Button();
             this._subTaskGbx = new System.Windows.Forms.GroupBox();
+            this._deleteSubTaskBtn = new System.Windows.Forms.Button();
+            this._validateProjectBtn = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this._projectMembers = new System.Windows.Forms.ComboBox();
             this.endSubTaskDpk = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.subTaskNameTbx = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this._createSubTaskBtn = new System.Windows.Forms.Button();
-            this._projectMembers = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.sendFileOrMessageUCOnDetailUIEmployee = new MATeUI.SendFileOrMessageUC();
-            this._validateTaskBtn = new System.Windows.Forms.Button();
-            this._validateProjectBtn = new System.Windows.Forms.Button();
+            this._modifyTaskBtn = new System.Windows.Forms.Button();
+            this._modifySubTaskBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).BeginInit();
             this.panelStateSubTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
@@ -211,6 +215,8 @@
             // 
             // _taskGbx
             // 
+            this._taskGbx.Controls.Add(this._modifyTaskBtn);
+            this._taskGbx.Controls.Add(this._deleteTaskBtn);
             this._taskGbx.Controls.Add(this.endDateTaskDpk);
             this._taskGbx.Controls.Add(this._validateTaskBtn);
             this._taskGbx.Controls.Add(this.label5);
@@ -224,30 +230,30 @@
             this._taskGbx.TabStop = false;
             this._taskGbx.Text = "Create New Task";
             // 
-            // _createTaskBtn
+            // _deleteTaskBtn
             // 
-            this._createTaskBtn.Location = new System.Drawing.Point(124, 106);
-            this._createTaskBtn.Name = "_createTaskBtn";
-            this._createTaskBtn.Size = new System.Drawing.Size(75, 23);
-            this._createTaskBtn.TabIndex = 0;
-            this._createTaskBtn.Text = "Create";
-            this._createTaskBtn.UseVisualStyleBackColor = true;
+            this._deleteTaskBtn.Location = new System.Drawing.Point(188, 106);
+            this._deleteTaskBtn.Name = "_deleteTaskBtn";
+            this._deleteTaskBtn.Size = new System.Drawing.Size(75, 23);
+            this._deleteTaskBtn.TabIndex = 16;
+            this._deleteTaskBtn.Text = "Delete";
+            this._deleteTaskBtn.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // endDateTaskDpk
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 28);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Task Name";
+            this.endDateTaskDpk.Location = new System.Drawing.Point(101, 68);
+            this.endDateTaskDpk.Name = "endDateTaskDpk";
+            this.endDateTaskDpk.Size = new System.Drawing.Size(162, 20);
+            this.endDateTaskDpk.TabIndex = 4;
             // 
-            // _taskNameTbx
+            // _validateTaskBtn
             // 
-            this._taskNameTbx.Location = new System.Drawing.Point(101, 28);
-            this._taskNameTbx.Name = "_taskNameTbx";
-            this._taskNameTbx.Size = new System.Drawing.Size(162, 20);
-            this._taskNameTbx.TabIndex = 2;
+            this._validateTaskBtn.Location = new System.Drawing.Point(82, 150);
+            this._validateTaskBtn.Name = "_validateTaskBtn";
+            this._validateTaskBtn.Size = new System.Drawing.Size(181, 38);
+            this._validateTaskBtn.TabIndex = 15;
+            this._validateTaskBtn.Text = "Validate Selected Task";
+            this._validateTaskBtn.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -258,15 +264,35 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "End Date";
             // 
-            // endDateTaskDpk
+            // _taskNameTbx
             // 
-            this.endDateTaskDpk.Location = new System.Drawing.Point(101, 68);
-            this.endDateTaskDpk.Name = "endDateTaskDpk";
-            this.endDateTaskDpk.Size = new System.Drawing.Size(162, 20);
-            this.endDateTaskDpk.TabIndex = 4;
+            this._taskNameTbx.Location = new System.Drawing.Point(101, 28);
+            this._taskNameTbx.Name = "_taskNameTbx";
+            this._taskNameTbx.Size = new System.Drawing.Size(162, 20);
+            this._taskNameTbx.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Task Name";
+            // 
+            // _createTaskBtn
+            // 
+            this._createTaskBtn.Location = new System.Drawing.Point(9, 106);
+            this._createTaskBtn.Name = "_createTaskBtn";
+            this._createTaskBtn.Size = new System.Drawing.Size(75, 23);
+            this._createTaskBtn.TabIndex = 0;
+            this._createTaskBtn.Text = "Create";
+            this._createTaskBtn.UseVisualStyleBackColor = true;
             // 
             // _subTaskGbx
             // 
+            this._subTaskGbx.Controls.Add(this._modifySubTaskBtn);
+            this._subTaskGbx.Controls.Add(this._deleteSubTaskBtn);
             this._subTaskGbx.Controls.Add(this._validateProjectBtn);
             this._subTaskGbx.Controls.Add(this.label8);
             this._subTaskGbx.Controls.Add(this._projectMembers);
@@ -281,6 +307,41 @@
             this._subTaskGbx.TabIndex = 14;
             this._subTaskGbx.TabStop = false;
             this._subTaskGbx.Text = "Create New Sub Task";
+            // 
+            // _deleteSubTaskBtn
+            // 
+            this._deleteSubTaskBtn.Location = new System.Drawing.Point(188, 143);
+            this._deleteSubTaskBtn.Name = "_deleteSubTaskBtn";
+            this._deleteSubTaskBtn.Size = new System.Drawing.Size(75, 23);
+            this._deleteSubTaskBtn.TabIndex = 17;
+            this._deleteSubTaskBtn.Text = "Delete";
+            this._deleteSubTaskBtn.UseVisualStyleBackColor = true;
+            // 
+            // _validateProjectBtn
+            // 
+            this._validateProjectBtn.Location = new System.Drawing.Point(92, 225);
+            this._validateProjectBtn.Name = "_validateProjectBtn";
+            this._validateProjectBtn.Size = new System.Drawing.Size(154, 36);
+            this._validateProjectBtn.TabIndex = 16;
+            this._validateProjectBtn.Text = "Validate Selected Project";
+            this._validateProjectBtn.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 109);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 13);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Project Members";
+            // 
+            // _projectMembers
+            // 
+            this._projectMembers.FormattingEnabled = true;
+            this._projectMembers.Location = new System.Drawing.Point(101, 101);
+            this._projectMembers.Name = "_projectMembers";
+            this._projectMembers.Size = new System.Drawing.Size(162, 21);
+            this._projectMembers.TabIndex = 5;
             // 
             // endSubTaskDpk
             // 
@@ -316,29 +377,12 @@
             // 
             // _createSubTaskBtn
             // 
-            this._createSubTaskBtn.Location = new System.Drawing.Point(124, 143);
+            this._createSubTaskBtn.Location = new System.Drawing.Point(9, 143);
             this._createSubTaskBtn.Name = "_createSubTaskBtn";
             this._createSubTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._createSubTaskBtn.TabIndex = 0;
             this._createSubTaskBtn.Text = "Create";
             this._createSubTaskBtn.UseVisualStyleBackColor = true;
-            // 
-            // _projectMembers
-            // 
-            this._projectMembers.FormattingEnabled = true;
-            this._projectMembers.Location = new System.Drawing.Point(101, 101);
-            this._projectMembers.Name = "_projectMembers";
-            this._projectMembers.Size = new System.Drawing.Size(162, 21);
-            this._projectMembers.TabIndex = 5;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 109);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(86, 13);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Project Members";
             // 
             // sendFileOrMessageUCOnDetailUIEmployee
             // 
@@ -347,23 +391,23 @@
             this.sendFileOrMessageUCOnDetailUIEmployee.Size = new System.Drawing.Size(840, 477);
             this.sendFileOrMessageUCOnDetailUIEmployee.TabIndex = 12;
             // 
-            // _validateTaskBtn
+            // _modifyTaskBtn
             // 
-            this._validateTaskBtn.Location = new System.Drawing.Point(82, 150);
-            this._validateTaskBtn.Name = "_validateTaskBtn";
-            this._validateTaskBtn.Size = new System.Drawing.Size(181, 38);
-            this._validateTaskBtn.TabIndex = 15;
-            this._validateTaskBtn.Text = "Validate Selected Task";
-            this._validateTaskBtn.UseVisualStyleBackColor = true;
+            this._modifyTaskBtn.Location = new System.Drawing.Point(101, 106);
+            this._modifyTaskBtn.Name = "_modifyTaskBtn";
+            this._modifyTaskBtn.Size = new System.Drawing.Size(75, 23);
+            this._modifyTaskBtn.TabIndex = 17;
+            this._modifyTaskBtn.Text = "Modify";
+            this._modifyTaskBtn.UseVisualStyleBackColor = true;
             // 
-            // _validateProjectBtn
+            // _modifySubTaskBtn
             // 
-            this._validateProjectBtn.Location = new System.Drawing.Point(92, 225);
-            this._validateProjectBtn.Name = "_validateProjectBtn";
-            this._validateProjectBtn.Size = new System.Drawing.Size(154, 36);
-            this._validateProjectBtn.TabIndex = 16;
-            this._validateProjectBtn.Text = "Validate Selected Project";
-            this._validateProjectBtn.UseVisualStyleBackColor = true;
+            this._modifySubTaskBtn.Location = new System.Drawing.Point(101, 143);
+            this._modifySubTaskBtn.Name = "_modifySubTaskBtn";
+            this._modifySubTaskBtn.Size = new System.Drawing.Size(75, 23);
+            this._modifySubTaskBtn.TabIndex = 18;
+            this._modifySubTaskBtn.Text = "Modify";
+            this._modifySubTaskBtn.UseVisualStyleBackColor = true;
             // 
             // DetailProjectEmployeeUC
             // 
@@ -426,5 +470,9 @@
         internal System.Windows.Forms.ComboBox _projectMembers;
         internal System.Windows.Forms.Button _validateTaskBtn;
         internal System.Windows.Forms.Button _validateProjectBtn;
+        internal System.Windows.Forms.Button _deleteTaskBtn;
+        internal System.Windows.Forms.Button _deleteSubTaskBtn;
+        internal System.Windows.Forms.Button _modifyTaskBtn;
+        internal System.Windows.Forms.Button _modifySubTaskBtn;
     }
 }

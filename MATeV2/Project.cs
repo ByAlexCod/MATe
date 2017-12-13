@@ -25,9 +25,15 @@ namespace MATeV2
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
-            _projectmanager = projectmanager;
             _context = context;
-            if (projectmanager != null) projectmanager.CurrentWorkingProject = this;
+            if (projectmanager != null)
+            {
+                _projectmanager = projectmanager;
+                
+
+                _members.Add(projectmanager.Mail, projectmanager);
+                projectmanager.CurrentWorkingProject = this;
+            }
         }
         public Project(Context context, string name, DateTime datebegin, DateTime datelimit)
         {
@@ -103,12 +109,6 @@ namespace MATeV2
         {
             _members.Clear();
         }
-        //public Context Contx
-        //{
-        //    get { return _ctx; }
-        //    set { _ctx = value; }
-        //}
-
         public override string ToString()
         {
             return Name;

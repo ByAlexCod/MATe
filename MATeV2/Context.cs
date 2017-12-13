@@ -71,7 +71,7 @@ namespace MATeV2
         public bool IsDirty => _isDirty;
 
         public DateTime ModifyDate => _modifyTime;
-
+         
         public void SetBossModifyTime()
         {
             _bossModifyTime = DateTime.Now;
@@ -82,10 +82,6 @@ namespace MATeV2
             get { return _bossModifyTime; }
             set { _bossModifyTime = value; }
         }
-
-        /*public Employee FindOrCreateEmployee( string email )
-        { }*/
-         
 
         public Dictionary<string, Project> ProjectsDictionary => _projectsDictionary;
         
@@ -125,12 +121,7 @@ namespace MATeV2
         {
             get { return _boss; }
         }
-
-
-
-
-
-        ///
+      ///
 
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
@@ -142,7 +133,6 @@ namespace MATeV2
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
             Project newproject = new Project(this, name, datebegin, datelimit, leader);
             ProjectsDictionary.Add(newproject.Name, newproject);
-            //newproject.Contx = this.Contx;
             return newproject;
         }
 
@@ -258,18 +248,7 @@ namespace MATeV2
 
             return true;
         }
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
         ///
 

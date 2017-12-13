@@ -32,8 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtLastName = new System.Windows.Forms.TextBox();
-            this.txtMail = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnChange = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -70,25 +68,9 @@
             this.txtLastName.Size = new System.Drawing.Size(290, 20);
             this.txtLastName.TabIndex = 3;
             // 
-            // txtMail
-            // 
-            this.txtMail.Location = new System.Drawing.Point(214, 195);
-            this.txtMail.Name = "txtMail";
-            this.txtMail.Size = new System.Drawing.Size(290, 20);
-            this.txtMail.TabIndex = 5;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(64, 202);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 13);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Mail";
-            // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(214, 248);
+            this.btnChange.Location = new System.Drawing.Point(214, 200);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(290, 23);
             this.btnChange.TabIndex = 9;
@@ -100,8 +82,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnChange);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtMail);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label2);
@@ -117,10 +97,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label4;
         internal System.Windows.Forms.TextBox txtName;
         internal System.Windows.Forms.TextBox txtLastName;
-        internal System.Windows.Forms.TextBox txtMail;
         internal System.Windows.Forms.Button btnChange;
     }
 }
