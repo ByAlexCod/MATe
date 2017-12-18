@@ -14,9 +14,8 @@ namespace Network
     public class Boss
     {
         ContextAndUserManager _ctx;
-        string localComuterName = Dns.GetHostName();
         static IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
-        IPAddress _locAdd;
+        static IPAddress _locAdd;
         static int _basicPort = 10101;
         TcpListener _listener; 
         //TcpClient _client;
@@ -24,7 +23,8 @@ namespace Network
         string _incomingIP;
         bool _continue;
         int _ipIndex;
-
+        static public IPAddress LocalAddress => _locAdd;
+        
         public Boss ( object ctx, int ipIndex)
         {
             _ctx = (ContextAndUserManager)ctx;

@@ -11,7 +11,7 @@ using MATeV2;
 using MATe.Services;
 using System.Net;
 using System.Net.Sockets;
-
+using Network;
 namespace MATeUI
 {
     public partial class Authentification : Form
@@ -65,25 +65,26 @@ namespace MATeUI
             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
             _currentCtx.Load("-Context.MATe");
             bool good = _currentCtx.Login(userNameTbx.Text);
+            IPAddress CurrentIp = localIPs[ListIpCmb.SelectedIndex];
 
-            
-            
             if ( good == false)
             {
                 MessageBox.Show("username or/and password invalid ");
                 return;
             }
-            if (_currentCtx.CurrentUser is Boss)
+            if (_currentCtx.CurrentUser is MATeV2.Boss)
             {
                 MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
-                this.Visible = false;    
-                 ProjectManager pm = new ProjectManager();
-                 pm.ShowDialog();
-                 Close();
+                this.Visible = false;
+                _currentCtx.CurrentUser.IP = CurrentIp;
+                ProjectManager pm = new ProjectManager();
+                pm.ShowDialog();
+                Close();
             }
             else if (_currentCtx.CurrentUser is Employee)
             {
                 EmployeeUI eUI = new EmployeeUI();
+                _currentCtx.CurrentUser.IP = CurrentIp;
                 eUI.ShowDialog();
                 Close();
             }

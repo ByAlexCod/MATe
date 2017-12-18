@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace MATeV2
         string _firstname;
         string _lastname;
         string _mail;
-        string _ip;
+        IPAddress _ip;
 
         public Person(Context c, string firstname, string lastname, string mail)
         {
@@ -47,7 +48,7 @@ namespace MATeV2
             set { _mail = value; }
         }
 
-        public string IP
+        public IPAddress IP
         {
             get { return _ip; }
             set { _ip = value; }

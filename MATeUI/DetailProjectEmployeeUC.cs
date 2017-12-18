@@ -17,8 +17,14 @@ namespace MATeUI
         public DetailProjectEmployeeUC()
         {
             InitializeComponent();
+            StartCvsBtn.Click += new EventHandler(NewConversation);
         }
 
+        private void NewConversation(object sender, EventArgs e)
+        {
+            ChatWDF chat = new ChatWDF();
+            chat.ShowDialog();
+        }
 
         public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
         public delegate void DataGridViewCellMouseEventHandler(object sender, EventArgs e);
@@ -56,7 +62,6 @@ namespace MATeUI
             _deleteSubTaskBtn.Click += new EventHandler(ButtonDeleteSubTaskClicked);
             _modifySubTaskBtn.Click += new EventHandler(ButtonModifySubTaskClicked);
             _modifyTaskBtn.Click += new EventHandler(ButtonModifyTaskClicked);
-
 
 
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;

@@ -72,7 +72,7 @@ namespace Network
                 foreach (var ip in ipsList)
                 {
 
-                    if (ip != ctx.Owner.IP)
+                    if (ip != ctx.Owner.IP.ToString())
                     {
                         //_client = new TcpClient(_incomingIP, _basicPort + 1);
                         Socket cc = new Socket(AddressFamily.InterNetwork,
