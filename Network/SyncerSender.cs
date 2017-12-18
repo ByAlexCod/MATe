@@ -33,6 +33,7 @@ namespace Network
             using(var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
+                File.Delete(otherContextesPath + @"\" + ctx.Owner.Mail + ".MATe");
                 File.Copy(ownerContextPath, otherContextesPath + @"\" + ctx.Owner.Mail + ".MATe");
                 if (File.Exists(ZipTempFilePath)) File.Delete(ZipTempFilePath);
                 ZipFile.CreateFromDirectory(otherContextesPath, ZipTempFilePath);
@@ -48,7 +49,7 @@ namespace Network
                 foreach (var person in ctx.PersonsDictionary)
                 {
 
-                    if (person.Value != ctx.Owner)
+                    if (person.Value != ctx.Owner && person.Value.IP != null)
                     {
                         //_client = new TcpClient(_incomingIP, _basicPort + 1);
                         Socket cc = new Socket(AddressFamily.InterNetwork,

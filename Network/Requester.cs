@@ -31,7 +31,7 @@ namespace Network
             _message = mail + "#" + password + "#" + _locAdd;
             _client = new TcpClient(ipBoss, _basicPort);
             _listener = new TcpListener(_locAdd, _basicPort + 1);
-
+            _listener.Start();
 
         }
         public void Send()
@@ -52,7 +52,7 @@ namespace Network
 
         internal void Listen()
         {
-            _listener.Start();
+            
             while (true)
             {
                 //TcpClient cl = _listener.AcceptTcpClient();

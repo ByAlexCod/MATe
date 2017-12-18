@@ -33,6 +33,7 @@ namespace MATeUI
             var abc = new Thread(Request.Send);
             abc.IsBackground = true;
             abc.Start();
+            this.Close();
         }
     }
 }

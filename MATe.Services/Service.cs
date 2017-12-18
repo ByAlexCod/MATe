@@ -21,6 +21,7 @@ namespace MATe.Services
             {
                 //MultiThreading
                 Person a = ctxuser.CurrentUser;
+               
                 using(var z = ctxuser.ObtainAccessor())
                 {
                     IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
@@ -41,7 +42,9 @@ namespace MATe.Services
                         
                         // nothing now
                     }
+                    
                     IPAddress ip = localIPs[ipIndex];
+                    a.IP = ip;
                     SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temp.zip", "zipsync");
                     Thread sec = new Thread(abc.Start);
                     sec.IsBackground = true;
