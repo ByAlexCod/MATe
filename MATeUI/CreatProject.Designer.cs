@@ -33,18 +33,15 @@
             this.checkEmployee = new System.Windows.Forms.CheckedListBox();
             this.StartDate = new System.Windows.Forms.DateTimePicker();
             this.limitDate = new System.Windows.Forms.DateTimePicker();
-            this.selectManager = new System.Windows.Forms.DataGridView();
             this.pN = new System.Windows.Forms.Label();
             this.Emp = new System.Windows.Forms.Label();
             this.ED = new System.Windows.Forms.Label();
             this.SD = new System.Windows.Forms.Label();
-            this.PL = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.selectManager)).BeginInit();
             this.SuspendLayout();
             // 
             // Valid
             // 
-            this.Valid.Location = new System.Drawing.Point(124, 481);
+            this.Valid.Location = new System.Drawing.Point(124, 361);
             this.Valid.Name = "Valid";
             this.Valid.Size = new System.Drawing.Size(352, 23);
             this.Valid.TabIndex = 0;
@@ -64,9 +61,8 @@
             this.checkEmployee.FormattingEnabled = true;
             this.checkEmployee.Location = new System.Drawing.Point(124, 141);
             this.checkEmployee.Name = "checkEmployee";
-            this.checkEmployee.Size = new System.Drawing.Size(352, 139);
+            this.checkEmployee.Size = new System.Drawing.Size(352, 199);
             this.checkEmployee.TabIndex = 2;
-            //this.checkEmployee.SelectedIndexChanged += new System.EventHandler(this.checkEmployee_SelectedIndexChanged);
             // 
             // StartDate
             // 
@@ -81,14 +77,6 @@
             this.limitDate.Name = "limitDate";
             this.limitDate.Size = new System.Drawing.Size(352, 20);
             this.limitDate.TabIndex = 4;
-            // 
-            // selectManager
-            // 
-            this.selectManager.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.selectManager.Location = new System.Drawing.Point(124, 286);
-            this.selectManager.Name = "selectManager";
-            this.selectManager.Size = new System.Drawing.Size(352, 178);
-            this.selectManager.TabIndex = 5;
             // 
             // pN
             // 
@@ -126,26 +114,15 @@
             this.SD.TabIndex = 9;
             this.SD.Text = "Start Date";
             // 
-            // PL
-            // 
-            this.PL.AutoSize = true;
-            this.PL.Location = new System.Drawing.Point(31, 286);
-            this.PL.Name = "PL";
-            this.PL.Size = new System.Drawing.Size(85, 13);
-            this.PL.TabIndex = 10;
-            this.PL.Text = "Project Manager";
-            // 
             // CreatProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(769, 520);
-            this.Controls.Add(this.PL);
             this.Controls.Add(this.SD);
             this.Controls.Add(this.ED);
             this.Controls.Add(this.Emp);
             this.Controls.Add(this.pN);
-            this.Controls.Add(this.selectManager);
             this.Controls.Add(this.limitDate);
             this.Controls.Add(this.StartDate);
             this.Controls.Add(this.checkEmployee);
@@ -153,7 +130,6 @@
             this.Controls.Add(this.Valid);
             this.Name = "CreatProject";
             this.Text = "CreatProject";
-            ((System.ComponentModel.ISupportInitialize)(this.selectManager)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,11 +142,9 @@
         private System.Windows.Forms.CheckedListBox checkEmployee;
         private System.Windows.Forms.DateTimePicker StartDate;
         private System.Windows.Forms.DateTimePicker limitDate;
-        private System.Windows.Forms.DataGridView selectManager;
         private System.Windows.Forms.Label pN;
         private System.Windows.Forms.Label Emp;
         private System.Windows.Forms.Label ED;
         private System.Windows.Forms.Label SD;
-        private System.Windows.Forms.Label PL;
     }
 }
