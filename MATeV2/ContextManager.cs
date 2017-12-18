@@ -121,6 +121,7 @@ namespace MATeV2
                 return LoadContextResult.UnableToOpenFile;
             }
         }
+        public Context Context => _context;
 
         public void Save() => SaveAs(Path);
 

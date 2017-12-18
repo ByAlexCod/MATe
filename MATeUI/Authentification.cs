@@ -85,12 +85,18 @@ namespace MATeUI
             }
             if (_currentCtx.CurrentUser is MATeV2.Boss)
             {
-                MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
-                this.Visible = false;
-                _currentCtx.CurrentUser.IP = CurrentIp;
-                ProjectManager pm = new ProjectManager();
-                pm.ShowDialog();
-                Close();
+                using (var ct = _currentCtx.ObtainAccessor())
+                {
+                    Context CTX = ct.Context;
+
+                    //MessageBox.Show(CTX.PersonsDictionary["a@ex.com"].IP.ToString());
+                    MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
+                    this.Visible = false;
+                    _currentCtx.CurrentUser.IP = CurrentIp;
+                    ProjectManager pm = new ProjectManager();
+                    pm.ShowDialog();
+                    Close();
+                }
             }
             else if (_currentCtx.CurrentUser is Employee)
             {

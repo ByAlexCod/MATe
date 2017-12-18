@@ -48,10 +48,11 @@ namespace MATeV2
         internal void Merge(Employee oEmployee)
         {
 
-            if(oEmployee.Mail == oEmployee._ctx.Owner.Mail)
+            if(oEmployee.Mail == oEmployee.Context.Owner.Mail)
             {
                 Firstname = oEmployee.Firstname;
                 Lastname = oEmployee.Lastname;
+                IP = oEmployee.IP;
             }
             SetDirty();
         }
