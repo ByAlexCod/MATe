@@ -255,9 +255,14 @@ namespace MATeUI
             Employee emp = Authentification.CurrentCtxUser.CurrentUser as Employee;
             emp = (Employee)detailProjectEmployeeUC1._projectMembers.SelectedItem;
             if (emp == null) return;
-            SubTask sub = emp.CreateSubtask(task,detailProjectEmployeeUC1.subTaskNameTbx.Text, detailProjectEmployeeUC1.endSubTaskDpk.Value,emp);
-            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(sub.Name, sub.DateLimit, sub.Worker);
-            projectManagement1._projectListCbx.SelectedItem = p;
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+
+                SubTask sub = task.CreateSubtask(task, detailProjectEmployeeUC1.subTaskNameTbx.Text, detailProjectEmployeeUC1.endSubTaskDpk.Value, emp);
+
+                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(sub.Name, sub.DateLimit, sub.Worker);
+                projectManagement1._projectListCbx.SelectedItem = p;
+            }
         }
 
 
