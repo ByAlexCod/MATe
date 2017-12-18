@@ -51,7 +51,7 @@ namespace MATeV2
         public IPAddress IP
         {
             get { return _ip; }
-            set { _ip = value; }
+            set { _ip = value; _ctx.SetDirty(); }
         }
         public Context Context
         {

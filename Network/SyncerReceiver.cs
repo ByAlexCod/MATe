@@ -54,6 +54,7 @@ namespace Network
                         output.Write(buffer, 0, bytesRead);
                     }
                     Thread a = new Thread(new ThreadStart(End));
+                    a.IsBackground = true;
                     a.Start();
                     
                 }
@@ -63,6 +64,11 @@ namespace Network
         void End()
         {
             Context b = (Context)Serialization.Deserialize();
+            DirectoryInfo di = new DirectoryInfo(_tempUnZipped);
+            foreach(var file in di.GetFiles())
+            {
+                file.Delete();
+            }
             Directory.Delete(_tempUnZipped);
             Directory.CreateDirectory(_tempUnZipped);
             ZipFile.ExtractToDirectory(_tempReceiverPath, _tempUnZipped);
@@ -82,7 +88,7 @@ namespace Network
                         Context beforeuuh = beforeuh.Context;
                         Context aftereuh = after.Context;
 
-                        if(aftereuh.ModifyDate > aftereuh.ModifyDate)
+                        if(aftereuh.ModifyDate > beforeuuh.ModifyDate)
                         {
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                             a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
@@ -95,7 +101,6 @@ namespace Network
 
 
 
-            Thread.CurrentThread.Abort();
         }
 
     }
