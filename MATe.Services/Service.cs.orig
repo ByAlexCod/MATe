@@ -26,15 +26,16 @@ namespace MATe.Services
                     IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
                     Context ctx = z.Context;
                     if (a == ctx.Boss)
-                    {
-                        
+                    {                    
                         Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
+<<<<<<< HEAD
+=======
                         
 
+>>>>>>> aef96e149d9e89673978d20db29c8a5a1c2c7060
                         Thread lii = new Thread(bobo.Start);
                         lii.IsBackground = true;
                         lii.Start();
-
                     }
                     else
                     {
