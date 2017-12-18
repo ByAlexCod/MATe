@@ -27,7 +27,8 @@ namespace Network
         public void PrepareDatas(string ownerContextPath, string otherContextesPath, string ZipTempFilePath, int port)
         {
             _ownerContextPath = ownerContextPath;
-            _otherContextesxPath = _zipTempFilePath;
+            _otherContextesxPath = otherContextesPath;
+            _zipTempFilePath = ZipTempFilePath;
             _port = port;
             using(var ct = _ctxuser.ObtainAccessor())
             {
