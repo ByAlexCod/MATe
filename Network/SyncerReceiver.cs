@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MATeV2
+namespace Network
 {
-    public partial class Employee : Person
+    class SyncerReceiver
     {
-        
-
-       
     }
 }

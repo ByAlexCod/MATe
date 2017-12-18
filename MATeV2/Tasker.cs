@@ -58,5 +58,63 @@ namespace MATeV2
                 SubTasks.Remove(st.Name);
             }
         }
+
+        ///////////////////////////////////////////////
+        ///////////// SUBTASK METHODS /////////////////
+        ///////////////////////////////////////////////
+
+        public SubTask CreateSubtask(Tasker t, string name, DateTime datelimit, Employee worker)
+        {
+            SubTask newsubtask = new SubTask(t, name, datelimit, worker);
+            t.SubTasks.Add(newsubtask.Name, newsubtask);
+            return newsubtask;
+        }
+
+        public SubTask CreateSubTask(string name, DateTime datelimit, Employee worker)
+        {
+            SubTask newsubtask = new SubTask(this, name, datelimit, worker);
+            SubTasks.Add(newsubtask.Name, newsubtask);
+            return newsubtask;
+        }
+
+        public SubTask ModifySubTask(SubTask s, string name)
+        {
+            s.Name = name;
+            return s;
+        }
+
+        public SubTask ModifySubTask(SubTask s, DateTime d)
+        {
+            s.DateLimit = d;
+            return s;
+        }
+
+        public SubTask ModifySubTask(SubTask s, Employee worker)
+        {
+            s.Worker = worker;
+            return s;
+        }
+
+        public SubTask ModifySubtask(SubTask s, int b)
+        {
+            s.State = b;
+            return null;
+        }
+
+        internal void Merge(Tasker oTask)
+        {
+            if(oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail && oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+            {
+                Name = oTask.Name;
+                IsValidated = oTask.IsValidated;
+                DateLimit = oTask.DateLimit;
+
+            }
+            foreach(var st in SubTasks)
+            {
+                oTask.SubTasks.TryGetValue(st.Key, out SubTask value);
+                if(value != null) st.Value.Merge(value);
+            }
+        }
     }
 }

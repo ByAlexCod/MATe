@@ -34,7 +34,7 @@ namespace MATeV2
         private void SetDirty()
         {
             _modifyDate = DateTime.Now;
-            if (_ctx.Owner == _ctx.Boss) _bossModifyDate = DateTime.Now;
+            //if (_ctx.Owner == _ctx.Boss) _bossModifyDate = DateTime.Now;
         }
 
         bool IsProjectManager => Context.ProjectsDictionary.Values.Any(p => p.Projectmanager == this);

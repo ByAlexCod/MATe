@@ -28,6 +28,7 @@ namespace MATeV2
         /// </summary>
         internal Context(string name)
         {
+            SetBossModifyTime();
             _companyName = name;
             _firstExchangePort = new Random().Next(1, 6666);
             _boss = new Boss(this, "default", "boss", "b");
@@ -71,6 +72,16 @@ namespace MATeV2
 
         public DateTime ModifyDate => _modifyTime;
          
+        public void SetBossModifyTime()
+        {
+            _bossModifyTime = DateTime.Now;
+        }
+
+        internal DateTime BossModifyTime
+        {
+            get { return _bossModifyTime; }
+            set { _bossModifyTime = value; }
+        }
 
         public Dictionary<string, Project> ProjectsDictionary => _projectsDictionary;
         
@@ -114,19 +125,22 @@ namespace MATeV2
 
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader = null)
+
         {
+            SetBossModifyTime();
             SetDirty();
 
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
-            Project newproject = new Project(name, datebegin, datelimit, leader);
+            Project newproject = new Project(this, name, datebegin, datelimit, leader);
             ProjectsDictionary.Add(newproject.Name, newproject);
             return newproject;
         }
 
         public Project CreateProject(string name, DateTime datebegin, DateTime datelimit, Employee leader, List<Employee> listperson)
         {
+            SetBossModifyTime();
             if (ProjectsDictionary.ContainsKey(name)) throw new ArgumentException("there is already a project with this name");
-            Project newproject = new Project(name, datebegin, datelimit, leader);
+            Project newproject = new Project(this, name, datebegin, datelimit, leader);
             foreach (Employee e in listperson)
             {
                 newproject.Members.Add(e.Mail,e);
@@ -146,6 +160,7 @@ namespace MATeV2
         /// <returns></returns>
         public Project ModifyProject(Project p, Employee projectmanager, List<Employee> listem)
         {
+            SetBossModifyTime();
             if (projectmanager != null)
             {
                 if (projectmanager.CurrentWorkingProject != null) throw new ArgumentException("this employee is having a project remove him from his project before continue");
@@ -168,6 +183,7 @@ namespace MATeV2
 
         public Project ModifyProject(Project p, string name, DateTime datebegin, DateTime datelimit)
         {
+            SetBossModifyTime();
             if (name != null) p.Name = name;
             if (datebegin != DateTime.MinValue) p.DateBegin = datebegin;
             if (datelimit != DateTime.MinValue) p.DateLimit = datelimit;
@@ -183,6 +199,7 @@ namespace MATeV2
         /// <returns></returns>
         public Project DeleteProjectManager(Project p, Employee projectmanager)
         {
+            SetBossModifyTime();
             p.Projectmanager = null;
             projectmanager.CurrentWorkingProject = null;
             SetDirty();
@@ -198,6 +215,7 @@ namespace MATeV2
         /// <returns></returns>
         public Project RemoveMemberFromProject(Project p, Employee e)
         {
+            SetBossModifyTime();
             e.CurrentWorkingProject = null;
             p.Members.Remove(e.Mail);
             SetDirty();
@@ -214,6 +232,7 @@ namespace MATeV2
         /// <returns></returns>
         public Boolean DeleteProject(Project p)
         {
+            SetBossModifyTime();
             if (p == null) return false;
             p.Projectmanager.CurrentWorkingProject = null;
             foreach (Employee e in p.Members.Values)
@@ -245,6 +264,7 @@ namespace MATeV2
         /// <returns></returns>
         public Employee CreateEmployee(string firstname, string lastname, string mail)
         {
+            SetBossModifyTime();
             Employee e;
             
             e = new Employee(this, firstname, lastname, mail);
@@ -262,6 +282,7 @@ namespace MATeV2
         /// <param name="e"></param>
         public void DeleteEmployee(Employee e)
         {
+            SetBossModifyTime();
             _personsDictionary.Remove(e.Mail);
             if (e.CurrentWorkingProject != null)
             {
@@ -282,7 +303,7 @@ namespace MATeV2
             if (CompanyName != otherContext.CompanyName) return MergeResult.CompanyNameMismatch;
             //if (Boss.Mail == otherContext.Owner.Mail) _bossModifyTime = otherContext.ModifyDate;
             
-
+            //Employee Dictionary Merge
             foreach(var emp in PersonsDictionary)
             {
                 Employee e = emp.Value;
@@ -303,9 +324,9 @@ namespace MATeV2
                     if (!otherContext.PersonsDictionary.ContainsKey(emp.Value.Mail)) DeleteEmployee(emp.Value);
                 }
             }
+            //End Employee Dictionary Merge
 
-
-            //PROJECTS LIST MERGE
+            //PROJECTSDictionary MERGE
             foreach(var prj in ProjectsDictionary)
             {
                 Project a = prj.Value;
@@ -317,8 +338,28 @@ namespace MATeV2
 
             }
 
+            if(otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            {
+                BossModifyTime = otherContext.ModifyDate;
+                foreach(var mp in ProjectsDictionary)
+                {
+                    Project MP = mp.Value;
+                    if (!otherContext.ProjectsDictionary.ContainsKey(MP.Name))
+                    {
+                        DeleteProject(MP);
+                    }
+                }
+            }
+            //End ProjectsDictionary Merge
+
 
             return MergeResult.Success;
+        }
+
+        internal Employee FindEmployee(string mail)
+        {
+            PersonsDictionary.TryGetValue(mail, out Employee emp);
+            return emp;
         }
     }
     

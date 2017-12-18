@@ -17,25 +17,46 @@ namespace MATeV2
         readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
         Boolean _isValidated;
         Context _context;
+        DateTime _projectManagerModifyTime;
 
 
-        public Project(string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
+        public Project(Context context, string name,DateTime datebegin,DateTime datelimit,Employee projectmanager)
         {
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
+            _context = context;
             if (projectmanager != null)
             {
                 _projectmanager = projectmanager;
+                
+
                 _members.Add(projectmanager.Mail, projectmanager);
                 projectmanager.CurrentWorkingProject = this;
             }
         }
-        public Project(string name, DateTime datebegin, DateTime datelimit)
+        public Project(Context context, string name, DateTime datebegin, DateTime datelimit)
         {
             Name = name;
             DateBegin = datebegin;
             DateLimit = datelimit;
+        }
+
+        public Tasker CreateTask(string name, DateTime datelimit)
+        {
+            Tasker a = new Tasker(this, name, datelimit);
+            return a;
+        }
+        public void AddMember(Employee a)
+        {
+             _members.Add(a.Mail, a);
+            
+
+        }
+        internal DateTime ProjectManagerModifyDate
+        {
+            get { return _projectManagerModifyTime; }
+            set { _projectManagerModifyTime = value; }
         }
 
         public Boolean IsValidated
@@ -84,25 +105,83 @@ namespace MATeV2
         {
             _tasks.Clear();
         }
+        public void ClearMembers()
+        {
+            _members.Clear();
+        }
         public override string ToString()
         {
             return Name;
         }
 
 
-        public void Merge(Project prj)
+        ///////////////////////////////////////////////
+        ///////////// TASKER METHODS //////////////////
+        ///////////////////////////////////////////////
+
+        public Tasker CreateTask(Project p, string name, DateTime datelimit)
         {
+            Tasker newtask = new Tasker(p, name, datelimit);
+            return newtask;
+        }
+
+        public Tasker ModifyTask(Tasker t, string name)
+        {
+            t.Name = name;
+            return t;
+        }
+
+        public Tasker ModifyTask(Tasker t, DateTime datelimit)
+        {
+            t.DateLimit = datelimit;
+            return t;
+        }
+
+        public void DeleteTask(Tasker t)
+        {
+            t.DeleteTask();
+        }
+
+        internal void Merge(Project prj)
+        {
+            if (Name != prj.Name) return;
             if (prj == null) throw new ArgumentNullException("Given Project cannot be null", nameof(prj));
-            if (prj.Context.Owner.Mail == Context.Boss.Mail)
+            //Projects info
+            if (prj.Context.Owner.Mail == Context.Boss.Mail && prj.Context.BossModifyTime > Context.BossModifyTime)
             {
                 DateBegin = prj.DateBegin;
                 DateLimit = prj.DateLimit;
                 Projectmanager = prj.Projectmanager;
-                ClearTasks();
 
+                
+                
+                ClearMembers();
+                foreach (var om in prj.Members)
+                {
+                    Context.PersonsDictionary.TryGetValue(om.Value.Mail, out Employee value);
+                    if(value != null)
+                    {
+                        Members.Add(value.Mail, value);
+                    }
+
+                }
                 
 
             }
+            if(prj.Context.Owner.Mail == Projectmanager.Mail && prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
+            {
+                ClearTasks();
+                foreach (var ot in prj.Tasks)
+                {
+                    Tasker ii = CreateTask(ot.Value.Name, ot.Value.DateLimit);
+                    ii.IsValidated = ot.Value.IsValidated;
+
+                }
+            }
+            //Init other merges
+
+
+
         }
     }
 }
