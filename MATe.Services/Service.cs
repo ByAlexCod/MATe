@@ -7,6 +7,7 @@ using Network;
 using MATeV2;
 using System.IO;
 using System.Threading;
+using System.Net;
 
 namespace MATe.Services
 {
@@ -22,12 +23,13 @@ namespace MATe.Services
                 Person a = ctxuser.CurrentUser;
                 using(var z = ctxuser.ObtainAccessor())
                 {
+                    IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
                     Context ctx = z.Context;
                     if (a == ctx.Boss)
                     {
                         
                         Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
-
+                        
 
                         Thread lii = new Thread(bobo.Start);
                         lii.IsBackground = true;
@@ -39,6 +41,12 @@ namespace MATe.Services
                         
                         // nothing now
                     }
+                    IPAddress ip = localIPs[ipIndex];
+                    SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temp.zip", "zipsync");
+
+                    Thread sec = new Thread(abc.Start);
+                    sec.IsBackground = true;
+                    sec.Start();
                 }
                 
                 return a;

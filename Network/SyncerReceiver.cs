@@ -24,6 +24,8 @@ namespace Network
 
         public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped)
         {
+            if (!Directory.Exists(contextesStoragePath)) Directory.CreateDirectory(contextesStoragePath);
+            if (!Directory.Exists(tempUnZipped)) Directory.CreateDirectory(tempUnZipped);
             _contextStoragePath = contextesStoragePath;
             _tempReceiverPath = tempReceiverPath;
             _tempUnZipped = tempUnZipped;
@@ -33,10 +35,11 @@ namespace Network
         }
         public void Start()
         {
+            _listener.Start();
             while (true)
             {
 
-
+                
                 using (var client = _listener.AcceptTcpClient())
                 using (var stream = client.GetStream())
                 using (var output = File.Create(_tempReceiverPath))
@@ -52,7 +55,7 @@ namespace Network
                     }
                     Thread a = new Thread(new ThreadStart(End));
                     a.Start();
-                    End();
+                    
                 }
                 
             }
