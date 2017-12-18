@@ -12,6 +12,8 @@ using MATe.Services;
 using System.Net;
 using System.Net.Sockets;
 using Network;
+using System.IO;
+
 namespace MATeUI
 {
     public partial class Authentification : Form
@@ -60,6 +62,15 @@ namespace MATeUI
             {
                 MessageBox.Show("Fill in the fields Mail address and Password");
                 return;
+            }
+
+            if(!File.Exists("-Context.MATe"))
+            {
+                //nouvelle fenetre
+                //demande de l ip + mail
+                //lancement du requester avec mdp beurk
+                var req = new RequestBoss();
+                req.ShowDialog();
             }
 
             _currentCtx = new ContextAndUserManager(userNameTbx.Text);

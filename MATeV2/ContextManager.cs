@@ -80,7 +80,10 @@ namespace MATeV2
         public LoadContextResult Load(string path)
         {
             if (string.IsNullOrWhiteSpace(path)) throw new ArgumentException(nameof(path));
-            if (!File.Exists(path)) return LoadContextResult.InvalidPath;
+            if (!File.Exists(path))
+            {
+                return LoadContextResult.InvalidPath;
+            }
             try
             {
                 using (FileStream fs = new FileStream(path, FileMode.Open))
@@ -153,13 +156,14 @@ namespace MATeV2
             Monitor.Exit(_lock);
         }
 
-
-
-
-
         public bool Login(string mail)
         {
-            if (_context == null) throw new ArgumentNullException("Context cannot be null.", nameof(_context));
+            if (_context == null)
+            {
+
+
+                throw new ArgumentNullException("Context cannot be null.", nameof(_context));
+            }
             if (_context.Login(mail) == null) return false;
             else
             {
@@ -168,6 +172,10 @@ namespace MATeV2
             }
         }
 
+        private void RequestContext()
+        {
+
+        }
     }
 
 }
