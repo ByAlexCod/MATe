@@ -86,10 +86,14 @@ namespace Network
                         {
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                             a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
+                            b.Merge(aftereuh);
                         }
                     }
                 }
             }
+            
+
+
 
             Thread.CurrentThread.Abort();
         }
