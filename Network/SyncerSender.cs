@@ -64,15 +64,19 @@ namespace Network
                     }
                 }
                 //_client = new TcpClient(_incomingIP, _basicPort + 1);
-                        Socket cic = new Socket(AddressFamily.InterNetwork,
-                        SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
-                        cic.Connect(ctx.Boss.IP, _port);
+
+                if (ctx.Owner != ctx.Boss)
+                {
+                    Socket cic = new Socket(AddressFamily.InterNetwork,
+                    SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
+                    cic.Connect(ctx.Boss.IP, _port);
 
 
 
-                        cic.SendFile(_zipTempFilePath);
-                        cic.Shutdown(SocketShutdown.Both);
-                        cic.Close();
+                    cic.SendFile(_zipTempFilePath);
+                    cic.Shutdown(SocketShutdown.Both);
+                    cic.Close();
+                }
             }
         }
         public void SpreadDatas(List<string> ipsList)

@@ -42,7 +42,7 @@ namespace Network
                 
                 using (var client = _listener.AcceptTcpClient())
                 using (var stream = client.GetStream())
-                using (var output = File.Create(_tempReceiverPath))
+                using (FileStream output = File.Open(_tempReceiverPath, FileMode.OpenOrCreate))
                 {
                     Console.WriteLine("Client connected. Starting to receive the file");
 
@@ -95,6 +95,9 @@ namespace Network
                             b.Merge(aftereuh);
                         }
                     }
+                } else
+                {
+                    a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                 }
             }
             

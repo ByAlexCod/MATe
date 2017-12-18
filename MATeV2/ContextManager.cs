@@ -136,6 +136,13 @@ namespace MATeV2
                     formatter.Serialize(fs, _context);
                     if (Path == null) Path = path;
                 }
+                using (FileStream fs = new FileStream(path + "1", FileMode.OpenOrCreate))
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(fs, _context);
+                    if (Path == null) Path = path;
+                }
+
             }
             finally
             {
