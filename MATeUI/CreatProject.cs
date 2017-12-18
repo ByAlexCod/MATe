@@ -24,10 +24,7 @@ namespace MATeUI
                 Context ctx = ct.Context;
                 b = ctx.Boss;
                 _members = ctx.PersonsDictionary.Values.ToList();
-
                 InitializeComponent();
-
-                selectManager.DataSource = _members;
 
                 foreach (Employee employee in _members)
                 {
@@ -41,7 +38,7 @@ namespace MATeUI
             using (var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
-                int index = selectManager.CurrentRow.Index;
+               
                 if (CreatPN.Text.Trim().Equals(""))
                 {
                     MessageBox.Show("Please enter a valid Project Name.");
@@ -50,7 +47,7 @@ namespace MATeUI
                 {
                     MessageBox.Show("Impossible to put the same date!");
                 }
-                else if ((StartDate.Value.Year > limitDate.Value.Year) || (StartDate.Value.Year == limitDate.Value.Year & StartDate.Value.Month > limitDate.Value.Month))
+                else if ((StartDate.Value.Year > limitDate.Value.Year) || (StartDate.Value.Year == limitDate.Value.Year & StartDate.Value.Month > limitDate.Value.Month) || (StartDate.Value.Year == limitDate.Value.Year & StartDate.Value.Month == limitDate.Value.Month & StartDate.Value.Day> limitDate.Value.Day))
                 {
                     MessageBox.Show("Impossible to put the date of end befor the date of beginig!");
                 }
@@ -58,23 +55,13 @@ namespace MATeUI
                 {
                     Project p = ctx.CreateProject(CreatPN.Text, StartDate.Value.Date, limitDate.Value.Date);
 
-                    //Employee leader = selectManager.CurrentRow.DataBoundItem as Employee;
-
-                    ///if (leader != null)
-                    //{
-                    //    p.Projectmanager = leader;
-                    //    p.Members.Add(leader.Mail, leader);
-                    //}
-
                     foreach (Employee ind in checkEmployee.CheckedItems)
                     {
                         ind.CurrentWorkingProject = p;
                         p.Members.Add(ind.Mail, ind);
                     }
-
                     
-
-                    MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + ", Project leader is " + index.ToString() + " start date " + StartDate.Value.Date + " end date " + limitDate.Value.Date);
+                    MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + " start date " + StartDate.Value.Date + " end date " + limitDate.Value.Date);
                     this.Close();
                 }
             }
