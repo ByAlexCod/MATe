@@ -10,7 +10,7 @@ using System.Net.Sockets;
 
 namespace Network
 {
-    class SyncerSender
+    public class SyncerSender
     {
         ContextAndUserManager _ctxuser;
 
