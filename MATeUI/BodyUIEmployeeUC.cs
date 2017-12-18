@@ -343,6 +343,9 @@ namespace MATeUI
             using (var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
+
+                if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count == 1) return;
+
                 int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
                 if (index < 0) return;
 
