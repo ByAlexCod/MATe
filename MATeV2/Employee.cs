@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -45,14 +46,19 @@ namespace MATeV2
             return Firstname +" "+Lastname+" ";
         }
 
-        internal void Merge(Employee oEmployee)
+        internal void Merge(ContextAndUserManager myCtxUser, Employee oEmployee)
         {
 
             if(oEmployee.Mail == oEmployee.Context.Owner.Mail)
             {
                 Firstname = oEmployee.Firstname;
                 Lastname = oEmployee.Lastname;
-                IP = oEmployee.IP;
+                using(var ct = myCtxUser.ObtainAccessor())
+                {
+                    Context ctx = ct.Context;
+                    ctx.FindEmployee(Mail).IPString = oEmployee.IP.ToString();
+                }
+                //IPString = oEmployee.IP.ToString();
             }
             SetDirty();
         }

@@ -21,7 +21,6 @@ namespace Network
         string _contextStoragePath;
         string _tempUnZipped;
 
-
         public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped)
         {
             if (!Directory.Exists(contextesStoragePath)) Directory.CreateDirectory(contextesStoragePath);
@@ -38,14 +37,11 @@ namespace Network
             _listener.Start();
             while (true)
             {
-
-                
                 using (var client = _listener.AcceptTcpClient())
                 using (var stream = client.GetStream())
                 using (FileStream output = File.Open(_tempReceiverPath, FileMode.OpenOrCreate))
                 {
                     Console.WriteLine("Client connected. Starting to receive the file");
-
                     // read the file in chunks of 1KB
                     var buffer = new byte[1024];
                     int bytesRead;
@@ -56,9 +52,7 @@ namespace Network
                     Thread a = new Thread(new ThreadStart(End));
                     a.IsBackground = true;
                     a.Start();
-                    
                 }
-                
             }
         }
         void End()
@@ -92,7 +86,7 @@ namespace Network
                         {
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                             a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
-                            b.Merge(aftereuh);
+                            b.Merge(before, aftereuh);
                         }
                     }
                 } else
@@ -100,11 +94,6 @@ namespace Network
                     a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                 }
             }
-            
-
-
-
         }
-
     }
 }

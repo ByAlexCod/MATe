@@ -295,19 +295,18 @@ namespace MATeV2
         /// <returns></returns>
         
 
-        public MergeResult Merge(Context otherContext)
+        public MergeResult Merge(ContextAndUserManager myCtxUser, Context otherContext)
         {
             if (CompanyName != otherContext.CompanyName) return MergeResult.CompanyNameMismatch;
             //if (Boss.Mail == otherContext.Owner.Mail) _bossModifyTime = otherContext.ModifyDate;
             
             //Employee Dictionary Merge
-            foreach(var emp in PersonsDictionary)
+            foreach(var e in PersonsDictionary.Values)
             {
-                Employee e = emp.Value;
                 otherContext.PersonsDictionary.TryGetValue(e.Mail, out Employee value);
                 if(value != null)
                 {
-                    e.Merge(value);
+                    e.Merge(myCtxUser, value);
                 }
                 
                 

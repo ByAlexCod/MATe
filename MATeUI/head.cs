@@ -29,6 +29,11 @@ namespace MATeUI
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             _ctxuser.SaveAs("-Context.MATe");
+            //using(var ct = _ctxuser.ObtainAccessor())
+            //{
+            //    Context ctx = ct.Context;
+            //    Thread.Sleep(5000);
+            //}
             MessageBox.Show("SUCCESS");
         }
 

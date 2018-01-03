@@ -14,6 +14,7 @@ namespace MATeV2
         string _firstname;
         string _lastname;
         string _mail;
+        string _ipString;
         IPAddress _ip;
 
         public Person(Context c, string firstname, string lastname, string mail)
@@ -46,6 +47,15 @@ namespace MATeV2
         {
             get { return _mail; }
             set { _mail = value; }
+        }
+        public string IPString
+        {
+            get { return _ipString; }
+            set
+            {
+                _ipString = value;
+                IP = IPAddress.Parse(value);
+            }
         }
 
         public IPAddress IP

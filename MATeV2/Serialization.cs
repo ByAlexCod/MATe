@@ -14,7 +14,6 @@ namespace MATeV2
         public static bool Success = false;
         public static void Serialize(Context c)
         {
-
             FileStream fs = new FileStream("-Context.MATe", FileMode.OpenOrCreate);
 
             BinaryFormatter formatter = new BinaryFormatter();
@@ -22,9 +21,6 @@ namespace MATeV2
             try
             {
                 formatter.Serialize(fs, c);
-                
-
-
             }
             catch (SerializationException e)
             {
