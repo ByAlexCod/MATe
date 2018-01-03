@@ -40,7 +40,7 @@ namespace MATe.Services
                     }
                     IPAddress ip = localIPs[ipIndex];
                     a.IP = ip;
-                    SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temp.zip", "zipsync");
+                    SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temp.zip", "zipsync", ctxuser);
                     Thread sec = new Thread(abc.Start);
                     sec.IsBackground = true;
                     sec.Start();
