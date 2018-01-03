@@ -236,7 +236,7 @@ namespace MATeUI
                 MessageBox.Show("The End Date Of The Subtask Must Not Exceed That Of The Project ");
                 return;
             }
-            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > p.DateBegin)
+            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > p.DateLimit)
             {
                 MessageBox.Show("The End Date Of The Subtask Must Exceed That Of The Project");
                 return;
