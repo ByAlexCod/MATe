@@ -33,9 +33,6 @@ namespace MATeV2
             _firstExchangePort = new Random().Next(1, 6666);
             _boss = new Boss(this, "default", "boss", "b");
             CreateEmployee("Alex", "Spitz", "a@ex.com");
-            
-
-
         }
 
         public DateTime SetDirty( bool reset = false )

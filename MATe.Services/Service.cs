@@ -30,19 +30,14 @@ namespace MATe.Services
                     {
                         
                         Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
-                        
-
                         Thread lii = new Thread(bobo.Start);
                         lii.IsBackground = true;
                         lii.Start();
-
                     }
                     else
                     {
-                        
                         // nothing now
                     }
-                    
                     IPAddress ip = localIPs[ipIndex];
                     a.IP = ip;
                     SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temp.zip", "zipsync");

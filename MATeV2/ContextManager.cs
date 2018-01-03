@@ -168,8 +168,6 @@ namespace MATeV2
         {
             if (_context == null)
             {
-
-
                 throw new ArgumentNullException("Context cannot be null.", nameof(_context));
             }
             if (_context.Login(mail) == null) return false;

@@ -26,7 +26,6 @@ namespace Network
         public Requester(string ipBoss, string mail, string password, int indexIp)
         {
             _ipBoss = ipBoss;
-            
             _locAdd = localIPs[indexIp];
             _message = mail + "#" + password + "#" + _locAdd;
             _client = new TcpClient(ipBoss, _basicPort);
@@ -52,7 +51,6 @@ namespace Network
 
         internal void Listen()
         {
-            
             while (true)
             {
                 //TcpClient cl = _listener.AcceptTcpClient();
@@ -69,14 +67,11 @@ namespace Network
                 //    Thread.Sleep(2000);
                 //    Create(b);
                 //}
-
-
                 using (var client = _listener.AcceptTcpClient())
                 using (var stream = client.GetStream())
                 using (var output = File.Create("-Context.MATe"))
                 {
                     Console.WriteLine("Client connected. Starting to receive the file");
-
                     // read the file in chunks of 1KB
                     var buffer = new byte[1024];
                     int bytesRead;
