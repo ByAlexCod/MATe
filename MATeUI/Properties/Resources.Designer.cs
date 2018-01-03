@@ -73,16 +73,6 @@ namespace MATeUI.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Mates {
-            get {
-                object obj = ResourceManager.GetObject("Mates", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap Notification {
             get {
                 object obj = ResourceManager.GetObject("Notification", resourceCulture);

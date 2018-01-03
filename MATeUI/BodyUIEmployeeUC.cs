@@ -13,6 +13,19 @@ namespace MATeUI
         public BodyUIEmployeeUC()
         {
             InitializeComponent();
+            if (task!=null)
+            {
+                if (task.DateLimit.Day == DateTime.Today.Day &&
+                    task.DateLimit.Month == DateTime.Today.Month &&
+                    task.DateLimit.Year == DateTime.Today.Year)
+                {
+                    PopupNotifier popup = new PopupNotifier();
+                    popup.Image = Properties.Resources.Notification;
+                    popup.TitleText = "Mate Project";
+                    popup.ContentText = task.Name + " ends Today!";
+                    popup.Popup();
+                }
+            }
         }
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
      
