@@ -20,9 +20,10 @@ namespace Network
         string _tempReceiverPath;
         string _contextStoragePath;
         string _tempUnZipped;
+        ContextAndUserManager _baseCtxUser;
 
 
-        public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped)
+        public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped, ContextAndUserManager baseCtxUser)
         {
             if (!Directory.Exists(contextesStoragePath)) Directory.CreateDirectory(contextesStoragePath);
             if (!Directory.Exists(tempUnZipped)) Directory.CreateDirectory(tempUnZipped);

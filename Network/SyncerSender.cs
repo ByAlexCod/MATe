@@ -33,6 +33,7 @@ namespace Network
             using(var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
+                if (!Directory.Exists(otherContextesPath)) Directory.CreateDirectory(otherContextesPath);
                 File.Delete(otherContextesPath + @"\" + ctx.Owner.Mail + ".MATe");
                 File.Copy(ownerContextPath, otherContextesPath + @"\" + ctx.Owner.Mail + ".MATe");
                 if (File.Exists(ZipTempFilePath)) File.Delete(ZipTempFilePath);
