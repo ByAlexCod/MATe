@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.Sockets;
 using Network;
 using System.IO;
+using System.Threading;
 
 namespace MATeUI
 {
@@ -74,6 +75,7 @@ namespace MATeUI
             }
 
             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
+            Thread.Sleep(3000);
             _currentCtx.Load("-Context.MATe");
             bool good = _currentCtx.Login(userNameTbx.Text);
             IPAddress CurrentIp = localIPs[ListIpCmb.SelectedIndex];
