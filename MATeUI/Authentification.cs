@@ -73,7 +73,6 @@ namespace MATeUI
                 var req = new RequestBoss();
                 req.ShowDialog();
             }
-
             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
             Thread.Sleep(3000);
             _currentCtx.Load("-Context.MATe");
@@ -95,10 +94,11 @@ namespace MATeUI
                     MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                     this.Visible = false;
                     _currentCtx.CurrentUser.IP = CurrentIp;
+                }
                     ProjectManager pm = new ProjectManager();
                     pm.ShowDialog();
                     Close();
-                }
+                
             }
             else if (_currentCtx.CurrentUser is Employee)
             {
