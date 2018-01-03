@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using MATeV2;
+using Tulpep.NotificationWindow;
 using static MATeUI.DetailProjectEmployeeUC;
 
 
@@ -409,8 +410,21 @@ namespace MATeUI
                     //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                     if (task != null)
                     {
+                        //hear
                         if (task.SubTasks.Count < 1)
+                        {
                             detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                            if (task.DateLimit.Day == DateTime.Today.Day &&
+                                task.DateLimit.Month == DateTime.Today.Month &&
+                                task.DateLimit.Year == DateTime.Today.Year)
+                            {
+                                PopupNotifier popup = new PopupNotifier();
+                                popup.Image = Properties.Resources.Notification;
+                                popup.TitleText = "Mate Project";
+                                popup.ContentText = task.Name + " ends Today!";
+                                popup.Popup();
+                            }
+                        }
                         if(task.IsValidated == true)
                         {
                             detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
@@ -426,6 +440,7 @@ namespace MATeUI
                         {
                             detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
                         }
+                        
                     }
                 }
             }
@@ -489,6 +504,7 @@ namespace MATeUI
                 {
                     detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit,item.Project);
                 }
+               
             }
         }
 
@@ -497,5 +513,7 @@ namespace MATeUI
             ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
+       
+        
     }
 }
