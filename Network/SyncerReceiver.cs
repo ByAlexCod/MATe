@@ -76,8 +76,9 @@ namespace Network
                 Context b = ct.Context;
                 foreach (var unZippedFile in d.GetFiles("*.MATe"))
                 {
+                    bool replace = false;
 
-                    if(File.Exists(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName)))
+                    if (File.Exists(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName)))
                     {
                         ContextAndUserManager unZippedContext = new ContextAndUserManager(b.CompanyName, true);
                         unZippedContext.Load(unZippedFile.FullName);
@@ -85,7 +86,6 @@ namespace Network
                         ContextAndUserManager existingContext = new ContextAndUserManager(b.CompanyName, true);
                         existingContext.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
 
-                        bool replace = false;
 
                         using (var uzc = unZippedContext.ObtainAccessor())
                         using (var ec = existingContext.ObtainAccessor())
@@ -100,6 +100,19 @@ namespace Network
                             File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                         }
                     }
+
+                    File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+
+                    ContextAndUserManager existingContext1 = new ContextAndUserManager(b.CompanyName, true);
+                        existingContext1.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    using (var cte = existingContext1.ObtainAccessor())
+                    {
+                        b.Merge(cte.Context);
+                    }
+                    
+                    
+
+
 
 
 
