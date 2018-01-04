@@ -104,6 +104,8 @@ namespace MATeUI
             else if (_currentCtx.CurrentUser is Employee)
             {
                 EmployeeUI eUI = new EmployeeUI();
+                MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
+
                 _currentCtx.CurrentUser.IP = CurrentIp;
                 eUI.ShowDialog();
                 Close();

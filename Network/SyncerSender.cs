@@ -52,16 +52,22 @@ namespace Network
 
                     if (person.Value != ctx.Owner && person.Value.IP != null)
                     {
-                        //_client = new TcpClient(_incomingIP, _basicPort + 1);
-                        Socket cc = new Socket(AddressFamily.InterNetwork,
-                        SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
-                        cc.Connect(person.Value.IP, _port);
+                        try
+                        {
+                            //_client = new TcpClient(_incomingIP, _basicPort + 1);
+                            Socket cc = new Socket(AddressFamily.InterNetwork,
+                            SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
+                            cc.Connect(person.Value.IP, _port);
 
 
 
-                        cc.SendFile(_zipTempFilePath);
-                        cc.Shutdown(SocketShutdown.Both);
-                        cc.Close();
+                            cc.SendFile(_zipTempFilePath);
+                            cc.Shutdown(SocketShutdown.Both);
+                            cc.Close();
+                        } catch
+                        {
+                            //BOF
+                        }
                     }
                 }
                 //_client = new TcpClient(_incomingIP, _basicPort + 1);
