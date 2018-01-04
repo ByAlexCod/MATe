@@ -59,6 +59,7 @@ namespace MATeUI
         }
         private void ConnexionBtn_Click(object sender, EventArgs e)
         {
+            bool newUser = false;
             if (userNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Fill in the fields Mail address and Password");
@@ -67,12 +68,14 @@ namespace MATeUI
 
             if(!File.Exists("-Context.MATe"))
             {
+                newUser = true;
                 //nouvelle fenetre
                 //demande de l ip + mail
                 //lancement du requester avec mdp beurk
                 var req = new RequestBoss();
                 req.ShowDialog();
             }
+            if (newUser == true) Thread.Sleep(4000);
             _currentCtx = new ContextAndUserManager(userNameTbx.Text);
             _currentCtx.Load("-Context.MATe");
             bool good = _currentCtx.Login(userNameTbx.Text);

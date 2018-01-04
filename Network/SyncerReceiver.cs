@@ -68,7 +68,7 @@ namespace Network
                 Directory.Delete(_tempUnZipped);
                 Directory.CreateDirectory(_tempUnZipped);
                 ZipFile.ExtractToDirectory(_tempReceiverPath, _tempUnZipped);
-            File.Delete(_tempReceiverPath);
+                File.Delete(_tempReceiverPath);
                 DirectoryInfo d = new DirectoryInfo(_tempUnZipped);
             using (var ct = _baseCtxUser.ObtainAccessor())
             {
