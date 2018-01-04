@@ -30,6 +30,7 @@ namespace Network
             _contextStoragePath = contextesStoragePath;
             _tempReceiverPath = tempReceiverPath;
             _tempUnZipped = tempUnZipped;
+            _baseCtxUser = baseCtxUser;
             _ip = ip;
             _port = port;
             _listener = new TcpListener(ip, port);
@@ -95,12 +96,9 @@ namespace Network
 
                         if(replace == true)
                         {
-                            
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                             File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                         }
-
-
                     }
 
 
