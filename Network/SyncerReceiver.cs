@@ -30,7 +30,6 @@ namespace Network
             _contextStoragePath = contextesStoragePath;
             _tempReceiverPath = tempReceiverPath;
             _tempUnZipped = tempUnZipped;
-            _baseCtxUser = baseCtxUser;
             _ip = ip;
             _port = port;
             _listener = new TcpListener(ip, port);
@@ -69,37 +68,69 @@ namespace Network
                 Directory.Delete(_tempUnZipped);
                 Directory.CreateDirectory(_tempUnZipped);
                 ZipFile.ExtractToDirectory(_tempReceiverPath, _tempUnZipped);
+            File.Delete(_tempReceiverPath);
                 DirectoryInfo d = new DirectoryInfo(_tempUnZipped);
             using (var ct = _baseCtxUser.ObtainAccessor())
             {
                 Context b = ct.Context;
-                foreach (var a in d.GetFiles("*.MATe"))
+                foreach (var unZippedFile in d.GetFiles("*.MATe"))
                 {
-                    ContextAndUserManager ctxuser = new ContextAndUserManager(b.CompanyName, true);
-                    ctxuser.Load(a.FullName);
-                    if (File.Exists(_contextStoragePath + @"\" + Path.GetFileName(a.FullName)))
-                    {
-                        ContextAndUserManager before = new ContextAndUserManager(b.CompanyName, true);
-                        before.Load(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
 
-                        using (var beforeuh = before.ObtainAccessor())
-                        using (var after = ctxuser.ObtainAccessor())
+                    if(File.Exists(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName)))
+                    {
+                        ContextAndUserManager unZippedContext = new ContextAndUserManager(b.CompanyName, true);
+                        unZippedContext.Load(unZippedFile.FullName);
+
+                        ContextAndUserManager existingContext = new ContextAndUserManager(b.CompanyName, true);
+                        existingContext.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+
+                        bool replace = false;
+
+                        using (var uzc = unZippedContext.ObtainAccessor())
+                        using (var ec = existingContext.ObtainAccessor())
                         {
-                            Context beforeuuh = beforeuh.Context;
-                            Context aftereuh = after.Context;
-
-                            if (aftereuh.ModifyDate > b.ModifyDate)
-                            {
-                                File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
-                                a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
-                            b.Merge(_baseCtxUser, aftereuh);
-                            }
+                            if (uzc.Context.ModifyDate > ec.Context.ModifyDate) replace = true ;
+                            b.Merge(_baseCtxUser, uzc.Context);
                         }
+
+                        if(replace == true)
+                        {
+                            
+                            File.Delete(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                            File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                        }
+
+
                     }
-                    else
-                    {
-                        a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
-                    }
+
+
+
+
+                    //ContextAndUserManager ctxuser = new ContextAndUserManager(b.CompanyName, true);
+                    //ctxuser.Load(unZippedFile.FullName);
+                    //if (File.Exists(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName)))
+                    //{
+                    //    ContextAndUserManager before = new ContextAndUserManager(b.CompanyName, true);
+                    //    before.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+
+                    //    using (var beforeuh = before.ObtainAccessor())
+                    //    using (var after = ctxuser.ObtainAccessor())
+                    //    {
+                    //        Context beforeuuh = beforeuh.Context;
+                    //        Context aftereuh = after.Context;
+
+                    //        if (aftereuh.ModifyDate > beforeuuh.ModifyDate)
+                    //        {
+                    //            File.Delete(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    //            unZippedFile.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    //        b.Merge(before, aftereuh);
+                    //        }
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    unZippedFile.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    //}
                 }
 
 
