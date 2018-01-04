@@ -57,6 +57,8 @@ namespace Network
                             //_client = new TcpClient(_incomingIP, _basicPort + 1);
                             Socket cc = new Socket(AddressFamily.InterNetwork,
                             SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
+                            cc.SendTimeout = 1000;
+                            cc.ReceiveTimeout = 1000;
                             cc.Connect(person.Value.IP, _port);
 
 
