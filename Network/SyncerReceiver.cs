@@ -100,8 +100,11 @@ namespace Network
                             File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                         }
                     }
-
-                    File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    else
+                    {
+                        File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    }
+                    
 
                     ContextAndUserManager existingContext1 = new ContextAndUserManager(b.CompanyName, true);
                         existingContext1.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));

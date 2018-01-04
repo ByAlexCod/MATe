@@ -165,17 +165,17 @@ namespace MATeV2
                     }
 
                 }
-                
-
             }
-            if(prj.Context.Owner.Mail == Projectmanager.Mail && prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
+            if (Projectmanager != null)
             {
-                ClearTasks();
-                foreach (var ot in prj.Tasks)
+                if (prj.Context.Owner.Mail == Projectmanager.Mail && prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
                 {
-                    Tasker ii = CreateTask(ot.Value.Name, ot.Value.DateLimit);
-                    ii.IsValidated = ot.Value.IsValidated;
-
+                    ClearTasks();
+                    foreach (var ot in prj.Tasks)
+                    {
+                        Tasker ii = CreateTask(ot.Value.Name, ot.Value.DateLimit);
+                        ii.IsValidated = ot.Value.IsValidated;
+                    }
                 }
             }
             //Init other merges
