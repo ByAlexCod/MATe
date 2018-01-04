@@ -91,7 +91,7 @@ namespace Network
                         using (var ec = existingContext.ObtainAccessor())
                         {
                             if (uzc.Context.ModifyDate > ec.Context.ModifyDate) replace = true ;
-                            b.Merge(_baseCtxUser, uzc.Context);
+                            b.Merge(uzc.Context);
                         }
 
                         if(replace == true)

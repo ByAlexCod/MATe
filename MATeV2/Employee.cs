@@ -46,18 +46,16 @@ namespace MATeV2
             return Firstname +" "+Lastname+" ";
         }
 
-        internal void Merge(ContextAndUserManager myCtxUser, Employee oEmployee)
+        internal void Merge(Employee oEmployee)
         {
 
             if(oEmployee.Mail == oEmployee.Context.Owner.Mail)
             {
                 Firstname = oEmployee.Firstname;
                 Lastname = oEmployee.Lastname;
-                using(var ct = myCtxUser.ObtainAccessor())
-                {
-                    Context ctx = ct.Context;
-                    ctx.FindEmployee(Mail).IPString = oEmployee.IP.ToString();
-                }
+               
+                    _ctx.FindEmployee(Mail).IPString = oEmployee.IP.ToString();
+                
                 //IPString = oEmployee.IP.ToString();
             }
             SetDirty();

@@ -295,7 +295,7 @@ namespace MATeV2
         /// <returns></returns>
         
 
-        public MergeResult Merge(ContextAndUserManager myCtxUser, Context otherContext)
+        public MergeResult Merge(Context otherContext)
         {
             if (CompanyName != otherContext.CompanyName) return MergeResult.CompanyNameMismatch;
             //if (Boss.Mail == otherContext.Owner.Mail) _bossModifyTime = otherContext.ModifyDate;
@@ -306,7 +306,7 @@ namespace MATeV2
                 otherContext.PersonsDictionary.TryGetValue(e.Mail, out Employee value);
                 if(value != null)
                 {
-                    e.Merge(myCtxUser, value);
+                    e.Merge(value);
                 }
                 
                 
