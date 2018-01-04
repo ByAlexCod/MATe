@@ -70,7 +70,6 @@ namespace Network
             {
                 if (c.Context.PersonsDictionary.ContainsKey(mail))
                 {
-
                     _incomingIP = comingChain[2];
                     return true;
                 }
