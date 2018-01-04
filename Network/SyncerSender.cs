@@ -56,9 +56,6 @@ namespace Network
                         Socket cc = new Socket(AddressFamily.InterNetwork,
                         SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
                         cc.Connect(person.Value.IP, _port);
-
-
-
                         cc.SendFile(_zipTempFilePath);
                         cc.Shutdown(SocketShutdown.Both);
                         cc.Close();
