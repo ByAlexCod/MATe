@@ -22,15 +22,18 @@ namespace Network
         string _tempUnZipped;
         ContextAndUserManager _baseCtxUser;
 
+<<<<<<< HEAD
+        public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped)
+=======
 
         public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped, ContextAndUserManager baseCtxUser)
+>>>>>>> 49343e96a533146efa650e1c4d9f289dd6689a95
         {
             if (!Directory.Exists(contextesStoragePath)) Directory.CreateDirectory(contextesStoragePath);
             if (!Directory.Exists(tempUnZipped)) Directory.CreateDirectory(tempUnZipped);
             _contextStoragePath = contextesStoragePath;
             _tempReceiverPath = tempReceiverPath;
             _tempUnZipped = tempUnZipped;
-            _baseCtxUser = baseCtxUser;
             _ip = ip;
             _port = port;
             _listener = new TcpListener(ip, port);
@@ -85,15 +88,21 @@ namespace Network
                         using (var beforeuh = before.ObtainAccessor())
                         using (var after = ctxuser.ObtainAccessor())
                         {
+<<<<<<< HEAD
+                            File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
+                            a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
+                            b.Merge(before, aftereuh);
+=======
                             Context beforeuuh = beforeuh.Context;
                             Context aftereuh = after.Context;
 
-                            if (aftereuh.ModifyDate > b.ModifyDate)
+                            if (aftereuh.ModifyDate > beforeuuh.ModifyDate)
                             {
                                 File.Delete(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                                 a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
-                            b.Merge(_baseCtxUser, aftereuh);
+                                b.Merge(aftereuh);
                             }
+>>>>>>> 49343e96a533146efa650e1c4d9f289dd6689a95
                         }
                     }
                     else
@@ -101,9 +110,16 @@ namespace Network
                         a.CopyTo(_contextStoragePath + @"\" + Path.GetFileName(a.FullName));
                     }
                 }
+<<<<<<< HEAD
+            }
+=======
+
+
 
 
             }
+
+>>>>>>> 49343e96a533146efa650e1c4d9f289dd6689a95
         }
     }
 }
