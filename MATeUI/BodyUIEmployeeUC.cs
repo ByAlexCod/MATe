@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Windows.Forms;
 using MATeV2;
+using Tulpep.NotificationWindow;
 using static MATeUI.DetailProjectEmployeeUC;
 
 
@@ -12,6 +13,19 @@ namespace MATeUI
         public BodyUIEmployeeUC()
         {
             InitializeComponent();
+            if (task!=null)
+            {
+                if (task.DateLimit.Day == DateTime.Today.Day &&
+                    task.DateLimit.Month == DateTime.Today.Month &&
+                    task.DateLimit.Year == DateTime.Today.Year)
+                {
+                    PopupNotifier popup = new PopupNotifier();
+                    popup.Image = Properties.Resources.Notification;
+                    popup.TitleText = "Mate Project";
+                    popup.ContentText = task.Name + " ends Today!";
+                    popup.Popup();
+                }
+            }
         }
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
      
@@ -401,7 +415,9 @@ namespace MATeUI
         int indexTask;
         private void ShowDetailTask(object sender, EventArgs e)
         {
-            if(p != null)
+          
+            
+            if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
@@ -412,8 +428,21 @@ namespace MATeUI
                     //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                     if (task != null)
                     {
+                        //hear
                         if (task.SubTasks.Count < 1)
+                        {
                             detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                            if (task.DateLimit.Day == DateTime.Today.Day &&
+                                task.DateLimit.Month == DateTime.Today.Month &&
+                                task.DateLimit.Year == DateTime.Today.Year)
+                            {
+                                PopupNotifier popup = new PopupNotifier();
+                                popup.Image = Properties.Resources.Notification;
+                                popup.TitleText = "Mate Project";
+                                popup.ContentText = task.Name + " ends Today!";
+                                popup.Popup();
+                            }
+                        }
                         if(task.IsValidated == true)
                         {
                             detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
@@ -429,6 +458,7 @@ namespace MATeUI
                         {
                             detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
                         }
+                        
                     }
                 }
             }
@@ -443,8 +473,20 @@ namespace MATeUI
         private void ShowDetailProject(object sender, EventArgs e)
         {
             p = sender as Project;
-            
-            if(p != null)
+            foreach (var item in p.Tasks.Values)
+            {
+                if  (item.DateLimit.Day == DateTime.Today.Day &&
+                                       item.DateLimit.Month == DateTime.Today.Month &&
+                                       item.DateLimit.Year == DateTime.Today.Year)
+                {
+                    PopupNotifier popup = new PopupNotifier();
+                    popup.Image = Properties.Resources.Notification;
+                    popup.TitleText = "Mate Project";
+                    popup.ContentText = item.Name + " ends Today!";
+                    popup.Popup();
+                }
+            }
+            if (p != null)
             {
                 bool isValided = p.IsValidated;
                 if (!isValided)
@@ -492,6 +534,7 @@ namespace MATeUI
                 {
                     detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit,item.Project);
                 }
+               
             }
         }
 
@@ -500,5 +543,7 @@ namespace MATeUI
             ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
+       
+        
     }
 }
