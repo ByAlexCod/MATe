@@ -43,10 +43,7 @@ namespace MATeUI
             thread.Start();
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Help");
-        }
+        
 
         private void myAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -57,6 +54,11 @@ namespace MATeUI
         private void deconnexionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void readMeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Help");
         }
     }
 }
