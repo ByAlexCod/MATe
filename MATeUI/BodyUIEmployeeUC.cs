@@ -176,7 +176,31 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ValidateProject(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (p == null) return;
+            if (p.Tasks.Count <= 0) return;
+            Tasker task = p.Tasks.Values.Where(tt => tt.IsValidated != true).FirstOrDefault();
+            DialogResult res;
+            if (task != null)
+            {
+                res = MessageBox.Show("Do you want to validate this project ? " +
+                                                   "Because there are task in progress or to be done in ", "Confirmation",
+                                                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                    return;
+            }
+            else
+            {
+                res = MessageBox.Show("Do you want to validate this Project ? " +
+                                                       "", "Confirmation",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                    return;
+            }
+            p.Status = 1;
+            projectManagement1._projectListCbx.SelectedItem = p;
+            detailProjectEmployeeUC1._validateProjectBtn.Enabled = false;
+            projectManagement1._projectStatusLbl.Text = "Project has been validated By The The Project Manager";
+
         }
 
         /// <summary>
@@ -456,7 +480,7 @@ namespace MATeUI
                         detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                         foreach (var item in task.SubTasks.Values)
                         {
-                            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
+                            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
                         }
                         
                     }
@@ -488,11 +512,13 @@ namespace MATeUI
             }
             if (p != null)
             {
-                bool isValided = p.IsValidated;
-                if (!isValided)
+                int state = p.Status;
+                if (state == 0)
                     projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
+                else if(state == 1)
+                    projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated By Project Manager";
                 else
-                    projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated";
+                    projectManagement1._projectStatusLbl.Text = "The " + p + " Project Has Been Validated By The Boss";
 
                 detailProjectEmployeeUC1._createTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
@@ -502,7 +528,7 @@ namespace MATeUI
                 detailProjectEmployeeUC1._validateProjectBtn.Enabled = true;
                 detailProjectEmployeeUC1._deleteSubTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._deleteTaskBtn.Enabled = true;
-                if (p.IsValidated)
+                if (p.Status == 1 || p.Status == 2)
                 {
                     detailProjectEmployeeUC1._createTaskBtn.Enabled = false;
                     detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
@@ -532,7 +558,7 @@ namespace MATeUI
                 detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                 foreach (Tasker item in p.Tasks.Values)
                 {
-                    detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit,item.Project);
+                    detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
                 }
                
             }

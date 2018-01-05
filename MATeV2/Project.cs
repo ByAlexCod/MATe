@@ -15,7 +15,7 @@ namespace MATeV2
         Employee _projectmanager;
         readonly Dictionary<string, Tasker> _tasks = new Dictionary<string, Tasker>();
         readonly Dictionary<string, Employee> _members = new Dictionary<string, Employee>();
-        Boolean _isValidated;
+        int _status;
         Context _context;
         DateTime _projectManagerModifyTime;
 
@@ -59,10 +59,10 @@ namespace MATeV2
             set { _projectManagerModifyTime = value; }
         }
 
-        public Boolean IsValidated
+        public int Status
         {
-            get { return _isValidated; }
-            set { _isValidated = value; }
+            get { return _status; }
+            set { _status = value; }
         }
 
         public string Name
@@ -151,7 +151,7 @@ namespace MATeV2
             {
                 DateBegin = prj.DateBegin;
                 DateLimit = prj.DateLimit;
-                Projectmanager = prj.Projectmanager;
+                Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
 
                 
                 

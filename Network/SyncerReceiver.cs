@@ -58,19 +58,22 @@ namespace Network
                 }
             }
         }
+
         void End()
         {
-            
-                DirectoryInfo di = new DirectoryInfo(_tempUnZipped);
-                foreach (var file in di.GetFiles())
-                {
-                    file.Delete();
-                }
-                Directory.Delete(_tempUnZipped);
-                Directory.CreateDirectory(_tempUnZipped);
-                ZipFile.ExtractToDirectory(_tempReceiverPath, _tempUnZipped);
-                File.Delete(_tempReceiverPath);
-                DirectoryInfo d = new DirectoryInfo(_tempUnZipped);
+            if( Directory.Exists( _tempUnZipped ) ) Directory.Delete(_tempUnZipped, true);
+            Directory.CreateDirectory(_tempUnZipped);
+
+            using (ZipArchive arch = ZipFile.OpenRead(_tempReceiverPath))
+            {
+
+                arch.ExtractToDirectory(_tempUnZipped);
+            }
+
+
+            File.Delete(_tempReceiverPath);
+            DirectoryInfo d = new DirectoryInfo(_tempUnZipped);
+
             using (var ct = _baseCtxUser.ObtainAccessor())
             {
                 Context b = ct.Context;
@@ -90,11 +93,11 @@ namespace Network
                         using (var uzc = unZippedContext.ObtainAccessor())
                         using (var ec = existingContext.ObtainAccessor())
                         {
-                            if (uzc.Context.ModifyDate > ec.Context.ModifyDate) replace = true ;
+                            if (uzc.Context.ModifyDate > ec.Context.ModifyDate) replace = true;
                             b.Merge(uzc.Context);
                         }
 
-                        if(replace == true)
+                        if (replace == true)
                         {
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                             File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
@@ -104,16 +107,16 @@ namespace Network
                     {
                         File.Copy(unZippedFile.FullName, _contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                     }
-                    
+
 
                     ContextAndUserManager existingContext1 = new ContextAndUserManager(b.CompanyName, true);
-                        existingContext1.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
+                    existingContext1.Load(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));
                     using (var cte = existingContext1.ObtainAccessor())
                     {
                         b.Merge(cte.Context);
                     }
-                    
-                    
+
+
 
 
 

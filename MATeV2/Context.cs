@@ -315,11 +315,27 @@ namespace MATeV2
 
             foreach(var emp in copy)
             {
-                if (otherContext.Owner.Mail == Boss.Mail)
+                if (otherContext.Owner.Mail == Boss.Mail || BossModifyTime < otherContext.BossModifyTime)
                 {
                     if (!otherContext.PersonsDictionary.ContainsKey(emp.Value.Mail)) DeleteEmployee(emp.Value);
                 }
             }
+            foreach(var emp in otherContext.PersonsDictionary)
+            {
+                if (!PersonsDictionary.ContainsKey(emp.Key))
+                {
+                    Employee ep = emp.Value;
+                    Employee ne = CreateEmployee(ep.Firstname, ep.Lastname, ep.Mail);
+                    
+                    if( ep.IP != null ) ne.IP = ep.IP; 
+                    if(ep.IPString != null) ne.IPString = ep.IPString;
+
+
+
+                }
+            }
+
+
             //End Employee Dictionary Merge
 
             //PROJECTSDictionary MERGE
@@ -347,7 +363,7 @@ namespace MATeV2
                 }
 
             }
-            if (otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            if (otherContext.Owner.Mail == Boss.Mail || otherContext.BossModifyTime > BossModifyTime)
             {
 
 
@@ -356,9 +372,9 @@ namespace MATeV2
                     Project a = prj.Value;
                     if (!ProjectsDictionary.ContainsKey(prj.Key))
                     {
-                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, a.Projectmanager);
+                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, FindEmployee(a.Projectmanager.Mail));
                         b.ProjectManagerModifyDate = a.ProjectManagerModifyDate;
-                        b.IsValidated = a.IsValidated;
+                        b.Status = a.Status;
                         foreach (var aa in a.Members)
                         {
                             b.Members.Add(aa.Key, FindEmployee(aa.Key));
@@ -366,10 +382,10 @@ namespace MATeV2
                     }
                 }
             }
-            
+
             //End ProjectsDictionary Merge
 
-
+            SetDirty();
             return MergeResult.Success;
         }
 
