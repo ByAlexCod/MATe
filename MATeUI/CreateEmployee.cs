@@ -11,9 +11,9 @@ using MATeV2;
 
 namespace MATeUI
 {
-    public partial class CreateEmployeeForm : Form
+    public partial class CreateEmployee : Form
     {
-        public CreateEmployeeForm()
+        public CreateEmployee()
         {
             InitializeComponent();
         }

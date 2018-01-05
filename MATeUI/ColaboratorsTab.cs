@@ -11,10 +11,10 @@ using MATeV2;
 
 namespace MATeUI
 {
-    public partial class Colaborators : UserControl
+    public partial class ColaboratorsTab : UserControl
     {
         ContextAndUserManager ctx = Authentification.CurrentCtxUser;
-        public Colaborators()
+        public ColaboratorsTab()
         {
             InitializeComponent();
         }
@@ -51,7 +51,7 @@ namespace MATeUI
 
         private void AddEmployeeBtn_Click(object sender, EventArgs e)
         {
-            CreateEmployeeForm pm = new CreateEmployeeForm();
+            CreateEmployee pm = new CreateEmployee();
             pm.FormClosing += new FormClosingEventHandler(CreateEmployeeForm_FormClosing);
             pm.ShowDialog();
         }

@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class ChangeCount2
+    partial class ModifyAccount2
     {
         /// <summary> 
         /// Variable nécessaire au concepteur.

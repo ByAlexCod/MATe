@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using MATeV2;
 namespace MATeUI
 {
-    public partial class ChangeCount2 : UserControl
+    public partial class ModifyAccount2 : UserControl
     {
-        public ChangeCount2()
+        public ModifyAccount2()
         {
             InitializeComponent();
         }     

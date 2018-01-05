@@ -64,8 +64,8 @@
             this.subTaskNameTbx = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this._createSubTaskBtn = new System.Windows.Forms.Button();
-            this.sendFileOrMessageUCOnDetailUIEmployee = new MATeUI.SendFileOrMessageUC();
             this.StartCvsBtn = new System.Windows.Forms.Button();
+            this.sendFileOrMessageUCOnDetailUIEmployee = new MATeUI.SendFileOrMessageUC();
             ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).BeginInit();
             this.panelStateSubTask.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
@@ -80,10 +80,9 @@
             this.subTaskName,
             this.endDateSubTask,
             this.worker});
-            this._dgSubTasks.Location = new System.Drawing.Point(23, 359);
-            this._dgSubTasks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._dgSubTasks.Location = new System.Drawing.Point(17, 292);
             this._dgSubTasks.Name = "_dgSubTasks";
-            this._dgSubTasks.Size = new System.Drawing.Size(457, 182);
+            this._dgSubTasks.Size = new System.Drawing.Size(343, 148);
             this._dgSubTasks.TabIndex = 1;
             // 
             // subTaskName
@@ -107,30 +106,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(87, 23);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(65, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(201, 17);
+            this.label1.Size = new System.Drawing.Size(153, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tasks Of The Selected Project";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(87, 304);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(65, 247);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(213, 17);
+            this.label2.Size = new System.Drawing.Size(163, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "SubTasks Of The Selected Task";
             // 
             // _toDoRbtn
             // 
             this._toDoRbtn.AutoSize = true;
-            this._toDoRbtn.Location = new System.Drawing.Point(12, 90);
-            this._toDoRbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._toDoRbtn.Location = new System.Drawing.Point(9, 73);
             this._toDoRbtn.Name = "_toDoRbtn";
-            this._toDoRbtn.Size = new System.Drawing.Size(68, 21);
+            this._toDoRbtn.Size = new System.Drawing.Size(55, 17);
             this._toDoRbtn.TabIndex = 4;
             this._toDoRbtn.TabStop = true;
             this._toDoRbtn.Text = "To Do";
@@ -139,10 +135,9 @@
             // _doRbtn
             // 
             this._doRbtn.AutoSize = true;
-            this._doRbtn.Location = new System.Drawing.Point(312, 90);
-            this._doRbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._doRbtn.Location = new System.Drawing.Point(234, 73);
             this._doRbtn.Name = "_doRbtn";
-            this._doRbtn.Size = new System.Drawing.Size(63, 21);
+            this._doRbtn.Size = new System.Drawing.Size(51, 17);
             this._doRbtn.TabIndex = 5;
             this._doRbtn.TabStop = true;
             this._doRbtn.Text = "Done";
@@ -151,10 +146,9 @@
             // _inProgressRbtn
             // 
             this._inProgressRbtn.AutoSize = true;
-            this._inProgressRbtn.Location = new System.Drawing.Point(149, 90);
-            this._inProgressRbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._inProgressRbtn.Location = new System.Drawing.Point(112, 73);
             this._inProgressRbtn.Name = "_inProgressRbtn";
-            this._inProgressRbtn.Size = new System.Drawing.Size(101, 21);
+            this._inProgressRbtn.Size = new System.Drawing.Size(78, 17);
             this._inProgressRbtn.TabIndex = 6;
             this._inProgressRbtn.TabStop = true;
             this._inProgressRbtn.Text = "In Progress";
@@ -163,19 +157,17 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(89, 33);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(67, 27);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(216, 17);
+            this.label3.Size = new System.Drawing.Size(165, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "States of The Selected  SubTask";
             // 
             // _changeSubTaskBtn
             // 
-            this._changeSubTaskBtn.Location = new System.Drawing.Point(93, 139);
-            this._changeSubTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._changeSubTaskBtn.Location = new System.Drawing.Point(70, 113);
             this._changeSubTaskBtn.Name = "_changeSubTaskBtn";
-            this._changeSubTaskBtn.Size = new System.Drawing.Size(244, 28);
+            this._changeSubTaskBtn.Size = new System.Drawing.Size(183, 23);
             this._changeSubTaskBtn.TabIndex = 8;
             this._changeSubTaskBtn.Text = "Change State Of The  SubTask";
             this._changeSubTaskBtn.UseVisualStyleBackColor = true;
@@ -187,10 +179,9 @@
             this.panelStateSubTask.Controls.Add(this._changeSubTaskBtn);
             this.panelStateSubTask.Controls.Add(this._doRbtn);
             this.panelStateSubTask.Controls.Add(this._inProgressRbtn);
-            this.panelStateSubTask.Location = new System.Drawing.Point(56, 549);
-            this.panelStateSubTask.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelStateSubTask.Location = new System.Drawing.Point(42, 446);
             this.panelStateSubTask.Name = "panelStateSubTask";
-            this.panelStateSubTask.Size = new System.Drawing.Size(407, 182);
+            this.panelStateSubTask.Size = new System.Drawing.Size(305, 148);
             this.panelStateSubTask.TabIndex = 10;
             // 
             // _dgTasks
@@ -200,10 +191,9 @@
             this.taskName,
             this.endDate,
             this.project});
-            this._dgTasks.Location = new System.Drawing.Point(23, 81);
-            this._dgTasks.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._dgTasks.Location = new System.Drawing.Point(17, 66);
             this._dgTasks.Name = "_dgTasks";
-            this._dgTasks.Size = new System.Drawing.Size(457, 185);
+            this._dgTasks.Size = new System.Drawing.Size(343, 150);
             this._dgTasks.TabIndex = 11;
             // 
             // taskName
@@ -234,49 +224,58 @@
             this._taskGbx.Controls.Add(this._taskNameTbx);
             this._taskGbx.Controls.Add(this.label4);
             this._taskGbx.Controls.Add(this._createTaskBtn);
-            this._taskGbx.Location = new System.Drawing.Point(488, 81);
-            this._taskGbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._taskGbx.Location = new System.Drawing.Point(366, 66);
             this._taskGbx.Name = "_taskGbx";
-            this._taskGbx.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this._taskGbx.Size = new System.Drawing.Size(371, 239);
+            this._taskGbx.Size = new System.Drawing.Size(278, 194);
             this._taskGbx.TabIndex = 13;
             this._taskGbx.TabStop = false;
             this._taskGbx.Text = "Create New Task";
             // 
             // _modifyTaskBtn
             // 
-            this._modifyTaskBtn.Location = new System.Drawing.Point(135, 130);
-            this._modifyTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._modifyTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._modifyTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._modifyTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._modifyTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._modifyTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._modifyTaskBtn.Location = new System.Drawing.Point(101, 106);
             this._modifyTaskBtn.Name = "_modifyTaskBtn";
-            this._modifyTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._modifyTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._modifyTaskBtn.TabIndex = 17;
             this._modifyTaskBtn.Text = "Modify";
             this._modifyTaskBtn.UseVisualStyleBackColor = true;
             // 
             // _deleteTaskBtn
             // 
-            this._deleteTaskBtn.Location = new System.Drawing.Point(251, 130);
-            this._deleteTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._deleteTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._deleteTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._deleteTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._deleteTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._deleteTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._deleteTaskBtn.Location = new System.Drawing.Point(188, 106);
             this._deleteTaskBtn.Name = "_deleteTaskBtn";
-            this._deleteTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._deleteTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._deleteTaskBtn.TabIndex = 16;
             this._deleteTaskBtn.Text = "Delete";
             this._deleteTaskBtn.UseVisualStyleBackColor = true;
             // 
             // endDateTaskDpk
             // 
-            this.endDateTaskDpk.Location = new System.Drawing.Point(135, 84);
-            this.endDateTaskDpk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.endDateTaskDpk.Location = new System.Drawing.Point(101, 68);
             this.endDateTaskDpk.Name = "endDateTaskDpk";
-            this.endDateTaskDpk.Size = new System.Drawing.Size(215, 22);
+            this.endDateTaskDpk.Size = new System.Drawing.Size(162, 20);
             this.endDateTaskDpk.TabIndex = 4;
             // 
             // _validateTaskBtn
             // 
-            this._validateTaskBtn.Location = new System.Drawing.Point(109, 185);
-            this._validateTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._validateTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._validateTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._validateTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._validateTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._validateTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._validateTaskBtn.Location = new System.Drawing.Point(82, 150);
             this._validateTaskBtn.Name = "_validateTaskBtn";
-            this._validateTaskBtn.Size = new System.Drawing.Size(241, 47);
+            this._validateTaskBtn.Size = new System.Drawing.Size(181, 38);
             this._validateTaskBtn.TabIndex = 15;
             this._validateTaskBtn.Text = "Validate Selected Task";
             this._validateTaskBtn.UseVisualStyleBackColor = true;
@@ -284,37 +283,38 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(8, 82);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(6, 67);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 17);
+            this.label5.Size = new System.Drawing.Size(52, 13);
             this.label5.TabIndex = 3;
             this.label5.Text = "End Date";
             // 
             // _taskNameTbx
             // 
-            this._taskNameTbx.Location = new System.Drawing.Point(135, 34);
-            this._taskNameTbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._taskNameTbx.Location = new System.Drawing.Point(101, 28);
             this._taskNameTbx.Name = "_taskNameTbx";
-            this._taskNameTbx.Size = new System.Drawing.Size(215, 22);
+            this._taskNameTbx.Size = new System.Drawing.Size(162, 20);
             this._taskNameTbx.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(8, 34);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(6, 28);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(80, 17);
+            this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 1;
             this.label4.Text = "Task Name";
             // 
             // _createTaskBtn
             // 
-            this._createTaskBtn.Location = new System.Drawing.Point(12, 130);
-            this._createTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._createTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._createTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._createTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._createTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._createTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._createTaskBtn.Location = new System.Drawing.Point(9, 106);
             this._createTaskBtn.Name = "_createTaskBtn";
-            this._createTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._createTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._createTaskBtn.TabIndex = 0;
             this._createTaskBtn.Text = "Create";
             this._createTaskBtn.UseVisualStyleBackColor = true;
@@ -331,41 +331,46 @@
             this._subTaskGbx.Controls.Add(this.subTaskNameTbx);
             this._subTaskGbx.Controls.Add(this.label7);
             this._subTaskGbx.Controls.Add(this._createSubTaskBtn);
-            this._subTaskGbx.Location = new System.Drawing.Point(488, 359);
-            this._subTaskGbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._subTaskGbx.Location = new System.Drawing.Point(366, 292);
             this._subTaskGbx.Name = "_subTaskGbx";
-            this._subTaskGbx.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this._subTaskGbx.Size = new System.Drawing.Size(371, 357);
+            this._subTaskGbx.Size = new System.Drawing.Size(278, 290);
             this._subTaskGbx.TabIndex = 14;
             this._subTaskGbx.TabStop = false;
             this._subTaskGbx.Text = "Create New Sub Task";
             // 
             // _modifySubTaskBtn
             // 
-            this._modifySubTaskBtn.Location = new System.Drawing.Point(135, 176);
-            this._modifySubTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._modifySubTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._modifySubTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._modifySubTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._modifySubTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._modifySubTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._modifySubTaskBtn.Location = new System.Drawing.Point(101, 143);
             this._modifySubTaskBtn.Name = "_modifySubTaskBtn";
-            this._modifySubTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._modifySubTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._modifySubTaskBtn.TabIndex = 18;
             this._modifySubTaskBtn.Text = "Modify";
             this._modifySubTaskBtn.UseVisualStyleBackColor = true;
             // 
             // _deleteSubTaskBtn
             // 
-            this._deleteSubTaskBtn.Location = new System.Drawing.Point(251, 176);
-            this._deleteSubTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._deleteSubTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._deleteSubTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._deleteSubTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._deleteSubTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._deleteSubTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._deleteSubTaskBtn.Location = new System.Drawing.Point(188, 143);
             this._deleteSubTaskBtn.Name = "_deleteSubTaskBtn";
-            this._deleteSubTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._deleteSubTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._deleteSubTaskBtn.TabIndex = 17;
             this._deleteSubTaskBtn.Text = "Delete";
             this._deleteSubTaskBtn.UseVisualStyleBackColor = true;
             // 
             // _validateProjectBtn
             // 
-            this._validateProjectBtn.Location = new System.Drawing.Point(123, 277);
-            this._validateProjectBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._validateProjectBtn.Location = new System.Drawing.Point(92, 225);
             this._validateProjectBtn.Name = "_validateProjectBtn";
-            this._validateProjectBtn.Size = new System.Drawing.Size(205, 44);
+            this._validateProjectBtn.Size = new System.Drawing.Size(154, 36);
             this._validateProjectBtn.TabIndex = 16;
             this._validateProjectBtn.Text = "Validate Selected Project";
             this._validateProjectBtn.UseVisualStyleBackColor = true;
@@ -373,88 +378,87 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 134);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(6, 109);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(114, 17);
+            this.label8.Size = new System.Drawing.Size(86, 13);
             this.label8.TabIndex = 6;
             this.label8.Text = "Project Members";
             // 
             // _projectMembers
             // 
             this._projectMembers.FormattingEnabled = true;
-            this._projectMembers.Location = new System.Drawing.Point(135, 124);
-            this._projectMembers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._projectMembers.Location = new System.Drawing.Point(101, 101);
             this._projectMembers.Name = "_projectMembers";
-            this._projectMembers.Size = new System.Drawing.Size(215, 24);
+            this._projectMembers.Size = new System.Drawing.Size(162, 21);
             this._projectMembers.TabIndex = 5;
             // 
             // endSubTaskDpk
             // 
-            this.endSubTaskDpk.Location = new System.Drawing.Point(135, 78);
-            this.endSubTaskDpk.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.endSubTaskDpk.Location = new System.Drawing.Point(101, 63);
             this.endSubTaskDpk.Name = "endSubTaskDpk";
-            this.endSubTaskDpk.Size = new System.Drawing.Size(215, 22);
+            this.endSubTaskDpk.Size = new System.Drawing.Size(162, 20);
             this.endSubTaskDpk.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 85);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(6, 69);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 17);
+            this.label6.Size = new System.Drawing.Size(52, 13);
             this.label6.TabIndex = 3;
             this.label6.Text = "End Date";
             // 
             // subTaskNameTbx
             // 
-            this.subTaskNameTbx.Location = new System.Drawing.Point(135, 32);
-            this.subTaskNameTbx.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.subTaskNameTbx.Location = new System.Drawing.Point(101, 26);
             this.subTaskNameTbx.Name = "subTaskNameTbx";
-            this.subTaskNameTbx.Size = new System.Drawing.Size(215, 22);
+            this.subTaskNameTbx.Size = new System.Drawing.Size(162, 20);
             this.subTaskNameTbx.TabIndex = 2;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 32);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(6, 26);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 17);
+            this.label7.Size = new System.Drawing.Size(84, 13);
             this.label7.TabIndex = 1;
             this.label7.Text = "Sub Task Name";
             // 
             // _createSubTaskBtn
             // 
-            this._createSubTaskBtn.Location = new System.Drawing.Point(12, 176);
-            this._createSubTaskBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._createSubTaskBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._createSubTaskBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._createSubTaskBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._createSubTaskBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._createSubTaskBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._createSubTaskBtn.Location = new System.Drawing.Point(9, 143);
             this._createSubTaskBtn.Name = "_createSubTaskBtn";
-            this._createSubTaskBtn.Size = new System.Drawing.Size(100, 28);
+            this._createSubTaskBtn.Size = new System.Drawing.Size(75, 23);
             this._createSubTaskBtn.TabIndex = 0;
             this._createSubTaskBtn.Text = "Create";
             this._createSubTaskBtn.UseVisualStyleBackColor = true;
             // 
-            // sendFileOrMessageUCOnDetailUIEmployee
-            // 
-            this.sendFileOrMessageUCOnDetailUIEmployee.Location = new System.Drawing.Point(635, 42);
-            this.sendFileOrMessageUCOnDetailUIEmployee.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.sendFileOrMessageUCOnDetailUIEmployee.Name = "sendFileOrMessageUCOnDetailUIEmployee";
-            this.sendFileOrMessageUCOnDetailUIEmployee.Size = new System.Drawing.Size(1120, 587);
-            this.sendFileOrMessageUCOnDetailUIEmployee.TabIndex = 12;
-            // 
             // StartCvsBtn
             // 
-            this.StartCvsBtn.Location = new System.Drawing.Point(1057, 657);
+            this.StartCvsBtn.Location = new System.Drawing.Point(793, 534);
+            this.StartCvsBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.StartCvsBtn.Name = "StartCvsBtn";
-            this.StartCvsBtn.Size = new System.Drawing.Size(166, 23);
+            this.StartCvsBtn.Size = new System.Drawing.Size(124, 19);
             this.StartCvsBtn.TabIndex = 15;
             this.StartCvsBtn.Text = "Start a conversation";
             this.StartCvsBtn.UseVisualStyleBackColor = true;
             // 
+            // sendFileOrMessageUCOnDetailUIEmployee
+            // 
+            this.sendFileOrMessageUCOnDetailUIEmployee.Location = new System.Drawing.Point(476, 34);
+            this.sendFileOrMessageUCOnDetailUIEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.sendFileOrMessageUCOnDetailUIEmployee.Name = "sendFileOrMessageUCOnDetailUIEmployee";
+            this.sendFileOrMessageUCOnDetailUIEmployee.Size = new System.Drawing.Size(840, 477);
+            this.sendFileOrMessageUCOnDetailUIEmployee.TabIndex = 12;
+            // 
             // DetailProjectEmployeeUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.StartCvsBtn);
             this.Controls.Add(this._subTaskGbx);
@@ -465,9 +469,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this._dgSubTasks);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "DetailProjectEmployeeUC";
-            this.Size = new System.Drawing.Size(1400, 721);
+            this.Size = new System.Drawing.Size(1050, 586);
             ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).EndInit();
             this.panelStateSubTask.ResumeLayout(false);
             this.panelStateSubTask.PerformLayout();

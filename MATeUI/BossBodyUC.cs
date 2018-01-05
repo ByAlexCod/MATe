@@ -12,13 +12,13 @@ using static MATeUI.DetailProjectUC;
 
 namespace MATeUI
 {
-    public partial class BodyUC : UserControl
+    public partial class BossBodyUC : UserControl
     {
        
         Project p = null;
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         ICollection<Project> _projects = new List<Project>();
-        public BodyUC()
+        public BossBodyUC()
         {
             InitializeComponent();
         }
@@ -116,7 +116,7 @@ namespace MATeUI
 
         private void ShowFormChangeAccount(object sender, EventArgs e)
         {
-            ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
+            ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
 

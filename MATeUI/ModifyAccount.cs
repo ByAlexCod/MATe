@@ -10,9 +10,9 @@ using System.Windows.Forms;
 using MATeV2;
 namespace MATeUI
 {
-    public partial class ChangeCount : Form
+    public partial class ModifyAccount : Form
     {        
-        public ChangeCount(Person user)
+        public ModifyAccount(Person user)
         {
             InitializeComponent();
 
@@ -20,7 +20,7 @@ namespace MATeUI
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         private void changeCount21_Load(object sender, EventArgs e)
         {
-            changeCount21.ChangeButton += new ChangeCount2.ButtonClickedEventHandler(ChangeCount22);
+            changeCount21.ChangeButton += new ModifyAccount2.ButtonClickedEventHandler(ChangeCount22);
             changeCount21.txtName.Text = Authentification.CurrentCtxUser.CurrentUser.Firstname; ;
             changeCount21.txtLastName.Text = Authentification.CurrentCtxUser.CurrentUser.Lastname;
           

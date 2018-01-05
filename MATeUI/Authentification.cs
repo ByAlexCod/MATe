@@ -96,7 +96,7 @@ namespace MATeUI
                     this.Visible = false;
                     _currentCtx.CurrentUser.IP = CurrentIp;
                 }
-                ProjectManager pm = new ProjectManager();
+                BossWindow pm = new BossWindow();
                 pm.ShowDialog();
                 Hide();
                 

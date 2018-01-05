@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class ChangeCount
+    partial class ModifyAccount
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.changeCount21 = new MATeUI.ChangeCount2();
+            this.changeCount21 = new MATeUI.ModifyAccount2();
             this.SuspendLayout();
             // 
             // changeCount21
@@ -54,6 +54,6 @@
         }
 
         #endregion
-        internal ChangeCount2 changeCount21;
+        internal ModifyAccount2 changeCount21;
     }
 }
