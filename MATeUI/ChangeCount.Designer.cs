@@ -28,18 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.head1 = new MATeUI.head();
             this.changeCount21 = new MATeUI.ChangeCount2();
             this.SuspendLayout();
-            // 
-            // head1
-            // 
-            this.head1.Location = new System.Drawing.Point(0, 0);
-            this.head1.Margin = new System.Windows.Forms.Padding(2);
-            this.head1.Name = "head1";
-            this.head1.Size = new System.Drawing.Size(664, 46);
-            this.head1.TabIndex = 0;
-            
             // 
             // changeCount21
             // 
@@ -56,7 +46,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(675, 413);
-            this.Controls.Add(this.head1);
             this.Controls.Add(this.changeCount21);
             this.Name = "ChangeCount";
             this.Text = "ChangeCount";
@@ -65,8 +54,6 @@
         }
 
         #endregion
-
-        private head head1;
         internal ChangeCount2 changeCount21;
     }
 }

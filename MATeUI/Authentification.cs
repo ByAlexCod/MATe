@@ -98,7 +98,7 @@ namespace MATeUI
                 }
                 ProjectManager pm = new ProjectManager();
                 pm.ShowDialog();
-                Close();
+                Hide();
                 
             }
             else if (_currentCtx.CurrentUser is Employee)
@@ -108,7 +108,7 @@ namespace MATeUI
 
                 _currentCtx.CurrentUser.IP = CurrentIp;
                 eUI.ShowDialog();
-                Close();
+                Hide();
             }
         }
     }

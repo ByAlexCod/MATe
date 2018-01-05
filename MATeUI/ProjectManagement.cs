@@ -23,7 +23,7 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             _deleteProjectBtn.Click += new EventHandler(DeleteSelectItem);
-            _myAccountBtn.Click += new EventHandler(MyAccountButtonClicked);
+            //_myAccountBtn.Click += new EventHandler(MyAccountButtonClicked);
             base.OnLoad(e);
             if (_ctxuser != null)
             {

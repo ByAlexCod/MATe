@@ -57,7 +57,7 @@
             this.Controls.Add(this.detailProjectEmployeeUC1);
             this.Controls.Add(this.projectManagement1);
             this.Name = "BodyUIEmployeeUC";
-            this.Size = new System.Drawing.Size(1014, 414);
+            this.Size = new System.Drawing.Size(1014, 601);
             this.ResumeLayout(false);
 
         }

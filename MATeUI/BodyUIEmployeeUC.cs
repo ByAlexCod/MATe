@@ -21,25 +21,28 @@ namespace MATeUI
         Tasker task = null;
         protected override void OnLoad(EventArgs e)
         {
+            
             base.OnLoad(e);
-            using (var ct = _ctxuser.ObtainAccessor())
+            if (_ctxuser != null)
             {
-                detailProjectEmployeeUC1._taskGbx.Visible = false;
-                detailProjectEmployeeUC1._subTaskGbx.Visible = false;
-
-                Context ctx = ct.Context;
-                
-                foreach (Project item in ctx.ProjectsDictionary.Values)
+                using (var ct = _ctxuser.ObtainAccessor())
                 {
-                    Employee emp = item.Members.Values.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
-                    if(emp != null)
+                    detailProjectEmployeeUC1._taskGbx.Visible = false;
+                    detailProjectEmployeeUC1._subTaskGbx.Visible = false;
+
+                    Context ctx = ct.Context;
+
+                    foreach (Project item in ctx.ProjectsDictionary.Values)
                     {
-                        projectManagement1._projectListCbx.Items.Add(item);
+                        Employee emp = item.Members.Values.Where(em => em.Mail.Equals(_ctxuser.CurrentUser.Mail)).FirstOrDefault();
+                        if (emp != null)
+                        {
+                            projectManagement1._projectListCbx.Items.Add(item);
+                        }
+
                     }
-                    
                 }
             }
-
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;
 
@@ -445,7 +448,7 @@ namespace MATeUI
             {
                 bool isValided = p.IsValidated;
                 if (!isValided)
-                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin;
+                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                 else
                     projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated";
 
