@@ -33,10 +33,10 @@
             this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.synchronizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bodyUIEmployeeUC1 = new MATeUI.BodyUIEmployeeUC();
             this.parameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deconnexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bodyUIEmployeeUC1 = new MATeUI.BodyUIEmployeeUC();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +64,7 @@
             // saveAllToolStripMenuItem
             // 
             this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveAllToolStripMenuItem.Text = "Save All";
             this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 
@@ -81,17 +81,6 @@
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
-            // 
-            // bodyUIEmployeeUC1
-            // 
-            this.bodyUIEmployeeUC1.AutoScroll = true;
-            this.bodyUIEmployeeUC1.AutoSize = true;
-            this.bodyUIEmployeeUC1.CurrentUser = null;
-            this.bodyUIEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bodyUIEmployeeUC1.Location = new System.Drawing.Point(0, 24);
-            this.bodyUIEmployeeUC1.Name = "bodyUIEmployeeUC1";
-            this.bodyUIEmployeeUC1.Size = new System.Drawing.Size(1028, 416);
-            this.bodyUIEmployeeUC1.TabIndex = 1;
             // 
             // parameterToolStripMenuItem
             // 
@@ -115,6 +104,17 @@
             this.deconnexionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.deconnexionToolStripMenuItem.Text = "Quit";
             this.deconnexionToolStripMenuItem.Click += new System.EventHandler(this.deconnexionToolStripMenuItem_Click);
+            // 
+            // bodyUIEmployeeUC1
+            // 
+            this.bodyUIEmployeeUC1.AutoScroll = true;
+            this.bodyUIEmployeeUC1.AutoSize = true;
+            this.bodyUIEmployeeUC1.CurrentUser = null;
+            this.bodyUIEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bodyUIEmployeeUC1.Location = new System.Drawing.Point(0, 24);
+            this.bodyUIEmployeeUC1.Name = "bodyUIEmployeeUC1";
+            this.bodyUIEmployeeUC1.Size = new System.Drawing.Size(1028, 416);
+            this.bodyUIEmployeeUC1.TabIndex = 1;
             // 
             // EmployeeUI
             // 

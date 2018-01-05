@@ -129,7 +129,7 @@
             this.Controls.Add(this.CreatPN);
             this.Controls.Add(this.Valid);
             this.Name = "CreatProject";
-            this.Text = "CreatProject";
+            this.Text = "Creat Project";
             this.ResumeLayout(false);
             this.PerformLayout();
 
