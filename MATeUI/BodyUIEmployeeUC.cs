@@ -412,7 +412,9 @@ namespace MATeUI
         int indexTask;
         private void ShowDetailTask(object sender, EventArgs e)
         {
-            if(p != null)
+          
+            
+            if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
@@ -468,8 +470,20 @@ namespace MATeUI
         private void ShowDetailProject(object sender, EventArgs e)
         {
             p = sender as Project;
-            
-            if(p != null)
+            foreach (var item in p.Tasks.Values)
+            {
+                if  (item.DateLimit.Day == DateTime.Today.Day &&
+                                       item.DateLimit.Month == DateTime.Today.Month &&
+                                       item.DateLimit.Year == DateTime.Today.Year)
+                {
+                    PopupNotifier popup = new PopupNotifier();
+                    popup.Image = Properties.Resources.Notification;
+                    popup.TitleText = "Mate Project";
+                    popup.ContentText = item.Name + " ends Today!";
+                    popup.Popup();
+                }
+            }
+            if (p != null)
             {
                 bool isValided = p.IsValidated;
                 if (!isValided)
