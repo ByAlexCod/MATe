@@ -155,7 +155,7 @@ namespace MATeUI
                 projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
                 projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
                 detailProjectOnBody._dgEmployees.Rows.Clear();
-                
+
                 foreach (Employee item in ctx.PersonsDictionary.Values)
                 {
                     detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail);

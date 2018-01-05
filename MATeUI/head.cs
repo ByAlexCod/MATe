@@ -44,6 +44,7 @@ namespace MATeUI
             Thread thread = new Thread(syncsender.SpreadDatas);
             thread.IsBackground = true;
             thread.Start();
+
         }
     }
 }
