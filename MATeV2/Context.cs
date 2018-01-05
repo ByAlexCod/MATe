@@ -372,7 +372,7 @@ namespace MATeV2
                     Project a = prj.Value;
                     if (!ProjectsDictionary.ContainsKey(prj.Key))
                     {
-                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, a.Projectmanager);
+                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, FindEmployee(a.Projectmanager.Mail));
                         b.ProjectManagerModifyDate = a.ProjectManagerModifyDate;
                         b.Status = a.Status;
                         foreach (var aa in a.Members)

@@ -151,7 +151,7 @@ namespace MATeV2
             {
                 DateBegin = prj.DateBegin;
                 DateLimit = prj.DateLimit;
-                Projectmanager = prj.Projectmanager;
+                Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
 
                 
                 
