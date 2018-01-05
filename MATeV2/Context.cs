@@ -323,7 +323,21 @@ namespace MATeV2
             //End Employee Dictionary Merge
 
             //PROJECTSDictionary MERGE
-            foreach(var prj in ProjectsDictionary)
+            List<string> projectToDeleteList = new List<string>();
+            if (otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            {
+                BossModifyTime = otherContext.ModifyDate;
+                foreach (var mp in ProjectsDictionary)
+                {
+                    Project MP = mp.Value;
+                    if (!otherContext.ProjectsDictionary.ContainsKey(MP.Name))
+                    {
+                        DeleteProject(MP);
+                    }
+                }
+            }
+
+            foreach (var prj in ProjectsDictionary)
             {
                 Project a = prj.Value;
                 otherContext.ProjectsDictionary.TryGetValue(a.Name, out Project value);
@@ -333,19 +347,26 @@ namespace MATeV2
                 }
 
             }
-
-            if(otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            if (otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
             {
-                BossModifyTime = otherContext.ModifyDate;
-                foreach(var mp in ProjectsDictionary)
+
+
+                foreach (var prj in otherContext.ProjectsDictionary)
                 {
-                    Project MP = mp.Value;
-                    if (!otherContext.ProjectsDictionary.ContainsKey(MP.Name))
+                    Project a = prj.Value;
+                    if (!ProjectsDictionary.ContainsKey(prj.Key))
                     {
-                        DeleteProject(MP);
+                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, a.Projectmanager);
+                        b.ProjectManagerModifyDate = a.ProjectManagerModifyDate;
+                        b.IsValidated = a.IsValidated;
+                        foreach (var aa in a.Members)
+                        {
+                            b.Members.Add(aa.Key, FindEmployee(aa.Key));
+                        }
                     }
                 }
             }
+            
             //End ProjectsDictionary Merge
 
 
