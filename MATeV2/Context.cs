@@ -358,7 +358,7 @@ namespace MATeV2
                     {
                         Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, a.Projectmanager);
                         b.ProjectManagerModifyDate = a.ProjectManagerModifyDate;
-                        b.IsValidated = a.IsValidated;
+                        b.Status = a.Status;
                         foreach (var aa in a.Members)
                         {
                             b.Members.Add(aa.Key, FindEmployee(aa.Key));

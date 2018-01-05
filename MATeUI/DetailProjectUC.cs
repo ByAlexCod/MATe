@@ -30,9 +30,15 @@ namespace MATeUI
             _addToProjectBtn.Click += new EventHandler(OnAddButtonClicked);
             _refreshPageBtn.Click += new EventHandler(OnRefreshButtonClicked);
             _changeLeaderBtn.Click += new EventHandler(OnChangeProjectManager);
+            _validateProjectBtn.Click += new EventHandler(ValidateProject);
             _dgTasks.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(CellTaskChanged);
         }
 
+        private void ValidateProject(object sender, EventArgs e)
+        {
+            if (ValidatedProjectEvent != null)
+                ValidatedProjectEvent(this, e);
+        }
 
         private void UpdateProjectButonClick(object sender, EventArgs e)
         {
@@ -42,6 +48,7 @@ namespace MATeUI
         private void CellTaskChanged(object sender, EventArgs e) => CellTaskClick?.Invoke(this, e);
 
         public event ButtonClickedEventHandler UpdateProjectButtonClicked;
+        public event ButtonClickedEventHandler ValidatedProjectEvent;
 
         /// <summary>
         /// Appel du delegate avec une expression Lambda

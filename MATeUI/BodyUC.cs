@@ -49,6 +49,7 @@ namespace MATeUI
             projectManagementOnBody.ProjectItemChanged += new EventHandler(ShowDetailProject);
             projectManagementOnBody.DeleteSelectedProject += new ButtonClickedEventHandler(DeleteSelectedProject);
             detailProjectOnBody.UpdateProjectButtonClicked += new ButtonClickedEventHandler(OnUpdateButtonClicked);
+            detailProjectOnBody.ValidatedProjectEvent += new ButtonClickedEventHandler(ValidatedProject);
             detailProjectOnBody.ButtonRemoveFromProjectClicked += new ButtonClickedEventHandler(OnRemoveButtonClicked);
             detailProjectOnBody.AddMemberInProjectButtonClicked += new ButtonClickedEventHandler(OnAddMemberInProject);
             detailProjectOnBody.RefreshPageButtonClicked += new ButtonClickedEventHandler(OnRefreshPage);
@@ -57,6 +58,31 @@ namespace MATeUI
             projectManagementOnBody.MyAccountManagementEvent += new ProjectManagement.ButtonClickedEvent(ShowFormChangeAccount);
             
         }
+
+        private void ValidatedProject(object sender, EventArgs e)
+        {
+            if (p == null) return;
+            if (p.Tasks.Count <= 0) return;
+            Tasker task = p.Tasks.Values.Where(tt => tt.IsValidated != true).FirstOrDefault();
+            DialogResult res;
+            if (p.Status != 1)
+            {
+                MessageBox.Show("This project is not validated by the project manager");
+                return;
+            }
+            
+                res = MessageBox.Show("Do you want to validate this Project ? " +
+                                                       "", "Confirmation",
+                                                        MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (res == DialogResult.Cancel)
+                    return;
+            
+            p.Status = 2;
+            projectManagementOnBody._projectListCbx.SelectedItem = p;
+            detailProjectOnBody._validateProjectBtn.Enabled = false;
+            projectManagementOnBody._projectStatusLbl.Text = "Project has been validated By The Boss";
+        }
+
         int indexTask;
         Tasker task = null;
         private void ShowDetailTask(object sender, EventArgs e)
@@ -293,19 +319,23 @@ namespace MATeUI
                 detailProjectOnBody._changeLeaderBtn.Enabled = true;
                 detailProjectOnBody._removeMemberInProjectBtn.Enabled = true;
                 detailProjectOnBody._updateProjectBtn.Enabled = true;
+                detailProjectOnBody._validateProjectBtn.Enabled = true;
 
-                bool isValided = p.IsValidated;
-                if (isValided)
-                    projectManagementOnBody._projectStatusLbl.Text = "Validated";
+                int state = p.Status;
+                if (state == 1)
+                    projectManagementOnBody._projectStatusLbl.Text = "Project has been validated By The Project Manager";
+                else if(state == 2)
+                    projectManagementOnBody._projectStatusLbl.Text = "Project has been validated By The Boss";
                 else
                     projectManagementOnBody._projectStatusLbl.Text = "Not Validated";
                 
-                if(isValided)
+                if(state == 2 || state == 1)
                 {
                     detailProjectOnBody._addToProjectBtn.Enabled = false;
                     detailProjectOnBody._changeLeaderBtn.Enabled = false;
                     detailProjectOnBody._removeMemberInProjectBtn.Enabled = false;
                     detailProjectOnBody._updateProjectBtn.Enabled = false;
+                    detailProjectOnBody._validateProjectBtn.Enabled = false;
                 }
 
                 detailProjectOnBody.ProjectName.Text = p.Name;
