@@ -71,6 +71,7 @@
             this.endDateSubTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._validateProjectBtn = new System.Windows.Forms.Button();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
@@ -262,9 +263,9 @@
             // 
             // _updateProjectBtn
             // 
-            this._updateProjectBtn.Location = new System.Drawing.Point(783, 460);
+            this._updateProjectBtn.Location = new System.Drawing.Point(837, 460);
             this._updateProjectBtn.Name = "_updateProjectBtn";
-            this._updateProjectBtn.Size = new System.Drawing.Size(197, 32);
+            this._updateProjectBtn.Size = new System.Drawing.Size(143, 32);
             this._updateProjectBtn.TabIndex = 56;
             this._updateProjectBtn.Text = "Update Project";
             this._updateProjectBtn.UseVisualStyleBackColor = true;
@@ -331,9 +332,9 @@
             // 
             // _refreshPageBtn
             // 
-            this._refreshPageBtn.Location = new System.Drawing.Point(785, 510);
+            this._refreshPageBtn.Location = new System.Drawing.Point(837, 510);
             this._refreshPageBtn.Name = "_refreshPageBtn";
-            this._refreshPageBtn.Size = new System.Drawing.Size(195, 32);
+            this._refreshPageBtn.Size = new System.Drawing.Size(143, 32);
             this._refreshPageBtn.TabIndex = 63;
             this._refreshPageBtn.Text = "Refresh Page";
             this._refreshPageBtn.UseVisualStyleBackColor = true;
@@ -347,7 +348,7 @@
             this.project});
             this._dgTasks.Location = new System.Drawing.Point(19, 410);
             this._dgTasks.Name = "_dgTasks";
-            this._dgTasks.Size = new System.Drawing.Size(343, 149);
+            this._dgTasks.Size = new System.Drawing.Size(346, 149);
             this._dgTasks.TabIndex = 67;
             // 
             // taskName
@@ -392,10 +393,11 @@
             this._dgSubTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.subTaskName,
             this.endDateSubTask,
-            this.worker});
-            this._dgSubTasks.Location = new System.Drawing.Point(434, 410);
+            this.worker,
+            this.status});
+            this._dgSubTasks.Location = new System.Drawing.Point(395, 410);
             this._dgSubTasks.Name = "_dgSubTasks";
-            this._dgSubTasks.Size = new System.Drawing.Size(343, 149);
+            this._dgSubTasks.Size = new System.Drawing.Size(434, 149);
             this._dgSubTasks.TabIndex = 64;
             // 
             // subTaskName
@@ -418,12 +420,18 @@
             // 
             // _validateProjectBtn
             // 
-            this._validateProjectBtn.Location = new System.Drawing.Point(785, 410);
+            this._validateProjectBtn.Location = new System.Drawing.Point(837, 410);
             this._validateProjectBtn.Name = "_validateProjectBtn";
-            this._validateProjectBtn.Size = new System.Drawing.Size(185, 32);
+            this._validateProjectBtn.Size = new System.Drawing.Size(133, 32);
             this._validateProjectBtn.TabIndex = 68;
             this._validateProjectBtn.Text = "Validate";
             this._validateProjectBtn.UseVisualStyleBackColor = true;
+            // 
+            // status
+            // 
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
             // 
             // DetailProjectUC
             // 
@@ -515,5 +523,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn worker;
         private System.Windows.Forms.DataGridViewTextBoxColumn ip;
         internal System.Windows.Forms.Button _validateProjectBtn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }

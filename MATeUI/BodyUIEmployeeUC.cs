@@ -480,7 +480,7 @@ namespace MATeUI
                         detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                         foreach (var item in task.SubTasks.Values)
                         {
-                            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
+                            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
                         }
                         
                     }
@@ -558,7 +558,7 @@ namespace MATeUI
                 detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                 foreach (Tasker item in p.Tasks.Values)
                 {
-                    detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit,item.Project);
+                    detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
                 }
                
             }

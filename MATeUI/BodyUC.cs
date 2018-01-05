@@ -101,7 +101,12 @@ namespace MATeUI
                             detailProjectOnBody._dgSubTasks.Rows.Clear();
                             foreach (var item in task.SubTasks.Values)
                             {
-                                detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit, item.Worker);
+                                if(item.State== 0)
+                                detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker,"A Faire");
+                                if (item.State == 1)
+                                    detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker, "En Cours");
+                                if (item.State == 2)
+                                    detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker, "Fait");
                             }
                         }
                     }
@@ -184,7 +189,7 @@ namespace MATeUI
 
                 foreach (Employee item in ctx.PersonsDictionary.Values)
                 {
-                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail);
+                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail,item.IP);
                 }
 
             }
@@ -354,7 +359,7 @@ namespace MATeUI
                 
                 foreach (Tasker item in p.Tasks.Values)
                 {
-                    detailProjectOnBody._dgTasks.Rows.Add(item.Name, item.DateLimit);
+                    detailProjectOnBody._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
                 }
                 foreach (Employee emp in p.Members.Values)
                 {
