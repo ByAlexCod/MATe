@@ -315,11 +315,25 @@ namespace MATeV2
 
             foreach(var emp in copy)
             {
-                if (otherContext.Owner.Mail == Boss.Mail)
+                if (otherContext.Owner.Mail == Boss.Mail || BossModifyTime < otherContext.BossModifyTime)
                 {
                     if (!otherContext.PersonsDictionary.ContainsKey(emp.Value.Mail)) DeleteEmployee(emp.Value);
                 }
             }
+            foreach(var emp in otherContext.PersonsDictionary)
+            {
+                if (!PersonsDictionary.ContainsKey(emp.Key))
+                {
+                    Employee ep = emp.Value;
+                    Employee ne = CreateEmployee(ep.Firstname, ep.Lastname, ep.Mail);
+                    ne.IP = ep.IP;
+                    ne.IPString = ep.IPString;
+                    
+
+                }
+            }
+
+
             //End Employee Dictionary Merge
 
             //PROJECTSDictionary MERGE
@@ -347,7 +361,7 @@ namespace MATeV2
                 }
 
             }
-            if (otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            if (otherContext.Owner.Mail == Boss.Mail || otherContext.BossModifyTime > BossModifyTime)
             {
 
 
@@ -366,10 +380,10 @@ namespace MATeV2
                     }
                 }
             }
-            
+
             //End ProjectsDictionary Merge
 
-
+            SetDirty();
             return MergeResult.Success;
         }
 
