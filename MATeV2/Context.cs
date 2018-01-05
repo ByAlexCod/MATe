@@ -326,9 +326,11 @@ namespace MATeV2
                 {
                     Employee ep = emp.Value;
                     Employee ne = CreateEmployee(ep.Firstname, ep.Lastname, ep.Mail);
-                    ne.IP = ep.IP;
-                    ne.IPString = ep.IPString;
                     
+                    if( ep.IP != null ) ne.IP = ep.IP; 
+                    if(ep.IPString != null) ne.IPString = ep.IPString;
+
+
 
                 }
             }
