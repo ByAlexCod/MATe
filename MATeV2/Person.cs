@@ -10,12 +10,13 @@ namespace MATeV2
     [Serializable]
     public class Person
     {
-        Context _ctx;
+        readonly Context _ctx;
         string _firstname;
         string _lastname;
-        string _mail;
+        readonly string _mail;
         string _ipString;
         IPAddress _ip;
+        readonly Dictionary<Person, Conversation> ConversationsDictionary = new Dictionary<Person, Conversation>();
 
         public Person(Context c, string firstname, string lastname, string mail)
         {
@@ -46,7 +47,6 @@ namespace MATeV2
         public string Mail
         {
             get { return _mail; }
-            set { _mail = value; }
         }
         public string IPString
         {
@@ -66,7 +66,6 @@ namespace MATeV2
         public Context Context
         {
             get { return _ctx; }
-            set { _ctx = value; }
         }
             
       
@@ -93,5 +92,12 @@ namespace MATeV2
             //    }
             //}
         }
+
+        public void CreateConversation(Person theOtherOne, int port)
+        {
+            Conversation conv = new Conversation(this, theOtherOne, port);
+            ConversationsDictionary.Add(theOtherOne, conv);
+        }
+        
     }
 }

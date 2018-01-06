@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -9,12 +10,18 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     public class Conversation
     {
         readonly Dictionary<int, Message> _messageDictionary = new Dictionary<int, Message>();
         readonly Person _host;
         readonly Person _theOtherOne;
         readonly int _port;
+        static TcpListener _listener;
+        TcpClient _client;
+        NetworkStream _stream;
+        [NonSerialized] bool _isListening = false;
+
 
         public Conversation(Person host, Person theOtherOne, int port)
         {
@@ -26,14 +33,23 @@ namespace MATeV2
 
         }
 
+        public void InitializeListener(int port)
+        {
+            if (_isListening == false)
+            {
+                _listener = new TcpListener(Host.IP, port);
+                _listener.Start();
+            }
+        }
+
         public void Start()
         {
-            Thread sender = new Thread(Sender);
+            Thread sender = new Thread(StartSender);
             sender.IsBackground = true;
             sender.Start();
 
 
-            Thread receiver = new Thread(Receiver);
+            Thread receiver = new Thread(StartReceiver);
             receiver.IsBackground = true;
             receiver.Start();
         }
@@ -48,15 +64,60 @@ namespace MATeV2
 
 
 
-
-        void Sender()
+        
+        void StartSender()
         {
-            TcpListener listener = new TcpListener(Host.IP, Port);
-            listener.Start();
+            _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
+            _stream = _client.GetStream();
+
+           
         }
-        void Receiver()
+    
+        void StartReceiver()
         {
 
+            string incoming;
+            while (true)
+            {
+                TcpClient client = _listener.AcceptTcpClient();
+                NetworkStream stream = client.GetStream();
+                using(StreamReader streamer = new StreamReader(stream))
+                {
+                    incoming = streamer.ReadLine();
+                }
+                if(incoming.Contains("#" + TheOtherOne.Mail))
+                {
+                    Message ms = new Message(this, incoming.Split('#')[0], Host, TheOtherOne);
+                    Random x = new Random();
+                    int xx = x.Next(9999999);
+                    MessageDictionary.Add(xx, ms);
+                }
+            }
         }
+
+
+        public void SendMessage(string msg)
+        {
+            Message ms = new Message(this, msg, Host, TheOtherOne);
+            
+            try
+            {
+                using (StreamWriter write = new StreamWriter(_stream))
+                {
+                    write.WriteLine(ms.Text);
+                }
+                Random x = new Random();
+                int xx = x.Next(9999999);
+                MessageDictionary.Add(xx, ms);
+
+
+            } catch
+            {
+
+            }
+
+        }
+        
+        
     }
 }

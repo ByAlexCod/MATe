@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BodyUIEmployeeUC));
             this.projectManagement1 = new MATeUI.ProjectManagement();
             this.detailProjectEmployeeUC1 = new MATeUI.DetailProjectEmployeeUC();
             this.SuspendLayout();
@@ -35,10 +36,12 @@
             // projectManagement1
             // 
             this.projectManagement1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.projectManagement1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("projectManagement1.BackgroundImage")));
+            this.projectManagement1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.projectManagement1.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectManagement1.Location = new System.Drawing.Point(0, 0);
             this.projectManagement1.Name = "projectManagement1";
-            this.projectManagement1.Size = new System.Drawing.Size(1014, 68);
+            this.projectManagement1.Size = new System.Drawing.Size(1120, 68);
             this.projectManagement1.TabIndex = 0;
             // 
             // detailProjectEmployeeUC1
@@ -47,7 +50,7 @@
             this.detailProjectEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.detailProjectEmployeeUC1.Location = new System.Drawing.Point(0, 68);
             this.detailProjectEmployeeUC1.Name = "detailProjectEmployeeUC1";
-            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1014, 346);
+            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1120, 553);
             this.detailProjectEmployeeUC1.TabIndex = 1;
             // 
             // BodyUIEmployeeUC
@@ -57,7 +60,7 @@
             this.Controls.Add(this.detailProjectEmployeeUC1);
             this.Controls.Add(this.projectManagement1);
             this.Name = "BodyUIEmployeeUC";
-            this.Size = new System.Drawing.Size(1014, 601);
+            this.Size = new System.Drawing.Size(1120, 621);
             this.ResumeLayout(false);
 
         }
