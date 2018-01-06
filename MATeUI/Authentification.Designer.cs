@@ -40,6 +40,7 @@
             // 
             // connexionBtn
             // 
+            this.connexionBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.connexionBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.connexionBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.connexionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -112,6 +113,7 @@
             this.Controls.Add(this.userNameTbx);
             this.Controls.Add(this.connexionBtn);
             this.Controls.Add(this.pictureBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(725, 390);
             this.MinimumSize = new System.Drawing.Size(725, 390);

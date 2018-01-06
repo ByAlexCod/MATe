@@ -126,7 +126,7 @@
             this.bodyUC1.TabIndex = 2;
             this.bodyUC1.Load += new System.EventHandler(this.bodyUC1_Load);
             // 
-            // ProjectManager
+            // BossWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -135,8 +135,9 @@
             this.ClientSize = new System.Drawing.Size(1314, 844);
             this.Controls.Add(this.bodyUC1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "ProjectManager";
+            this.Name = "BossWindow";
             this.Text = "BOSS \'s INTERFACE";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
