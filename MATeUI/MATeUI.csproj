@@ -48,11 +48,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BodyUC.cs">
+    <Compile Include="BossBodyUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="BodyUC.Designer.cs">
-      <DependentUpon>BodyUC.cs</DependentUpon>
+    <Compile Include="BossBodyUC.Designer.cs">
+      <DependentUpon>BossBodyUC.cs</DependentUpon>
     </Compile>
     <Compile Include="BodyUIEmployeeUC.cs">
       <SubType>UserControl</SubType>
@@ -60,17 +60,17 @@
     <Compile Include="BodyUIEmployeeUC.designer.cs">
       <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeCount.cs">
+    <Compile Include="ModifyAccount.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeCount.Designer.cs">
-      <DependentUpon>ChangeCount.cs</DependentUpon>
+    <Compile Include="ModifyAccount.Designer.cs">
+      <DependentUpon>ModifyAccount.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChangeCount2.cs">
+    <Compile Include="ModifyAccount2.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ChangeCount2.Designer.cs">
-      <DependentUpon>ChangeCount2.cs</DependentUpon>
+    <Compile Include="ModifyAccount2.Designer.cs">
+      <DependentUpon>ModifyAccount2.cs</DependentUpon>
     </Compile>
     <Compile Include="ChatUI.cs">
       <SubType>UserControl</SubType>
@@ -84,17 +84,17 @@
     <Compile Include="ChatWDF.Designer.cs">
       <DependentUpon>ChatWDF.cs</DependentUpon>
     </Compile>
-    <Compile Include="Colaborators.cs">
+    <Compile Include="ColaboratorsTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Colaborators.Designer.cs">
-      <DependentUpon>Colaborators.cs</DependentUpon>
+    <Compile Include="ColaboratorsTab.Designer.cs">
+      <DependentUpon>ColaboratorsTab.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateEmployeeForm.cs">
+    <Compile Include="CreateEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateEmployeeForm.Designer.cs">
-      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
+    <Compile Include="CreateEmployee.Designer.cs">
+      <DependentUpon>CreateEmployee.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateEmployeeUC.cs">
       <SubType>UserControl</SubType>
@@ -138,11 +138,11 @@
     <Compile Include="Authentification.Designer.cs">
       <DependentUpon>Authentification.cs</DependentUpon>
     </Compile>
-    <Compile Include="head.cs">
+    <Compile Include="OldHeader.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="head.Designer.cs">
-      <DependentUpon>head.cs</DependentUpon>
+    <Compile Include="OldHeader.Designer.cs">
+      <DependentUpon>OldHeader.cs</DependentUpon>
     </Compile>
     <Compile Include="NewEmployeeForm.cs">
       <SubType>Form</SubType>
@@ -169,11 +169,11 @@
     <Compile Include="ProjectManagement.Designer.cs">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectManager.cs">
+    <Compile Include="BossWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectManager.Designer.cs">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
+    <Compile Include="BossWindow.Designer.cs">
+      <DependentUpon>BossWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBoss.cs">
@@ -195,17 +195,17 @@
     <Compile Include="TeamLeaderUC.Designer.cs">
       <DependentUpon>TeamLeaderUC.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BodyUC.resx">
-      <DependentUpon>BodyUC.cs</DependentUpon>
+    <EmbeddedResource Include="BossBodyUC.resx">
+      <DependentUpon>BossBodyUC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BodyUIEmployeeUC.resx">
       <DependentUpon>BodyUIEmployeeUC.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeCount.resx">
-      <DependentUpon>ChangeCount.cs</DependentUpon>
+    <EmbeddedResource Include="ModifyAccount.resx">
+      <DependentUpon>ModifyAccount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangeCount2.resx">
-      <DependentUpon>ChangeCount2.cs</DependentUpon>
+    <EmbeddedResource Include="ModifyAccount2.resx">
+      <DependentUpon>ModifyAccount2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChatUI.resx">
       <DependentUpon>ChatUI.cs</DependentUpon>
@@ -213,11 +213,11 @@
     <EmbeddedResource Include="ChatWDF.resx">
       <DependentUpon>ChatWDF.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Colaborators.resx">
-      <DependentUpon>Colaborators.cs</DependentUpon>
+    <EmbeddedResource Include="ColaboratorsTab.resx">
+      <DependentUpon>ColaboratorsTab.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateEmployeeForm.resx">
-      <DependentUpon>CreateEmployeeForm.cs</DependentUpon>
+    <EmbeddedResource Include="CreateEmployee.resx">
+      <DependentUpon>CreateEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateEmployeeUC.resx">
       <DependentUpon>CreateEmployeeUC.cs</DependentUpon>
@@ -238,8 +238,8 @@
     <EmbeddedResource Include="EmployeeUI.resx">
       <DependentUpon>EmployeeUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="head.resx">
-      <DependentUpon>head.cs</DependentUpon>
+    <EmbeddedResource Include="OldHeader.resx">
+      <DependentUpon>OldHeader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewEmployeeForm.resx">
       <DependentUpon>NewEmployeeForm.cs</DependentUpon>
@@ -253,8 +253,8 @@
     <EmbeddedResource Include="ProjectManagement.resx">
       <DependentUpon>ProjectManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectManager.resx">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
+    <EmbeddedResource Include="BossWindow.resx">
+      <DependentUpon>BossWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

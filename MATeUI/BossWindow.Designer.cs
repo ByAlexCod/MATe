@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class ProjectManager
+    partial class BossWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,17 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectManager));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BossWindow));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.synchronizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bodyUC1 = new MATeUI.BodyUC();
+            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parameterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.myAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deconnexionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readMeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bodyUC1 = new MATeUI.BossBodyUC();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +51,7 @@
             this.parameterToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1022, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1314, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,6 +62,13 @@
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.saveToolStripMenuItem.Text = "Save";
+            // 
+            // saveAllToolStripMenuItem
+            // 
+            this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
+            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
+            this.saveAllToolStripMenuItem.Text = "Save All";
+            this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
             // 
             // synchronizeToolStripMenuItem
             // 
@@ -77,22 +84,14 @@
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.helpToolStripMenuItem.Text = "Help";
-            
             // 
-            // saveAllToolStripMenuItem
+            // readMeToolStripMenuItem
             // 
-            this.saveAllToolStripMenuItem.Name = "saveAllToolStripMenuItem";
-            this.saveAllToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.saveAllToolStripMenuItem.Text = "Save All";
-            this.saveAllToolStripMenuItem.Click += new System.EventHandler(this.saveAllToolStripMenuItem_Click);
-            // 
-            // bodyUC1
-            // 
-            this.bodyUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bodyUC1.Location = new System.Drawing.Point(0, 24);
-            this.bodyUC1.Name = "bodyUC1";
-            this.bodyUC1.Size = new System.Drawing.Size(1022, 546);
-            this.bodyUC1.TabIndex = 2;
+            this.readMeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("readMeToolStripMenuItem.Image")));
+            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
+            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
+            this.readMeToolStripMenuItem.Text = "Read Me";
+            this.readMeToolStripMenuItem.Click += new System.EventHandler(this.readMeToolStripMenuItem_Click);
             // 
             // parameterToolStripMenuItem
             // 
@@ -106,7 +105,7 @@
             // myAccountToolStripMenuItem
             // 
             this.myAccountToolStripMenuItem.Name = "myAccountToolStripMenuItem";
-            this.myAccountToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myAccountToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.myAccountToolStripMenuItem.Text = "My Account";
             this.myAccountToolStripMenuItem.Click += new System.EventHandler(this.myAccountToolStripMenuItem_Click);
             // 
@@ -114,17 +113,18 @@
             // 
             this.deconnexionToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("deconnexionToolStripMenuItem.Image")));
             this.deconnexionToolStripMenuItem.Name = "deconnexionToolStripMenuItem";
-            this.deconnexionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.deconnexionToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.deconnexionToolStripMenuItem.Text = "Quit";
             this.deconnexionToolStripMenuItem.Click += new System.EventHandler(this.deconnexionToolStripMenuItem_Click);
             // 
-            // readMeToolStripMenuItem
+            // bodyUC1
             // 
-            this.readMeToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("readMeToolStripMenuItem.Image")));
-            this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
-            this.readMeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.readMeToolStripMenuItem.Text = "Read Me";
-            this.readMeToolStripMenuItem.Click += new System.EventHandler(this.readMeToolStripMenuItem_Click);
+            this.bodyUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bodyUC1.Location = new System.Drawing.Point(0, 24);
+            this.bodyUC1.Name = "bodyUC1";
+            this.bodyUC1.Size = new System.Drawing.Size(1314, 820);
+            this.bodyUC1.TabIndex = 2;
+            this.bodyUC1.Load += new System.EventHandler(this.bodyUC1_Load);
             // 
             // ProjectManager
             // 
@@ -132,7 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1022, 570);
+            this.ClientSize = new System.Drawing.Size(1314, 844);
             this.Controls.Add(this.bodyUC1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -146,7 +146,7 @@
         }
 
         #endregion
-        private BodyUC bodyUC1;
+        private BossBodyUC bodyUC1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAllToolStripMenuItem;

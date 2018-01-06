@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class CreateEmployeeForm
+    partial class CreateEmployee
     {
         /// <summary>
         /// Required designer variable.
@@ -35,17 +35,19 @@
             // 
             this.createEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.createEmployeeUC1.Location = new System.Drawing.Point(0, 0);
+            this.createEmployeeUC1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.createEmployeeUC1.Name = "createEmployeeUC1";
-            this.createEmployeeUC1.Size = new System.Drawing.Size(700, 387);
+            this.createEmployeeUC1.Size = new System.Drawing.Size(482, 248);
             this.createEmployeeUC1.TabIndex = 0;
             this.createEmployeeUC1.Load += new System.EventHandler(this.createEmployeeUC1_Load);
             // 
             // CreateEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 387);
+            this.ClientSize = new System.Drawing.Size(482, 248);
             this.Controls.Add(this.createEmployeeUC1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "CreateEmployeeForm";
             this.Text = "CreateEmployeeForm";
             this.ResumeLayout(false);

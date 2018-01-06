@@ -566,7 +566,7 @@ namespace MATeUI
 
         private void ShowFormChangeAccount(object sender,EventArgs e)
         {
-            ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
+            ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
        

@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class head
+    partial class OldHeader
     {
         /// <summary> 
         /// Required designer variable.

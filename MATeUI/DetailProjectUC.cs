@@ -94,5 +94,10 @@ namespace MATeUI
             if (AddTaskButton != null)
                 AddTaskButton(this, e);
         }
+
+        private void _refreshPageBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

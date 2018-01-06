@@ -13,10 +13,10 @@ using System.Threading;
 
 namespace MATeUI
 {
-    public partial class ProjectManager : Form
+    public partial class BossWindow : Form
     {
         ContextAndUserManager _currentCtx = Authentification.CurrentCtxUser;
-        public ProjectManager()
+        public BossWindow()
         {
             InitializeComponent();
         }
@@ -46,7 +46,7 @@ namespace MATeUI
         
         private void myAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
+            ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
 
@@ -60,6 +60,11 @@ namespace MATeUI
         private void readMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("????????????");
+        }
+
+        private void bodyUC1_Load(object sender, EventArgs e)
+        {
+
         }
 
         //public delegate void ContextMenuStrip(object sender, EventArgs e);

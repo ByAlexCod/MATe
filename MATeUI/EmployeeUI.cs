@@ -50,11 +50,16 @@ namespace MATeUI
 
         private void myAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChangeCount changeCount = new ChangeCount(Authentification.CurrentCtxUser.CurrentUser);
+            ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
 
         private void deconnexionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dEBUGToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

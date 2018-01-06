@@ -36,8 +36,6 @@
             this._projectBeginDate = new System.Windows.Forms.DateTimePicker();
             this.ProjectName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -70,8 +68,8 @@
             this.subTaskName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.endDateSubTask = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.worker = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._validateProjectBtn = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this._validateProjectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
@@ -81,7 +79,7 @@
             // _lastNameLbl
             // 
             this._lastNameLbl.AutoSize = true;
-            this._lastNameLbl.Location = new System.Drawing.Point(167, 212);
+            this._lastNameLbl.Location = new System.Drawing.Point(167, 127);
             this._lastNameLbl.Name = "_lastNameLbl";
             this._lastNameLbl.Size = new System.Drawing.Size(61, 13);
             this._lastNameLbl.TabIndex = 51;
@@ -90,7 +88,7 @@
             // _mailLbl
             // 
             this._mailLbl.AutoSize = true;
-            this._mailLbl.Location = new System.Drawing.Point(167, 246);
+            this._mailLbl.Location = new System.Drawing.Point(281, 151);
             this._mailLbl.Name = "_mailLbl";
             this._mailLbl.Size = new System.Drawing.Size(52, 13);
             this._mailLbl.TabIndex = 50;
@@ -99,7 +97,7 @@
             // _addressIPLbl
             // 
             this._addressIPLbl.AutoSize = true;
-            this._addressIPLbl.Location = new System.Drawing.Point(167, 280);
+            this._addressIPLbl.Location = new System.Drawing.Point(281, 187);
             this._addressIPLbl.Name = "_addressIPLbl";
             this._addressIPLbl.Size = new System.Drawing.Size(52, 13);
             this._addressIPLbl.TabIndex = 49;
@@ -108,7 +106,7 @@
             // _firstNameLbl
             // 
             this._firstNameLbl.AutoSize = true;
-            this._firstNameLbl.Location = new System.Drawing.Point(167, 179);
+            this._firstNameLbl.Location = new System.Drawing.Point(269, 127);
             this._firstNameLbl.Name = "_firstNameLbl";
             this._firstNameLbl.Size = new System.Drawing.Size(64, 13);
             this._firstNameLbl.TabIndex = 48;
@@ -116,14 +114,14 @@
             // 
             // _projectEndDate
             // 
-            this._projectEndDate.Location = new System.Drawing.Point(170, 102);
+            this._projectEndDate.Location = new System.Drawing.Point(170, 81);
             this._projectEndDate.Name = "_projectEndDate";
             this._projectEndDate.Size = new System.Drawing.Size(163, 20);
             this._projectEndDate.TabIndex = 47;
             // 
             // _projectBeginDate
             // 
-            this._projectBeginDate.Location = new System.Drawing.Point(170, 62);
+            this._projectBeginDate.Location = new System.Drawing.Point(170, 55);
             this._projectBeginDate.Name = "_projectBeginDate";
             this._projectBeginDate.Size = new System.Drawing.Size(163, 20);
             this._projectBeginDate.TabIndex = 46;
@@ -138,34 +136,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(40, 280);
+            this.label8.Location = new System.Drawing.Point(167, 187);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 44;
             this.label8.Text = "IP Address";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 179);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 13);
-            this.label7.TabIndex = 43;
-            this.label7.Text = "First Name";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 212);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 13);
-            this.label6.TabIndex = 42;
-            this.label6.Text = "Last Name";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(40, 246);
+            this.label5.Location = new System.Drawing.Point(167, 151);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 41;
@@ -174,7 +154,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(167, 154);
+            this.label4.Location = new System.Drawing.Point(212, 104);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 40;
@@ -183,7 +163,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 70);
+            this.label3.Location = new System.Drawing.Point(38, 55);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 39;
@@ -192,7 +172,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 108);
+            this.label2.Location = new System.Drawing.Point(38, 81);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 38;
@@ -201,7 +181,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 32);
+            this.label1.Location = new System.Drawing.Point(38, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 37;
@@ -209,7 +189,12 @@
             // 
             // _removeMemberInProjectBtn
             // 
-            this._removeMemberInProjectBtn.Location = new System.Drawing.Point(873, 325);
+            this._removeMemberInProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._removeMemberInProjectBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._removeMemberInProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._removeMemberInProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._removeMemberInProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._removeMemberInProjectBtn.Location = new System.Drawing.Point(775, 317);
             this._removeMemberInProjectBtn.Name = "_removeMemberInProjectBtn";
             this._removeMemberInProjectBtn.Size = new System.Drawing.Size(145, 23);
             this._removeMemberInProjectBtn.TabIndex = 54;
@@ -219,7 +204,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(805, 195);
+            this.label10.Location = new System.Drawing.Point(707, 187);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(116, 13);
             this.label10.TabIndex = 53;
@@ -232,7 +217,7 @@
             this.columnFirstName2,
             this.columnLastName2,
             this.columnMail2});
-            this._dgMemberInProject.Location = new System.Drawing.Point(696, 224);
+            this._dgMemberInProject.Location = new System.Drawing.Point(598, 216);
             this._dgMemberInProject.Name = "_dgMemberInProject";
             this._dgMemberInProject.Size = new System.Drawing.Size(345, 95);
             this._dgMemberInProject.TabIndex = 52;
@@ -254,7 +239,12 @@
             // 
             // _changeLeaderBtn
             // 
-            this._changeLeaderBtn.Location = new System.Drawing.Point(728, 325);
+            this._changeLeaderBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._changeLeaderBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._changeLeaderBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._changeLeaderBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._changeLeaderBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._changeLeaderBtn.Location = new System.Drawing.Point(630, 317);
             this._changeLeaderBtn.Name = "_changeLeaderBtn";
             this._changeLeaderBtn.Size = new System.Drawing.Size(101, 23);
             this._changeLeaderBtn.TabIndex = 57;
@@ -263,6 +253,11 @@
             // 
             // _updateProjectBtn
             // 
+            this._updateProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._updateProjectBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._updateProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._updateProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._updateProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._updateProjectBtn.Location = new System.Drawing.Point(837, 460);
             this._updateProjectBtn.Name = "_updateProjectBtn";
             this._updateProjectBtn.Size = new System.Drawing.Size(143, 32);
@@ -272,7 +267,12 @@
             // 
             // _addToProjectBtn
             // 
-            this._addToProjectBtn.Location = new System.Drawing.Point(785, 154);
+            this._addToProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._addToProjectBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._addToProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._addToProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._addToProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._addToProjectBtn.Location = new System.Drawing.Point(687, 146);
             this._addToProjectBtn.Name = "_addToProjectBtn";
             this._addToProjectBtn.Size = new System.Drawing.Size(145, 23);
             this._addToProjectBtn.TabIndex = 60;
@@ -296,7 +296,7 @@
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.ip});
-            this._dgEmployees.Location = new System.Drawing.Point(685, 53);
+            this._dgEmployees.Location = new System.Drawing.Point(587, 45);
             this._dgEmployees.Name = "_dgEmployees";
             this._dgEmployees.Size = new System.Drawing.Size(345, 95);
             this._dgEmployees.TabIndex = 58;
@@ -324,7 +324,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(805, 29);
+            this.label12.Location = new System.Drawing.Point(707, 21);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(72, 13);
             this.label12.TabIndex = 62;
@@ -332,12 +332,18 @@
             // 
             // _refreshPageBtn
             // 
+            this._refreshPageBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._refreshPageBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._refreshPageBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._refreshPageBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._refreshPageBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._refreshPageBtn.Location = new System.Drawing.Point(837, 510);
             this._refreshPageBtn.Name = "_refreshPageBtn";
             this._refreshPageBtn.Size = new System.Drawing.Size(143, 32);
             this._refreshPageBtn.TabIndex = 63;
             this._refreshPageBtn.Text = "Refresh Page";
             this._refreshPageBtn.UseVisualStyleBackColor = true;
+            this._refreshPageBtn.Click += new System.EventHandler(this._refreshPageBtn_Click);
             // 
             // _dgTasks
             // 
@@ -418,20 +424,25 @@
             this.worker.Name = "worker";
             this.worker.ReadOnly = true;
             // 
+            // status
+            // 
+            this.status.HeaderText = "Status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // _validateProjectBtn
             // 
+            this._validateProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._validateProjectBtn.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._validateProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._validateProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this._validateProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this._validateProjectBtn.Location = new System.Drawing.Point(837, 410);
             this._validateProjectBtn.Name = "_validateProjectBtn";
             this._validateProjectBtn.Size = new System.Drawing.Size(133, 32);
             this._validateProjectBtn.TabIndex = 68;
             this._validateProjectBtn.Text = "Validate";
             this._validateProjectBtn.UseVisualStyleBackColor = true;
-            // 
-            // status
-            // 
-            this.status.HeaderText = "Status";
-            this.status.Name = "status";
-            this.status.ReadOnly = true;
             // 
             // DetailProjectUC
             // 
@@ -461,15 +472,13 @@
             this.Controls.Add(this._projectBeginDate);
             this.Controls.Add(this.ProjectName);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DetailProjectUC";
-            this.Size = new System.Drawing.Size(1004, 575);
+            this.Size = new System.Drawing.Size(970, 541);
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
@@ -482,8 +491,6 @@
         #endregion
         private System.Windows.Forms.Label _addressIPLbl;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

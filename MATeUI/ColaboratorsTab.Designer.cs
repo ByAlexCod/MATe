@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class Colaborators
+    partial class ColaboratorsTab
     {
         /// <summary> 
         /// Required designer variable.

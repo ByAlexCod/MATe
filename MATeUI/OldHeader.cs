@@ -12,10 +12,10 @@ using Network;
 using System.Threading;
 namespace MATeUI
 {
-    public partial class head : UserControl
+    public partial class OldHeader : UserControl
     {
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
-        public head()
+        public OldHeader()
         {
             InitializeComponent();
         }
