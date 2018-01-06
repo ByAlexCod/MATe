@@ -45,7 +45,7 @@
             this.connexionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.connexionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connexionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connexionBtn.Location = new System.Drawing.Point(551, 215);
+            this.connexionBtn.Location = new System.Drawing.Point(551, 217);
             this.connexionBtn.Name = "connexionBtn";
             this.connexionBtn.Size = new System.Drawing.Size(77, 30);
             this.connexionBtn.TabIndex = 0;

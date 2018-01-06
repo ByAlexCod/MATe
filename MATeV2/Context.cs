@@ -198,7 +198,7 @@ namespace MATeV2
         {
             SetBossModifyTime();
             p.Projectmanager = null;
-            projectmanager.CurrentWorkingProject = null;
+            RemoveMemberFromProject(p, projectmanager);
             SetDirty();
 
             return p;
