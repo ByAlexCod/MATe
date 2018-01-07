@@ -34,28 +34,32 @@ namespace MATeV2
 
         }
 
-        static public void InitializeListener(Person user, int port)
+        public static void InitializeListener(Person user, int port)
         {
             if (_isListening == false)
             {
                 _listener = new TcpListener(user.IP, port);
                 _listener.Start();
+                foreach(var use in user.ConversationDictionary)
+                {
+                    use.Value.StartReceiver();
+                }
             }
         }
 
-        public void Start()
+        public static void Start(Person user, int Port)
         {
-            Thread sender = new Thread(StartSender);
-            sender.IsBackground = true;
-            sender.Start();
+            
 
 
-            Thread receiver = new Thread(StartReceiver);
+            Thread receiver = new Thread(() => InitializeListener(user, Port));
             receiver.IsBackground = true;
             receiver.Start();
         }
 
+        
 
+        
         public int Port => _port;
         public Person Host => _host;
         public bool ToSee => _toSee;
