@@ -1,5 +1,18 @@
-﻿namespace MATeUI
+﻿using System.Threading;
+using MATeV2;
+using System.Windows;
+
+namespace MATeUI
 {
+    public class Item
+    {
+        public string strText;
+        public Conversation strValue;
+        public override string ToString()
+        {
+            return this.strText;
+        }
+    }
     partial class SendFileOrMessageUC
     {
         /// <summary> 
@@ -22,11 +35,49 @@
 
         #region Code généré par le Concepteur de composants
 
+
+        internal void AutomaticMessage()
+        {
+            //using (var ct = _ctxuser.ObtainAccessor())
+            //{
+            //    Context ctx = ct.Context;
+            //    foreach (var ms in _ctxuser.CurrentUser.ConversationDictionary)
+            //    {
+            //        if (ms.Value.ToSee == true)
+            //        {
+                        
+            //            _lvMessages.Rows.Add(ms.Value.TheOtherOne.Firstname + " " + ms.Value.TheOtherOne.Lastname + " - Nouveau message !", ms);
+            //        }
+            //        else
+            //        {
+            //            Item ii = new Item();
+            //            ii.strText
+            //            _lvMessages.Rows.Add(;
+
+            //        }
+            //    }
+            //}
+            //while (true)
+            //{
+            //    using (var ct = _ctxuser.ObtainAccessor())
+            //    {
+            //        Context ctx = ct.Context;
+            //        foreach (var convin in _lvMessages.Rows)
+            //        {
+            //            _ctxuser.CurrentUser.ConversationDictionary.TryGetValue(convin, out Conversation value);
+                        
+            //        }
+
+            //        Thread.Sleep(5500);
+            //    }
+            //}
+        }
+
         /// <summary> 
         /// Méthode requise pour la prise en charge du concepteur - ne modifiez pas 
         /// le contenu de cette méthode avec l'éditeur de code.
         /// </summary>
-        private void InitializeComponent()
+        internal void InitializeComponent()
         {
             this._sendBtn = new System.Windows.Forms.Button();
             this._panelMessage = new System.Windows.Forms.Panel();
@@ -39,16 +90,18 @@
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this._lvMessages = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this._panelSelectedFolder = new System.Windows.Forms.Panel();
             this._pathFolderLbl = new System.Windows.Forms.Label();
             this._chooseFolderLbl = new System.Windows.Forms.Label();
+            this._lvMessages = new System.Windows.Forms.DataGridView();
+            this.theotheronename = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._panelMessage.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
             this._panelSelectedFolder.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._lvMessages)).BeginInit();
             this.SuspendLayout();
             // 
             // _sendBtn
@@ -145,14 +198,6 @@
             this.ip.Name = "ip";
             this.ip.ReadOnly = true;
             // 
-            // _lvMessages
-            // 
-            this._lvMessages.Location = new System.Drawing.Point(649, 42);
-            this._lvMessages.Name = "_lvMessages";
-            this._lvMessages.Size = new System.Drawing.Size(149, 356);
-            this._lvMessages.TabIndex = 20;
-            this._lvMessages.UseCompatibleStateImageBehavior = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -165,11 +210,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(584, 12);
+            this.label2.Location = new System.Drawing.Point(687, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 13);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 22;
-            this.label2.Text = "Messages\'s List";
+            this.label2.Text = "Conversations";
             // 
             // _panelSelectedFolder
             // 
@@ -199,15 +244,30 @@
             this._chooseFolderLbl.Text = "Browse";
             this._chooseFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // _lvMessages
+            // 
+            this._lvMessages.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this._lvMessages.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.theotheronename});
+            this._lvMessages.Location = new System.Drawing.Point(640, 41);
+            this._lvMessages.Name = "_lvMessages";
+            this._lvMessages.Size = new System.Drawing.Size(197, 289);
+            this._lvMessages.TabIndex = 24;
+            // 
+            // theotheronename
+            // 
+            this.theotheronename.HeaderText = "Destinataire";
+            this.theotheronename.Name = "theotheronename";
+            // 
             // SendFileOrMessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this._lvMessages);
             this.Controls.Add(this._panelSelectedFolder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._panelMessage);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this._lvMessages);
             this.Controls.Add(this._sendBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this._dgEmployees);
@@ -219,6 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
             this._panelSelectedFolder.ResumeLayout(false);
             this._panelSelectedFolder.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this._lvMessages)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -233,7 +294,6 @@
         internal System.Windows.Forms.RadioButton _sendMessageRbtn;
         internal System.Windows.Forms.RadioButton _sendFileRbtn;
         internal System.Windows.Forms.DataGridView _dgEmployees;
-        internal System.Windows.Forms.ListView _lvMessages;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstName;
@@ -243,5 +303,7 @@
         internal System.Windows.Forms.Panel _panelSelectedFolder;
         internal System.Windows.Forms.Label _pathFolderLbl;
         internal System.Windows.Forms.Label _chooseFolderLbl;
+        private System.Windows.Forms.DataGridView _lvMessages;
+        private System.Windows.Forms.DataGridViewTextBoxColumn theotheronename;
     }
 }

@@ -280,6 +280,10 @@ namespace MATeV2
         public void DeleteEmployee(Employee e)
         {
             SetBossModifyTime();
+            foreach(var bb in PersonsDictionary)
+            {
+                if (bb.Value.ConversationDictionary.ContainsKey(e)) bb.Value.ConversationDictionary.Remove(e);
+            }
             _personsDictionary.Remove(e.Mail);
             if (e.CurrentWorkingProject != null)
             {

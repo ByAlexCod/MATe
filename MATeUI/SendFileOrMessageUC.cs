@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MATeV2;
 
 namespace MATeUI
 {
     public partial class SendFileOrMessageUC : UserControl
     {
+        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         public SendFileOrMessageUC()
         {
             InitializeComponent();
+            AutomaticMessage();
         }
 
         //Delegate declaration

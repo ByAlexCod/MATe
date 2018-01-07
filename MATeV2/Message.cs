@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace MATeV2
 {
+    [Serializable]
     internal class Message
     {
         readonly string _text;

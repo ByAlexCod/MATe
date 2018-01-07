@@ -569,7 +569,10 @@ namespace MATeUI
             ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
         }
-       
-        
+
+        private void detailProjectEmployeeUC1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

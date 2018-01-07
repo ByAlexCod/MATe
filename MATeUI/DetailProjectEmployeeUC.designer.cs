@@ -470,7 +470,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this._dgSubTasks);
             this.Name = "DetailProjectEmployeeUC";
-            this.Size = new System.Drawing.Size(1050, 586);
+            this.Size = new System.Drawing.Size(1359, 586);
             ((System.ComponentModel.ISupportInitialize)(this._dgSubTasks)).EndInit();
             this.panelStateSubTask.ResumeLayout(false);
             this.panelStateSubTask.PerformLayout();

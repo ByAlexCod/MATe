@@ -17,10 +17,11 @@ namespace MATeV2
         readonly Person _host;
         readonly Person _theOtherOne;
         readonly int _port;
+        bool _toSee = false;
         static TcpListener _listener;
         TcpClient _client;
         NetworkStream _stream;
-        [NonSerialized] bool _isListening = false;
+        [NonSerialized] static bool _isListening = false;
 
 
         public Conversation(Person host, Person theOtherOne, int port)
@@ -33,11 +34,11 @@ namespace MATeV2
 
         }
 
-        public void InitializeListener(int port)
+        static public void InitializeListener(Person user, int port)
         {
             if (_isListening == false)
             {
-                _listener = new TcpListener(Host.IP, port);
+                _listener = new TcpListener(user.IP, port);
                 _listener.Start();
             }
         }
@@ -57,6 +58,7 @@ namespace MATeV2
 
         public int Port => _port;
         public Person Host => _host;
+        public bool ToSee => _toSee;
         public Person TheOtherOne => _theOtherOne;
         internal Dictionary<int, Message> MessageDictionary => _messageDictionary;
 
@@ -91,6 +93,7 @@ namespace MATeV2
                     Random x = new Random();
                     int xx = x.Next(9999999);
                     MessageDictionary.Add(xx, ms);
+                    _toSee = true;
                 }
             }
         }

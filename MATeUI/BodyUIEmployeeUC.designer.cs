@@ -41,7 +41,7 @@
             this.projectManagement1.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectManagement1.Location = new System.Drawing.Point(0, 0);
             this.projectManagement1.Name = "projectManagement1";
-            this.projectManagement1.Size = new System.Drawing.Size(1120, 68);
+            this.projectManagement1.Size = new System.Drawing.Size(1296, 68);
             this.projectManagement1.TabIndex = 0;
             // 
             // detailProjectEmployeeUC1
@@ -50,8 +50,9 @@
             this.detailProjectEmployeeUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.detailProjectEmployeeUC1.Location = new System.Drawing.Point(0, 68);
             this.detailProjectEmployeeUC1.Name = "detailProjectEmployeeUC1";
-            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1120, 553);
+            this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1296, 553);
             this.detailProjectEmployeeUC1.TabIndex = 1;
+            this.detailProjectEmployeeUC1.Load += new System.EventHandler(this.detailProjectEmployeeUC1_Load);
             // 
             // BodyUIEmployeeUC
             // 
@@ -60,7 +61,7 @@
             this.Controls.Add(this.detailProjectEmployeeUC1);
             this.Controls.Add(this.projectManagement1);
             this.Name = "BodyUIEmployeeUC";
-            this.Size = new System.Drawing.Size(1120, 621);
+            this.Size = new System.Drawing.Size(1296, 621);
             this.ResumeLayout(false);
 
         }

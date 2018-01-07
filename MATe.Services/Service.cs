@@ -28,7 +28,7 @@ namespace MATe.Services
                     Context ctx = z.Context;
                     if (a == ctx.Boss)
                     {
-                        
+                        Conversation.InitializeListener(a, 1807);
                         Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
                         Thread lii = new Thread(bobo.Start);
                         lii.IsBackground = true;
