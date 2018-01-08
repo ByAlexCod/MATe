@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MATeV2;
+using System.Threading;
 
 namespace MATeUI
 {
@@ -18,6 +19,41 @@ namespace MATeUI
         {
             InitializeComponent();
             AutomaticMessage();
+        }
+        internal void AutomaticMessage()
+        {
+            //using (var ct = _ctxuser.ObtainAccessor())
+            //{
+            //    Context ctx = ct.Context;
+            //    foreach (var ms in _ctxuser.CurrentUser.ConversationDictionary)
+            //    {
+            //        if (ms.Value.ToSee == true)
+            //        {
+
+            //            _lvMessages.Rows.Add(ms.Value.TheOtherOne.Firstname + " " + ms.Value.TheOtherOne.Lastname + " - Nouveau message !", ms);
+            //        }
+            //        else
+            //        {
+            //            Item ii = new Item();
+            //            //ii.strText;
+            //            //_lvMessages.Rows.Add(;
+
+            //        }
+            //    }
+            //}
+            //while (true)
+            //{
+            //    using (var ct = _ctxuser.ObtainAccessor())
+            //    {
+            //        Context ctx = ct.Context;
+            //        //foreach (var convin in _lvMessages.Rows)
+            //        //{
+            //        //    _ctxuser.CurrentUser.ConversationDictionary.TryGetValue(convin, out Conversation value);
+
+            //        //}
+            //        Thread.Sleep(5500);
+            //    }
+            //}
         }
 
         //Delegate declaration

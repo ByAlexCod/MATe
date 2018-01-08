@@ -36,15 +36,15 @@ namespace MATeV2
 
         public static void InitializeListener(Person user, int port)
         {
-            if (_isListening == false)
-            {
-                _listener = new TcpListener(user.IP, port);
-                _listener.Start();
-                foreach(var use in user.ConversationDictionary)
-                {
-                    use.Value.StartReceiver();
-                }
-            }
+            //if (_isListening == false)
+            //{
+            //    _listener = new TcpListener(user.IP, port);
+            //    _listener.Start();
+            //    foreach(var use in user.ConversationDictionary)
+            //    {
+            //        use.Value.StartReceiver();
+            //    }
+            //}
         }
 
         public static void Start(Person user, int Port)
