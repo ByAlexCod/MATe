@@ -21,7 +21,12 @@ namespace MATeV2
             Name = name;
             DateLimit = datelimit;
             _isValidated = false;
-            p.Tasks.Add(this.Name, this);
+            
+            if (p.Tasks.ContainsKey(this.Name)){ throw new ArgumentException("this name of task already existe"); }
+            else
+            {
+                p.Tasks.Add(this.Name, this);
+            }
         }
 
         public string Name
