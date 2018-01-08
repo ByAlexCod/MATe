@@ -74,23 +74,6 @@ namespace MATeV2
             
             if (firstname != null) _firstname = firstname;
             if (lastname != null) _lastname = lastname;
-            //if (mail != null)
-            //{
-            //    if(_ctx.PersonsDictionary.ContainsKey(mail))
-            //    {
-            //        throw new ArgumentException("this email already exists");
-            //    }
-            //    if (this is Employee)
-            //    {
-            //        _ctx.PersonsDictionary.Remove(_mail);
-            //        _mail = mail;
-            //        _ctx.PersonsDictionary.Add(_mail, (Employee)this);
-            //    }
-            //    if (this is Boss)
-            //    {
-            //        _ctx.Boss.Mail = mail;
-            //    }
-            //}
         }
 
         public Conversation CreateConversation(Person theOtherOne, int port)
@@ -99,6 +82,11 @@ namespace MATeV2
             _conversationsDictionary.Add(theOtherOne, conv);
             return conv;
         }
-        
+
+        public override string ToString()
+        {
+            return Mail;
+        }
+
     }
 }

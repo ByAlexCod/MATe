@@ -62,9 +62,8 @@ namespace MATeUI
             _deleteSubTaskBtn.Click += new EventHandler(ButtonDeleteSubTaskClicked);
             _modifySubTaskBtn.Click += new EventHandler(ButtonModifySubTaskClicked);
             _modifyTaskBtn.Click += new EventHandler(ButtonModifyTaskClicked);
-
-
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
+     
             if (_ctxuser == null) return;
             using (var ct = _ctxuser.ObtainAccessor())
             {
@@ -72,6 +71,10 @@ namespace MATeUI
                 foreach (Employee item in ctx.PersonsDictionary.Values)
                 {
                     sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                }
+                foreach(var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
+                {
+                    
                 }
             }
         }
