@@ -28,7 +28,6 @@ namespace MATe.Services
                     Context ctx = z.Context;
                     if (a == ctx.Boss)
                     {
-                        Conversation.InitializeListener(a, 1807);
                         Network.Boss bobo = new Network.Boss(ctxuser, ipIndex);
                         Thread lii = new Thread(bobo.Start);
                         lii.IsBackground = true;
@@ -40,6 +39,8 @@ namespace MATe.Services
                     }
                     IPAddress ip = localIPs[ipIndex];
                     a.IP = ip;
+                    Conversation.InitializeListener(a, 1807);
+
                     SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temper.zip", "zipsync", ctxuser);
                     Thread sec = new Thread(abc.Start);
                     sec.IsBackground = true;

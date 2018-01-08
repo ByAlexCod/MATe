@@ -42,15 +42,17 @@ namespace MATeV2
                 _listener.Start();
                 foreach(var use in user.ConversationDictionary)
                 {
-                    use.Value.StartReceiver();
+                    StartReceiver(user);
                 }
             }
         }
 
+        
+
         public static void Start(Person user, int Port)
         {
-            
 
+            
 
             Thread receiver = new Thread(() => InitializeListener(user, Port));
             receiver.IsBackground = true;
@@ -62,7 +64,11 @@ namespace MATeV2
         
         public int Port => _port;
         public Person Host => _host;
-        public bool ToSee => _toSee;
+        public bool ToSee
+        {
+            get { return _toSee; }
+            set { _toSee = value; }
+        }
         public Person TheOtherOne => _theOtherOne;
         internal Dictionary<int, Message> MessageDictionary => _messageDictionary;
 
@@ -73,13 +79,13 @@ namespace MATeV2
         
         void StartSender()
         {
-            _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
-            _stream = _client.GetStream();
+            
+            
 
            
         }
     
-        void StartReceiver()
+        static void StartReceiver(Person user)
         {
 
             string incoming;
@@ -91,13 +97,27 @@ namespace MATeV2
                 {
                     incoming = streamer.ReadLine();
                 }
-                if(incoming.Contains("#" + TheOtherOne.Mail))
+                if(incoming.Contains("#" ))
                 {
-                    Message ms = new Message(this, incoming.Split('#')[0], Host, TheOtherOne);
-                    Random x = new Random();
-                    int xx = x.Next(9999999);
-                    MessageDictionary.Add(xx, ms);
-                    _toSee = true;
+                    user.ConversationDictionary.TryGetValue(user.Context.FindEmployee(incoming.Split('#')[1]), out Conversation other);
+                    if(other != null)
+                    {
+                        Message ms = new Message(other, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
+                        Random x = new Random();
+                        int xx = x.Next(9999999);
+                        other.MessageDictionary.Add(xx, ms);
+                        other.ToSee = true;
+                    } else
+                    {
+                        Conversation a = user.CreateConversation(user.Context.FindEmployee(incoming.Split('#')[1]), 1807);
+                        Message ms = new Message(a, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
+
+                        Random xi = new Random();
+                        int xxi = xi.Next(9999999);
+                        other.MessageDictionary.Add(xxi, ms);
+                        other.ToSee = true;
+                    }
+                    
                 }
             }
         }
@@ -105,6 +125,8 @@ namespace MATeV2
 
         public void SendMessage(string msg)
         {
+            _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
+            _stream = _client.GetStream();
             Message ms = new Message(this, msg, Host, TheOtherOne);
             
             try
@@ -121,6 +143,10 @@ namespace MATeV2
             } catch
             {
 
+            }
+            finally
+            {
+                _client.Close();
             }
 
         }

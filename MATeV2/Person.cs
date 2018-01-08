@@ -93,10 +93,11 @@ namespace MATeV2
             //}
         }
 
-        public void CreateConversation(Person theOtherOne, int port)
+        public Conversation CreateConversation(Person theOtherOne, int port)
         {
             Conversation conv = new Conversation(this, theOtherOne, port);
             _conversationsDictionary.Add(theOtherOne, conv);
+            return conv;
         }
         
     }

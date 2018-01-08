@@ -101,7 +101,9 @@ namespace MATeV2
                
 
                 _owner = Boss;
+                
                 SetDirty();
+
                 return Boss;
             }
             if (PersonsDictionary.TryGetValue(mail, out value))
