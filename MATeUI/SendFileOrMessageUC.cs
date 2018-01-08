@@ -66,14 +66,6 @@ namespace MATeUI
         public event EventHandler FolderBrowser;
 
 
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            _sendFileRbtn.CheckedChanged += new EventHandler(ShowPanel);
-            _sendBtn.Click += new EventHandler(ButtonSendClicked);
-            _chooseFolderLbl.Click += new EventHandler(OpenDialogueBrowser);
-        }
-
         private void OpenDialogueBrowser(object sender, EventArgs e) => FolderBrowser?.Invoke(this, e);
 
         private void ShowPanel(object sender, EventArgs e) => CheckedOption?.Invoke(this, e);

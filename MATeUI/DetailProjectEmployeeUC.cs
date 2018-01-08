@@ -33,7 +33,7 @@ namespace MATeUI
 
         public event DataGridViewCellMouseEventHandler CellTaskClick;
         public event DataGridViewCellMouseEventHandler CellSubTaskClick;
-        public event ButtonClickedEventHandler SendButtonClicked;
+        
         public event ButtonClickedEventHandler ChangeSubTaskButtonClicked;
         public event ButtonClickedEventHandler CreateTaskButtonClicked;
         public event ButtonClickedEventHandler CreateSubTaskButtonClicked;
@@ -81,9 +81,11 @@ namespace MATeUI
 
         private void OpenDialogue(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.Filter = "Texte (*.txt)|*.txt|Zip (*.zip)|*.zip|Tous (*.*)|*.*";
-            open.CheckFileExists = true;
+            OpenFileDialog open = new OpenFileDialog
+            {
+                Filter = "Texte (*.txt)|*.txt|Zip (*.zip)|*.zip|Tous (*.*)|*.*",
+                CheckFileExists = true
+            };
             DialogResult res = open.ShowDialog(this);
             if (res == DialogResult.OK)
             {
@@ -98,7 +100,7 @@ namespace MATeUI
 
         private void SubTaskChangeButtonClicked(object sender, EventArgs e) => ChangeSubTaskButtonClicked?.Invoke(this, e);
 
-        private void ButtonSendClicked(object sender, EventArgs e) => SendButtonClicked?.Invoke(this, e);
+        //private void ButtonSendClicked(object sender, EventArgs e) => SendButtonClicked?.Invoke(this, e);
 
         private void CellSubTaskChanged(object sender, EventArgs e) => CellSubTaskClick?.Invoke(this, e);
 
