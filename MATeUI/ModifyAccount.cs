@@ -33,8 +33,8 @@ namespace MATeUI
                 var s = Authentification.CurrentCtxUser.CurrentUser;
                 s.ModifyProfile(changeCount21.txtName.Text, changeCount21.txtLastName.Text);
                 _ctxuser.SaveAs("-Context.MATe");
-                MessageBox.Show("Saved data");                 
-                this.Close();
+
+                this.Close(); MessageBox.Show("Saved data");
             } 
         }
 
