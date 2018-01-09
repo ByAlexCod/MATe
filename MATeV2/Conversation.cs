@@ -18,9 +18,9 @@ namespace MATeV2
         readonly Person _theOtherOne;
         readonly int _port;
         bool _toSee = false;
-        static TcpListener _listener;
-        TcpClient _client;
-        NetworkStream _stream;
+        [NonSerialized] static TcpListener _listener;
+        [NonSerialized] TcpClient _client;
+        [NonSerialized] NetworkStream _stream;
         [NonSerialized] static bool _isListening = false;
 
 
@@ -85,11 +85,12 @@ namespace MATeV2
         static void StartReceiver(Person user)
         {
 
+            TcpClient client = _listener.AcceptTcpClient();
+            NetworkStream stream = client.GetStream();
             string incoming;
             while (true)
             {
-                TcpClient client = _listener.AcceptTcpClient();
-                NetworkStream stream = client.GetStream();
+                
                 using(StreamReader streamer = new StreamReader(stream))
                 {
                     incoming = streamer.ReadLine();
