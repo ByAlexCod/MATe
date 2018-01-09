@@ -16,7 +16,7 @@ namespace MATeV2
         readonly string _mail;
         string _ipString;
         IPAddress _ip;
-        readonly Dictionary<Person, Conversation> _conversationsDictionary = new Dictionary<Person, Conversation>();
+        readonly Dictionary<Person, Conversation> _conversationsDictionary;
 
         public Person(Context c, string firstname, string lastname, string mail)
         {
@@ -24,6 +24,7 @@ namespace MATeV2
             _firstname = firstname;
             _lastname = lastname;
             _mail = mail;
+            _conversationsDictionary = new Dictionary<Person, Conversation>();
         }
         public Dictionary<Person, Conversation> ConversationDictionary => _conversationsDictionary;
         public string Firstname

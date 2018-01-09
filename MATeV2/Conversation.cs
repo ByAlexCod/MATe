@@ -13,7 +13,7 @@ namespace MATeV2
     [Serializable]
     public class Conversation
     {
-        readonly Dictionary<int, Message> _messageDictionary = new Dictionary<int, Message>();
+        readonly internal List<MessageP2P> _messageList;
         readonly Person _host;
         readonly Person _theOtherOne;
         readonly int _port;
@@ -31,6 +31,7 @@ namespace MATeV2
             _host = host;
             _theOtherOne = theOtherOne;
             _port = port;
+            _messageList = new List<MessageP2P>();
 
         }
 
@@ -70,13 +71,9 @@ namespace MATeV2
             set { _toSee = value; }
         }
         public Person TheOtherOne => _theOtherOne;
-        internal Dictionary<int, Message> MessageDictionary => _messageDictionary;
 
+        public List<MessageP2P> MessageList => _messageList;
 
-
-
-
-        
         void StartSender()
         {
             
@@ -102,19 +99,14 @@ namespace MATeV2
                     user.ConversationDictionary.TryGetValue(user.Context.FindEmployee(incoming.Split('#')[1]), out Conversation other);
                     if(other != null)
                     {
-                        Message ms = new Message(other, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
-                        Random x = new Random();
-                        int xx = x.Next(9999999);
-                        other.MessageDictionary.Add(xx, ms);
+                        MessageP2P ms = new MessageP2P(other, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
+                        other.MessageList.Add(ms);
                         other.ToSee = true;
                     } else
                     {
                         Conversation a = user.CreateConversation(user.Context.FindEmployee(incoming.Split('#')[1]), 1807);
-                        Message ms = new Message(a, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
-
-                        Random xi = new Random();
-                        int xxi = xi.Next(9999999);
-                        other.MessageDictionary.Add(xxi, ms);
+                        MessageP2P ms = new MessageP2P(a, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
+                        other.MessageList.Add(ms);
                         other.ToSee = true;
                     }
                     
@@ -127,7 +119,7 @@ namespace MATeV2
         {
             _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
             _stream = _client.GetStream();
-            Message ms = new Message(this, msg, Host, TheOtherOne);
+            MessageP2P ms = new MessageP2P(this, msg, Host, TheOtherOne);
             
             try
             {
@@ -135,9 +127,7 @@ namespace MATeV2
                 {
                     write.WriteLine(ms.Text);
                 }
-                Random x = new Random();
-                int xx = x.Next(9999999);
-                MessageDictionary.Add(xx, ms);
+                MessageList.Add(ms);
 
 
             } catch

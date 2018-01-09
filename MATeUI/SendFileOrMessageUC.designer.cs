@@ -72,7 +72,7 @@ namespace MATeUI
             this._sendBtn.Location = new System.Drawing.Point(453, 511);
             this._sendBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._sendBtn.Name = "_sendBtn";
-            this._sendBtn.Size = new System.Drawing.Size(100, 28);
+            this._sendBtn.Size = new System.Drawing.Size(152, 28);
             this._sendBtn.TabIndex = 19;
             this._sendBtn.Text = "Send";
             this._sendBtn.UseVisualStyleBackColor = true;
@@ -80,6 +80,7 @@ namespace MATeUI
             // _panelMessage
             // 
             this._panelMessage.Controls.Add(this._messageText);
+            this._panelMessage.Controls.Add(this._panelSelectedFolder);
             this._panelMessage.Location = new System.Drawing.Point(307, 306);
             this._panelMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._panelMessage.Name = "_panelMessage";
@@ -193,7 +194,7 @@ namespace MATeUI
             // 
             this._panelSelectedFolder.Controls.Add(this._pathFolderLbl);
             this._panelSelectedFolder.Controls.Add(this._chooseFolderLbl);
-            this._panelSelectedFolder.Location = new System.Drawing.Point(303, 306);
+            this._panelSelectedFolder.Location = new System.Drawing.Point(0, 1);
             this._panelSelectedFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this._panelSelectedFolder.Name = "_panelSelectedFolder";
             this._panelSelectedFolder.Size = new System.Drawing.Size(436, 183);
@@ -250,7 +251,6 @@ namespace MATeUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.ListConversation);
-            this.Controls.Add(this._panelSelectedFolder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._panelMessage);
             this.Controls.Add(this.label1);
@@ -290,8 +290,8 @@ namespace MATeUI
         internal System.Windows.Forms.Panel _panelSelectedFolder;
         internal System.Windows.Forms.Label _pathFolderLbl;
         internal System.Windows.Forms.Label _chooseFolderLbl;
-        private System.Windows.Forms.DataGridView ListConversation;
         private System.Windows.Forms.DataGridViewButtonColumn Destination;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastMessage;
+        internal System.Windows.Forms.DataGridView ListConversation;
     }
 }

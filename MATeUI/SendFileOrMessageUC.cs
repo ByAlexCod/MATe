@@ -65,7 +65,6 @@ namespace MATeUI
         public event ButtonClickedEventHandler SendButtonClicked;
         public event EventHandler FolderBrowser;
 
-
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -79,5 +78,6 @@ namespace MATeUI
         private void ShowPanel(object sender, EventArgs e) => CheckedOption?.Invoke(this, e);
         
         private void ButtonSendClicked(object sender, EventArgs e) => SendButtonClicked?.Invoke(this, e);
+
     }
 }
