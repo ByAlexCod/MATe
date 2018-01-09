@@ -40,11 +40,11 @@ namespace MATeV2
             if (_isListening == false)
             {
                 _listener = new TcpListener(user.IP, port);
-                _listener.Start();
-                foreach(var use in user.ConversationDictionary)
-                {
-                    StartReceiver(user);
-                }
+                
+
+                Thread a = new Thread(() => StartReceiver(user));
+                a.IsBackground = true;
+                a.Start();
             }
         }
 
@@ -84,14 +84,14 @@ namespace MATeV2
     
         static void StartReceiver(Person user)
         {
-
-            TcpClient client = _listener.AcceptTcpClient();
-            NetworkStream stream = client.GetStream();
+            _listener.Start();
             string incoming;
             while (true)
             {
-                
-                using(StreamReader streamer = new StreamReader(stream))
+
+                TcpClient client = _listener.AcceptTcpClient();
+                NetworkStream stream = client.GetStream();
+                using (StreamReader streamer = new StreamReader(stream))
                 {
                     incoming = streamer.ReadLine();
                 }
