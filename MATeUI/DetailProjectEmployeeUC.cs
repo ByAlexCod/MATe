@@ -160,9 +160,7 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                MessageP2P mes = new MessageP2P(conver, message, _ctxuser.CurrentUser, selectedPerson);
-                conver.MessageList.Add(mes);
-                conver.SendMessage(message);
+                MessageP2P aaa = conver.SendMessage(message);
                 ChatWDF newchat = new ChatWDF(conver);
                 newchat.ShowDialog();
             

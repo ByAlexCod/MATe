@@ -116,15 +116,15 @@ namespace MATeV2
         }
 
 
-        public void SendMessage(string msg)
+        public MessageP2P SendMessage(string msg)
         {
             _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
-            _stream = _client.GetStream();
+            NetworkStream stream = _client.GetStream();
             MessageP2P ms = new MessageP2P(this, msg, Host, TheOtherOne);
             
             try
             {
-                using (StreamWriter write = new StreamWriter(_stream))
+                using (StreamWriter write = new StreamWriter(stream))
                 {
                     write.WriteLine(ms.Text);
                 }
@@ -138,8 +138,9 @@ namespace MATeV2
             finally
             {
                 _client.Close();
+                
             }
-
+            return ms;
         }
         
         
