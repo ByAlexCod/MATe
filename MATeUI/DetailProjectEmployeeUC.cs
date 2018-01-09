@@ -145,21 +145,24 @@ namespace MATeUI
             if (sendFileOrMessageUCOnDetailUIEmployee._sendMessageRbtn.Checked)
             {
                 Conversation conver;
+                string message;
                 if (!_ctxuser.CurrentUser.ConversationDictionary.ContainsKey(selectedPerson))
                 {
+                    message = "";
                     conver = new Conversation(_ctxuser.CurrentUser, selectedPerson, 1807);
                     _ctxuser.CurrentUser.ConversationDictionary.Add(selectedPerson, conver);
-                    string message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
-                    MessageP2P mes = new MessageP2P(conver, message, _ctxuser.CurrentUser, selectedPerson);
-                    conver.MessageList.Add(mes);
+                    message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
+
                 }
                 else
                 {
+                    message = "";
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
-                    string message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
-                    MessageP2P mes = new MessageP2P(conver, message, _ctxuser.CurrentUser, selectedPerson);
-                    conver.MessageList.Add(mes);
+                    message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
+                MessageP2P mes = new MessageP2P(conver, message, _ctxuser.CurrentUser, selectedPerson);
+                conver.MessageList.Add(mes);
+                conver.SendMessage(message);
                 ChatWDF newchat = new ChatWDF(conver);
                 newchat.ShowDialog();
             
