@@ -346,7 +346,7 @@ namespace MATeV2
 
             //PROJECTSDictionary MERGE
             List<string> projectToDeleteList = new List<string>();
-            if (otherContext.Owner.Mail == Boss.Mail && otherContext.BossModifyTime > BossModifyTime)
+            if (otherContext.Owner.Mail == Boss.Mail || otherContext.BossModifyTime > BossModifyTime)
             {
                 BossModifyTime = otherContext.ModifyDate;
                 foreach (var mp in ProjectsDictionary)
