@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModifyAccount));
             this.changeCount21 = new MATeUI.ModifyAccount2();
             this.SuspendLayout();
             // 
@@ -41,14 +42,15 @@
             this.changeCount21.User = null;
             this.changeCount21.Load += new System.EventHandler(this.changeCount21_Load);
             // 
-            // ChangeCount
+            // ModifyAccount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 341);
             this.Controls.Add(this.changeCount21);
-            this.Name = "ChangeCount";
-            this.Text = "Change Account";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "ModifyAccount";
+            this.Text = "Modify Account";
             this.ResumeLayout(false);
 
         }

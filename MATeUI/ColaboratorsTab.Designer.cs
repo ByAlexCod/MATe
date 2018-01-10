@@ -60,9 +60,10 @@
             this.LastName,
             this.Status});
             this.ListEmployee.HideSelection = false;
-            this.ListEmployee.Location = new System.Drawing.Point(15, 67);
+            this.ListEmployee.Location = new System.Drawing.Point(11, 54);
+            this.ListEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ListEmployee.Name = "ListEmployee";
-            this.ListEmployee.Size = new System.Drawing.Size(551, 351);
+            this.ListEmployee.Size = new System.Drawing.Size(414, 286);
             this.ListEmployee.TabIndex = 0;
             this.ListEmployee.UseCompatibleStateImageBehavior = false;
             this.ListEmployee.View = System.Windows.Forms.View.Details;
@@ -92,51 +93,57 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(57, 18);
+            this.label1.Location = new System.Drawing.Point(129, 23);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 36);
+            this.label1.Size = new System.Drawing.Size(177, 29);
             this.label1.TabIndex = 1;
             this.label1.Text = "Employees List";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 10);
+            this.label2.Location = new System.Drawing.Point(2, 8);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "First Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 45);
+            this.label3.Location = new System.Drawing.Point(2, 37);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 17);
+            this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Last Name";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 77);
+            this.label4.Location = new System.Drawing.Point(2, 63);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 17);
+            this.label4.Size = new System.Drawing.Size(36, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "E-Mail";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 113);
+            this.label5.Location = new System.Drawing.Point(2, 92);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 17);
+            this.label5.Size = new System.Drawing.Size(120, 13);
             this.label5.TabIndex = 5;
             this.label5.Text = "Current Working Project";
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(750, 67);
+            this.splitContainer1.Location = new System.Drawing.Point(562, 54);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -152,53 +159,68 @@
             this.splitContainer1.Panel2.Controls.Add(this.MailTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.LastNameTextBox);
             this.splitContainer1.Panel2.Controls.Add(this.FirstNameTextBox);
-            this.splitContainer1.Size = new System.Drawing.Size(566, 146);
-            this.splitContainer1.SplitterDistance = 193;
+            this.splitContainer1.Size = new System.Drawing.Size(424, 119);
+            this.splitContainer1.SplitterDistance = 144;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 6;
             // 
             // ProjectTextBox
             // 
-            this.ProjectTextBox.Location = new System.Drawing.Point(4, 107);
+            this.ProjectTextBox.Location = new System.Drawing.Point(3, 87);
+            this.ProjectTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ProjectTextBox.Name = "ProjectTextBox";
-            this.ProjectTextBox.Size = new System.Drawing.Size(362, 22);
+            this.ProjectTextBox.Size = new System.Drawing.Size(272, 20);
             this.ProjectTextBox.TabIndex = 3;
             // 
             // MailTextBox
             // 
-            this.MailTextBox.Location = new System.Drawing.Point(4, 72);
+            this.MailTextBox.Location = new System.Drawing.Point(3, 58);
+            this.MailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MailTextBox.Name = "MailTextBox";
-            this.MailTextBox.Size = new System.Drawing.Size(362, 22);
+            this.MailTextBox.Size = new System.Drawing.Size(272, 20);
             this.MailTextBox.TabIndex = 2;
             // 
             // LastNameTextBox
             // 
-            this.LastNameTextBox.Location = new System.Drawing.Point(4, 39);
+            this.LastNameTextBox.Location = new System.Drawing.Point(3, 32);
+            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.LastNameTextBox.Name = "LastNameTextBox";
-            this.LastNameTextBox.Size = new System.Drawing.Size(362, 22);
+            this.LastNameTextBox.Size = new System.Drawing.Size(272, 20);
             this.LastNameTextBox.TabIndex = 1;
             // 
             // FirstNameTextBox
             // 
-            this.FirstNameTextBox.Location = new System.Drawing.Point(4, 4);
+            this.FirstNameTextBox.Location = new System.Drawing.Point(3, 3);
+            this.FirstNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
-            this.FirstNameTextBox.Size = new System.Drawing.Size(362, 22);
+            this.FirstNameTextBox.Size = new System.Drawing.Size(272, 20);
             this.FirstNameTextBox.TabIndex = 0;
             // 
             // AddEmployeeBtn
             // 
-            this.AddEmployeeBtn.Location = new System.Drawing.Point(3, 445);
+            this.AddEmployeeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.AddEmployeeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.AddEmployeeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.AddEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddEmployeeBtn.Location = new System.Drawing.Point(11, 362);
+            this.AddEmployeeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.AddEmployeeBtn.Name = "AddEmployeeBtn";
-            this.AddEmployeeBtn.Size = new System.Drawing.Size(165, 23);
+            this.AddEmployeeBtn.Size = new System.Drawing.Size(125, 25);
             this.AddEmployeeBtn.TabIndex = 8;
-            this.AddEmployeeBtn.Text = "Add New Employee";
+            this.AddEmployeeBtn.Text = "Create New Employee";
             this.AddEmployeeBtn.UseVisualStyleBackColor = true;
             this.AddEmployeeBtn.Click += new System.EventHandler(this.AddEmployeeBtn_Click);
             // 
             // DeleteEmployeeBtn
             // 
-            this.DeleteEmployeeBtn.Location = new System.Drawing.Point(385, 445);
+            this.DeleteEmployeeBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.DeleteEmployeeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.DeleteEmployeeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.DeleteEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteEmployeeBtn.Location = new System.Drawing.Point(297, 362);
+            this.DeleteEmployeeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DeleteEmployeeBtn.Name = "DeleteEmployeeBtn";
-            this.DeleteEmployeeBtn.Size = new System.Drawing.Size(169, 23);
+            this.DeleteEmployeeBtn.Size = new System.Drawing.Size(128, 25);
             this.DeleteEmployeeBtn.TabIndex = 9;
             this.DeleteEmployeeBtn.Text = "Delete Employee";
             this.DeleteEmployeeBtn.UseVisualStyleBackColor = true;
@@ -206,16 +228,21 @@
             // 
             // GotoProjectBtn
             // 
-            this.GotoProjectBtn.Location = new System.Drawing.Point(1018, 239);
+            this.GotoProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.GotoProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.GotoProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.GotoProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.GotoProjectBtn.Location = new System.Drawing.Point(764, 194);
+            this.GotoProjectBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GotoProjectBtn.Name = "GotoProjectBtn";
-            this.GotoProjectBtn.Size = new System.Drawing.Size(206, 23);
+            this.GotoProjectBtn.Size = new System.Drawing.Size(155, 25);
             this.GotoProjectBtn.TabIndex = 10;
             this.GotoProjectBtn.Text = "Go to Project";
             this.GotoProjectBtn.UseVisualStyleBackColor = true;
             // 
-            // Colaborators
+            // ColaboratorsTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.GotoProjectBtn);
             this.Controls.Add(this.DeleteEmployeeBtn);
@@ -223,8 +250,9 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ListEmployee);
-            this.Name = "Colaborators";
-            this.Size = new System.Drawing.Size(1332, 577);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Name = "ColaboratorsTab";
+            this.Size = new System.Drawing.Size(999, 469);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
