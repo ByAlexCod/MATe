@@ -28,30 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.chatUI1 = new MATeUI.ChatUI();
+            this.ListChat = new System.Windows.Forms.ListView();
+            this.Messagetxb = new System.Windows.Forms.TextBox();
+            this.sendbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // chatUI1
+            // ListChat
             // 
-            this.chatUI1.Location = new System.Drawing.Point(12, 12);
-            this.chatUI1.Name = "chatUI1";
-            this.chatUI1.Size = new System.Drawing.Size(615, 544);
-            this.chatUI1.TabIndex = 0;
+            this.ListChat.Location = new System.Drawing.Point(12, 12);
+            this.ListChat.Name = "ListChat";
+            this.ListChat.Size = new System.Drawing.Size(614, 486);
+            this.ListChat.TabIndex = 0;
+            this.ListChat.UseCompatibleStateImageBehavior = false;
+            this.ListChat.View = System.Windows.Forms.View.List;
+            // 
+            // Messagetxb
+            // 
+            this.Messagetxb.Location = new System.Drawing.Point(13, 518);
+            this.Messagetxb.Name = "Messagetxb";
+            this.Messagetxb.Size = new System.Drawing.Size(497, 22);
+            this.Messagetxb.TabIndex = 1;
+            // 
+            // sendbtn
+            // 
+            this.sendbtn.Location = new System.Drawing.Point(517, 517);
+            this.sendbtn.Name = "sendbtn";
+            this.sendbtn.Size = new System.Drawing.Size(109, 23);
+            this.sendbtn.TabIndex = 2;
+            this.sendbtn.Text = "Send";
+            this.sendbtn.UseVisualStyleBackColor = true;
             // 
             // ChatWDF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(638, 552);
-            this.Controls.Add(this.chatUI1);
+            this.Controls.Add(this.sendbtn);
+            this.Controls.Add(this.Messagetxb);
+            this.Controls.Add(this.ListChat);
             this.Name = "ChatWDF";
             this.Text = "ChatWDF";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private ChatUI chatUI1;
+        private System.Windows.Forms.ListView ListChat;
+        private System.Windows.Forms.TextBox Messagetxb;
+        private System.Windows.Forms.Button sendbtn;
     }
 }

@@ -17,13 +17,6 @@ namespace MATeUI
         public DetailProjectEmployeeUC()
         {
             InitializeComponent();
-            StartCvsBtn.Click += new EventHandler(NewConversation);
-        }
-
-        private void NewConversation(object sender, EventArgs e)
-        {
-            ChatWDF chat = new ChatWDF();
-            chat.ShowDialog();
         }
 
         public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
@@ -74,7 +67,7 @@ namespace MATeUI
                 }
                 foreach(var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
                 {
-                    
+                    sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Host, con.MessageList.Last());
                 }
             }
         }
@@ -146,12 +139,35 @@ namespace MATeUI
 
         private void SendFileOrMessage(object sender, EventArgs e)
         {
-            if(sendFileOrMessageUCOnDetailUIEmployee._sendMessageRbtn.Checked)
-            {
+            int rowindex = sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.CurrentCell.RowIndex;
 
+            string userselected = sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows[rowindex].Cells[2].Value.ToString();
+            Person selectedPerson = _ctxuser.Context.PersonsDictionary[userselected];
+
+            if (sendFileOrMessageUCOnDetailUIEmployee._sendMessageRbtn.Checked)
+            {
+                Conversation conver;
+                string message;
+                if (!_ctxuser.CurrentUser.ConversationDictionary.ContainsKey(selectedPerson))
+                {
+                    message = "";
+                    conver = new Conversation(_ctxuser.CurrentUser, selectedPerson, 1807);
+                    _ctxuser.CurrentUser.ConversationDictionary.Add(selectedPerson, conver);
+                    message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
+
+                }
+                else
+                {
+                    message = "";
+                    conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
+                    message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
+                }
+                MessageP2P aaa = conver.SendMessage(message);
+                ChatWDF newchat = new ChatWDF(conver);
+                newchat.ShowDialog();
+            
             }
 
-            MessageBox.Show("NOT IMPLEMENTED YET");
             return;
         }
 

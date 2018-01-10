@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace MATeV2
 {
     [Serializable]
-    internal class Message
+    public class MessageP2P
     {
         readonly string _text;
         readonly Person _sender;
@@ -15,7 +15,7 @@ namespace MATeV2
         readonly Conversation _conversation;
         readonly DateTime _dateTime;
 
-        internal Message(Conversation conversation, string text, Person sender, Person receiver)
+        public MessageP2P(Conversation conversation, string text, Person sender, Person receiver)
         {
             _text = text;
             _sender = sender;

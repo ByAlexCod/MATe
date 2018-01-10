@@ -49,7 +49,7 @@
     <Compile Include="IContextAccessor.cs" />
     <Compile Include="LoadContextResult.cs" />
     <Compile Include="MergeResult.cs" />
-    <Compile Include="Message.cs" />
+    <Compile Include="MessageP2P.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
