@@ -18,9 +18,9 @@ namespace MATeV2
         readonly Person _theOtherOne;
         readonly int _port;
         bool _toSee = false;
-        static TcpListener _listener;
-        TcpClient _client;
-        NetworkStream _stream;
+        [NonSerialized] static TcpListener _listener;
+        [NonSerialized] TcpClient _client;
+        [NonSerialized] NetworkStream _stream;
         [NonSerialized] static bool _isListening = false;
 
 
@@ -40,11 +40,11 @@ namespace MATeV2
             if (_isListening == false)
             {
                 _listener = new TcpListener(user.IP, port);
-                _listener.Start();
-                foreach(var use in user.ConversationDictionary)
-                {
-                    StartReceiver(user);
-                }
+                
+
+                Thread a = new Thread(() => StartReceiver(user));
+                a.IsBackground = true;
+                a.Start();
             }
         }
 
@@ -84,13 +84,14 @@ namespace MATeV2
     
         static void StartReceiver(Person user)
         {
-
+            _listener.Start();
             string incoming;
             while (true)
             {
+
                 TcpClient client = _listener.AcceptTcpClient();
                 NetworkStream stream = client.GetStream();
-                using(StreamReader streamer = new StreamReader(stream))
+                using (StreamReader streamer = new StreamReader(stream))
                 {
                     incoming = streamer.ReadLine();
                 }
@@ -115,15 +116,15 @@ namespace MATeV2
         }
 
 
-        public void SendMessage(string msg)
+        public MessageP2P SendMessage(string msg)
         {
             _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
-            _stream = _client.GetStream();
+            NetworkStream stream = _client.GetStream();
             MessageP2P ms = new MessageP2P(this, msg, Host, TheOtherOne);
             
             try
             {
-                using (StreamWriter write = new StreamWriter(_stream))
+                using (StreamWriter write = new StreamWriter(stream))
                 {
                     write.WriteLine(ms.Text);
                 }
@@ -137,8 +138,9 @@ namespace MATeV2
             finally
             {
                 _client.Close();
+                
             }
-
+            return ms;
         }
         
         

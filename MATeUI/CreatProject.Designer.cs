@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Valid = new System.Windows.Forms.Button();
+            this.valid = new System.Windows.Forms.Button();
             this.CreatPN = new System.Windows.Forms.TextBox();
             this.checkEmployee = new System.Windows.Forms.CheckedListBox();
             this.StartDate = new System.Windows.Forms.DateTimePicker();
@@ -39,16 +39,19 @@
             this.SD = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // Valid
+            // valid
             // 
-            this.Valid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.Valid.Location = new System.Drawing.Point(124, 361);
-            this.Valid.Name = "Valid";
-            this.Valid.Size = new System.Drawing.Size(352, 23);
-            this.Valid.TabIndex = 0;
-            this.Valid.Text = "Valid";
-            this.Valid.UseVisualStyleBackColor = false;
-            this.Valid.Click += new System.EventHandler(this.Valid_Click);
+            this.valid.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.valid.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.valid.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.valid.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.valid.Location = new System.Drawing.Point(124, 361);
+            this.valid.Name = "valid";
+            this.valid.Size = new System.Drawing.Size(352, 23);
+            this.valid.TabIndex = 0;
+            this.valid.Text = "Create";
+            this.valid.UseVisualStyleBackColor = true;
+            this.valid.Click += new System.EventHandler(this.Valid_Click);
             // 
             // CreatPN
             // 
@@ -128,7 +131,7 @@
             this.Controls.Add(this.StartDate);
             this.Controls.Add(this.checkEmployee);
             this.Controls.Add(this.CreatPN);
-            this.Controls.Add(this.Valid);
+            this.Controls.Add(this.valid);
             this.Name = "CreatProject";
             this.Text = "Creat Project";
             this.ResumeLayout(false);
@@ -138,7 +141,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Valid;
+        private System.Windows.Forms.Button valid;
         private System.Windows.Forms.TextBox CreatPN;
         private System.Windows.Forms.CheckedListBox checkEmployee;
         private System.Windows.Forms.DateTimePicker StartDate;
