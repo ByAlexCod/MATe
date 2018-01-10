@@ -28,6 +28,7 @@ namespace MATeUI
 
                 foreach (Employee employee in _members)
                 {
+                    if(employee.CurrentWorkingProject == null)
                     checkEmployee.Items.Add(employee);
                 }
             }
@@ -57,6 +58,7 @@ namespace MATeUI
 
                     foreach (Employee ind in checkEmployee.CheckedItems)
                     {
+                        
                         ind.CurrentWorkingProject = p;
                         p.Members.Add(ind.Mail, ind);
                     }

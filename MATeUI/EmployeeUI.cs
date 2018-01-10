@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -45,8 +46,17 @@ namespace MATeUI
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Help");
+            string filename = Application.StartupPath + @"\Read Me.txt";
+
+            System.Diagnostics.Process.Start(fileName: @"" + filename + "");
+
+
+
         }
+
+
+
+    
 
         private void myAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {

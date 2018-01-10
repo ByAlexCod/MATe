@@ -135,7 +135,13 @@ namespace MATeUI
                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
                     return;
-                ctx.ProjectsDictionary.Remove(p.Name);
+                if(ctx.ProjectsDictionary.Remove(p.Name))
+                {
+                    foreach (var item in p.Members.Values)
+                    {
+                        item.CurrentWorkingProject = null;
+                    }
+                }
                 projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
                 detailProjectOnBody._dgMemberInProject.Rows.Clear();
                 detailProjectOnBody._dgTasks.Rows.Clear();
@@ -346,6 +352,10 @@ namespace MATeUI
                 detailProjectOnBody.ProjectName.Text = p.Name;
                 detailProjectOnBody._projectBeginDate.Value = p.DateBegin;
                 detailProjectOnBody._projectEndDate.Value = p.DateLimit;
+
+                detailProjectOnBody._firstNameLbl.Text = "";
+                detailProjectOnBody._mailLbl.Text = "";
+                detailProjectOnBody._lastNameLbl.Text = "";
 
                 if (p.Projectmanager != null)
                 {

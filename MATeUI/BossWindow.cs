@@ -59,7 +59,9 @@ namespace MATeUI
 
         private void readMeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("????????????");
+            string filename = Application.StartupPath + @"\Read Me.txt";
+            
+            System.Diagnostics.Process.Start(fileName: @"" + filename + "");
         }
 
         private void bodyUC1_Load(object sender, EventArgs e)

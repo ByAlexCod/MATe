@@ -41,12 +41,13 @@
             // 
             // Valid
             // 
+            this.Valid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.Valid.Location = new System.Drawing.Point(124, 361);
             this.Valid.Name = "Valid";
             this.Valid.Size = new System.Drawing.Size(352, 23);
             this.Valid.TabIndex = 0;
             this.Valid.Text = "Valid";
-            this.Valid.UseVisualStyleBackColor = true;
+            this.Valid.UseVisualStyleBackColor = false;
             this.Valid.Click += new System.EventHandler(this.Valid_Click);
             // 
             // CreatPN
