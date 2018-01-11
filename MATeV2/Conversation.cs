@@ -40,8 +40,6 @@ namespace MATeV2
             if (_isListening == false)
             {
                 _listener = new TcpListener(user.IP, port);
-                
-
                 Thread a = new Thread(() => StartReceiver(user));
                 a.IsBackground = true;
                 a.Start();
@@ -52,9 +50,6 @@ namespace MATeV2
 
         public static void Start(Person user, int Port)
         {
-
-            
-
             Thread receiver = new Thread(() => InitializeListener(user, Port));
             receiver.IsBackground = true;
             receiver.Start();
@@ -76,10 +71,6 @@ namespace MATeV2
 
         void StartSender()
         {
-            
-            
-
-           
         }
     
         static void StartReceiver(Person user)
@@ -88,7 +79,6 @@ namespace MATeV2
             string incoming;
             while (true)
             {
-
                 TcpClient client = _listener.AcceptTcpClient();
                 NetworkStream stream = client.GetStream();
                 using (StreamReader streamer = new StreamReader(stream))
@@ -110,7 +100,6 @@ namespace MATeV2
                         other.MessageList.Add(ms);
                         other.ToSee = true;
                     }
-                    
                 }
             }
         }
@@ -121,7 +110,6 @@ namespace MATeV2
             _client = new TcpClient(TheOtherOne.IP.ToString(), Port);
             NetworkStream stream = _client.GetStream();
             MessageP2P ms = new MessageP2P(this, msg, Host, TheOtherOne);
-            
             try
             {
                 using (StreamWriter write = new StreamWriter(stream))
@@ -129,20 +117,14 @@ namespace MATeV2
                     write.WriteLine(ms.Text);
                 }
                 MessageList.Add(ms);
-
-
             } catch
             {
-
             }
             finally
             {
                 _client.Close();
-                
             }
             return ms;
         }
-        
-        
     }
 }
