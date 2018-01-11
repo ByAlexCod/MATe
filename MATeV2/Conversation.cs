@@ -32,7 +32,6 @@ namespace MATeV2
             _theOtherOne = theOtherOne;
             _port = port;
             _messageList = new List<MessageP2P>();
-
         }
 
         public static void InitializeListener(Person user, int port)
@@ -46,8 +45,6 @@ namespace MATeV2
             }
         }
 
-        
-
         public static void Start(Person user, int Port)
         {
             Thread receiver = new Thread(() => InitializeListener(user, Port));
@@ -55,9 +52,6 @@ namespace MATeV2
             receiver.Start();
         }
 
-        
-
-        
         public int Port => _port;
         public Person Host => _host;
         public bool ToSee

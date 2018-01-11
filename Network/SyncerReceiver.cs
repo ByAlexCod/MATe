@@ -66,7 +66,6 @@ namespace Network
 
             using (ZipArchive arch = ZipFile.OpenRead(_tempReceiverPath))
             {
-
                 arch.ExtractToDirectory(_tempUnZipped);
             }
 

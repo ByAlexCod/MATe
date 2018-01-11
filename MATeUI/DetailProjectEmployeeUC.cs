@@ -152,7 +152,6 @@ namespace MATeUI
                     conver = new Conversation(_ctxuser.CurrentUser, selectedPerson, 1807);
                     _ctxuser.CurrentUser.ConversationDictionary.Add(selectedPerson, conver);
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
-
                 }
                 else
                 {
@@ -160,7 +159,7 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                MessageP2P aaa = conver.SendMessage(message);
+                MessageP2P aaa = conver.SendMessage(message+"#"+_ctxuser.CurrentUser.Mail);
                 ChatWDF newchat = new ChatWDF(conver);
                 newchat.ShowDialog();
             
