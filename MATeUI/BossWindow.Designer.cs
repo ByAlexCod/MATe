@@ -122,7 +122,7 @@
             this.bodyUC1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bodyUC1.Location = new System.Drawing.Point(0, 24);
             this.bodyUC1.Name = "bodyUC1";
-            this.bodyUC1.Size = new System.Drawing.Size(1314, 820);
+            this.bodyUC1.Size = new System.Drawing.Size(1314, 725);
             this.bodyUC1.TabIndex = 2;
             this.bodyUC1.Load += new System.EventHandler(this.bodyUC1_Load);
             // 
@@ -132,7 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1314, 844);
+            this.ClientSize = new System.Drawing.Size(1314, 749);
             this.Controls.Add(this.bodyUC1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
