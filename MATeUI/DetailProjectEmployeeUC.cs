@@ -165,7 +165,7 @@ namespace MATeUI
                 if (ChatWDF._thischat != null) newchat = ChatWDF._thischat;
                 else newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
                 newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                newchat.Refresh();
+                //newchat.Refresh();
                 //newchat.ShowDialog();
             }
             return;
