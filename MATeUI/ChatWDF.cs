@@ -91,6 +91,12 @@ namespace MATeUI
                        
                         a.MessageList.Add(ms);
                         a.ToSee = true;
+                        other = a;
+                    }
+                    if (_thischat == null) 
+                    {
+                        ChatWDF newchat = new ChatWDF(other, user);
+                        newchat.ShowDialog();
                     }
                     _thischat.Showmessage();
                 }
