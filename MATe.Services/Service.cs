@@ -39,7 +39,7 @@ namespace MATe.Services
                     }
                     IPAddress ip = localIPs[ipIndex];
                     a.IP = ip;
-                    Conversation.InitializeListener(a, 1807);
+                    //Conversation.InitializeListener(a, 1807);
                     SyncerReceiver abc = new SyncerReceiver(ip, 15000, "sync", "temper.zip", "zipsync", ctxuser);
                     Thread sec = new Thread(abc.Start);
                     sec.IsBackground = true;

@@ -49,7 +49,7 @@ namespace MATeUI
             }
         }
 
-        public static void initializelistener(Person user, int port)
+        public static void InitializeListener(Person user, int port)
         {
             if (_isListening == false)
             {
