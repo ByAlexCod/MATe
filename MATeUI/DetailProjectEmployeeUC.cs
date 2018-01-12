@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MATeV2;
 using System.IO;
+using System.Net.Sockets;
+using System.Threading;
 
 namespace MATeUI
 {
@@ -159,17 +161,15 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                //MessageP2P aaa = conver.SendMessage(message+"#"+_ctxuser.CurrentUser.Mail);
-                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
+                ChatWDF newchat;
+                if (ChatWDF._thischat != null) newchat = ChatWDF._thischat;
+                else newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
                 newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                 newchat.Refresh();
-                newchat.ShowDialog();
-            
+                //newchat.ShowDialog();
             }
-
             return;
         }
 
-        
     }
 }

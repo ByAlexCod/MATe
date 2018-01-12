@@ -22,7 +22,7 @@ namespace MATeUI
         [NonSerialized] TcpClient _client;
         //[NonSerialized] NetworkStream _stream;
         [NonSerialized] static bool _isListening = false;
-        static ChatWDF _thischat;
+        public static ChatWDF _thischat;
 
         public ChatWDF(Conversation c,Person user)
         {
@@ -104,7 +104,7 @@ namespace MATeUI
         }
         void Showmessage()
         {
-            ListChat.Clear();
+            _thischat.ListChat.Clear();
             foreach (MessageP2P mes in _conversation.MessageList)
             {
                 string message = "";
@@ -113,7 +113,7 @@ namespace MATeUI
                     message = "You: write on " + mes.DateTime.ToString() + " :" + mes.Text;
                 }
                 else { message = mes.Sender.Mail + " write on " + mes.DateTime.ToString() + " :" + mes.Text; }
-                ListChat.Items.Add(message);
+                _thischat.ListChat.Items.Add(message);
             }
         }
         public MessageP2P SendMessage(string msg)
