@@ -17,34 +17,33 @@ namespace MATeUI
     public partial class DetailProjectEmployeeUC : UserControl
     {
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
+        public delegate void AddListItem();
+        public AddListItem myDelegate;
+        Conversation _con;
+        ChatWDF yourchat;
 
         bool _passed = false;
         public DetailProjectEmployeeUC()
         {
             _passed = true;
-            Thread a = new Thread(Verify);
-            a.IsBackground = true;
-            a.Start();
+            myDelegate = new AddListItem(RefreshChat);
             InitializeComponent();
         }
 
-        void Verify()
+        public void RefreshChat()
         {
-            while (true)
+            if (_con != null)
             {
-                bool toacc = false;
-                using (var ct = _ctxuser.ObtainAccessor())
+                yourchat.ListChat.Clear();
+                foreach( MessageP2P me in _con.MessageList)
                 {
-                    Context ctx = ct.Context;
-                    foreach (var p in ctx.Owner.ConversationDictionary.Values)
-                    {
-                        if (p.ToSee == true) toacc = true;
-                        sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(p.TheOtherOne.Mail, "new");
-                    }
+                    if (me.Sender.Mail == _ctxuser.CurrentUser.Mail)
+                        yourchat.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
+                    else yourchat.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
-                Thread.Sleep(3000);
             }
         }
+
 
         public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
         public delegate void DataGridViewCellMouseEventHandler(object sender, EventArgs e);
@@ -186,11 +185,14 @@ namespace MATeUI
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
                 conver.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
+                _con = conver;
+                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser,this);
                 newchat.Refresh();
                 newchat.ShowDialog();
             }
             return;
         }
+
+
     }
 }

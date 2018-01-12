@@ -18,18 +18,20 @@ namespace MATeUI
     {
         Conversation _conversation;
         Person _user;
+        static DetailProjectEmployeeUC detailemploy;
         [NonSerialized] static TcpListener _listener;
         [NonSerialized] TcpClient _client;
         //[NonSerialized] NetworkStream _stream;
         [NonSerialized] static bool _isListening = false;
         public static ChatWDF _thischat;
 
-        public ChatWDF(Conversation c,Person user)
+        public ChatWDF(Conversation c,Person user,DetailProjectEmployeeUC detail)
         {
             InitializeComponent();
             _conversation = c;
             _user = user;
             _thischat = this;
+            detailemploy=detail;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -40,14 +42,14 @@ namespace MATeUI
                 string message = "";
                 if (mes.Sender == Authentification.CurrentCtxUser.CurrentUser)
                 {
-                    message = "You: write on " + mes.DateTime.ToString() + " :" + mes.Text;
+                    message = "You write on " + mes.DateTime.ToString() + " :" + mes.Text;
                 }
-                else { message = mes.Sender.Mail + " write on " + mes.DateTime.ToString() + " :" + mes.Text; }
+                else { message = mes.Sender.Mail + " write on " + mes.DateTime.ToString() + " : " + mes.Text; }
                 ListChat.Items.Add(message);
             }
         }
 
-        public static void InitializeListener(Person user, int port)
+        public static void initializelistener(Person user, int port)
         {
             if (_isListening == false)
             {
@@ -91,13 +93,7 @@ namespace MATeUI
                         a.ToSee = true;
                         other = a;
                     }
-                    if (_thischat == null) 
-                    {
-                        ChatWDF newchat = new ChatWDF(other, user);
-                        newchat.ShowDialog();
-                    }
-                    _thischat.Showmessage();
-                    _thischat.ShowDialog();
+                    detailemploy.Invoke(detailemploy.myDelegate);
                 }
             }
         }
