@@ -74,9 +74,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView ListChat;
         private System.Windows.Forms.TextBox Messagetxb;
         private System.Windows.Forms.Button sendbtn;
+        public System.Windows.Forms.ListView ListChat;
     }
 }

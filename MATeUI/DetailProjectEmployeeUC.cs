@@ -159,8 +159,10 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                MessageP2P aaa = conver.SendMessage(message+"#"+_ctxuser.CurrentUser.Mail);
-                ChatWDF newchat = new ChatWDF(conver);
+                //MessageP2P aaa = conver.SendMessage(message+"#"+_ctxuser.CurrentUser.Mail);
+                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
+                newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
+                newchat.Refresh();
                 newchat.ShowDialog();
             
             }

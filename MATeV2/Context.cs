@@ -395,7 +395,7 @@ namespace MATeV2
             return MergeResult.Success;
         }
 
-        internal Employee FindEmployee(string mail)
+        public Employee FindEmployee(string mail)
         {
             PersonsDictionary.TryGetValue(mail, out Employee emp);
             return emp;
