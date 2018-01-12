@@ -86,9 +86,11 @@ namespace MATeUI
                     else
                     {
                         Conversation a = user.CreateConversation(user.Context.FindEmployee(sender), 1807);
+                       
                         MessageP2P ms = new MessageP2P(a, message, user.Context.FindEmployee(sender), user);
-                        other.MessageList.Add(ms);
-                        other.ToSee = true;
+                       
+                        a.MessageList.Add(ms);
+                        a.ToSee = true;
                     }
                     _thischat.Showmessage();
                 }
