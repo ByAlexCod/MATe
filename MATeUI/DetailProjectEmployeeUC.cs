@@ -21,6 +21,7 @@ namespace MATeUI
         public AddListItem myDelegate;
         Conversation _con;
         public ChatWDF yourchat;
+        public static DetailProjectEmployeeUC detail;
 
         bool _passed = false;
         public DetailProjectEmployeeUC()
@@ -28,6 +29,7 @@ namespace MATeUI
             _passed = true;
             myDelegate = new AddListItem(RefreshChat);
             InitializeComponent();
+            detail = this;
         }
 
         public void RefreshChat()
@@ -36,7 +38,7 @@ namespace MATeUI
             {
                 if (yourchat == null)
                 {
-                    yourchat = new ChatWDF(_con, _ctxuser.CurrentUser, this);
+                    yourchat = new ChatWDF(_con, _ctxuser.CurrentUser);
                     yourchat.ShowDialog();
                 }
                 yourchat.ListChat.Clear();
@@ -190,7 +192,7 @@ namespace MATeUI
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
                 _con = conver;
-                ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser, this);
+                ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser);
                 yourchat = newchat;
                 newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                 newchat.Refresh();

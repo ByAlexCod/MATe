@@ -25,13 +25,13 @@ namespace MATeUI
         [NonSerialized] static bool _isListening = false;
         public static ChatWDF _thischat;
 
-        public ChatWDF(Conversation c,Person user,DetailProjectEmployeeUC detail)
+        public ChatWDF(Conversation c,Person user)
         {
             InitializeComponent();
             _conversation = c;
             _user = user;
             _thischat = this;
-            detailemploy=detail;
+            detailemploy=DetailProjectEmployeeUC.detail;
         }
 
         protected override void OnLoad(EventArgs e)
@@ -120,7 +120,7 @@ namespace MATeUI
             {
                 using (StreamWriter write = new StreamWriter(stream))
                 {
-                    write.WriteLine(ms.Text);
+                    write.WriteLine(msg);
                 }
                 _conversation.MessageList.Add(ms);
             }
