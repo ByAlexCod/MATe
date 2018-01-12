@@ -45,6 +45,8 @@ namespace MATeUI
                     detailProjectEmployeeUC1._subTaskGbx.Visible = false;
 
                     Context ctx = ct.Context;
+                    detailProjectEmployeeUC1._currentUserLbl.Text = "BIENVENUE " + _ctxuser.CurrentUser.Firstname + " " + _ctxuser.CurrentUser.Lastname;
+
 
                     foreach (Project item in ctx.ProjectsDictionary.Values)
                     {

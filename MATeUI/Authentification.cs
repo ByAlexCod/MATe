@@ -28,19 +28,6 @@ namespace MATeUI
         }
         public static ContextAndUserManager CurrentCtxUser => _currentCtx;
 
-
-
-        private string GetLocalIP()
-        {
-            IPHostEntry host;
-            host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (IPAddress ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                    return ip.ToString();
-            }
-            return "127.0.0.1";
-        }
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);

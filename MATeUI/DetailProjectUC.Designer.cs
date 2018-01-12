@@ -70,6 +70,7 @@
             this.worker = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._validateProjectBtn = new System.Windows.Forms.Button();
+            this._currentUserLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).BeginInit();
@@ -79,7 +80,7 @@
             // _lastNameLbl
             // 
             this._lastNameLbl.AutoSize = true;
-            this._lastNameLbl.Location = new System.Drawing.Point(167, 127);
+            this._lastNameLbl.Location = new System.Drawing.Point(167, 201);
             this._lastNameLbl.Name = "_lastNameLbl";
             this._lastNameLbl.Size = new System.Drawing.Size(61, 13);
             this._lastNameLbl.TabIndex = 51;
@@ -88,7 +89,7 @@
             // _mailLbl
             // 
             this._mailLbl.AutoSize = true;
-            this._mailLbl.Location = new System.Drawing.Point(281, 151);
+            this._mailLbl.Location = new System.Drawing.Point(281, 225);
             this._mailLbl.Name = "_mailLbl";
             this._mailLbl.Size = new System.Drawing.Size(52, 13);
             this._mailLbl.TabIndex = 50;
@@ -97,7 +98,7 @@
             // _addressIPLbl
             // 
             this._addressIPLbl.AutoSize = true;
-            this._addressIPLbl.Location = new System.Drawing.Point(281, 187);
+            this._addressIPLbl.Location = new System.Drawing.Point(281, 261);
             this._addressIPLbl.Name = "_addressIPLbl";
             this._addressIPLbl.Size = new System.Drawing.Size(52, 13);
             this._addressIPLbl.TabIndex = 49;
@@ -106,7 +107,7 @@
             // _firstNameLbl
             // 
             this._firstNameLbl.AutoSize = true;
-            this._firstNameLbl.Location = new System.Drawing.Point(269, 127);
+            this._firstNameLbl.Location = new System.Drawing.Point(269, 201);
             this._firstNameLbl.Name = "_firstNameLbl";
             this._firstNameLbl.Size = new System.Drawing.Size(64, 13);
             this._firstNameLbl.TabIndex = 48;
@@ -114,21 +115,21 @@
             // 
             // _projectEndDate
             // 
-            this._projectEndDate.Location = new System.Drawing.Point(170, 81);
+            this._projectEndDate.Location = new System.Drawing.Point(169, 97);
             this._projectEndDate.Name = "_projectEndDate";
             this._projectEndDate.Size = new System.Drawing.Size(163, 20);
             this._projectEndDate.TabIndex = 47;
             // 
             // _projectBeginDate
             // 
-            this._projectBeginDate.Location = new System.Drawing.Point(170, 55);
+            this._projectBeginDate.Location = new System.Drawing.Point(169, 71);
             this._projectBeginDate.Name = "_projectBeginDate";
             this._projectBeginDate.Size = new System.Drawing.Size(163, 20);
             this._projectBeginDate.TabIndex = 46;
             // 
             // ProjectName
             // 
-            this.ProjectName.Location = new System.Drawing.Point(170, 29);
+            this.ProjectName.Location = new System.Drawing.Point(169, 45);
             this.ProjectName.Name = "ProjectName";
             this.ProjectName.Size = new System.Drawing.Size(163, 20);
             this.ProjectName.TabIndex = 45;
@@ -136,7 +137,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(167, 187);
+            this.label8.Location = new System.Drawing.Point(167, 261);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 13);
             this.label8.TabIndex = 44;
@@ -145,7 +146,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(167, 151);
+            this.label5.Location = new System.Drawing.Point(167, 225);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(26, 13);
             this.label5.TabIndex = 41;
@@ -154,7 +155,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(212, 104);
+            this.label4.Location = new System.Drawing.Point(212, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(70, 13);
             this.label4.TabIndex = 40;
@@ -163,7 +164,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(38, 55);
+            this.label3.Location = new System.Drawing.Point(37, 71);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 39;
@@ -172,7 +173,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(38, 81);
+            this.label2.Location = new System.Drawing.Point(37, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 38;
@@ -181,7 +182,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 29);
+            this.label1.Location = new System.Drawing.Point(37, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
             this.label1.TabIndex = 37;
@@ -444,11 +445,22 @@
             this._validateProjectBtn.Text = "Validate";
             this._validateProjectBtn.UseVisualStyleBackColor = true;
             // 
+            // _currentUserLbl
+            // 
+            this._currentUserLbl.AutoSize = true;
+            this._currentUserLbl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._currentUserLbl.Location = new System.Drawing.Point(19, 4);
+            this._currentUserLbl.Name = "_currentUserLbl";
+            this._currentUserLbl.Size = new System.Drawing.Size(162, 13);
+            this._currentUserLbl.TabIndex = 69;
+            this._currentUserLbl.Text = "///////////////////////////////";
+            // 
             // DetailProjectUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
+            this.Controls.Add(this._currentUserLbl);
             this.Controls.Add(this._validateProjectBtn);
             this.Controls.Add(this._dgTasks);
             this.Controls.Add(this.label11);
@@ -478,7 +490,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DetailProjectUC";
-            this.Size = new System.Drawing.Size(970, 541);
+            this.Size = new System.Drawing.Size(953, 524);
             ((System.ComponentModel.ISupportInitialize)(this._dgMemberInProject)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this._dgTasks)).EndInit();
@@ -531,5 +543,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ip;
         internal System.Windows.Forms.Button _validateProjectBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn status;
+        internal System.Windows.Forms.Label _currentUserLbl;
     }
 }

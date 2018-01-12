@@ -1,6 +1,6 @@
 ﻿namespace MATeUI
 {
-    partial class NewTaskForm
+    partial class ProfilForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,32 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.newTaskUC1 = new MATeUI.NewTaskUC();
+            this.profilUC1 = new MATeUI.ProfilUC();
             this.SuspendLayout();
             // 
-            // newTaskUC1
+            // profilUC1
             // 
-            this.newTaskUC1.CurrentProject = null;
-            this.newTaskUC1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.newTaskUC1.Location = new System.Drawing.Point(0, 0);
-            this.newTaskUC1.Name = "newTaskUC1";
-            this.newTaskUC1.Size = new System.Drawing.Size(416, 269);
-            this.newTaskUC1.TabIndex = 0;
+            this.profilUC1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.profilUC1.Location = new System.Drawing.Point(0, 0);
+            this.profilUC1.Name = "profilUC1";
+            this.profilUC1.Size = new System.Drawing.Size(382, 261);
+            this.profilUC1.TabIndex = 0;
             // 
-            // NewTaskForm
+            // ProfilForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 269);
-            this.Controls.Add(this.newTaskUC1);
-            this.Name = "NewTaskForm";
-            this.Text = "NewTaskForm";
+            this.ClientSize = new System.Drawing.Size(382, 261);
+            this.Controls.Add(this.profilUC1);
+            this.Name = "ProfilForm";
+            this.Text = "ProfilForm";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private NewTaskUC newTaskUC1;
+        private ProfilUC profilUC1;
     }
 }

@@ -61,8 +61,10 @@ namespace MATeUI
             using (var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
+                Person p = _ctxuser.CurrentUser;
                 foreach (Employee item in ctx.PersonsDictionary.Values)
                 {
+                    if(p.Mail != item.Mail)
                     sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
                 }
                 foreach(var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)

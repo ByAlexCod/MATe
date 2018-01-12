@@ -61,12 +61,19 @@ namespace MATeUI
         {
             string filename = Application.StartupPath + @"\Read Me.txt";
             
-            System.Diagnostics.Process.Start(fileName: @"" + filename + "");
+            System.Diagnostics.Process.Start(filename);
         }
 
         private void bodyUC1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ProfilForm pf = new ProfilForm();
+            pf.ShowDialog();
+            //MessageBox.Show("My IP Adress : " + _currentCtx.CurrentUser.IP);
         }
 
         //public delegate void ContextMenuStrip(object sender, EventArgs e);

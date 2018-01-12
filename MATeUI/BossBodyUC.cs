@@ -32,6 +32,9 @@ namespace MATeUI
                 {
 
                     Context ctx = ct.Context;
+                    detailProjectOnBody._currentUserLbl.Text = "BIENVENUE " 
+                        + _ctxuser.CurrentUser.Firstname + " " + _ctxuser.CurrentUser.Lastname;
+
                     //Fill Combox Projects
                     foreach (Project item in ctx.ProjectsDictionary.Values)
                     {
