@@ -50,7 +50,8 @@ namespace MATeUI
                     else yourchat.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
             }
-            
+            Thread a = Thread.CurrentThread;
+            a.Abort();
         }
 
 

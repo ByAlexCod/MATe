@@ -97,6 +97,7 @@ namespace MATeUI
                     Thread tt = new Thread(() => DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate));
                     tt.IsBackground = true;
                     tt.Start();
+                    
                 }
             }
         }
