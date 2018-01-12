@@ -99,8 +99,7 @@ namespace MATeUI
                         newchat.ShowDialog();
                     }
                     _thischat.Showmessage();
-                    //_thischat.ShowDialog();
-
+                    _thischat.ShowDialog();
                 }
             }
         }
