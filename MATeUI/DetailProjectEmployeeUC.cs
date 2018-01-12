@@ -16,15 +16,41 @@ namespace MATeUI
 {
     public partial class DetailProjectEmployeeUC : UserControl
     {
+        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
+
+        bool _passed = false;
         public DetailProjectEmployeeUC()
         {
+            _passed = true;
+            Thread a = new Thread(Verify);
+            a.IsBackground = true;
+            a.Start();
             InitializeComponent();
+        }
+
+        void Verify()
+        {
+            while (true)
+            {
+                bool toacc = false;
+                using (var ct = _ctxuser.ObtainAccessor())
+                {
+                    Context ctx = ct.Context;
+                    foreach (var p in ctx.Owner.ConversationDictionary)
+                    {
+                        if (p.Value.ToSee = true) toacc = true;
+                    }
+                }
+
+
+                Thread.Sleep(3000);
+            }
+
         }
 
         public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
         public delegate void DataGridViewCellMouseEventHandler(object sender, EventArgs e);
 
-        ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
 
         public event DataGridViewCellMouseEventHandler CellTaskClick;
         public event DataGridViewCellMouseEventHandler CellSubTaskClick;
@@ -171,5 +197,9 @@ namespace MATeUI
             return;
         }
 
+        private void sendFileOrMessageUCOnDetailUIEmployee_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
