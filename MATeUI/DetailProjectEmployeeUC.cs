@@ -20,7 +20,7 @@ namespace MATeUI
         public delegate void AddListItem();
         public AddListItem myDelegate;
         Conversation _con;
-        ChatWDF yourchat;
+        public ChatWDF yourchat;
 
         bool _passed = false;
         public DetailProjectEmployeeUC()
@@ -34,6 +34,11 @@ namespace MATeUI
         {
             if (_con != null)
             {
+                if (yourchat == null)
+                {
+                    yourchat = new ChatWDF(_con, _ctxuser.CurrentUser, this);
+                    yourchat.ShowDialog();
+                }
                 yourchat.ListChat.Clear();
                 foreach( MessageP2P me in _con.MessageList)
                 {
@@ -41,6 +46,7 @@ namespace MATeUI
                         yourchat.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
                     else yourchat.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
+
             }
         }
 
@@ -184,7 +190,8 @@ namespace MATeUI
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
                 _con = conver;
-                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser,this);
+                ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser, this);
+                yourchat = newchat;
                 newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                 newchat.Refresh();
                 newchat.ShowDialog();
