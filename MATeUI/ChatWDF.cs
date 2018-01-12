@@ -115,7 +115,7 @@ namespace MATeUI
         {
             _client = new TcpClient(_conversation.TheOtherOne.IP.ToString(),_conversation.Port);
             NetworkStream stream = _client.GetStream();
-            MessageP2P ms = new MessageP2P(_conversation, msg, _conversation.Host, _conversation.TheOtherOne);
+            MessageP2P ms = new MessageP2P(_conversation, msg.Split('#')[0], _conversation.Host, _conversation.TheOtherOne);
             try
             {
                 using (StreamWriter write = new StreamWriter(stream))

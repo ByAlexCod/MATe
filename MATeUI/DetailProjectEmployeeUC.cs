@@ -174,8 +174,7 @@ namespace MATeUI
                 if (!_ctxuser.CurrentUser.ConversationDictionary.ContainsKey(selectedPerson))
                 {
                     message = "";
-                    conver = new Conversation(_ctxuser.CurrentUser, selectedPerson, 1807);
-                    _ctxuser.CurrentUser.ConversationDictionary.Add(selectedPerson, conver);
+                    conver = _ctxuser.CurrentUser.CreateConversation(selectedPerson, 1807);
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
                 else
@@ -184,9 +183,9 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                conver.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                 _con = conver;
                 ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser,this);
+                newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                 newchat.Refresh();
                 newchat.ShowDialog();
             }
