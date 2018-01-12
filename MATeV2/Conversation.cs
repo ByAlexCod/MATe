@@ -91,8 +91,8 @@ namespace MATeV2
                     {
                         Conversation a = user.CreateConversation(user.Context.FindEmployee(incoming.Split('#')[1]), 1807);
                         MessageP2P ms = new MessageP2P(a, incoming.Split('#')[0], user, user.Context.FindEmployee(incoming.Split('#')[1]));
-                        other.MessageList.Add(ms);
-                        other.ToSee = true;
+                        a.MessageList.Add(ms);
+                        a.ToSee = true;
                     }
                 }
             }
