@@ -36,13 +36,12 @@ namespace MATeUI
                 using (var ct = _ctxuser.ObtainAccessor())
                 {
                     Context ctx = ct.Context;
-                    foreach (var p in ctx.Owner.ConversationDictionary)
+                    foreach (var p in ctx.Owner.ConversationDictionary.Values)
                     {
-                        if (p.Value.ToSee = true) toacc = true;
+                        if (p.ToSee == true) toacc = true;
+                        sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(p.TheOtherOne.Mail, "new");
                     }
                 }
-
-
                 Thread.Sleep(3000);
             }
 
