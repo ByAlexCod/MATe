@@ -19,7 +19,7 @@ namespace MATeUI
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         public delegate void AddListItem();
         public AddListItem myDelegate;
-        Conversation _con;
+        public Conversation _con;
         public ChatWDF yourchat;
         public static DetailProjectEmployeeUC detail;
 
@@ -28,12 +28,12 @@ namespace MATeUI
         {
             detail = this;
             _passed = true;
-            myDelegate = new AddListItem(RefreshChat);
+            myDelegate = new AddListItem(() => RefreshChat(_con));
             InitializeComponent();
             
         }
 
-        public void RefreshChat()
+        public void RefreshChat(Conversation c)
         {
             if (_con != null)
             {
@@ -49,7 +49,6 @@ namespace MATeUI
                         yourchat.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
                     else yourchat.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
-
             }
         }
 

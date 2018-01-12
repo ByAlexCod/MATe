@@ -57,6 +57,7 @@
             this.sendbtn.TabIndex = 2;
             this.sendbtn.Text = "Send";
             this.sendbtn.UseVisualStyleBackColor = true;
+            this.sendbtn.Click += new System.EventHandler(this.sendbtn_Click);
             // 
             // ChatWDF
             // 

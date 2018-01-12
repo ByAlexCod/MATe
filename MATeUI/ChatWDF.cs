@@ -100,7 +100,7 @@ namespace MATeUI
         }
         void Showmessage()
         {
-            _thischat.ListChat.Clear();
+            ListChat.Clear();
             foreach (MessageP2P mes in _conversation.MessageList)
             {
                 string message = "";
@@ -109,7 +109,7 @@ namespace MATeUI
                     message = "You: write on " + mes.DateTime.ToString() + " :" + mes.Text;
                 }
                 else { message = mes.Sender.Mail + " write on " + mes.DateTime.ToString() + " :" + mes.Text; }
-                _thischat.ListChat.Items.Add(message);
+                ListChat.Items.Add(message);
             }
         }
         public MessageP2P SendMessage(string msg)
@@ -133,6 +133,15 @@ namespace MATeUI
                 _client.Close();
             }
             return ms;
+        }
+
+        private void sendbtn_Click(object sender, EventArgs e)
+        {
+            string message = Messagetxb.Text;
+            string tosend = message + "#" + _user.Mail;
+            SendMessage(tosend);
+            ListChat.Items.Add("You: write on " + DateTime.Now.ToString() + " :" + message);
+            Messagetxb.Clear();
         }
     }
 }
