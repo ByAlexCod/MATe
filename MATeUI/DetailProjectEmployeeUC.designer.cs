@@ -444,7 +444,6 @@
             this.sendFileOrMessageUCOnDetailUIEmployee.Name = "sendFileOrMessageUCOnDetailUIEmployee";
             this.sendFileOrMessageUCOnDetailUIEmployee.Size = new System.Drawing.Size(840, 477);
             this.sendFileOrMessageUCOnDetailUIEmployee.TabIndex = 12;
-            this.sendFileOrMessageUCOnDetailUIEmployee.Load += new System.EventHandler(this.sendFileOrMessageUCOnDetailUIEmployee_Load);
             // 
             // DetailProjectEmployeeUC
             // 

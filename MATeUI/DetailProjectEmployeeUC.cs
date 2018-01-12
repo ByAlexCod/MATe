@@ -44,7 +44,6 @@ namespace MATeUI
                 }
                 Thread.Sleep(3000);
             }
-
         }
 
         public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
@@ -186,19 +185,12 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                ChatWDF newchat;
-                if (ChatWDF._thischat != null) newchat = ChatWDF._thischat;
-                else newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
-                newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                //newchat.Refresh();
-                //newchat.ShowDialog();
+                conver.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
+                ChatWDF newchat = new ChatWDF(conver,_ctxuser.CurrentUser);
+                newchat.Refresh();
+                newchat.ShowDialog();
             }
             return;
-        }
-
-        private void sendFileOrMessageUCOnDetailUIEmployee_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
