@@ -94,7 +94,9 @@ namespace MATeUI
                         other = a;
                     }
                     DetailProjectEmployeeUC.detail._con = other;
-                    DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate);
+                    Thread tt = new Thread(() => DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate));
+                    tt.IsBackground = true;
+                    tt.Start();
                 }
             }
         }
