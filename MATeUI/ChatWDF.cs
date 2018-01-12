@@ -93,7 +93,7 @@ namespace MATeUI
                         a.ToSee = true;
                         other = a;
                     }
-                    detailemploy.Invoke(detailemploy.myDelegate);
+                    DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate);
                 }
             }
         }

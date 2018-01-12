@@ -26,10 +26,11 @@ namespace MATeUI
         bool _passed = false;
         public DetailProjectEmployeeUC()
         {
+            detail = this;
             _passed = true;
             myDelegate = new AddListItem(RefreshChat);
             InitializeComponent();
-            detail = this;
+            
         }
 
         public void RefreshChat()
