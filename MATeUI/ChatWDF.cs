@@ -39,6 +39,7 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            ListChat.Clear();
             foreach (MessageP2P mes in _conversation.MessageList)
             {
                 string message = "";
