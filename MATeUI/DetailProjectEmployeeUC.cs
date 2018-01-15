@@ -123,7 +123,7 @@ namespace MATeUI
                 Person SelectedPerson = _ctxuser.ObtainAccessor().Context.FindEmployee(name);
                 ChatWDF SelectedChat = _dicform[SelectedPerson];
                 SelectedChat.Conversation.ToSee = false;
-                SelectedChat.ShowDialog();
+                if(!SelectedChat.Visible) SelectedChat.ShowDialog();
             }
         }
 
@@ -218,14 +218,15 @@ namespace MATeUI
                     ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser);
                     _dicform.Add(selectedPerson, newchat);
                     newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                    newchat.Refresh();
+                    sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(conver.TheOtherOne.Mail, "new message");
+                    newchat.ListChat.Clear();
                     newchat.ShowDialog();
                 }
                 else
                 {
                     ChatWDF yourwdf = _dicform[selectedPerson];
                     yourwdf.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                    yourwdf.Refresh();
+                    yourwdf.ListChat.Clear();
                     yourwdf.ShowDialog();
                 }
             }
