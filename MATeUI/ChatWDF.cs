@@ -88,15 +88,16 @@ namespace MATeUI
                     else
                     {
                         Conversation a = user.CreateConversation(user.Context.FindEmployee(sender), 1807);
-                        MessageP2P ms = new MessageP2P(a, message, user.Context.FindEmployee(sender), user);
+                        MessageP2P ms = new MessageP2P(a, message, user.Context.FindEmployee(sender), user);    
                         a.MessageList.Add(ms);
                         a.ToSee = true;
                         other = a;
                     }
-                    DetailProjectEmployeeUC.detail._con = other;
-                    Thread tt = new Thread(() => DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate));
+                    Person send = user.Context.FindEmployee(incoming.Split('#')[1]);
+                    Thread tt = new Thread(() => DetailProjectEmployeeUC.detail.Invoke(DetailProjectEmployeeUC.detail.myDelegate,other));
                     tt.IsBackground = true;
                     tt.Start();
+                    
                     
                 }
             }

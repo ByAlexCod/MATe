@@ -17,41 +17,44 @@ namespace MATeUI
     public partial class DetailProjectEmployeeUC : UserControl
     {
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
-        public delegate void AddListItem();
+        public delegate void AddListItem(Conversation send);
         public AddListItem myDelegate;
-        public Conversation _con;
-        public ChatWDF yourchat;
         public static DetailProjectEmployeeUC detail;
+        public static Dictionary<Person, ChatWDF> _dicform;
+        //bool _passed = false;
 
-        bool _passed = false;
         public DetailProjectEmployeeUC()
         {
             detail = this;
-            _passed = true;
-            myDelegate = new AddListItem(() => RefreshChat(_con));
+            //_passed = true;
+            myDelegate = new AddListItem(RefreshChat);
+            _dicform = new Dictionary<Person, ChatWDF>();
             InitializeComponent();
-            
         }
 
-        public void RefreshChat(Conversation c)
+        public void RefreshChat(Conversation send)
         {
-            if (_con != null)
+            ChatWDF chatform;
+            if(!_dicform.ContainsKey(send.TheOtherOne))
             {
-                if (yourchat == null)
-                {
-                    yourchat = new ChatWDF(_con, _ctxuser.CurrentUser);
-                    yourchat.ShowDialog();
-                }
-                yourchat.ListChat.Clear();
-                foreach( MessageP2P me in _con.MessageList)
+                chatform = new ChatWDF(send, _ctxuser.CurrentUser);
+                _dicform.Add(send.TheOtherOne, chatform);
+                if (send.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(send.TheOtherOne.Mail, "new message");
+                else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(send.TheOtherOne.Mail, "nothing new");
+                chatform.ShowDialog();
+            }
+            else
+            {
+                chatform = _dicform[send.TheOtherOne];
+                chatform.ListChat.Clear();
+                foreach (MessageP2P me in send.MessageList)
                 {
                     if (me.Sender.Mail == _ctxuser.CurrentUser.Mail)
-                        yourchat.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
-                    else yourchat.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
+                        chatform.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
+                    else chatform.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
+                chatform.ShowDialog();
             }
-            Thread a = Thread.CurrentThread;
-            a.Abort();
         }
 
 
@@ -91,6 +94,7 @@ namespace MATeUI
             _modifySubTaskBtn.Click += new EventHandler(ButtonModifySubTaskClicked);
             _modifyTaskBtn.Click += new EventHandler(ButtonModifyTaskClicked);
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
+            sendFileOrMessageUCOnDetailUIEmployee.ListConversation.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(LoadConver);
      
             if (_ctxuser == null) return;
             using (var ct = _ctxuser.ObtainAccessor())
@@ -102,8 +106,24 @@ namespace MATeUI
                 }
                 foreach(var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
                 {
-                    sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Host, con.MessageList.Last());
+                    ChatWDF newwdf = new ChatWDF(con, _ctxuser.CurrentUser);
+                    _dicform.Add(con.TheOtherOne, newwdf);
+                    if (con.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "new message");
+                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "nothing new");
                 }
+            }
+        }
+
+        void LoadConver(object sender, EventArgs e)
+        {
+            int rowindex = sendFileOrMessageUCOnDetailUIEmployee.ListConversation.CurrentCell.RowIndex;
+            string name = sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows[rowindex].Cells[0].Value.ToString();
+            if (name != "") 
+            {
+                Person SelectedPerson = _ctxuser.ObtainAccessor().Context.FindEmployee(name);
+                ChatWDF SelectedChat = _dicform[SelectedPerson];
+                SelectedChat.Conversation.ToSee = false;
+                SelectedChat.ShowDialog();
             }
         }
 
@@ -193,12 +213,21 @@ namespace MATeUI
                     conver = _ctxuser.CurrentUser.ConversationDictionary[selectedPerson];
                     message = sendFileOrMessageUCOnDetailUIEmployee._messageText.Text;
                 }
-                _con = conver;
-                ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser);
-                yourchat = newchat;
-                newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
-                newchat.Refresh();
-                newchat.ShowDialog();
+                if (!_dicform.ContainsKey(selectedPerson))
+                {
+                    ChatWDF newchat = new ChatWDF(conver, _ctxuser.CurrentUser);
+                    _dicform.Add(selectedPerson, newchat);
+                    newchat.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
+                    newchat.Refresh();
+                    newchat.ShowDialog();
+                }
+                else
+                {
+                    ChatWDF yourwdf = _dicform[selectedPerson];
+                    yourwdf.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
+                    yourwdf.Refresh();
+                    yourwdf.ShowDialog();
+                }
             }
             return;
         }

@@ -44,6 +44,9 @@ namespace MATeUI
             this._sendBtn = new System.Windows.Forms.Button();
             this._panelMessage = new System.Windows.Forms.Panel();
             this._messageText = new System.Windows.Forms.RichTextBox();
+            this._panelSelectedFolder = new System.Windows.Forms.Panel();
+            this._pathFolderLbl = new System.Windows.Forms.Label();
+            this._chooseFolderLbl = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this._sendMessageRbtn = new System.Windows.Forms.RadioButton();
             this._sendFileRbtn = new System.Windows.Forms.RadioButton();
@@ -54,23 +57,20 @@ namespace MATeUI
             this.ip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this._panelSelectedFolder = new System.Windows.Forms.Panel();
-            this._pathFolderLbl = new System.Windows.Forms.Label();
-            this._chooseFolderLbl = new System.Windows.Forms.Label();
             this.ListConversation = new System.Windows.Forms.DataGridView();
-            this.Destination = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Destination = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this._panelMessage.SuspendLayout();
+            this._panelSelectedFolder.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).BeginInit();
-            this._panelSelectedFolder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListConversation)).BeginInit();
             this.SuspendLayout();
             // 
             // _sendBtn
             // 
             this._sendBtn.Location = new System.Drawing.Point(453, 511);
-            this._sendBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._sendBtn.Margin = new System.Windows.Forms.Padding(4);
             this._sendBtn.Name = "_sendBtn";
             this._sendBtn.Size = new System.Drawing.Size(152, 28);
             this._sendBtn.TabIndex = 19;
@@ -82,7 +82,7 @@ namespace MATeUI
             this._panelMessage.Controls.Add(this._messageText);
             this._panelMessage.Controls.Add(this._panelSelectedFolder);
             this._panelMessage.Location = new System.Drawing.Point(307, 306);
-            this._panelMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._panelMessage.Margin = new System.Windows.Forms.Padding(4);
             this._panelMessage.Name = "_panelMessage";
             this._panelMessage.Size = new System.Drawing.Size(436, 183);
             this._panelMessage.TabIndex = 18;
@@ -90,20 +90,51 @@ namespace MATeUI
             // _messageText
             // 
             this._messageText.Location = new System.Drawing.Point(39, 17);
-            this._messageText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._messageText.Margin = new System.Windows.Forms.Padding(4);
             this._messageText.Name = "_messageText";
             this._messageText.Size = new System.Drawing.Size(343, 150);
             this._messageText.TabIndex = 15;
             this._messageText.Text = "";
+            // 
+            // _panelSelectedFolder
+            // 
+            this._panelSelectedFolder.Controls.Add(this._pathFolderLbl);
+            this._panelSelectedFolder.Controls.Add(this._chooseFolderLbl);
+            this._panelSelectedFolder.Location = new System.Drawing.Point(0, 1);
+            this._panelSelectedFolder.Margin = new System.Windows.Forms.Padding(4);
+            this._panelSelectedFolder.Name = "_panelSelectedFolder";
+            this._panelSelectedFolder.Size = new System.Drawing.Size(436, 183);
+            this._panelSelectedFolder.TabIndex = 23;
+            // 
+            // _pathFolderLbl
+            // 
+            this._pathFolderLbl.AutoSize = true;
+            this._pathFolderLbl.Location = new System.Drawing.Point(240, 82);
+            this._pathFolderLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._pathFolderLbl.Name = "_pathFolderLbl";
+            this._pathFolderLbl.Size = new System.Drawing.Size(118, 17);
+            this._pathFolderLbl.TabIndex = 1;
+            this._pathFolderLbl.Text = "Path of Te Folder";
+            this._pathFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // _chooseFolderLbl
+            // 
+            this._chooseFolderLbl.Location = new System.Drawing.Point(19, 71);
+            this._chooseFolderLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this._chooseFolderLbl.Name = "_chooseFolderLbl";
+            this._chooseFolderLbl.Size = new System.Drawing.Size(133, 28);
+            this._chooseFolderLbl.TabIndex = 0;
+            this._chooseFolderLbl.Text = "Browse";
+            this._chooseFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this._sendMessageRbtn);
             this.groupBox1.Controls.Add(this._sendFileRbtn);
             this.groupBox1.Location = new System.Drawing.Point(385, 244);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(267, 55);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
@@ -112,7 +143,7 @@ namespace MATeUI
             // 
             this._sendMessageRbtn.AutoSize = true;
             this._sendMessageRbtn.Location = new System.Drawing.Point(129, 20);
-            this._sendMessageRbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._sendMessageRbtn.Margin = new System.Windows.Forms.Padding(4);
             this._sendMessageRbtn.Name = "_sendMessageRbtn";
             this._sendMessageRbtn.Size = new System.Drawing.Size(123, 21);
             this._sendMessageRbtn.TabIndex = 1;
@@ -124,7 +155,7 @@ namespace MATeUI
             // 
             this._sendFileRbtn.AutoSize = true;
             this._sendFileRbtn.Location = new System.Drawing.Point(8, 20);
-            this._sendFileRbtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._sendFileRbtn.Margin = new System.Windows.Forms.Padding(4);
             this._sendFileRbtn.Name = "_sendFileRbtn";
             this._sendFileRbtn.Size = new System.Drawing.Size(88, 21);
             this._sendFileRbtn.TabIndex = 0;
@@ -141,7 +172,7 @@ namespace MATeUI
             this.mail,
             this.ip});
             this._dgEmployees.Location = new System.Drawing.Point(237, 52);
-            this._dgEmployees.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this._dgEmployees.Margin = new System.Windows.Forms.Padding(4);
             this._dgEmployees.Name = "_dgEmployees";
             this._dgEmployees.Size = new System.Drawing.Size(585, 185);
             this._dgEmployees.TabIndex = 16;
@@ -190,37 +221,6 @@ namespace MATeUI
             this.label2.TabIndex = 22;
             this.label2.Text = "Conversations";
             // 
-            // _panelSelectedFolder
-            // 
-            this._panelSelectedFolder.Controls.Add(this._pathFolderLbl);
-            this._panelSelectedFolder.Controls.Add(this._chooseFolderLbl);
-            this._panelSelectedFolder.Location = new System.Drawing.Point(0, 1);
-            this._panelSelectedFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this._panelSelectedFolder.Name = "_panelSelectedFolder";
-            this._panelSelectedFolder.Size = new System.Drawing.Size(436, 183);
-            this._panelSelectedFolder.TabIndex = 23;
-            // 
-            // _pathFolderLbl
-            // 
-            this._pathFolderLbl.AutoSize = true;
-            this._pathFolderLbl.Location = new System.Drawing.Point(240, 82);
-            this._pathFolderLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this._pathFolderLbl.Name = "_pathFolderLbl";
-            this._pathFolderLbl.Size = new System.Drawing.Size(118, 17);
-            this._pathFolderLbl.TabIndex = 1;
-            this._pathFolderLbl.Text = "Path of Te Folder";
-            this._pathFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // _chooseFolderLbl
-            // 
-            this._chooseFolderLbl.Location = new System.Drawing.Point(19, 71);
-            this._chooseFolderLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this._chooseFolderLbl.Name = "_chooseFolderLbl";
-            this._chooseFolderLbl.Size = new System.Drawing.Size(133, 28);
-            this._chooseFolderLbl.TabIndex = 0;
-            this._chooseFolderLbl.Text = "Browse";
-            this._chooseFolderLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // ListConversation
             // 
             this.ListConversation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -238,6 +238,8 @@ namespace MATeUI
             // 
             this.Destination.HeaderText = "Destiation";
             this.Destination.Name = "Destination";
+            this.Destination.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Destination.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // LastMessage
             // 
@@ -257,15 +259,15 @@ namespace MATeUI
             this.Controls.Add(this._sendBtn);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this._dgEmployees);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SendFileOrMessageUC";
             this.Size = new System.Drawing.Size(1120, 587);
             this._panelMessage.ResumeLayout(false);
+            this._panelSelectedFolder.ResumeLayout(false);
+            this._panelSelectedFolder.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this._dgEmployees)).EndInit();
-            this._panelSelectedFolder.ResumeLayout(false);
-            this._panelSelectedFolder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ListConversation)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -290,8 +292,8 @@ namespace MATeUI
         internal System.Windows.Forms.Panel _panelSelectedFolder;
         internal System.Windows.Forms.Label _pathFolderLbl;
         internal System.Windows.Forms.Label _chooseFolderLbl;
-        private System.Windows.Forms.DataGridViewButtonColumn Destination;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LastMessage;
         internal System.Windows.Forms.DataGridView ListConversation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Destination;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastMessage;
     }
 }
