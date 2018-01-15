@@ -25,6 +25,8 @@ namespace MATeUI
         [NonSerialized] static bool _isListening = false;
         public static ChatWDF _thischat;
 
+        public Conversation Conversation => _conversation;
+
         public ChatWDF(Conversation c,Person user)
         {
             InitializeComponent();
