@@ -100,11 +100,19 @@ namespace MATeV2
 
         public Dictionary<string, Tasker> Tasks => _tasks;
 
-
+        
         public void ClearTasks()
         {
             _tasks.Clear();
         }
+        public void ChangeDict(Project p, string oldkey, string newkey)
+        {
+            Tasker a = _tasks[oldkey];
+            _tasks.Remove(oldkey);
+            _tasks[oldkey] = _tasks[newkey];
+            _tasks.Add(newkey, a);
+        }
+     
         public void ClearMembers()
         {
             _members.Clear();

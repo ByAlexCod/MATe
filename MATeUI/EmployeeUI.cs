@@ -73,5 +73,10 @@ namespace MATeUI
         {
 
         }
+
+        private void bodyUIEmployeeUC1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

@@ -116,6 +116,7 @@
             this.bodyUIEmployeeUC1.Name = "bodyUIEmployeeUC1";
             this.bodyUIEmployeeUC1.Size = new System.Drawing.Size(1028, 416);
             this.bodyUIEmployeeUC1.TabIndex = 1;
+            this.bodyUIEmployeeUC1.Load += new System.EventHandler(this.bodyUIEmployeeUC1_Load);
             // 
             // EmployeeUI
             // 

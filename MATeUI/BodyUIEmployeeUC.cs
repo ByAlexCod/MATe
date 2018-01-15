@@ -96,9 +96,13 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
+            Tasker task2 = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
+            detailProjectEmployeeUC1._dgTasks.Rows.Add(task2.Name, task2.DateLimit, task2.Project);
+            p.ChangeDict(p,task.Name,task2.Name);
+          
         }
-
+       
         /// <summary>
         /// Supprime la sous-tache selectionnée dans le datagrid  des tache et supprime toutes les
         /// Sous-tache ratachées à cette tache
@@ -107,8 +111,6 @@ namespace MATeUI
         /// <param name="e"></param>
         private void DeleteSelectedSubTask(object sender, EventArgs e)
         {
-           
-
             if (p == null) return;
             if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count <= 1) return;
             if (p.Tasks.Count <= 0) return;
