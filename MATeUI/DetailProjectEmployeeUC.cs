@@ -53,7 +53,7 @@ namespace MATeUI
                         chatform.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
                     else chatform.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
-                chatform.ShowDialog();
+                if(!chatform.Visible) chatform.ShowDialog();
             }
         }
 
