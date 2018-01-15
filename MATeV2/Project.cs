@@ -109,7 +109,6 @@ namespace MATeV2
         {
             Tasker a = _tasks[oldkey];
             _tasks.Remove(oldkey);
-            _tasks[oldkey] = _tasks[newkey];
             _tasks.Add(newkey, a);
         }
      

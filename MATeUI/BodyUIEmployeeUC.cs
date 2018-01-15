@@ -97,8 +97,8 @@ namespace MATeUI
         private void ModifyTask(object sender, EventArgs e)
         {
             Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
-            Tasker task2 = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
-            detailProjectEmployeeUC1._dgTasks.Rows.Add(task2.Name, task2.DateLimit, task2.Project);
+            Tasker task2 = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, 
+                detailProjectEmployeeUC1.endDateTaskDpk.Value);
             p.ChangeDict(p,task.Name,task2.Name);
           
         }
