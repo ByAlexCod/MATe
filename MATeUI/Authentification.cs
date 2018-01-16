@@ -92,7 +92,7 @@ namespace MATeUI
             {
                 EmployeeUI eUI = new EmployeeUI();
                 MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
-
+                ChatWDF.InitializeListener(_currentCtx.CurrentUser,1807);
                 _currentCtx.CurrentUser.IP = CurrentIp;
                 eUI.ShowDialog();
                 Hide();

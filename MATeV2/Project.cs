@@ -147,14 +147,15 @@ namespace MATeV2
             if (Name != prj.Name) return;
             if (prj == null) throw new ArgumentNullException("Given Project cannot be null", nameof(prj));
             //Projects info
-            if (prj.Context.Owner.Mail == Context.Boss.Mail && prj.Context.BossModifyTime > Context.BossModifyTime)
+            if (prj.Context.Owner.Mail == Context.Boss.Mail || prj.Context.BossModifyTime > Context.BossModifyTime)
             {
                 DateBegin = prj.DateBegin;
                 DateLimit = prj.DateLimit;
-                Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
+                if(prj.Projectmanager != null) Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
 
-                
-                
+
+
+
                 ClearMembers();
                 foreach (var om in prj.Members)
                 {
@@ -178,6 +179,28 @@ namespace MATeV2
                     }
                 }
             }
+
+
+            foreach (var tt in prj.Tasks)
+            {
+                if (!Tasks.ContainsKey(tt.Key) && prj.Context.Owner.Mail == Projectmanager.Mail)
+                {
+                    Tasker e = CreateTask(tt.Value.Name, tt.Value.DateLimit);
+                    e.IsValidated = tt.Value.IsValidated;
+
+                }
+            }
+
+            foreach (var tt in _tasks)
+            {
+                if(prj.Tasks.ContainsKey(tt.Key))
+                {
+                    prj.Tasks.TryGetValue(tt.Key, out Tasker value);
+                    tt.Value.Merge(value);
+                }
+                    
+            }
+            
             //Init other merges
 
 

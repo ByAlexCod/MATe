@@ -446,41 +446,47 @@ namespace MATeUI
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
                 if (indexTask >= 0)
                 {
-                    task = p.Tasks.Values.ToList().ElementAt(indexTask);
-                    //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
-                    if (task != null)
+                    if (task == null)
                     {
-                        //hear
-                        if (task.SubTasks.Count < 1)
+                    }
+                    else
+                    {
+                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                        //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
+                        if (task != null)
                         {
-                            detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                            if (task.DateLimit.Day == DateTime.Today.Day &&
-                                task.DateLimit.Month == DateTime.Today.Month &&
-                                task.DateLimit.Year == DateTime.Today.Year)
+                            //hear
+                            if (task.SubTasks.Count < 1)
                             {
-                                PopupNotifier popup = new PopupNotifier();
-                                popup.Image = Properties.Resources.Notification;
-                                popup.TitleText = "Mate Project";
-                                popup.ContentText = task.Name + " ends Today!";
-                                popup.Popup();
+                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                                if (task.DateLimit.Day == DateTime.Today.Day &&
+                                    task.DateLimit.Month == DateTime.Today.Month &&
+                                    task.DateLimit.Year == DateTime.Today.Year)
+                                {
+                                    PopupNotifier popup = new PopupNotifier();
+                                    popup.Image = Properties.Resources.Notification;
+                                    popup.TitleText = "Mate Project";
+                                    popup.ContentText = task.Name + " ends Today!";
+                                    popup.Popup();
+                                }
                             }
-                        }
-                        if(task.IsValidated == true)
-                        {
-                            detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
-                            detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                        }
-                        detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
-                        detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
-                        detailProjectEmployeeUC1._doRbtn.Enabled = true;
+                            if (task.IsValidated == true)
+                            {
+                                detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
+                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                            }
+                            detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
+                            detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
+                            detailProjectEmployeeUC1._doRbtn.Enabled = true;
 
 
-                        detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
-                        foreach (var item in task.SubTasks.Values)
-                        {
-                            detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
+                            detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
+                            foreach (var item in task.SubTasks.Values)
+                            {
+                                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
+                            }
+
                         }
-                        
                     }
                 }
             }
