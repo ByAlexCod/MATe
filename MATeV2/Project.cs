@@ -179,6 +179,16 @@ namespace MATeV2
                     }
                 }
             }
+
+            foreach(var tt in _tasks)
+            {
+                if(prj.Tasks.ContainsKey(tt.Key))
+                {
+                    prj.Tasks.TryGetValue(tt.Key, out Tasker value);
+                    tt.Value.Merge(value);
+                }
+                    
+            }
             //Init other merges
 
 
