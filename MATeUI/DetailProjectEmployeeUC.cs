@@ -123,6 +123,17 @@ namespace MATeUI
                 Person SelectedPerson = _ctxuser.ObtainAccessor().Context.FindEmployee(name);
                 ChatWDF SelectedChat = _dicform[SelectedPerson];
                 SelectedChat.Conversation.ToSee = false;
+                int i = 0;
+                bool continuesearch = true;
+                while (continuesearch) 
+                {
+                    if (sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows[i].Cells[0].Value.ToString() == SelectedPerson.Mail)
+                    {
+                        sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows[i].Cells[1].Value = "nothing new";
+                        continuesearch = false;
+                    }
+                    else i++;
+                }
                 if(!SelectedChat.Visible) SelectedChat.ShowDialog();
             }
         }
