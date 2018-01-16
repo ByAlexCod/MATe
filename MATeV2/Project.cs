@@ -105,12 +105,7 @@ namespace MATeV2
         {
             _tasks.Clear();
         }
-        public void ChangeDict(Project p, string oldkey, string newkey)
-        {
-            Tasker a = _tasks[oldkey];
-            _tasks.Remove(oldkey);
-            _tasks.Add(newkey, a);
-        }
+       
      
         public void ClearMembers()
         {

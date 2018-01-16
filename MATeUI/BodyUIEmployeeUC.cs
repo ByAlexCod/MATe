@@ -61,7 +61,7 @@ namespace MATeUI
             projectManagement1._deleteProjectBtn.Visible = false;
 
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
-            detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifySubTask);
+            detailProjectEmployeeUC1.ModifySubTaskButtonClicked += new ButtonClickedEventHandler(ModifySubTask);
 
             projectManagement1.ProjectItemChanged += new EventHandler(ShowDetailProject);
             detailProjectEmployeeUC1.CellTaskClick += new DetailProjectEmployeeUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
@@ -97,10 +97,9 @@ namespace MATeUI
         private void ModifyTask(object sender, EventArgs e)
         {
             Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
-            Tasker task2 = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, 
-                detailProjectEmployeeUC1.endDateTaskDpk.Value);
-            p.ChangeDict(p,task.Name,task2.Name);
-          
+            int index = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            p.Tasks.Values.ElementAt(index).DateLimit = detailProjectEmployeeUC1.endDateTaskDpk.Value;
+            MessageBox.Show("Task changed!");
         }
        
         /// <summary>
@@ -338,8 +337,10 @@ namespace MATeUI
                 return;
             }
 
-            Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
-            detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
+            Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, 
+                detailProjectEmployeeUC1.endDateTaskDpk.Value);
+            detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, 
+                task.Project);
             
         }
 
