@@ -180,7 +180,18 @@ namespace MATeV2
                 }
             }
 
-            foreach(var tt in _tasks)
+
+            foreach (var tt in prj.Tasks)
+            {
+                if (!Tasks.ContainsKey(tt.Key) && prj.Context.Owner.Mail == Projectmanager.Mail)
+                {
+                    Tasker e = CreateTask(tt.Value.Name, tt.Value.DateLimit);
+                    e.IsValidated = tt.Value.IsValidated;
+
+                }
+            }
+
+            foreach (var tt in _tasks)
             {
                 if(prj.Tasks.ContainsKey(tt.Key))
                 {
@@ -189,6 +200,7 @@ namespace MATeV2
                 }
                     
             }
+            
             //Init other merges
 
 

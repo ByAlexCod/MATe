@@ -46,7 +46,18 @@ namespace Network
             using(var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
+                if (ctx.Owner != ctx.Boss)
+                {
+                    Socket cic = new Socket(AddressFamily.InterNetwork,
+                    SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
+                    cic.Connect(ctx.Boss.IP, _port);
 
+
+
+                    cic.SendFile(_zipTempFilePath);
+                    cic.Shutdown(SocketShutdown.Both);
+                    cic.Close();
+                }
                 foreach (var person in ctx.PersonsDictionary)
                 {
 
@@ -74,18 +85,7 @@ namespace Network
                 }
                 //_client = new TcpClient(_incomingIP, _basicPort + 1);
 
-                if (ctx.Owner != ctx.Boss)
-                {
-                    Socket cic = new Socket(AddressFamily.InterNetwork,
-                    SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
-                    cic.Connect(ctx.Boss.IP, _port);
-
-
-
-                    cic.SendFile(_zipTempFilePath);
-                    cic.Shutdown(SocketShutdown.Both);
-                    cic.Close();
-                }
+                
             }
         }
         public void SpreadDatas(List<string> ipsList)
