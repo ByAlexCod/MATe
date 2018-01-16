@@ -147,14 +147,15 @@ namespace MATeV2
             if (Name != prj.Name) return;
             if (prj == null) throw new ArgumentNullException("Given Project cannot be null", nameof(prj));
             //Projects info
-            if (prj.Context.Owner.Mail == Context.Boss.Mail && prj.Context.BossModifyTime > Context.BossModifyTime)
+            if (prj.Context.Owner.Mail == Context.Boss.Mail || prj.Context.BossModifyTime > Context.BossModifyTime)
             {
                 DateBegin = prj.DateBegin;
                 DateLimit = prj.DateLimit;
-                Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
+                if(prj.Projectmanager != null) Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
 
-                
-                
+
+
+
                 ClearMembers();
                 foreach (var om in prj.Members)
                 {
