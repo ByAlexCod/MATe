@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BossBodyUC));
             this._mainPage = new System.Windows.Forms.TabControl();
             this._pageProjects = new System.Windows.Forms.TabPage();
             this.detailProjectOnBody = new MATeUI.DetailProjectUC();
@@ -55,10 +56,10 @@
             // 
             this._pageProjects.Controls.Add(this.detailProjectOnBody);
             this._pageProjects.Controls.Add(this.projectManagementOnBody);
-            this._pageProjects.Location = new System.Drawing.Point(4, 22);
+            this._pageProjects.Location = new System.Drawing.Point(4, 25);
             this._pageProjects.Name = "_pageProjects";
             this._pageProjects.Padding = new System.Windows.Forms.Padding(3);
-            this._pageProjects.Size = new System.Drawing.Size(1020, 488);
+            this._pageProjects.Size = new System.Drawing.Size(1020, 485);
             this._pageProjects.TabIndex = 0;
             this._pageProjects.Text = "Project";
             this._pageProjects.UseVisualStyleBackColor = true;
@@ -69,13 +70,15 @@
             this.detailProjectOnBody.Dock = System.Windows.Forms.DockStyle.Fill;
             this.detailProjectOnBody.Location = new System.Drawing.Point(3, 71);
             this.detailProjectOnBody.Name = "detailProjectOnBody";
-            this.detailProjectOnBody.Size = new System.Drawing.Size(1014, 414);
+            this.detailProjectOnBody.Size = new System.Drawing.Size(1014, 411);
             this.detailProjectOnBody.TabIndex = 1;
             this.detailProjectOnBody.Load += new System.EventHandler(this.DetailProjectOnBody_Load);
             // 
             // projectManagementOnBody
             // 
             this.projectManagementOnBody.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.projectManagementOnBody.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("projectManagementOnBody.BackgroundImage")));
+            this.projectManagementOnBody.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.projectManagementOnBody.Dock = System.Windows.Forms.DockStyle.Top;
             this.projectManagementOnBody.Location = new System.Drawing.Point(3, 3);
             this.projectManagementOnBody.Name = "projectManagementOnBody";
@@ -98,17 +101,17 @@
             // 
             this.colaborators1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.colaborators1.Location = new System.Drawing.Point(3, 3);
-            this.colaborators1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.colaborators1.Margin = new System.Windows.Forms.Padding(2);
             this.colaborators1.Name = "colaborators1";
             this.colaborators1.Size = new System.Drawing.Size(1014, 479);
             this.colaborators1.TabIndex = 0;
             // 
-            // BodyUC
+            // BossBodyUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._mainPage);
-            this.Name = "BodyUC";
+            this.Name = "BossBodyUC";
             this.Size = new System.Drawing.Size(1028, 514);
             this._mainPage.ResumeLayout(false);
             this._pageProjects.ResumeLayout(false);
@@ -118,12 +121,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl _mainPage;
-        private System.Windows.Forms.TabPage _pageProjects;
-        private System.Windows.Forms.TabPage _pageCollaborators;
+        internal System.Windows.Forms.TabPage _pageCollaborators;
         public ProjectManagement projectManagementOnBody;
         public DetailProjectUC detailProjectOnBody;
         private ColaboratorsTab colaborators1;
+        internal System.Windows.Forms.TabControl _mainPage;
+        internal System.Windows.Forms.TabPage _pageProjects;
     }
 }

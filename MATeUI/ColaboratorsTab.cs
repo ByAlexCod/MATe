@@ -18,7 +18,12 @@ namespace MATeUI
         {
             InitializeComponent();
         }
+        public delegate void ButtonClickedEventHandler(object sender, EventArgs e);
+        public event ButtonClickedEventHandler GotoToProjectEvent;
+        public static Employee employee = null;
 
+        private void GoToProject(object sender, EventArgs e) => GotoToProjectEvent?.Invoke(this, e);
+       
         private void ListEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             using (var ct = ctx.ObtainAccessor())
@@ -33,10 +38,11 @@ namespace MATeUI
                 {
                     string mail = ListEmployee.SelectedItems[0].Text.ToString();
                     Employee employ = context.PersonsDictionary[mail];
+                    employee = employ;
                     FirstNameTextBox.Text = employ.Firstname;
                     LastNameTextBox.Text = employ.Lastname;
                     MailTextBox.Text = employ.Mail;
-                    if (employ.CurrentWorkingProject != null) ProjectTextBox.Text = employ.CurrentWorkingProject.Name;
+                    if (employ.CurrentWorkingProject != null) ProjectTextBox.Text = employ.CurrentWorkingProject.ToString();
                     else ProjectTextBox.Clear();
                 }
             }
@@ -47,6 +53,7 @@ namespace MATeUI
         {
             base.OnLoad(e);
             Refreshtable();
+            _goToProjectBtn.Click += new EventHandler(GoToProject);
         }
 
         private void AddEmployeeBtn_Click(object sender, EventArgs e)
@@ -105,6 +112,7 @@ namespace MATeUI
                 }
             }
         }
+
         
     }
 }

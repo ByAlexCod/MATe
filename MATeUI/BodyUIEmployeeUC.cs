@@ -269,7 +269,7 @@ namespace MATeUI
             task = p.Tasks.Values.ElementAt(idx);
             if (task == null) return;
 
-            if (detailProjectEmployeeUC1.subTaskNameTbx.Text.Trim().Equals(""))
+           /* if (detailProjectEmployeeUC1.subTaskNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("fill in the field name of the task ");
                 return;
@@ -288,12 +288,8 @@ namespace MATeUI
             {
                 MessageBox.Show("The End Date Of The Subtask Must Not Exceed That Of The Task ");
                 return;
-            }
-            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > task.DateLimit)
-            {
-                MessageBox.Show("The End Date Of The Subtask Must Not Exceed That Of The Task");
-                return;
-            }
+            }*/
+            
 
             Employee emp = Authentification.CurrentCtxUser.CurrentUser as Employee;
             emp = (Employee)detailProjectEmployeeUC1._projectMembers.SelectedItem;
@@ -321,7 +317,7 @@ namespace MATeUI
                 MessageBox.Show("SELECT A PROJECT FIRST");
                 return;
             }
-            if (detailProjectEmployeeUC1._taskNameTbx.Text.Trim().Equals(""))
+            /*if (detailProjectEmployeeUC1._taskNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("fill in the field name of the task ");
                 return;
@@ -336,7 +332,7 @@ namespace MATeUI
             {
                 MessageBox.Show("The End Date Of The Task Must Exceed That Of The Project");
                 return;
-            }
+            }*/
 
             Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
             detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
@@ -516,7 +512,7 @@ namespace MATeUI
             {
                 int state = p.Status;
                 if (state == 0)
-                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
+                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" is due to finish On "+p.DateBegin.ToShortDateString();
                 else if(state == 1)
                     projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated By Project Manager";
                 else

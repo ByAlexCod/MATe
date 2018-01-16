@@ -59,7 +59,35 @@ namespace MATeUI
             detailProjectOnBody.ButtonChangeProjectManager += new ButtonClickedEventHandler(OnChangeProjectManger);
             detailProjectOnBody.CellTaskClick += new DetailProjectUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
             projectManagementOnBody.MyAccountManagementEvent += new ProjectManagement.ButtonClickedEvent(ShowFormChangeAccount);
+            colaborators1.GotoToProjectEvent += new ColaboratorsTab.ButtonClickedEventHandler(GoToProject);
             
+        }
+
+        private void GoToProject(object sender, EventArgs e)
+        {
+
+            _mainPage.SelectedIndex = 0;
+            if(ColaboratorsTab.employee != null)
+            {
+                Employee emp = ColaboratorsTab.employee;
+                if(emp.CurrentWorkingProject != null)
+                {
+                    projectManagementOnBody._projectListCbx.SelectedItem = emp.CurrentWorkingProject;
+                }
+                else
+                {
+                    projectManagementOnBody._projectListCbx.SelectedItem = null;
+                    detailProjectOnBody._dgMemberInProject.Rows.Clear();
+                    detailProjectOnBody._dgSubTasks.Rows.Clear();
+                    detailProjectOnBody._dgTasks.Rows.Clear();
+                    detailProjectOnBody._projectBeginDate.Value = DateTime.Now;
+                    detailProjectOnBody._projectEndDate.Value = DateTime.Now;
+                    detailProjectOnBody.ProjectName.Text = "";
+                    detailProjectOnBody._firstNameLbl.Text = "";
+                    detailProjectOnBody._lastNameLbl.Text = "";
+                    detailProjectOnBody._mailLbl.Text = "";
+                }
+            }
         }
 
         private void ValidatedProject(object sender, EventArgs e)
@@ -389,6 +417,7 @@ namespace MATeUI
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+            
         }
     }
 }

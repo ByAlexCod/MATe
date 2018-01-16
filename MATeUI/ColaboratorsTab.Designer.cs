@@ -45,7 +45,7 @@
             this.FirstNameTextBox = new System.Windows.Forms.TextBox();
             this.AddEmployeeBtn = new System.Windows.Forms.Button();
             this.DeleteEmployeeBtn = new System.Windows.Forms.Button();
-            this.GotoProjectBtn = new System.Windows.Forms.Button();
+            this._goToProjectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -61,7 +61,7 @@
             this.Status});
             this.ListEmployee.HideSelection = false;
             this.ListEmployee.Location = new System.Drawing.Point(11, 54);
-            this.ListEmployee.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ListEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.ListEmployee.Name = "ListEmployee";
             this.ListEmployee.Size = new System.Drawing.Size(414, 286);
             this.ListEmployee.TabIndex = 0;
@@ -143,7 +143,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Location = new System.Drawing.Point(562, 54);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -167,7 +167,7 @@
             // ProjectTextBox
             // 
             this.ProjectTextBox.Location = new System.Drawing.Point(3, 87);
-            this.ProjectTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProjectTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.ProjectTextBox.Name = "ProjectTextBox";
             this.ProjectTextBox.Size = new System.Drawing.Size(272, 20);
             this.ProjectTextBox.TabIndex = 3;
@@ -175,7 +175,7 @@
             // MailTextBox
             // 
             this.MailTextBox.Location = new System.Drawing.Point(3, 58);
-            this.MailTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MailTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.MailTextBox.Name = "MailTextBox";
             this.MailTextBox.Size = new System.Drawing.Size(272, 20);
             this.MailTextBox.TabIndex = 2;
@@ -183,7 +183,7 @@
             // LastNameTextBox
             // 
             this.LastNameTextBox.Location = new System.Drawing.Point(3, 32);
-            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.LastNameTextBox.Name = "LastNameTextBox";
             this.LastNameTextBox.Size = new System.Drawing.Size(272, 20);
             this.LastNameTextBox.TabIndex = 1;
@@ -191,7 +191,7 @@
             // FirstNameTextBox
             // 
             this.FirstNameTextBox.Location = new System.Drawing.Point(3, 3);
-            this.FirstNameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FirstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.FirstNameTextBox.Name = "FirstNameTextBox";
             this.FirstNameTextBox.Size = new System.Drawing.Size(272, 20);
             this.FirstNameTextBox.TabIndex = 0;
@@ -203,7 +203,7 @@
             this.AddEmployeeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.AddEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddEmployeeBtn.Location = new System.Drawing.Point(11, 362);
-            this.AddEmployeeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddEmployeeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.AddEmployeeBtn.Name = "AddEmployeeBtn";
             this.AddEmployeeBtn.Size = new System.Drawing.Size(125, 25);
             this.AddEmployeeBtn.TabIndex = 8;
@@ -218,7 +218,7 @@
             this.DeleteEmployeeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.DeleteEmployeeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteEmployeeBtn.Location = new System.Drawing.Point(297, 362);
-            this.DeleteEmployeeBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.DeleteEmployeeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.DeleteEmployeeBtn.Name = "DeleteEmployeeBtn";
             this.DeleteEmployeeBtn.Size = new System.Drawing.Size(128, 25);
             this.DeleteEmployeeBtn.TabIndex = 9;
@@ -226,31 +226,32 @@
             this.DeleteEmployeeBtn.UseVisualStyleBackColor = true;
             this.DeleteEmployeeBtn.Click += new System.EventHandler(this.DeleteEmployeeBtn_Click);
             // 
-            // GotoProjectBtn
+            // _goToProjectBtn
             // 
-            this.GotoProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.GotoProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.GotoProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.GotoProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.GotoProjectBtn.Location = new System.Drawing.Point(764, 194);
-            this.GotoProjectBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.GotoProjectBtn.Name = "GotoProjectBtn";
-            this.GotoProjectBtn.Size = new System.Drawing.Size(155, 25);
-            this.GotoProjectBtn.TabIndex = 10;
-            this.GotoProjectBtn.Text = "Go to Project";
-            this.GotoProjectBtn.UseVisualStyleBackColor = true;
+            this._goToProjectBtn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this._goToProjectBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this._goToProjectBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this._goToProjectBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this._goToProjectBtn.Location = new System.Drawing.Point(764, 194);
+            this._goToProjectBtn.Margin = new System.Windows.Forms.Padding(2);
+            this._goToProjectBtn.Name = "_goToProjectBtn";
+            this._goToProjectBtn.Size = new System.Drawing.Size(155, 25);
+            this._goToProjectBtn.TabIndex = 10;
+            this._goToProjectBtn.Text = "Go to Project";
+            this._goToProjectBtn.UseVisualStyleBackColor = true;
+            
             // 
             // ColaboratorsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.GotoProjectBtn);
+            this.Controls.Add(this._goToProjectBtn);
             this.Controls.Add(this.DeleteEmployeeBtn);
             this.Controls.Add(this.AddEmployeeBtn);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ListEmployee);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ColaboratorsTab";
             this.Size = new System.Drawing.Size(999, 469);
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -283,6 +284,6 @@
         private System.Windows.Forms.TextBox FirstNameTextBox;
         private System.Windows.Forms.Button AddEmployeeBtn;
         private System.Windows.Forms.Button DeleteEmployeeBtn;
-        private System.Windows.Forms.Button GotoProjectBtn;
+        private System.Windows.Forms.Button _goToProjectBtn;
     }
 }
