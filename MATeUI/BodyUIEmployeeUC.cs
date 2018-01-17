@@ -336,9 +336,7 @@ namespace MATeUI
                 return;
             }
             int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
-            if (task == null) return;
-
-           
+            
 
             int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
             if (indexTask >= p.Tasks.Count) return;
