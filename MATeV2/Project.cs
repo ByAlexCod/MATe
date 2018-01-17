@@ -29,8 +29,6 @@ namespace MATeV2
             if (projectmanager != null)
             {
                 _projectmanager = projectmanager;
-                
-
                 _members.Add(projectmanager.Mail, projectmanager);
                 projectmanager.CurrentWorkingProject = this;
             }

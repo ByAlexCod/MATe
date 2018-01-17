@@ -15,13 +15,12 @@ namespace MATeV2
         Boolean _isValidated;
         Project _project;
 
-        public Tasker(Project p,string name, DateTime datelimit)
+        internal Tasker(Project p,string name, DateTime datelimit)
         {
             Project = p;
             Name = name;
             DateLimit = datelimit;
             _isValidated = false;
-            
             if (p.Tasks.ContainsKey(this.Name)){ throw new ArgumentException("this name of task already existe"); }
             else
             {
