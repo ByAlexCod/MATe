@@ -248,10 +248,13 @@ namespace MATeUI
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
                     return;
-                if (emp.Firstname.Equals(p.Projectmanager.Firstname) && emp.Lastname.Equals(p.Projectmanager.Lastname))
+                if (p.Projectmanager != null)
                 {
-                    MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
-                    return;
+                    if (emp.Firstname.Equals(p.Projectmanager.Firstname) && emp.Lastname.Equals(p.Projectmanager.Lastname))
+                    {
+                        MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
+                        return;
+                    }
                 }
                 foreach (Tasker item in p.Tasks.Values)
                 {
