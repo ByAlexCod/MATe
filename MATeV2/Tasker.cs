@@ -108,12 +108,15 @@ namespace MATeV2
 
         internal void Merge(Tasker oTask)
         {
-            if(oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+            if (oTask.Project.Context.Owner != null && Project.Projectmanager != null)
             {
-                Name = oTask.Name;
-                IsValidated = oTask.IsValidated;
-                DateLimit = oTask.DateLimit;
+                if (oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+                {
+                    Name = oTask.Name;
+                    IsValidated = oTask.IsValidated;
+                    DateLimit = oTask.DateLimit;
 
+                }
             }
             foreach (var ost in oTask.SubTasks)
             {
