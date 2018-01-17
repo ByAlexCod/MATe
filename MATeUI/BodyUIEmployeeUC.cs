@@ -45,7 +45,7 @@ namespace MATeUI
                     detailProjectEmployeeUC1._subTaskGbx.Visible = false;
 
                     Context ctx = ct.Context;
-                    detailProjectEmployeeUC1._currentUserLbl.Text = "BIENVENUE " + _ctxuser.CurrentUser.Firstname + " " + _ctxuser.CurrentUser.Lastname;
+                    //detailProjectEmployeeUC1._currentUserLbl.Text = "BIENVENUE " + _ctxuser.CurrentUser.Firstname + " " + _ctxuser.CurrentUser.Lastname;
 
 
                     foreach (Project item in ctx.ProjectsDictionary.Values)
@@ -269,27 +269,7 @@ namespace MATeUI
             task = p.Tasks.Values.ElementAt(idx);
             if (task == null) return;
 
-           /* if (detailProjectEmployeeUC1.subTaskNameTbx.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("fill in the field name of the task ");
-                return;
-            }
-            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > p.DateLimit)
-            {
-                MessageBox.Show("The End Date Of The Subtask Must Not Exceed That Of The Project ");
-                return;
-            }
-            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > p.DateLimit)
-            {
-                MessageBox.Show("The End Date Of The Subtask Must Exceed That Of The Project");
-                return;
-            }
-            if (detailProjectEmployeeUC1.endSubTaskDpk.Value > task.DateLimit)
-            {
-                MessageBox.Show("The End Date Of The Subtask Must Not Exceed That Of The Task ");
-                return;
-            }*/
-            
+           
 
             Employee emp = Authentification.CurrentCtxUser.CurrentUser as Employee;
             emp = (Employee)detailProjectEmployeeUC1._projectMembers.SelectedItem;
@@ -317,23 +297,7 @@ namespace MATeUI
                 MessageBox.Show("SELECT A PROJECT FIRST");
                 return;
             }
-            /*if (detailProjectEmployeeUC1._taskNameTbx.Text.Trim().Equals(""))
-            {
-                MessageBox.Show("fill in the field name of the task ");
-                return;
-            }
-
-            if (detailProjectEmployeeUC1.endDateTaskDpk.Value > p.DateLimit)
-            {
-                MessageBox.Show("The End Date Of The Task Must Not Exceed That Of The Project ");
-                return;
-            }
-            if (detailProjectEmployeeUC1.endDateTaskDpk.Value < p.DateBegin)
-            {
-                MessageBox.Show("The End Date Of The Task Must Exceed That Of The Project");
-                return;
-            }*/
-
+            
             Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
             detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
             
@@ -347,11 +311,28 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ChangeSubTaskItem(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
+            if(p == null)
+            {
+                MessageBox.Show("First Select A Project");
+                return;
+            }
             int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
-            if (task == null) return;
+
+           
+
+            int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            if (indexTask >= p.Tasks.Count) return;
+            
+            Tasker task = p.Tasks.Values.ElementAt(indexTask);
+            if (index >= task.SubTasks.Count) return;
+                if (task == null) return;
             SubTask sub = task.SubTasks.Values.ToList()[index];
             if (p == null) return;
             if (sub == null) return;
+
+            detailProjectEmployeeUC1.endSubTaskDpk.Value = sub.DateLimit;
+            detailProjectEmployeeUC1.subTaskNameTbx.Text = sub.Name;
 
             detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
             detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
@@ -442,6 +423,15 @@ namespace MATeUI
             if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+
+                if (indexTask >= p.Tasks.Count) return;
+
+                Tasker task = p.Tasks.Values.ElementAt(indexTask);
+                if (task == null) return;
+
+                detailProjectEmployeeUC1.endSubTaskDpk.Value = DateTime.Now;
+                detailProjectEmployeeUC1.subTaskNameTbx.Text = "";
+
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
                 if (indexTask >= 0)
@@ -451,7 +441,8 @@ namespace MATeUI
                     }
                     else
                     {
-                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                        detailProjectEmployeeUC1._taskNameTbx.Text = task.Name;
+                        detailProjectEmployeeUC1.endDateTaskDpk.Value = task.DateLimit;
                         //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                         if (task != null)
                         {
@@ -479,6 +470,7 @@ namespace MATeUI
                             detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
                             detailProjectEmployeeUC1._doRbtn.Enabled = true;
 
+                           
 
                             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                             foreach (var item in task.SubTasks.Values)

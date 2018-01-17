@@ -123,8 +123,8 @@ namespace MATeUI
                 if (p.Tasks.Count > 0)
                 {
                     indexTask = detailProjectOnBody._dgTasks.CurrentRow.Index;
-                    if (indexTask >= 0)
-                    {
+                    if (indexTask >= p.Tasks.Count) return;
+                    
                         task = p.Tasks.Values.ToList().ElementAt(indexTask);
                         //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                         if (task != null)
@@ -140,7 +140,7 @@ namespace MATeUI
                                     detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker, "Fait");
                             }
                         }
-                    }
+                    
                 }
             }
         }
@@ -203,6 +203,9 @@ namespace MATeUI
             if (res == DialogResult.Cancel)
                 return;
             int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
+
+            if (index >= p.Members.Count) return;
+
             p.Projectmanager = p.Members.Values.ToList().ElementAt(index);
             projectManagementOnBody._projectListCbx.SelectedItem = p;
             detailProjectOnBody._firstNameLbl.Text = p.Projectmanager.Firstname;
@@ -243,14 +246,18 @@ namespace MATeUI
                     return;
                 }
                 int index = detailProjectOnBody._dgEmployees.CurrentRow.Index;
+
+                if (index >= ctx.PersonsDictionary.Count) return;
+
                 Employee emp = ctx.PersonsDictionary.Values.ElementAt(index);
                 if (emp.CurrentWorkingProject != null)
                 {
                     MessageBox.Show("THIS EMPLOYEE IS ALREADY IN A PROJECT");
                     return;
                 }
-                p.Members.Add(emp.Mail, emp);
                 emp.CurrentWorkingProject = p;
+                p.Members.Add(emp.Mail, emp);
+                
                 ctx.PersonsDictionary.Values.ElementAt(index).CurrentWorkingProject = p;
                 projectManagementOnBody._projectListCbx.SelectedItem = p;
                 detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
@@ -261,6 +268,7 @@ namespace MATeUI
         {
             using (var ct = _ctxuser.ObtainAccessor())
             {
+                Project p = projectManagementOnBody._projectListCbx.SelectedItem as Project;
                 Context ctx = ct.Context;
                 if (p == null)
                 {
@@ -274,15 +282,22 @@ namespace MATeUI
                 }
 
                 int index = detailProjectOnBody._dgMemberInProject.CurrentRow.Index;
+
+                if (index >= p.Members.Count) return;
+
                 Employee emp = p.Members.Values.ToList().ElementAt(index);
                 DialogResult res = MessageBox.Show("Are you sure you want to Delete", "Confirmation",
                     MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
                     return;
-                if (emp.Firstname.Equals(p.Projectmanager.Firstname) && emp.Lastname.Equals(p.Projectmanager.Lastname))
+
+                if (p.Projectmanager != null)
                 {
-                    MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
-                    return;
+                    if (emp.Mail.Equals(p.Projectmanager.Mail))
+                    {
+                        MessageBox.Show("CAN NOT DELETE THE PROJECT MANAGER");
+                        return;
+                    }
                 }
                 foreach (Tasker item in p.Tasks.Values)
                 {
@@ -299,9 +314,15 @@ namespace MATeUI
                         }
                     }
                 }
-                p.Members.Remove(p.Members.Values.ToList()[index].Mail);
-                detailProjectOnBody._dgMemberInProject.Rows.RemoveAt(index);
-                projectManagementOnBody._projectListCbx.SelectedItem = p;
+
+                
+                detailProjectOnBody._dgMemberInProject.Rows.Clear();
+
+                foreach (Employee empl in p.Members.Values)
+                {
+                    detailProjectOnBody._dgMemberInProject.Rows.Add(empl.Firstname, empl.Lastname, empl.Mail);
+                }
+
                 int i = 0;
                 foreach (Employee item in ctx.PersonsDictionary.Values)
                 {
@@ -312,6 +333,13 @@ namespace MATeUI
                     }
                     i++;
                 }
+                p.Members.Remove(emp.Mail);
+                emp.CurrentWorkingProject = null;
+                detailProjectOnBody._dgMemberInProject.Rows.RemoveAt(index);
+
+
+                projectManagementOnBody._projectListCbx.SelectedItem = p;
+
             }
         }
 
