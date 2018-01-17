@@ -36,8 +36,7 @@ namespace MATeUI
 
         private void ValidateProject(object sender, EventArgs e)
         {
-            if (ValidatedProjectEvent != null)
-                ValidatedProjectEvent(this, e);
+            ValidatedProjectEvent?.Invoke(this, e);
         }
 
         private void UpdateProjectButonClick(object sender, EventArgs e)
@@ -83,16 +82,14 @@ namespace MATeUI
 
         private void OnChangeProjectManager(object sender, EventArgs e)
         {
-            if (ButtonChangeProjectManager != null)
-                ButtonChangeProjectManager(this, e);
+            ButtonChangeProjectManager?.Invoke(this, e);
         }
 
         public event ButtonClickedEventHandler AddTaskButton;
 
         private void OnAddTaskToProject(object sender, EventArgs e)
         {
-            if (AddTaskButton != null)
-                AddTaskButton(this, e);
+            AddTaskButton?.Invoke(this, e);
         }
 
         private void _refreshPageBtn_Click(object sender, EventArgs e)

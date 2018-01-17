@@ -46,7 +46,9 @@ namespace MATeUI
         }
         private void ConnexionBtn_Click(object sender, EventArgs e)
         {
+           
             bool newUser = false;
+            
             if (userNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("Fill in the fields Mail address and Password");
