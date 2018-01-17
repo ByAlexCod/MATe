@@ -44,7 +44,7 @@ namespace Network
                 using (var stream = client.GetStream())
                 using (FileStream output = File.Open(_tempReceiverPath, FileMode.OpenOrCreate))
                 {
-                    Console.WriteLine("Client connected. Starting to receive the file");
+                    Console.WriteLine("Client connected. Starting to receive 0the file");
                     // read the file in chunks of 1KB
                     var buffer = new byte[1024];
                     int bytesRead;
@@ -66,7 +66,6 @@ namespace Network
 
             using (ZipArchive arch = ZipFile.OpenRead(_tempReceiverPath))
             {
-
                 arch.ExtractToDirectory(_tempUnZipped);
             }
 
@@ -115,13 +114,6 @@ namespace Network
                     {
                         b.Merge(cte.Context);
                     }
-
-
-
-
-
-
-
 
                     //ContextAndUserManager ctxuser = new ContextAndUserManager(b.CompanyName, true);
                     //ctxuser.Load(unZippedFile.FullName);

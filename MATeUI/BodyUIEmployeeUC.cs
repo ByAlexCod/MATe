@@ -448,7 +448,9 @@ namespace MATeUI
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
                 if (indexTask >= 0)
                 {
-                    if (task == null) { MessageBox.Show("empty task"); }//throw new ArgumentException("empty task"); }
+                    if (task == null)
+                    {
+                    }
                     else
                     {
                         task = p.Tasks.Values.ToList().ElementAt(indexTask);

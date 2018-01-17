@@ -108,17 +108,41 @@ namespace MATeV2
 
         internal void Merge(Tasker oTask)
         {
-            if(oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail && oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+            if(oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
             {
                 Name = oTask.Name;
                 IsValidated = oTask.IsValidated;
                 DateLimit = oTask.DateLimit;
 
             }
-            foreach(var st in SubTasks)
+            foreach (var ost in oTask.SubTasks)
+            {
+                if (!SubTasks.ContainsKey(ost.Key))
+                {
+                    SubTask aa = CreateSubTask(ost.Value.Name, ost.Value.DateLimit, ost.Value.Worker);
+                    aa.State = ost.Value.State;
+
+                }
+            }
+
+            List<string> toremove = new List<string>();
+
+            foreach (var st in SubTasks)
             {
                 oTask.SubTasks.TryGetValue(st.Key, out SubTask value);
                 if(value != null) st.Value.Merge(value);
+                else
+                {
+                    toremove.Add(st.Key);
+                }
+            }
+
+            
+
+
+            foreach(var att in toremove)
+            {
+                SubTasks.Remove(att);
             }
         }
     }

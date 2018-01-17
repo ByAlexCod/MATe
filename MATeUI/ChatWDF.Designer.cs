@@ -57,6 +57,7 @@
             this.sendbtn.TabIndex = 2;
             this.sendbtn.Text = "Send";
             this.sendbtn.UseVisualStyleBackColor = true;
+            this.sendbtn.Click += new System.EventHandler(this.sendbtn_Click);
             // 
             // ChatWDF
             // 
@@ -74,9 +75,8 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView ListChat;
         private System.Windows.Forms.TextBox Messagetxb;
         private System.Windows.Forms.Button sendbtn;
+        public System.Windows.Forms.ListView ListChat;
     }
 }
