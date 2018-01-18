@@ -56,7 +56,7 @@ namespace MATeV2
 
         internal void DeleteTask()
         {
-            foreach(SubTask st in this.SubTasks.Values)
+            foreach(SubTask st in this.SubTasks.Values.ToList())
             {
                 st.DeleteSubTask();
                 SubTasks.Remove(st.Name);

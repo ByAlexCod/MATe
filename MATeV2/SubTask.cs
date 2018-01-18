@@ -14,12 +14,10 @@ namespace MATeV2
         Employee _worker;
         int _status;
         Tasker _currenttask;
-        Tasker _task;
+        
         
         public SubTask(Tasker task, string name,DateTime datelimit,Employee worker = null)
         {
-            _task = task;
-
             Name = name;
             DateLimit = datelimit;
             Worker = worker;
@@ -29,7 +27,7 @@ namespace MATeV2
 
         void SetProjectManagerMD()
         {
-            _task.Project.ProjectManagerModifyDate = DateTime.Now;
+            CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
         }
 
         public string Name
@@ -52,7 +50,7 @@ namespace MATeV2
         public Employee Worker
         {
             get { return _worker; }
-            set { _worker = value; SetProjectManagerMD(); }
+            set { _worker = value; /* SetProjectManagerMD();*/ }
         }
 
         public int State
@@ -64,14 +62,15 @@ namespace MATeV2
         public Tasker CurrentTask
         {
             get { return _currenttask; }
-            set { _currenttask = value; SetProjectManagerMD(); }
+            set { _currenttask = value; /* SetProjectManagerMD();*/ }
         }
         /// <summary>
         /// to write after 
         /// </summary>
         internal void DeleteSubTask()
         {
-            throw new NotImplementedException();
+            CurrentTask = null;
+            Worker = null;
         }
 
         internal void Merge(SubTask oSubTask)
