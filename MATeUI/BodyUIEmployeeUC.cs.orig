@@ -45,8 +45,6 @@ namespace MATeUI
                     detailProjectEmployeeUC1._subTaskGbx.Visible = false;
 
                     Context ctx = ct.Context;
-                    //detailProjectEmployeeUC1._currentUserLbl.Text = "BIENVENUE " + _ctxuser.CurrentUser.Firstname + " " + _ctxuser.CurrentUser.Lastname;
-
 
                     foreach (Project item in ctx.ProjectsDictionary.Values)
                     {
@@ -63,7 +61,7 @@ namespace MATeUI
             projectManagement1._deleteProjectBtn.Visible = false;
 
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
-            detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifySubTask);
+            detailProjectEmployeeUC1.ModifySubTaskButtonClicked += new ButtonClickedEventHandler(ModifySubTask);
 
             projectManagement1.ProjectItemChanged += new EventHandler(ShowDetailProject);
             detailProjectEmployeeUC1.CellTaskClick += new DetailProjectEmployeeUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
@@ -98,9 +96,12 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
+            int index = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            p.Tasks.Values.ElementAt(index).DateLimit = detailProjectEmployeeUC1.endDateTaskDpk.Value;
+            MessageBox.Show("Task changed!");
         }
-
+       
         /// <summary>
         /// Supprime la sous-tache selectionnée dans le datagrid  des tache et supprime toutes les
         /// Sous-tache ratachées à cette tache
@@ -109,8 +110,6 @@ namespace MATeUI
         /// <param name="e"></param>
         private void DeleteSelectedSubTask(object sender, EventArgs e)
         {
-           
-
             if (p == null) return;
             if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count <= 1) return;
             if (p.Tasks.Count <= 0) return;
@@ -297,10 +296,6 @@ namespace MATeUI
                 MessageBox.Show("SELECT A PROJECT FIRST");
                 return;
             }
-<<<<<<< HEAD
-            
-            Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
-=======
             if (detailProjectEmployeeUC1._taskNameTbx.Text.Trim().Equals(""))
             {
                 MessageBox.Show("fill in the field name of the task ");
@@ -318,13 +313,19 @@ namespace MATeUI
                 return;
             }
 
+<<<<<<< HEAD
             
             
                 Tasker task = p.CreateTask(detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
             
             
->>>>>>> origin/dev
             detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
+=======
+            Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, 
+                detailProjectEmployeeUC1.endDateTaskDpk.Value);
+            detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, 
+                task.Project);
+>>>>>>> origin/voice
             
         }
 
@@ -343,8 +344,7 @@ namespace MATeUI
                 return;
             }
             int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
-
-           
+            
 
             int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
             if (indexTask >= p.Tasks.Count) return;
@@ -355,9 +355,6 @@ namespace MATeUI
             SubTask sub = task.SubTasks.Values.ToList()[index];
             if (p == null) return;
             if (sub == null) return;
-
-            detailProjectEmployeeUC1.endSubTaskDpk.Value = sub.DateLimit;
-            detailProjectEmployeeUC1.subTaskNameTbx.Text = sub.Name;
 
             detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
             detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
@@ -448,15 +445,6 @@ namespace MATeUI
             if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
-
-                if (indexTask >= p.Tasks.Count) return;
-
-                Tasker task = p.Tasks.Values.ElementAt(indexTask);
-                if (task == null) return;
-
-                detailProjectEmployeeUC1.endSubTaskDpk.Value = DateTime.Now;
-                detailProjectEmployeeUC1.subTaskNameTbx.Text = "";
-
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
                 if (indexTask >= 0)
@@ -466,8 +454,7 @@ namespace MATeUI
                     }
                     else
                     {
-                        detailProjectEmployeeUC1._taskNameTbx.Text = task.Name;
-                        detailProjectEmployeeUC1.endDateTaskDpk.Value = task.DateLimit;
+                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
                         //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
                         if (task != null)
                         {
@@ -495,7 +482,6 @@ namespace MATeUI
                             detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
                             detailProjectEmployeeUC1._doRbtn.Enabled = true;
 
-                           
 
                             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
                             foreach (var item in task.SubTasks.Values)
@@ -535,7 +521,7 @@ namespace MATeUI
             {
                 int state = p.Status;
                 if (state == 0)
-                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" is due to finish On "+p.DateBegin.ToShortDateString();
+                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                 else if(state == 1)
                     projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated By Project Manager";
                 else
