@@ -44,20 +44,7 @@ namespace MATeUI
             thread.Start();
         }
 
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string filename = Application.StartupPath + @"\Read Me.txt";
-
-            System.Diagnostics.Process.Start(fileName: @"" + filename + "");
-
-
-
-        }
-
-
-
-    
-
+        
         private void myAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
@@ -66,12 +53,32 @@ namespace MATeUI
 
         private void deconnexionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
 
         private void dEBUGToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+<<<<<<< HEAD
+        private void readMeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string filename = Application.StartupPath + @"\Read Me.txt";
+
+            System.Diagnostics.Process.Start(fileName: @"" + filename + "");
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ProfilForm pf = new ProfilForm();
+            pf.ShowDialog();
+            //MessageBox.Show("My IP Adress : " + _ctxuser.CurrentUser.IP);
+=======
+        private void bodyUIEmployeeUC1_Load(object sender, EventArgs e)
+        {
+            
+>>>>>>> origin/voice
         }
     }
 }
