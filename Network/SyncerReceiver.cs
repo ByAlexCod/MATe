@@ -52,10 +52,10 @@ namespace Network
                     {
                         output.Write(buffer, 0, bytesRead);
                     }
-                    Thread a = new Thread(new ThreadStart(End));
-                    a.IsBackground = true;
-                    a.Start();
                 }
+                Thread a = new Thread(new ThreadStart(End));
+                a.IsBackground = true;
+                a.Start();
             }
         }
 
