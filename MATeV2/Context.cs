@@ -233,7 +233,7 @@ namespace MATeV2
         {
             SetBossModifyTime();
             if (p == null) return false;
-            p.Projectmanager.CurrentWorkingProject = null;
+            if (p.Projectmanager != null) p.Projectmanager.CurrentWorkingProject = null;
             foreach (Employee e in p.Members.Values)
             {
                 e.CurrentWorkingProject = null;

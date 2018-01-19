@@ -21,7 +21,7 @@ namespace MATeV2
             Name = name;
             DateLimit = datelimit;
             _isValidated = false;
-            if (p.Tasks.ContainsKey(this.Name)){ throw new ArgumentException("this name of task already existe"); }
+            if (p.Tasks.ContainsKey(Name)){ throw new ArgumentException("this name of task already existe"); }
             else
             {
                 p.Tasks.Add(this.Name, this);
@@ -56,7 +56,7 @@ namespace MATeV2
 
         internal void DeleteTask()
         {
-            foreach(SubTask st in this.SubTasks.Values)
+            foreach(SubTask st in SubTasks.Values.ToList())
             {
                 st.DeleteSubTask();
                 SubTasks.Remove(st.Name);

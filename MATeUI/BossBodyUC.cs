@@ -49,6 +49,9 @@ namespace MATeUI
                 }
             }
 
+
+            
+            detailProjectOnBody.ProjectName.Enabled = false;
             projectManagementOnBody.ProjectItemChanged += new EventHandler(ShowDetailProject);
             projectManagementOnBody.DeleteSelectedProject += new ButtonClickedEventHandler(DeleteSelectedProject);
             detailProjectOnBody.UpdateProjectButtonClicked += new ButtonClickedEventHandler(OnUpdateButtonClicked);
@@ -166,24 +169,20 @@ namespace MATeUI
                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (res == DialogResult.Cancel)
                     return;
-                if(ctx.ProjectsDictionary.Remove(p.Name))
+                if (ctx.DeleteProject(p))
                 {
-                    foreach (var item in p.Members.Values)
-                    {
-                        item.CurrentWorkingProject = null;
-                    }
+                    projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                    detailProjectOnBody._dgMemberInProject.Rows.Clear();
+                    detailProjectOnBody._dgTasks.Rows.Clear();
+                    detailProjectOnBody._lastNameLbl.Text = "---------------";
+                    detailProjectOnBody._mailLbl.Text = "---------------";
+                    detailProjectOnBody._firstNameLbl.Text = "---------------";
+                    detailProjectOnBody.ProjectName.Text = "";
+                    detailProjectOnBody._projectBeginDate.Value = DateTime.Now;
+                    detailProjectOnBody._projectEndDate.Value = DateTime.Now;
+                    projectManagementOnBody._projectListCbx.SelectedItem = null;
+                    p = null;
                 }
-                projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
-                detailProjectOnBody._dgMemberInProject.Rows.Clear();
-                detailProjectOnBody._dgTasks.Rows.Clear();
-                detailProjectOnBody._lastNameLbl.Text = "---------------";
-                detailProjectOnBody._mailLbl.Text = "---------------";
-                detailProjectOnBody._firstNameLbl.Text = "---------------";
-                detailProjectOnBody.ProjectName.Text = "";
-                detailProjectOnBody._projectBeginDate.Value = DateTime.Now;
-                detailProjectOnBody._projectEndDate.Value = DateTime.Now;
-                projectManagementOnBody._projectListCbx.SelectedItem = null;
-                p = null;
             }
         }
         private void OnChangeProjectManger(object sender, EventArgs e)

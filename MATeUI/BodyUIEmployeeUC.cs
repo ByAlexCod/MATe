@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using MATeV2;
 using Tulpep.NotificationWindow;
 using static MATeUI.DetailProjectEmployeeUC;
-
+using static MATeUI.ProjectManagement;
 
 namespace MATeUI
 {
@@ -59,7 +59,9 @@ namespace MATeUI
             }
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;
+            
 
+            
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifySubTask);
 
@@ -79,6 +81,8 @@ namespace MATeUI
 
         }
 
+        
+
         /// <summary>
         /// Modify Selected SubTask of the board subtasks
         /// </summary>
@@ -86,7 +90,11 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifySubTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (false)
+            {
+                throw new NotImplementedException();
+
+            }
         }
 
         /// <summary>
@@ -96,7 +104,10 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
+            int index = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            p.Tasks.Values.ElementAt(index).DateLimit = detailProjectEmployeeUC1.endDateTaskDpk.Value;
+            MessageBox.Show("Task changed!");
         }
 
         /// <summary>
@@ -107,8 +118,6 @@ namespace MATeUI
         /// <param name="e"></param>
         private void DeleteSelectedSubTask(object sender, EventArgs e)
         {
-           
-
             if (p == null) return;
             if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count <= 1) return;
             if (p.Tasks.Count <= 0) return;
@@ -165,7 +174,7 @@ namespace MATeUI
             detailProjectEmployeeUC1._dgTasks.Rows.RemoveAt(indexTask);
             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
             projectManagement1._projectListCbx.SelectedItem = p;
-            //detailProjectEmployeeUC1._dgTasks.CurrentCell = null;
+           
             return;
         }
 
@@ -437,51 +446,44 @@ namespace MATeUI
             if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+                if (indexTask >= p.Tasks.Count) return;
+                Tasker task = task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                if (task == null) return;
+
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
-                if (indexTask >= 0)
+                
+                if (task != null)
                 {
-                    if (task == null)
+                    //hear
+                    if (task.SubTasks.Count < 1)
                     {
-                    }
-                    else
-                    {
-                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
-                        //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
-                        if (task != null)
+                        detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                        if (task.DateLimit.Day == DateTime.Today.Day &&
+                            task.DateLimit.Month == DateTime.Today.Month &&
+                            task.DateLimit.Year == DateTime.Today.Year)
                         {
-                            //hear
-                            if (task.SubTasks.Count < 1)
-                            {
-                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                                if (task.DateLimit.Day == DateTime.Today.Day &&
-                                    task.DateLimit.Month == DateTime.Today.Month &&
-                                    task.DateLimit.Year == DateTime.Today.Year)
-                                {
-                                    PopupNotifier popup = new PopupNotifier();
-                                    popup.Image = Properties.Resources.Notification;
-                                    popup.TitleText = "Mate Project";
-                                    popup.ContentText = task.Name + " ends Today!";
-                                    popup.Popup();
-                                }
-                            }
-                            if (task.IsValidated == true)
-                            {
-                                detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
-                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                            }
-                            detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
-                            detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
-                            detailProjectEmployeeUC1._doRbtn.Enabled = true;
-
-
-                            detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
-                            foreach (var item in task.SubTasks.Values)
-                            {
-                                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
-                            }
-
+                            PopupNotifier popup = new PopupNotifier();
+                            popup.Image = Properties.Resources.Notification;
+                            popup.TitleText = "Mate Project";
+                            popup.ContentText = task.Name + " ends Today!";
+                            popup.Popup();
                         }
+                    }
+                    if (task.IsValidated == true)
+                    {
+                        detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
+                        detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                    }
+                    detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
+                    detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
+                    detailProjectEmployeeUC1._doRbtn.Enabled = true;
+
+                    detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
+
+                    foreach (var item in task.SubTasks.Values)
+                    {
+                        detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
                     }
                 }
             }
