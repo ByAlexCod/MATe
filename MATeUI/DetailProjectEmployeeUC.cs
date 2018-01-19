@@ -35,13 +35,14 @@ namespace MATeUI
         public void RefreshChat(Conversation send)
         {
             ChatWDF chatform;
-            if(!_dicform.ContainsKey(send.TheOtherOne))
+            if (!_dicform.ContainsKey(send.TheOtherOne))
             {
                 chatform = new ChatWDF(send, _ctxuser.CurrentUser);
                 _dicform.Add(send.TheOtherOne, chatform);
                 if (send.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(send.TheOtherOne.Mail, "new message");
                 else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(send.TheOtherOne.Mail, "nothing new");
                 chatform.ShowDialog();
+                chatform.TopMost = true;
             }
             else
             {
@@ -53,7 +54,11 @@ namespace MATeUI
                         chatform.ListChat.Items.Add("You write on " + me.DateTime.ToString() + " : " + me.Text);
                     else chatform.ListChat.Items.Add(me.Sender.Mail + " write on " + me.DateTime.ToString() + " : " + me.Text);
                 }
-                if(!chatform.Visible) chatform.ShowDialog();
+                if (!chatform.Visible)
+                {
+                    chatform.ShowDialog();
+    
+                }
             }
         }
 
@@ -236,6 +241,7 @@ namespace MATeUI
                     sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(conver.TheOtherOne.Mail, "new message");
                     newchat.ListChat.Clear();
                     newchat.ShowDialog();
+                    newchat.TopMost = true;
                 }
                 else
                 {
@@ -243,6 +249,7 @@ namespace MATeUI
                     yourwdf.SendMessage(message + "#" + _ctxuser.CurrentUser.Mail);
                     yourwdf.ListChat.Clear();
                     yourwdf.ShowDialog();
+                    yourwdf.TopMost = true;
                 }
             }
             return;
