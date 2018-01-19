@@ -80,6 +80,7 @@
             this.btnChange.TabIndex = 9;
             this.btnChange.Text = "Modify";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // ModifyAccount2
             // 
@@ -91,7 +92,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ModifyAccount2";
-            this.Size = new System.Drawing.Size(573, 258);
+            this.Size = new System.Drawing.Size(528, 244);
             this.ResumeLayout(false);
             this.PerformLayout();
 

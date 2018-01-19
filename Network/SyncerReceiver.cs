@@ -69,7 +69,6 @@ namespace Network
                 arch.ExtractToDirectory(_tempUnZipped);
             }
 
-
             File.Delete(_tempReceiverPath);
             DirectoryInfo d = new DirectoryInfo(_tempUnZipped);
 

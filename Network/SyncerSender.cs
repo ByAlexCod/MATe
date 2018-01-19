@@ -61,7 +61,7 @@ namespace Network
                 foreach (var person in ctx.PersonsDictionary)
                 {
 
-                    if (person.Value != ctx.Owner && person.Value.IP != null)
+                    if (person.Value != ctx.Owner && person.Value.IP != null && person.Value.IP != ctx.Owner.IP)
                     {
                         try
                         {
