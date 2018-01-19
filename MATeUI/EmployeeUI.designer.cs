@@ -92,7 +92,7 @@
             this.readMeToolStripMenuItem.Name = "readMeToolStripMenuItem";
             this.readMeToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.readMeToolStripMenuItem.Text = "Read Me";
-            this.readMeToolStripMenuItem.Click += new System.EventHandler(this.readMeToolStripMenuItem_Click);
+            //this.readMeToolStripMenuItem.Click += new System.EventHandler(this.readMeToolStripMenuItem_Click);
             // 
             // parameterToolStripMenuItem
             // 
@@ -109,7 +109,7 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.toolStripMenuItem1.Text = "Show Profil";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            //this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // myAccountToolStripMenuItem
             // 
@@ -136,7 +136,7 @@
             this.bodyUIEmployeeUC1.Name = "bodyUIEmployeeUC1";
             this.bodyUIEmployeeUC1.Size = new System.Drawing.Size(1028, 416);
             this.bodyUIEmployeeUC1.TabIndex = 1;
-            this.bodyUIEmployeeUC1.Load += new System.EventHandler(this.bodyUIEmployeeUC1_Load);
+            //this.bodyUIEmployeeUC1.Load += new System.EventHandler(this.bodyUIEmployeeUC1_Load);
             // 
             // EmployeeUI
             // 
