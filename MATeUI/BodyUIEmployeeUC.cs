@@ -98,7 +98,10 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
+            int index = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            p.Tasks.Values.ElementAt(index).DateLimit = detailProjectEmployeeUC1.endDateTaskDpk.Value;
+            MessageBox.Show("Task changed!");
         }
 
         /// <summary>
