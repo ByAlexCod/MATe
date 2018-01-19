@@ -90,7 +90,11 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifySubTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (false)
+            {
+                throw new NotImplementedException();
+
+            }
         }
 
         /// <summary>
