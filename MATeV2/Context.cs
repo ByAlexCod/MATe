@@ -233,7 +233,7 @@ namespace MATeV2
         {
             SetBossModifyTime();
             if (p == null) return false;
-            p.Projectmanager.CurrentWorkingProject = null;
+            if (p.Projectmanager != null) p.Projectmanager.CurrentWorkingProject = null;
             foreach (Employee e in p.Members.Values)
             {
                 e.CurrentWorkingProject = null;
@@ -395,7 +395,7 @@ namespace MATeV2
             return MergeResult.Success;
         }
 
-        internal Employee FindEmployee(string mail)
+        public Employee FindEmployee(string mail)
         {
             PersonsDictionary.TryGetValue(mail, out Employee emp);
             return emp;
