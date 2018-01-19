@@ -326,22 +326,28 @@ namespace MATeV2
                     if (!otherContext.PersonsDictionary.ContainsKey(emp.Value.Mail)) DeleteEmployee(emp.Value);
                 }
             }
-            foreach(var emp in otherContext.PersonsDictionary)
+
+
+            if (otherContext.Owner.Mail == Boss.Mail || otherContext.BossModifyTime > BossModifyTime)
             {
-                if (!PersonsDictionary.ContainsKey(emp.Key))
+
+                foreach (var emp in otherContext.PersonsDictionary)
                 {
-                    Employee ep = emp.Value;
-                    Employee ne = CreateEmployee(ep.Firstname, ep.Lastname, ep.Mail);
-                    
-                    if( ep.IP != null ) ne.IP = ep.IP; 
-                    if(ep.IPString != null) ne.IPString = ep.IPString;
+
+                    if (!PersonsDictionary.ContainsKey(emp.Key))
+                    {
+                        Employee ep = emp.Value;
+                        Employee ne = CreateEmployee(ep.Firstname, ep.Lastname, ep.Mail);
+
+                        if (ep.IP != null) ne.IP = ep.IP;
+                        if (ep.IPString != null) ne.IPString = ep.IPString;
 
 
 
+                    }
                 }
+
             }
-
-
             //End Employee Dictionary Merge
 
             //PROJECTSDictionary MERGE

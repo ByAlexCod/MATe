@@ -189,6 +189,7 @@
     <Compile Include="TeamLeaderUC.Designer.cs">
       <DependentUpon>TeamLeaderUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="UIUseSyncer.cs" />
     <EmbeddedResource Include="BossBodyUC.resx">
       <DependentUpon>BossBodyUC.cs</DependentUpon>
     </EmbeddedResource>

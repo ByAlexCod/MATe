@@ -153,5 +153,6 @@ namespace MATeUI
             ListChat.Items.Add("You: write on " + DateTime.Now.ToString() + " :" + message);
             Messagetxb.Clear();
         }
+
     }
 }
