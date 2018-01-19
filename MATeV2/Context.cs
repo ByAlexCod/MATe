@@ -383,7 +383,11 @@ namespace MATeV2
                         b.Status = a.Status;
                         foreach (var aa in a.Members)
                         {
-                            b.Members.Add(aa.Key, FindEmployee(aa.Key));
+                            try
+                            {
+                                b.AddMember(FindEmployee(aa.Key));
+                            } catch { };
+                            //b.Members.Add(aa.Key, FindEmployee(aa.Key));
                         }
                     }
                 }
