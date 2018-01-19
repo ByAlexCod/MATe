@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MATeV2;
 using static MATeUI.DetailProjectUC;
+using System.Threading;
+using Network;
 
 namespace MATeUI
 {
@@ -18,12 +20,41 @@ namespace MATeUI
         Project p = null;
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
         ICollection<Project> _projects = new List<Project>();
+
+
         public BossBodyUC()
         {
+            Thread a = new Thread(SomethingChanged);
+            a.IsBackground = true;
+            a.Start();
             InitializeComponent();
         }
 
-        
+        void SomethingChanged()
+        {
+            while(true)
+            {
+                if(Network.SyncerReceiver._newReceive)
+                {
+                    using (var ct = _ctxuser.ObtainAccessor())
+                    {
+                        Context ctx = ct.Context;
+                        projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                        projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                        detailProjectOnBody._dgEmployees.Rows.Clear();
+
+                        foreach (Employee item in ctx.PersonsDictionary.Values)
+                        {
+                            detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                        }
+
+                    }
+                    Network.SyncerReceiver._newReceive = false;
+                }
+            }
+        }
+
+
         private void DetailProjectOnBody_Load(object sender, EventArgs e)
         {
             if (_ctxuser != null)
