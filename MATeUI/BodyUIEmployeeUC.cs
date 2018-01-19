@@ -167,7 +167,7 @@ namespace MATeUI
             detailProjectEmployeeUC1._dgTasks.Rows.RemoveAt(indexTask);
             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
             projectManagement1._projectListCbx.SelectedItem = p;
-            //detailProjectEmployeeUC1._dgTasks.CurrentCell = null;
+           
             return;
         }
 
