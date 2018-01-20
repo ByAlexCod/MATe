@@ -121,25 +121,28 @@ namespace MATeUI
         }
         public MessageP2P SendMessage(string msg)
         {
-            _client = new TcpClient(_conversation.TheOtherOne.IP.ToString(),_conversation.Port);
-            NetworkStream stream = _client.GetStream();
-            MessageP2P ms = new MessageP2P(_conversation, msg.Split('#')[0], _conversation.Host, _conversation.TheOtherOne);
             try
             {
-                using (StreamWriter write = new StreamWriter(stream))
+                _client = new TcpClient(_conversation.TheOtherOne.IP.ToString(), _conversation.Port);
+                NetworkStream stream = _client.GetStream();
+                MessageP2P ms = new MessageP2P(_conversation, msg.Split('#')[0], _conversation.Host, _conversation.TheOtherOne);
+                try
                 {
-                    write.WriteLine(msg);
+                    using (StreamWriter write = new StreamWriter(stream))
+                    {
+                        write.WriteLine(msg);
+                    }
+                    _conversation.MessageList.Add(ms);
                 }
-                _conversation.MessageList.Add(ms);
-            }
-            catch
-            {
-            }
-            finally
-            {
-                _client.Close();
-            }
-            return ms;
+                catch
+                {
+                }
+                finally
+                {
+                    _client.Close();
+                }
+                return ms;
+            } catch { return null; }
         }
 
         private void sendbtn_Click(object sender, EventArgs e)
@@ -150,5 +153,6 @@ namespace MATeUI
             ListChat.Items.Add("You: write on " + DateTime.Now.ToString() + " :" + message);
             Messagetxb.Clear();
         }
+
     }
 }

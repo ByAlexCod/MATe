@@ -176,7 +176,7 @@ namespace MATeUI
             MessageBox.Show("Task changed!");
 >>>>>>> d2dbc9929dd796c4496cb77cb6df536cc09df56d
         }
-
+       
         /// <summary>
         /// Supprime la sous-tache selectionnée dans le datagrid  des tache et supprime toutes les
         /// Sous-tache ratachées à cette tache
@@ -388,12 +388,19 @@ namespace MATeUI
                 return;
             }
 
+<<<<<<< HEAD
             
             
                 Tasker task = p.CreateTask(detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
             
             
             detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
+=======
+            Tasker task = new Tasker(p, detailProjectEmployeeUC1._taskNameTbx.Text, 
+                detailProjectEmployeeUC1.endDateTaskDpk.Value);
+            detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, 
+                task.Project);
+>>>>>>> origin/voice
             
         }
 
@@ -516,8 +523,13 @@ namespace MATeUI
             if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
-                if (indexTask >= p.Tasks.Count) return;
                 Tasker task = task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                Tasker task = p.Tasks.Values.ElementAt(indexTask);
+                if (task == null) return;
+
+                detailProjectEmployeeUC1.endSubTaskDpk.Value = DateTime.Now;
+                detailProjectEmployeeUC1.subTaskNameTbx.Text = "";
+
                 if (task == null) return;
 
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
@@ -585,6 +597,7 @@ namespace MATeUI
             {
                 int state = p.Status;
                 if (state == 0)
+                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                     projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                 else if(state == 1)
                     projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated By Project Manager";

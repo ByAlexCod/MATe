@@ -98,11 +98,13 @@ namespace MATeV2
 
         public Dictionary<string, Tasker> Tasks => _tasks;
 
-
+        
         public void ClearTasks()
         {
             _tasks.Clear();
         }
+       
+     
         public void ClearMembers()
         {
             _members.Clear();

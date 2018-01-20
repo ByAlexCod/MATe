@@ -27,7 +27,7 @@ namespace MATeV2
 
         void SetProjectManagerMD()
         {
-            CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
+            if (CurrentTask != null) CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
         }
 
         public string Name

@@ -113,6 +113,7 @@ namespace MATeV2
                 {
                     Name = oTask.Name;
                     IsValidated = oTask.IsValidated;
+                    Project.ProjectManagerModifyDate = oTask.Project.ProjectManagerModifyDate;
                     DateLimit = oTask.DateLimit;
 
                 }
