@@ -58,7 +58,6 @@ namespace MATeUI
             detailProjectOnBody.ValidatedProjectEvent += new ButtonClickedEventHandler(ValidatedProject);
             detailProjectOnBody.ButtonRemoveFromProjectClicked += new ButtonClickedEventHandler(OnRemoveButtonClicked);
             detailProjectOnBody.AddMemberInProjectButtonClicked += new ButtonClickedEventHandler(OnAddMemberInProject);
-            detailProjectOnBody.RefreshPageButtonClicked += new ButtonClickedEventHandler(OnRefreshPage);
             detailProjectOnBody.ButtonChangeProjectManager += new ButtonClickedEventHandler(OnChangeProjectManger);
             detailProjectOnBody.CellTaskClick += new DetailProjectUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
             projectManagementOnBody.MyAccountManagementEvent += new ProjectManagement.ButtonClickedEvent(ShowFormChangeAccount);
@@ -212,27 +211,6 @@ namespace MATeUI
             detailProjectOnBody._mailLbl.Text = p.Projectmanager.Mail;
         }
 
-       
-
-        private void OnRefreshPage(object sender, EventArgs e)
-        {
-            using (var ct = _ctxuser.ObtainAccessor())
-            {
-                DialogResult result = MessageBox.Show("Warning You Will Lose All Unsaved Data ", "Confirmation !", MessageBoxButtons.OKCancel);
-                if (result == DialogResult.Cancel) return;
-
-                Context ctx = ct.Context;
-                projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
-                projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
-                detailProjectOnBody._dgEmployees.Rows.Clear();
-
-                foreach (Employee item in ctx.PersonsDictionary.Values)
-                {
-                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail,item.IP);
-                }
-
-            }
-        }
 
         private void OnAddMemberInProject(object sender, EventArgs e)
         {
@@ -298,14 +276,19 @@ namespace MATeUI
                         return;
                     }
                 }
+               
+           
                 foreach (Tasker item in p.Tasks.Values)
                 {
                     foreach (SubTask sub in item.SubTasks.Values)
                     {
                         if(p.Members.Values.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 1)
                         {
-                            MessageBox.Show("THIS EMPLOYEE CAN NOT BE DELETED BECAUSE HE IS WORKING ON A CURRENT SUB-TASK");
-                            return;
+                            res = MessageBox.Show("This Employee Is Working In A Current Sub-Task," +
+                                                   " Do You Really Want To Delete It From The project", "Confirmation",
+                                             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                            if (res == DialogResult.Cancel) return;
+                            sub.Worker = null;
                         }
                         if (p.Members.Values.Where(member => member.Mail.Equals(sub.Worker.Mail)) != null && sub.State == 0)
                         {
@@ -313,10 +296,21 @@ namespace MATeUI
                         }
                     }
                 }
-
-                
                 detailProjectOnBody._dgMemberInProject.Rows.Clear();
+                detailProjectOnBody._dgSubTasks.Rows.Clear();
 
+                detailProjectOnBody._dgTasks.Rows.Clear();
+
+                foreach (Tasker item in p.Tasks.Values)
+                {
+                    detailProjectOnBody._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
+                }
+
+                foreach (SubTask item in task.SubTasks.Values)
+                {
+                    detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
+                }
+                
                 foreach (Employee empl in p.Members.Values)
                 {
                     detailProjectOnBody._dgMemberInProject.Rows.Add(empl.Firstname, empl.Lastname, empl.Mail);

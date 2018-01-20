@@ -59,11 +59,11 @@ namespace MATeUI
             }
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;
-            
+
 
             
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
-            detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifySubTask);
+            detailProjectEmployeeUC1.ModifySubTaskButtonClicked += new ButtonClickedEventHandler(ModifySubTask);
 
             projectManagement1.ProjectItemChanged += new EventHandler(ShowDetailProject);
             detailProjectEmployeeUC1.CellTaskClick += new DetailProjectEmployeeUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
@@ -81,7 +81,21 @@ namespace MATeUI
 
         }
 
-        
+        private void RefreshPage(object sender, EventArgs e)
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                DialogResult result = MessageBox.Show("Warning You Will Lose All Unsaved Data ", "Confirmation !", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel) return;
+
+                Context ctx = ct.Context;
+                projectManagement1._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagement1._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                
+            }
+        }
+
+
 
         /// <summary>
         /// Modify Selected SubTask of the board subtasks
@@ -90,7 +104,34 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifySubTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
+            if (p == null)
+            {
+                MessageBox.Show("Selectionnez d'abord un projet");
+                return;
+            }
+            int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            int indexSub = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
+            if (indexSub < 0) return;
+            if (indexTask < 0) return;
+
+            Tasker task = p.Tasks.Values.ElementAt(indexTask);
+            if(task.SubTasks.Count < 0)
+            {
+                MessageBox.Show("This Task Contains Any Sub-Tasks");
+                return;
+            }
+            SubTask sub = task.SubTasks.Values.ElementAt(indexSub);
+            task.ModifySubTask(sub, detailProjectEmployeeUC1.endSubTaskDpk.Value);
+            task.ModifySubTask(sub, detailProjectEmployeeUC1._projectMembers.SelectedItem as Employee);
+
+            projectManagement1._projectListCbx.SelectedItem = p;
+
+            detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
+            foreach (SubTask item in task.SubTasks.Values)
+            {
+                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
+            }
         }
 
         /// <summary>
@@ -100,7 +141,26 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
+            if(p == null)
+            {
+                MessageBox.Show("Selectionnez d'abord un projet");
+                return;
+            }
+            int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            if (indexTask < 0) return;
+
+            Tasker task = p.Tasks.Values.ElementAt(indexTask);
+            p.ModifyTask(task, detailProjectEmployeeUC1.endDateTaskDpk.Value);
+
+            projectManagement1._projectListCbx.SelectedItem = p;
+
+            detailProjectEmployeeUC1._dgTasks.Rows.Clear();
+            foreach (Tasker item in p.Tasks.Values)
+            {
+                detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
+            }
+
         }
 
         /// <summary>
@@ -386,9 +446,12 @@ namespace MATeUI
                 Context ctx = ct.Context;
 
                 if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count == 1) return;
-
+                int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
                 int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
+                if (indexTask < 0) return;
                 if (index < 0) return;
+
+                Tasker task = p.Tasks.Values.ElementAt(indexTask);
 
                 if (task == null) return;
                 SubTask sub = task.SubTasks.Values.ToList()[index];
