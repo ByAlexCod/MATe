@@ -12,7 +12,7 @@ using System.IO.Compression;
 
 namespace Network
 {
-    public class SyncerReceiver
+    public class SyncerReceiver : IUseNetwork
     {
         IPAddress _ip;
         int _port;
@@ -21,8 +21,9 @@ namespace Network
         string _contextStoragePath;
         string _tempUnZipped;
         ContextAndUserManager _baseCtxUser;
+        public static bool _newReceive = false;
 
-
+        
         public SyncerReceiver(IPAddress ip, int port, string contextesStoragePath, string tempReceiverPath, string tempUnZipped, ContextAndUserManager baseCtxUser)
         {
             if (!Directory.Exists(contextesStoragePath)) Directory.CreateDirectory(contextesStoragePath);
@@ -35,6 +36,7 @@ namespace Network
             _port = port;
             _listener = new TcpListener(ip, port);
         }
+        
         public void Start()
         {
             _listener.Start();
@@ -112,6 +114,7 @@ namespace Network
                     using (var cte = existingContext1.ObtainAccessor())
                     {
                         b.Merge(cte.Context);
+                        _newReceive = true;
                     }
 
                     //ContextAndUserManager ctxuser = new ContextAndUserManager(b.CompanyName, true);
@@ -143,6 +146,11 @@ namespace Network
 
 
             }
+        }
+
+        public bool IsNewSync()
+        {
+            return _newReceive;
         }
     }
 }

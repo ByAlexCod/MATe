@@ -69,6 +69,7 @@ namespace MATeUI
 
         public event DataGridViewCellMouseEventHandler CellTaskClick;
         public event DataGridViewCellMouseEventHandler CellSubTaskClick;
+
         
         public event ButtonClickedEventHandler ChangeSubTaskButtonClicked;
         public event ButtonClickedEventHandler CreateTaskButtonClicked;
@@ -100,7 +101,7 @@ namespace MATeUI
             _modifyTaskBtn.Click += new EventHandler(ButtonModifyTaskClicked);
             sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked = true;
             sendFileOrMessageUCOnDetailUIEmployee.ListConversation.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(LoadConver);
-     
+           
             if (_ctxuser == null) return;
             using (var ct = _ctxuser.ObtainAccessor())
             {
@@ -120,6 +121,8 @@ namespace MATeUI
                 }
             }
         }
+
+       
 
         void LoadConver(object sender, EventArgs e)
         {

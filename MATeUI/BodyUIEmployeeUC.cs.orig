@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using MATeV2;
 using Tulpep.NotificationWindow;
 using static MATeUI.DetailProjectEmployeeUC;
-
+using static MATeUI.ProjectManagement;
 
 namespace MATeUI
 {
@@ -60,6 +60,8 @@ namespace MATeUI
             projectManagement1._addProjectBtn.Visible = false;
             projectManagement1._deleteProjectBtn.Visible = false;
 
+
+            
             detailProjectEmployeeUC1.ModifyTaskButtonClickeds += new ButtonClickedEventHandler(ModifyTask);
             detailProjectEmployeeUC1.ModifySubTaskButtonClicked += new ButtonClickedEventHandler(ModifySubTask);
 
@@ -79,6 +81,22 @@ namespace MATeUI
 
         }
 
+        private void RefreshPage(object sender, EventArgs e)
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                DialogResult result = MessageBox.Show("Warning You Will Lose All Unsaved Data ", "Confirmation !", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel) return;
+
+                Context ctx = ct.Context;
+                projectManagement1._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagement1._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                
+            }
+        }
+
+
+
         /// <summary>
         /// Modify Selected SubTask of the board subtasks
         /// </summary>
@@ -86,7 +104,41 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifySubTask(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+<<<<<<< HEAD
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
+            if (p == null)
+            {
+                MessageBox.Show("Selectionnez d'abord un projet");
+                return;
+            }
+            int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            int indexSub = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
+            if (indexSub < 0) return;
+            if (indexTask < 0) return;
+
+            Tasker task = p.Tasks.Values.ElementAt(indexTask);
+            if(task.SubTasks.Count < 0)
+            {
+                MessageBox.Show("This Task Contains Any Sub-Tasks");
+                return;
+            }
+            SubTask sub = task.SubTasks.Values.ElementAt(indexSub);
+            task.ModifySubTask(sub, detailProjectEmployeeUC1.endSubTaskDpk.Value);
+            task.ModifySubTask(sub, detailProjectEmployeeUC1._projectMembers.SelectedItem as Employee);
+
+            projectManagement1._projectListCbx.SelectedItem = p;
+
+            detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
+            foreach (SubTask item in task.SubTasks.Values)
+            {
+                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
+=======
+            if (false)
+            {
+                throw new NotImplementedException();
+
+>>>>>>> d2dbc9929dd796c4496cb77cb6df536cc09df56d
+            }
         }
 
         /// <summary>
@@ -96,10 +148,33 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ModifyTask(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
+            if(p == null)
+            {
+                MessageBox.Show("Selectionnez d'abord un projet");
+                return;
+            }
+            int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+            if (indexTask < 0) return;
+
+            Tasker task = p.Tasks.Values.ElementAt(indexTask);
+            p.ModifyTask(task, detailProjectEmployeeUC1.endDateTaskDpk.Value);
+
+            projectManagement1._projectListCbx.SelectedItem = p;
+
+            detailProjectEmployeeUC1._dgTasks.Rows.Clear();
+            foreach (Tasker item in p.Tasks.Values)
+            {
+                detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
+            }
+
+=======
             Tasker task = p.Tasks.Values.ToList().ElementAt(indexTask);
             int index = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
             p.Tasks.Values.ElementAt(index).DateLimit = detailProjectEmployeeUC1.endDateTaskDpk.Value;
             MessageBox.Show("Task changed!");
+>>>>>>> d2dbc9929dd796c4496cb77cb6df536cc09df56d
         }
        
         /// <summary>
@@ -166,7 +241,7 @@ namespace MATeUI
             detailProjectEmployeeUC1._dgTasks.Rows.RemoveAt(indexTask);
             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
             projectManagement1._projectListCbx.SelectedItem = p;
-            //detailProjectEmployeeUC1._dgTasks.CurrentCell = null;
+           
             return;
         }
 
@@ -392,9 +467,12 @@ namespace MATeUI
                 Context ctx = ct.Context;
 
                 if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count == 1) return;
-
+                int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
                 int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
+                if (indexTask < 0) return;
                 if (index < 0) return;
+
+                Tasker task = p.Tasks.Values.ElementAt(indexTask);
 
                 if (task == null) return;
                 SubTask sub = task.SubTasks.Values.ToList()[index];
@@ -445,51 +523,49 @@ namespace MATeUI
             if (p != null)
             {
                 indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
+                Tasker task = task = p.Tasks.Values.ToList().ElementAt(indexTask);
+                Tasker task = p.Tasks.Values.ElementAt(indexTask);
+                if (task == null) return;
+
+                detailProjectEmployeeUC1.endSubTaskDpk.Value = DateTime.Now;
+                detailProjectEmployeeUC1.subTaskNameTbx.Text = "";
+
+                if (task == null) return;
+
                 detailProjectEmployeeUC1._createSubTaskBtn.Enabled = true;
                 detailProjectEmployeeUC1._validateTaskBtn.Enabled = true;
-                if (indexTask >= 0)
+                
+                if (task != null)
                 {
-                    if (task == null)
+                    //hear
+                    if (task.SubTasks.Count < 1)
                     {
-                    }
-                    else
-                    {
-                        task = p.Tasks.Values.ToList().ElementAt(indexTask);
-                        //task = p.Tasks.Where(tt => tt.Name.Equals(name)).FirstOrDefault();
-                        if (task != null)
+                        detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                        if (task.DateLimit.Day == DateTime.Today.Day &&
+                            task.DateLimit.Month == DateTime.Today.Month &&
+                            task.DateLimit.Year == DateTime.Today.Year)
                         {
-                            //hear
-                            if (task.SubTasks.Count < 1)
-                            {
-                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                                if (task.DateLimit.Day == DateTime.Today.Day &&
-                                    task.DateLimit.Month == DateTime.Today.Month &&
-                                    task.DateLimit.Year == DateTime.Today.Year)
-                                {
-                                    PopupNotifier popup = new PopupNotifier();
-                                    popup.Image = Properties.Resources.Notification;
-                                    popup.TitleText = "Mate Project";
-                                    popup.ContentText = task.Name + " ends Today!";
-                                    popup.Popup();
-                                }
-                            }
-                            if (task.IsValidated == true)
-                            {
-                                detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
-                                detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
-                            }
-                            detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
-                            detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
-                            detailProjectEmployeeUC1._doRbtn.Enabled = true;
-
-
-                            detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
-                            foreach (var item in task.SubTasks.Values)
-                            {
-                                detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
-                            }
-
+                            PopupNotifier popup = new PopupNotifier();
+                            popup.Image = Properties.Resources.Notification;
+                            popup.TitleText = "Mate Project";
+                            popup.ContentText = task.Name + " ends Today!";
+                            popup.Popup();
                         }
+                    }
+                    if (task.IsValidated == true)
+                    {
+                        detailProjectEmployeeUC1._createSubTaskBtn.Enabled = false;
+                        detailProjectEmployeeUC1._validateTaskBtn.Enabled = false;
+                    }
+                    detailProjectEmployeeUC1._inProgressRbtn.Enabled = true;
+                    detailProjectEmployeeUC1._toDoRbtn.Enabled = true;
+                    detailProjectEmployeeUC1._doRbtn.Enabled = true;
+
+                    detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
+
+                    foreach (var item in task.SubTasks.Values)
+                    {
+                        detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
                     }
                 }
             }
@@ -521,6 +597,7 @@ namespace MATeUI
             {
                 int state = p.Status;
                 if (state == 0)
+                    projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                     projectManagement1._projectStatusLbl.Text = "The "+p.Name+" Project Still Not Validated Started On "+p.DateBegin.ToShortDateString();
                 else if(state == 1)
                     projectManagement1._projectStatusLbl.Text = "The " +p +" Project Has Been Validated By Project Manager";
