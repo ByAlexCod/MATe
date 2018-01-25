@@ -151,6 +151,7 @@ namespace MATeUI
 
         private void ValidatedProject(object sender, EventArgs e)
         {
+            Project p = projectManagementOnBody._projectListCbx.SelectedItem as Project;
             if (p == null) return;
             if (p.Tasks.Count <= 0) return;
             Tasker task = p.Tasks.Values.Where(tt => tt.IsValidated != true).FirstOrDefault();

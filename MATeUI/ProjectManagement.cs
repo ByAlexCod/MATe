@@ -61,7 +61,21 @@ namespace MATeUI
         private void _addProjectBtn_Click_1(object sender, EventArgs e)
         {
             CreatProject creatProject = new CreatProject();
+            creatProject.FormClosed += new FormClosedEventHandler(CreateProjectForm_FormClosing);
             creatProject.ShowDialog();
+        }
+
+        private void CreateProjectForm_FormClosing(object sender, FormClosedEventArgs e)
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                Context ctx = ct.Context;
+                _projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                _projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                
+                
+
+            }
         }
     }
 }
