@@ -31,13 +31,19 @@ namespace MATeV2
         public string Name
         {
             get { return _name; }
-            set { _name = value; }
+            set {
+                Project.ProjectManagerModifyDate = DateTime.Now;
+
+                _name = value; }
         }
 
         public DateTime DateLimit
         {
             get { return _datelimit; }
-            set { _datelimit = value; }
+            set {
+                Project.ProjectManagerModifyDate = DateTime.Now;
+
+                _datelimit = value; }
         }
 
         public Dictionary<string, SubTask> SubTasks => _subtasks;
@@ -45,7 +51,10 @@ namespace MATeV2
         public Boolean IsValidated
         {
             get { return _isValidated; }
-            set { _isValidated = value; }
+            set {
+                Project.ProjectManagerModifyDate = DateTime.Now;
+
+                _isValidated = value; }
         }
 
         public Project Project
@@ -61,6 +70,8 @@ namespace MATeV2
                 st.DeleteSubTask();
                 SubTasks.Remove(st.Name);
             }
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
         }
 
         ///////////////////////////////////////////////
@@ -71,6 +82,8 @@ namespace MATeV2
         {
             SubTask newsubtask = new SubTask(t, name, datelimit, worker);
             t.SubTasks.Add(newsubtask.Name, newsubtask);
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             return newsubtask;
         }
 
@@ -78,11 +91,15 @@ namespace MATeV2
         {
             SubTask newsubtask = new SubTask(this, name, datelimit, worker);
             SubTasks.Add(newsubtask.Name, newsubtask);
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             return newsubtask;
         }
 
         public SubTask ModifySubTask(SubTask s, string name)
         {
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             s.Name = name;
             return s;
         }
@@ -90,18 +107,24 @@ namespace MATeV2
         public SubTask ModifySubTask(SubTask s, DateTime d)
         {
             s.DateLimit = d;
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             return s;
         }
 
         public SubTask ModifySubTask(SubTask s, Employee worker)
         {
             s.Worker = worker;
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             return s;
         }
 
         public SubTask ModifySubtask(SubTask s, int b)
         {
             s.State = b;
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
             return null;
         }
 
@@ -114,6 +137,8 @@ namespace MATeV2
             }
             SubTasks.Remove(st.Name);
             st.CurrentTask = null;
+            Project.ProjectManagerModifyDate = DateTime.Now;
+
         }
 
 
@@ -151,12 +176,13 @@ namespace MATeV2
                     toremove.Add(st.Key);
                 }
             }
-
-           
-            
+            Project.ProjectManagerModifyDate = DateTime.Now;
 
 
-            foreach(var att in toremove)
+
+
+
+            foreach (var att in toremove)
             {
                 SubTasks.Remove(att);
             }

@@ -56,7 +56,13 @@ namespace MATeV2
         public int State
         {
             get { return _status; }
-            set { _status = value; SetDirty(); }
+            set {
+
+
+                _status = value; SetDirty();
+
+
+            }
         }
 
         public Tasker CurrentTask
@@ -69,6 +75,7 @@ namespace MATeV2
         /// </summary>
         internal void DeleteSubTask()
         {
+            CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
             CurrentTask = null;
             Worker = null;
         }
@@ -86,6 +93,8 @@ namespace MATeV2
 
 
             }
+            CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
+
         }
     }
 }
