@@ -171,6 +171,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void DeleteSelectedSubTask(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null) return;
             if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count <= 1) return;
             if (p.Tasks.Count <= 0) return;
@@ -207,6 +208,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void DeleteSelectedTask(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null) return;
             if (p.Tasks.Count <= 0) return;
             if (detailProjectEmployeeUC1._dgTasks.Rows.Count <= 1) return;
