@@ -16,8 +16,9 @@ namespace MATeV2
         Tasker _currenttask;
         DateTime _set;
         
-        public SubTask(Tasker task, string name,DateTime datelimit,Employee worker = null)
+        public SubTask(Tasker task, string name,DateTime datelimit, Tasker currentTask, Employee worker = null)
         {
+            _currenttask = currentTask;
             Name = name;
             DateLimit = datelimit;
             Worker = worker;
