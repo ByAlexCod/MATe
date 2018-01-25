@@ -194,7 +194,7 @@ namespace MATeUI
                 if (result == DialogResult.No)
                     return;
             }
-            p.Tasks.Remove(sub.Name);
+            sub.CurrentTask.DeleteSubTask(sub);
             detailProjectEmployeeUC1._dgSubTasks.Rows.RemoveAt(indexSubTask);
             projectManagement1._projectListCbx.SelectedItem = p;
             

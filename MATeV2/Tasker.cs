@@ -105,6 +105,17 @@ namespace MATeV2
             return null;
         }
 
+
+        public void DeleteSubTask(SubTask st)
+        {
+            if (st.Worker != null)
+            {
+                st.Worker.CurrentWorkingProject = null;
+            }
+            SubTasks.Remove(st.Name);
+        }
+
+
         internal void Merge(Tasker oTask)
         {
             if (oTask.Project.Context.Owner != null && Project.Projectmanager != null)
@@ -140,6 +151,7 @@ namespace MATeV2
                 }
             }
 
+           
             
 
 
