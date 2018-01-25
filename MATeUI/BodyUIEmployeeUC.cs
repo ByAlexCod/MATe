@@ -16,7 +16,7 @@ namespace MATeUI
 
         public BodyUIEmployeeUC()
         {
-            //myDelegate = new RefreshItem();
+            myDelegate = new RefreshItem(RefreshItems);
             Thread a = new Thread(SomethingChanged);
             a.IsBackground = true;
             a.Start();
@@ -44,8 +44,22 @@ namespace MATeUI
                 if (Network.SyncerReceiver._newReceive)
                 {
                     this.Invoke(myDelegate);
-                    //Network.SyncerReceiver._newReceive = false;
+                    Network.SyncerReceiver._newReceive = false;
                 }
+            }
+        }
+
+        void RefreshItems()
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                Context ctx = ct.Context;
+                projectManagement1._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagement1._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                detailProjectEmployeeUC1.sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Clear();
+                detailProjectEmployeeUC1.sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Clear();
+                detailProjectEmployeeUC1.Refresh();
+                detailProjectEmployeeUC1.RefreshDetail();
             }
         }
 
@@ -645,11 +659,6 @@ namespace MATeUI
         {
             ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
-        }
-
-        private void detailProjectEmployeeUC1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

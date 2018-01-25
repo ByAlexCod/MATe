@@ -52,7 +52,6 @@
             this.detailProjectEmployeeUC1.Name = "detailProjectEmployeeUC1";
             this.detailProjectEmployeeUC1.Size = new System.Drawing.Size(1296, 553);
             this.detailProjectEmployeeUC1.TabIndex = 1;
-            this.detailProjectEmployeeUC1.Load += new System.EventHandler(this.detailProjectEmployeeUC1_Load);
             // 
             // BodyUIEmployeeUC
             // 
