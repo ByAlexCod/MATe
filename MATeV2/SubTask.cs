@@ -14,7 +14,7 @@ namespace MATeV2
         Employee _worker;
         int _status;
         Tasker _currenttask;
-        
+        DateTime _set;
         
         public SubTask(Tasker task, string name,DateTime datelimit,Employee worker = null)
         {
@@ -38,7 +38,7 @@ namespace MATeV2
 
         void SetDirty()
         {
-            _datelimit = DateTime.Now;
+            _set = DateTime.Now;
         }
 
         public DateTime DateLimit
@@ -83,7 +83,7 @@ namespace MATeV2
         internal void Merge(SubTask oSubTask)
         {
             if (oSubTask == null) throw new ArgumentNullException("Other subtask cannot be null.", nameof(oSubTask));
-            if (DateLimit < oSubTask.DateLimit) State = oSubTask.State;
+            State = oSubTask.State;
             if (oSubTask.CurrentTask.Project.Context.Owner.Mail == oSubTask.CurrentTask.Project.Projectmanager.Mail && oSubTask.CurrentTask.Project.ProjectManagerModifyDate > CurrentTask.Project.ProjectManagerModifyDate)
             {
                 DateLimit = oSubTask.DateLimit;

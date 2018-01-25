@@ -147,72 +147,74 @@ namespace MATeV2
             if (Name != prj.Name) return;
             if (prj == null) throw new ArgumentNullException("Given Project cannot be null", nameof(prj));
             //Projects info
-            if (prj.Context.Owner.Mail == Context.Boss.Mail || prj.Context.BossModifyTime > Context.BossModifyTime)
+            if (prj.Projectmanager != null)
             {
-                DateBegin = prj.DateBegin;
-                DateLimit = prj.DateLimit;
-                if(prj.Projectmanager != null) Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
-
-
-
-
-                ClearMembers();
-                foreach (var om in prj.Members)
+                if (prj.Context.Owner.Mail == Context.Boss.Mail || prj.Context.BossModifyTime > Context.BossModifyTime)
                 {
-                    Context.PersonsDictionary.TryGetValue(om.Value.Mail, out Employee value);
-                    if(value != null)
-                    {
-                        Members.Add(value.Mail, value);
-                    }
+                    DateBegin = prj.DateBegin;
+                    DateLimit = prj.DateLimit;
+                    if (prj.Projectmanager != null) Projectmanager = Context.FindEmployee(prj.Projectmanager.Mail);
 
+
+
+
+                    ClearMembers();
+                    foreach (var om in prj.Members)
+                    {
+                        Context.PersonsDictionary.TryGetValue(om.Value.Mail, out Employee value);
+                        if (value != null)
+                        {
+                            Members.Add(value.Mail, value);
+                        }
+
+                    }
                 }
-            }
-            if (Projectmanager != null)
-            {
+                if (Projectmanager != null)
+                {
+                    if (prj.Context.Owner.Mail == Projectmanager.Mail || prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
+                    {
+                        ClearTasks();
+                        foreach (var ot in prj.Tasks)
+                        {
+                            Tasker ii = CreateTask(ot.Value.Name, ot.Value.DateLimit);
+                            ii.IsValidated = ot.Value.IsValidated;
+                        }
+                    }
+                }
+
                 if (prj.Context.Owner.Mail == Projectmanager.Mail || prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
                 {
-                    ClearTasks();
-                    foreach (var ot in prj.Tasks)
+                    List<Tasker> toremove = new List<Tasker>();
+                    foreach (var tt in _tasks)
                     {
-                        Tasker ii = CreateTask(ot.Value.Name, ot.Value.DateLimit);
-                        ii.IsValidated = ot.Value.IsValidated;
+                        if (!prj._tasks.ContainsKey(tt.Key)) toremove.Add(tt.Value);
+                    }
+                    foreach (var tr in toremove) DeleteTask(tr);
+                }
+
+
+                foreach (var tt in prj.Tasks)
+                {
+                    if (!Tasks.ContainsKey(tt.Key) && prj.Context.Owner.Mail == Projectmanager.Mail)
+                    {
+                        Tasker e = CreateTask(tt.Value.Name, tt.Value.DateLimit);
+                        e.IsValidated = tt.Value.IsValidated;
+
                     }
                 }
-            }
 
-            if (prj.Context.Owner.Mail == Projectmanager.Mail || prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
-            {
-                List<Tasker> toremove = new List<Tasker>();
-                foreach(var tt in _tasks)
+                foreach (var tt in _tasks)
                 {
-                    if (!prj._tasks.ContainsKey(tt.Key)) toremove.Add(tt.Value);
-                }
-                foreach (var tr in toremove) DeleteTask(tr);
-            }
-
-
-            foreach (var tt in prj.Tasks)
-            {
-                if (!Tasks.ContainsKey(tt.Key) && prj.Context.Owner.Mail == Projectmanager.Mail)
-                {
-                    Tasker e = CreateTask(tt.Value.Name, tt.Value.DateLimit);
-                    e.IsValidated = tt.Value.IsValidated;
+                    if (prj.Tasks.ContainsKey(tt.Key))
+                    {
+                        prj.Tasks.TryGetValue(tt.Key, out Tasker value);
+                        tt.Value.Merge(value);
+                    }
 
                 }
-            }
 
-            foreach (var tt in _tasks)
-            {
-                if(prj.Tasks.ContainsKey(tt.Key))
-                {
-                    prj.Tasks.TryGetValue(tt.Key, out Tasker value);
-                    tt.Value.Merge(value);
-                }
-                    
+                //Init other merges
             }
-            
-            //Init other merges
-
 
 
         }
