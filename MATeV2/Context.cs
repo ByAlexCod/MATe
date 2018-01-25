@@ -382,9 +382,17 @@ namespace MATeV2
                 foreach (var prj in otherContext.ProjectsDictionary)
                 {
                     Project a = prj.Value;
+                    Project b;
                     if (!ProjectsDictionary.ContainsKey(prj.Key))
                     {
-                        Project b = CreateProject(a.Name, a.DateBegin, a.DateLimit, FindEmployee(a.Projectmanager.Mail));
+                        if (a.Projectmanager != null)
+                        {
+                            b = CreateProject(a.Name, a.DateBegin, a.DateLimit, FindEmployee(a.Projectmanager.Mail));
+                        } else
+                        {
+                            b = CreateProject(a.Name, a.DateBegin, a.DateLimit);
+                        }
+
                         b.ProjectManagerModifyDate = a.ProjectManagerModifyDate;
                         b.Status = a.Status;
                         foreach (var aa in a.Members)
