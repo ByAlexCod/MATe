@@ -18,6 +18,7 @@ namespace MATeV2
         
         public SubTask(Tasker task, string name,DateTime datelimit,Employee worker = null)
         {
+            _currenttask = task;
             Name = name;
             DateLimit = datelimit;
             Worker = worker;
@@ -36,6 +37,7 @@ namespace MATeV2
         {
             get { return _name; }
             set { _name = value;
+                
                 CurrentTask.Project.Context.SetDirty();
                 SetProjectManagerMD(); }
         }

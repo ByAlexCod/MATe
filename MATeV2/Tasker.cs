@@ -85,7 +85,7 @@ namespace MATeV2
 
         public SubTask CreateSubtask(Tasker t, string name, DateTime datelimit, Employee worker)
         {
-            SubTask newsubtask = new SubTask(t, name, datelimit, worker);
+            SubTask newsubtask = new SubTask(this, name, datelimit, worker);
             t.SubTasks.Add(newsubtask.Name, newsubtask);
             Project.ProjectManagerModifyDate = DateTime.Now;
             Project.Context.SetDirty();
