@@ -18,11 +18,12 @@ namespace MATeV2
         
         public SubTask(Tasker task, string name,DateTime datelimit, Tasker currentTask, Employee worker = null)
         {
-            Name = name;
+            CurrentTask = currentTask;
+
+            _name = name;
             DateLimit = datelimit;
             Worker = worker;
             _status = 0;
-            CurrentTask = task;
             CurrentTask.Project.Context.SetDirty();
         }
 
