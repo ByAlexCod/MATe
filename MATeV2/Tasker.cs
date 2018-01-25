@@ -113,6 +113,7 @@ namespace MATeV2
                 st.Worker.CurrentWorkingProject = null;
             }
             SubTasks.Remove(st.Name);
+            st.CurrentTask = null;
         }
 
 
