@@ -83,7 +83,10 @@ namespace MATeV2
         internal void Merge(SubTask oSubTask)
         {
             if (oSubTask == null) throw new ArgumentNullException("Other subtask cannot be null.", nameof(oSubTask));
-            State = oSubTask.State;
+            if (oSubTask.Worker.Mail == oSubTask.CurrentTask.Project.Context.Owner.Mail)
+            {
+                State = oSubTask.State;
+            }
             if (oSubTask.CurrentTask.Project.Context.Owner.Mail == oSubTask.CurrentTask.Project.Projectmanager.Mail && oSubTask.CurrentTask.Project.ProjectManagerModifyDate > CurrentTask.Project.ProjectManagerModifyDate)
             {
                 DateLimit = oSubTask.DateLimit;
