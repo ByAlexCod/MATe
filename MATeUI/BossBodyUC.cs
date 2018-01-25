@@ -99,7 +99,27 @@ namespace MATeUI
             detailProjectOnBody.CellTaskClick += new DetailProjectUC.DataGridViewCellMouseEventHandler(ShowDetailTask);
             projectManagementOnBody.MyAccountManagementEvent += new ProjectManagement.ButtonClickedEvent(ShowFormChangeAccount);
             colaborators1.GotoToProjectEvent += new ColaboratorsTab.ButtonClickedEventHandler(GoToProject);
-            
+            detailProjectOnBody.RefreshPageButtonClicked += new ButtonClickedEventHandler(OnRefreshPage);
+        }
+
+        private void OnRefreshPage(object sender, EventArgs e)
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                DialogResult result = MessageBox.Show("Warning You Will Lose All Unsaved Data ", "Confirmation !", MessageBoxButtons.OKCancel);
+                if (result == DialogResult.Cancel) return;
+
+                Context ctx = ct.Context;
+                projectManagementOnBody._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagementOnBody._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                detailProjectOnBody._dgEmployees.Rows.Clear();
+
+                foreach (Employee item in ctx.PersonsDictionary.Values)
+                {
+                    detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                }
+
+            }
         }
 
         private void GoToProject(object sender, EventArgs e)
