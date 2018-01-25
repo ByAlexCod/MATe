@@ -132,6 +132,7 @@ namespace MATeUI
             {
                 detailProjectEmployeeUC1._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
             }
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>
@@ -160,7 +161,7 @@ namespace MATeUI
             {
                 detailProjectEmployeeUC1._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
             }
-
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>
@@ -197,7 +198,7 @@ namespace MATeUI
             p.Tasks.Remove(sub.Name);
             detailProjectEmployeeUC1._dgSubTasks.Rows.RemoveAt(indexSubTask);
             projectManagement1._projectListCbx.SelectedItem = p;
-            
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>
@@ -227,8 +228,9 @@ namespace MATeUI
             detailProjectEmployeeUC1._dgTasks.Rows.RemoveAt(indexTask);
             detailProjectEmployeeUC1._dgSubTasks.Rows.Clear();
             projectManagement1._projectListCbx.SelectedItem = p;
-           
+            _ctxuser.SaveAs("-Context.MATe");
             return;
+
         }
 
         /// <summary>
@@ -262,7 +264,7 @@ namespace MATeUI
             projectManagement1._projectListCbx.SelectedItem = p;
             detailProjectEmployeeUC1._validateProjectBtn.Enabled = false;
             projectManagement1._projectStatusLbl.Text = "Project has been validated By The The Project Manager";
-
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>
@@ -310,6 +312,7 @@ namespace MATeUI
             projectManagement1._projectListCbx.SelectedItem = p;
             
             MessageBox.Show("TASK VALIDATED !!!");
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
 
@@ -342,6 +345,7 @@ namespace MATeUI
                 detailProjectEmployeeUC1._dgSubTasks.Rows.Add(sub.Name, sub.DateLimit, sub.Worker);
                 projectManagement1._projectListCbx.SelectedItem = p;
             }
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
 
@@ -373,14 +377,10 @@ namespace MATeUI
                 MessageBox.Show("The End Date Of The Task Must Exceed That Of The Project");
                 return;
             }
-
-            
-            
-                Tasker task = p.CreateTask(detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
-            
-            
+            Tasker task = p.CreateTask(detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
             detailProjectEmployeeUC1._dgTasks.Rows.Add(task.Name, task.DateLimit, task.Project);
-            
+            _ctxuser.SaveAs("-Context.MATe");
+
         }
 
 
@@ -431,7 +431,7 @@ namespace MATeUI
                 detailProjectEmployeeUC1._toDoRbtn.Enabled = false;
                 detailProjectEmployeeUC1._inProgressRbtn.Checked = true;
             }
-
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>
@@ -487,7 +487,7 @@ namespace MATeUI
                     projectManagement1._projectListCbx.SelectedItem = p;
                 }
             }
-
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
         /// <summary>

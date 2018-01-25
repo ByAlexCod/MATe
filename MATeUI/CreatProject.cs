@@ -66,6 +66,8 @@ namespace MATeUI
                     MessageBox.Show("Project is created with Project Name is " + CreatPN.Text + " start date " + StartDate.Value.Date.ToShortDateString() + " end date " + limitDate.Value.Date.ToShortDateString());
                     this.Close();
                 }
+                _ctxuser.SaveAs("-Context.MATe");
+                
             }
         }
     }
