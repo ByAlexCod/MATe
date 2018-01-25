@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using MATeV2;
 using Tulpep.NotificationWindow;
@@ -10,8 +11,15 @@ namespace MATeUI
 {
     public partial class BodyUIEmployeeUC : UserControl
     {
+        public delegate void RefreshItem();
+        public RefreshItem myDelegate;
+
         public BodyUIEmployeeUC()
         {
+            //myDelegate = new RefreshItem();
+            Thread a = new Thread(SomethingChanged);
+            a.IsBackground = true;
+            a.Start();
             InitializeComponent();
             if (task!=null)
             {
@@ -28,7 +36,19 @@ namespace MATeUI
             }
         }
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
-     
+
+        void SomethingChanged()
+        {
+            while (true)
+            {
+                if (Network.SyncerReceiver._newReceive)
+                {
+                    this.Invoke(myDelegate);
+                    //Network.SyncerReceiver._newReceive = false;
+                }
+            }
+        }
+
         public Person CurrentUser { get; set; }
         
         Project p = null;

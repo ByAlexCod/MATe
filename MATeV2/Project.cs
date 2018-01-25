@@ -169,7 +169,7 @@ namespace MATeV2
             }
             if (Projectmanager != null)
             {
-                if (prj.Context.Owner.Mail == Projectmanager.Mail && prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
+                if (prj.Context.Owner.Mail == Projectmanager.Mail || prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
                 {
                     ClearTasks();
                     foreach (var ot in prj.Tasks)
@@ -178,6 +178,16 @@ namespace MATeV2
                         ii.IsValidated = ot.Value.IsValidated;
                     }
                 }
+            }
+
+            if (prj.Context.Owner.Mail == Projectmanager.Mail || prj.ProjectManagerModifyDate > ProjectManagerModifyDate)
+            {
+                List<Tasker> toremove = new List<Tasker>();
+                foreach(var tt in _tasks)
+                {
+                    if (!prj._tasks.ContainsKey(tt.Key)) toremove.Add(tt.Value);
+                }
+                foreach (var tr in toremove) DeleteTask(tr);
             }
 
 
