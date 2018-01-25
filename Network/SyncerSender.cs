@@ -48,15 +48,18 @@ namespace Network
                 Context ctx = ct.Context;
                 if (ctx.Owner != ctx.Boss)
                 {
-                    Socket cic = new Socket(AddressFamily.InterNetwork,
-                    SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
-                    cic.Connect(ctx.Boss.IP, _port);
+                    try
+                    {
+                        Socket cic = new Socket(AddressFamily.InterNetwork,
+                        SocketType.Stream, ProtocolType.Tcp);/*_client.Client;*/
+                        cic.Connect(ctx.Boss.IP, _port);
 
 
 
-                    cic.SendFile(_zipTempFilePath);
-                    cic.Shutdown(SocketShutdown.Both);
-                    cic.Close();
+                        cic.SendFile(_zipTempFilePath);
+                        cic.Shutdown(SocketShutdown.Both);
+                        cic.Close();
+                    } catch { }
                 }
                 foreach (var person in ctx.PersonsDictionary)
                 {

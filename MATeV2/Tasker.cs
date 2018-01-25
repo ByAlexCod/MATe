@@ -26,6 +26,7 @@ namespace MATeV2
             {
                 p.Tasks.Add(this.Name, this);
             }
+            Project.Context.SetDirty();
         }
 
         public string Name
@@ -33,6 +34,7 @@ namespace MATeV2
             get { return _name; }
             set {
                 Project.ProjectManagerModifyDate = DateTime.Now;
+                Project.Context.SetDirty();
 
                 _name = value; }
         }
@@ -42,6 +44,7 @@ namespace MATeV2
             get { return _datelimit; }
             set {
                 Project.ProjectManagerModifyDate = DateTime.Now;
+                Project.Context.SetDirty();
 
                 _datelimit = value; }
         }
@@ -53,6 +56,7 @@ namespace MATeV2
             get { return _isValidated; }
             set {
                 Project.ProjectManagerModifyDate = DateTime.Now;
+                Project.Context.SetDirty();
 
                 _isValidated = value; }
         }
@@ -71,6 +75,7 @@ namespace MATeV2
                 SubTasks.Remove(st.Name);
             }
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
         }
 
@@ -83,6 +88,7 @@ namespace MATeV2
             SubTask newsubtask = new SubTask(t, name, datelimit, worker);
             t.SubTasks.Add(newsubtask.Name, newsubtask);
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             return newsubtask;
         }
@@ -92,6 +98,7 @@ namespace MATeV2
             SubTask newsubtask = new SubTask(this, name, datelimit, worker);
             SubTasks.Add(newsubtask.Name, newsubtask);
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             return newsubtask;
         }
@@ -99,6 +106,7 @@ namespace MATeV2
         public SubTask ModifySubTask(SubTask s, string name)
         {
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             s.Name = name;
             return s;
@@ -108,6 +116,7 @@ namespace MATeV2
         {
             s.DateLimit = d;
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             return s;
         }
@@ -116,6 +125,7 @@ namespace MATeV2
         {
             s.Worker = worker;
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             return s;
         }
@@ -124,6 +134,7 @@ namespace MATeV2
         {
             s.State = b;
             Project.ProjectManagerModifyDate = DateTime.Now;
+            Project.Context.SetDirty();
 
             return null;
         }
@@ -135,6 +146,8 @@ namespace MATeV2
             {
                 st.Worker.CurrentWorkingProject = null;
             }
+            Project.Context.SetDirty();
+
             SubTasks.Remove(st.Name);
             st.CurrentTask = null;
             Project.ProjectManagerModifyDate = DateTime.Now;

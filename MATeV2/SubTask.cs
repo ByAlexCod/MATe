@@ -23,17 +23,21 @@ namespace MATeV2
             Worker = worker;
             _status = 0;
             CurrentTask = task;
+            CurrentTask.Project.Context.SetDirty();
         }
 
         void SetProjectManagerMD()
         {
             if (CurrentTask != null) CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
+            CurrentTask.Project.Context.SetDirty();
         }
 
         public string Name
         {
             get { return _name; }
-            set { _name = value;  SetProjectManagerMD(); }
+            set { _name = value;
+                CurrentTask.Project.Context.SetDirty();
+                SetProjectManagerMD(); }
         }
 
         void SetDirty()
@@ -44,7 +48,7 @@ namespace MATeV2
         public DateTime DateLimit
         {
             get { return _datelimit; }
-            set { _datelimit = value; SetProjectManagerMD(); }
+            set { _datelimit = value; SetProjectManagerMD(); CurrentTask.Project.Context.SetDirty(); }
         }
 
         public Employee Worker
@@ -58,7 +62,7 @@ namespace MATeV2
             get { return _status; }
             set {
 
-
+                CurrentTask.Project.Context.SetDirty();
                 _status = value; SetDirty();
 
 
@@ -75,6 +79,7 @@ namespace MATeV2
         /// </summary>
         internal void DeleteSubTask()
         {
+            CurrentTask.Project.Context.SetDirty();
             CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
             CurrentTask = null;
             Worker = null;
@@ -97,6 +102,7 @@ namespace MATeV2
 
             }
             CurrentTask.Project.ProjectManagerModifyDate = DateTime.Now;
+            CurrentTask.Project.Context.SetDirty();
 
         }
     }
