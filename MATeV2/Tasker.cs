@@ -95,7 +95,7 @@ namespace MATeV2
 
         public SubTask CreateSubTask(string name, DateTime datelimit, Employee worker)
         {
-            SubTask newsubtask = new SubTask(this, name, datelimit, worker);
+            SubTask newsubtask = new SubTask(this, name, datelimit, this, worker);
             SubTasks.Add(newsubtask.Name, newsubtask);
             Project.ProjectManagerModifyDate = DateTime.Now;
             Project.Context.SetDirty();
@@ -161,6 +161,18 @@ namespace MATeV2
             {
                 if (oTask.Project.Context.Owner.Mail == Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
                 {
+                    Name = oTask.Name;
+                    IsValidated = oTask.IsValidated;
+                    Project.ProjectManagerModifyDate = oTask.Project.ProjectManagerModifyDate;
+                    DateLimit = oTask.DateLimit;
+
+                }
+            }
+             else if (oTask.Project.Context.Owner != null && Project.Projectmanager == null)
+            {
+                if (oTask.Project.Context.Owner.Mail == oTask.Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+                {
+                    Project.Projectmanager = Project.Context.FindEmployee(oTask.Project.Projectmanager.Mail);
                     Name = oTask.Name;
                     IsValidated = oTask.IsValidated;
                     Project.ProjectManagerModifyDate = oTask.Project.ProjectManagerModifyDate;
