@@ -112,12 +112,11 @@ namespace MATeUI
                     if(p.Mail != item.Mail)
                     sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
                 }
-                foreach(var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
+                sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Clear();
+                foreach (var con in _dicform.Values)
                 {
-                    ChatWDF newwdf = new ChatWDF(con, _ctxuser.CurrentUser);
-                    _dicform.Add(con.TheOtherOne, newwdf);
-                    if (con.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "new message");
-                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "nothing new");
+                    if (con.Conversation.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Conversation.TheOtherOne.Mail, "new message");
+                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Conversation.TheOtherOne.Mail, "nothing new");
                 }
             }
         }
