@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using MATeV2;
 using Tulpep.NotificationWindow;
@@ -10,8 +11,15 @@ namespace MATeUI
 {
     public partial class BodyUIEmployeeUC : UserControl
     {
+        public delegate void RefreshItem();
+        public RefreshItem myDelegate;
+
         public BodyUIEmployeeUC()
         {
+            myDelegate = new RefreshItem(RefreshItems);
+            Thread a = new Thread(SomethingChanged);
+            a.IsBackground = true;
+            a.Start();
             InitializeComponent();
             if (task!=null)
             {
@@ -28,7 +36,33 @@ namespace MATeUI
             }
         }
         ContextAndUserManager _ctxuser = Authentification.CurrentCtxUser;
-     
+
+        void SomethingChanged()
+        {
+            while (true)
+            {
+                if (Network.SyncerReceiver._newReceive)
+                {
+                    this.Invoke(myDelegate);
+                    Network.SyncerReceiver._newReceive = false;
+                }
+            }
+        }
+
+        void RefreshItems()
+        {
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                Context ctx = ct.Context;
+                projectManagement1._projectListCbx.DataSource = ctx.ProjectsDictionary.Values.ToArray();
+                projectManagement1._projectListCbx.SelectedItem = ctx.ProjectsDictionary.Values.LastOrDefault();
+                detailProjectEmployeeUC1.sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Clear();
+                detailProjectEmployeeUC1.sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Clear();
+                detailProjectEmployeeUC1.Refresh();
+                detailProjectEmployeeUC1.RefreshDetail();
+            }
+        }
+
         public Person CurrentUser { get; set; }
         
         Project p = null;
@@ -195,7 +229,7 @@ namespace MATeUI
                 if (result == DialogResult.No)
                     return;
             }
-            p.Tasks.Remove(sub.Name);
+            sub.CurrentTask.DeleteSubTask(sub);
             detailProjectEmployeeUC1._dgSubTasks.Rows.RemoveAt(indexSubTask);
             projectManagement1._projectListCbx.SelectedItem = p;
             _ctxuser.SaveAs("-Context.MATe");
@@ -625,11 +659,6 @@ namespace MATeUI
         {
             ModifyAccount changeCount = new ModifyAccount(Authentification.CurrentCtxUser.CurrentUser);
             changeCount.ShowDialog();
-        }
-
-        private void detailProjectEmployeeUC1_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

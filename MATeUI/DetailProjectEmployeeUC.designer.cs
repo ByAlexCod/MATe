@@ -440,7 +440,7 @@
             // sendFileOrMessageUCOnDetailUIEmployee
             // 
             this.sendFileOrMessageUCOnDetailUIEmployee.Location = new System.Drawing.Point(476, 34);
-            this.sendFileOrMessageUCOnDetailUIEmployee.Margin = new System.Windows.Forms.Padding(4);
+            this.sendFileOrMessageUCOnDetailUIEmployee.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.sendFileOrMessageUCOnDetailUIEmployee.Name = "sendFileOrMessageUCOnDetailUIEmployee";
             this.sendFileOrMessageUCOnDetailUIEmployee.Size = new System.Drawing.Size(840, 477);
             this.sendFileOrMessageUCOnDetailUIEmployee.TabIndex = 12;
@@ -489,7 +489,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn taskName;
         private System.Windows.Forms.DataGridViewTextBoxColumn endDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn project;
-        private SendFileOrMessageUC sendFileOrMessageUCOnDetailUIEmployee;
         internal System.Windows.Forms.GroupBox _taskGbx;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -510,5 +509,6 @@
         internal System.Windows.Forms.Button _deleteSubTaskBtn;
         internal System.Windows.Forms.Button _modifyTaskBtn;
         internal System.Windows.Forms.Button _modifySubTaskBtn;
+        internal SendFileOrMessageUC sendFileOrMessageUCOnDetailUIEmployee;
     }
 }

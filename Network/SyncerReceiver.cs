@@ -91,12 +91,13 @@ namespace Network
 
 
                         using (var uzc = unZippedContext.ObtainAccessor())
-                        using (var ec = existingContext.ObtainAccessor())
                         {
-                            if (uzc.Context.ModifyDate > ec.Context.ModifyDate) replace = true;
-                            b.Merge(uzc.Context);
+                            using (var ec = existingContext.ObtainAccessor())
+                            {
+                                if (uzc.Context.ModifyDate >= ec.Context.ModifyDate) replace = true;
+                                b.Merge(uzc.Context);
+                            }
                         }
-
                         if (replace == true)
                         {
                             File.Delete(_contextStoragePath + @"\" + Path.GetFileName(unZippedFile.FullName));

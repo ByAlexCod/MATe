@@ -122,7 +122,27 @@ namespace MATeUI
             }
         }
 
-       
+       internal void RefreshDetail()
+       {
+            this.Refresh();
+            using (var ct = _ctxuser.ObtainAccessor())
+            {
+                Context ctx = ct.Context;
+                Person p = _ctxuser.CurrentUser;
+                foreach (Employee item in ctx.PersonsDictionary.Values)
+                {
+                    if (p.Mail != item.Mail)
+                        sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
+                }
+                foreach (var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
+                {
+                    ChatWDF newwdf = new ChatWDF(con, _ctxuser.CurrentUser);
+                    _dicform.Add(con.TheOtherOne, newwdf);
+                    if (con.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "new message");
+                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "nothing new");
+                }
+            }
+       }
 
         void LoadConver(object sender, EventArgs e)
         {
@@ -257,5 +277,7 @@ namespace MATeUI
             }
             return;
         }
+
+        
     }
 }
