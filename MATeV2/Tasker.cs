@@ -168,6 +168,18 @@ namespace MATeV2
 
                 }
             }
+             else if (oTask.Project.Context.Owner != null && Project.Projectmanager == null)
+            {
+                if (oTask.Project.Context.Owner.Mail == oTask.Project.Projectmanager.Mail || oTask.Project.ProjectManagerModifyDate > Project.ProjectManagerModifyDate) // if other context owner is the project manager
+                {
+                    Project.Projectmanager = Project.Context.FindEmployee(oTask.Project.Projectmanager.Mail);
+                    Name = oTask.Name;
+                    IsValidated = oTask.IsValidated;
+                    Project.ProjectManagerModifyDate = oTask.Project.ProjectManagerModifyDate;
+                    DateLimit = oTask.DateLimit;
+
+                }
+            }
             foreach (var ost in oTask.SubTasks)
             {
                 if (!SubTasks.ContainsKey(ost.Key))
