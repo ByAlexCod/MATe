@@ -230,6 +230,7 @@ namespace MATeUI
                 if (result == DialogResult.No)
                     return;
             }
+
             sub.CurrentTask.DeleteSubTask(sub);
             detailProjectEmployeeUC1._dgSubTasks.Rows.RemoveAt(indexSubTask);
             projectManagement1._projectListCbx.SelectedItem = p;
@@ -364,11 +365,18 @@ namespace MATeUI
                 MessageBox.Show("SELECT A PROJECT FIRST");
                 return;
             }
+            
+            
+
             int idx = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
             task = p.Tasks.Values.ElementAt(idx);
             if (task == null) return;
 
-           
+            if (task.SubTasks.ContainsKey(detailProjectEmployeeUC1.subTaskNameTbx.Text))
+            {
+                MessageBox.Show("A SubTask already exists with this name.");
+                return;
+            }
 
             Employee emp = Authentification.CurrentCtxUser.CurrentUser as Employee;
             emp = (Employee)detailProjectEmployeeUC1._projectMembers.SelectedItem;
@@ -411,6 +419,11 @@ namespace MATeUI
             if (detailProjectEmployeeUC1.endDateTaskDpk.Value < p.DateBegin)
             {
                 MessageBox.Show("The End Date Of The Task Must Exceed That Of The Project");
+                return;
+            }
+            if(p.Tasks.ContainsKey(detailProjectEmployeeUC1._taskNameTbx.Text))
+            {
+                MessageBox.Show("A Task with this name already exists.");
                 return;
             }
             Tasker task = p.CreateTask(detailProjectEmployeeUC1._taskNameTbx.Text, detailProjectEmployeeUC1.endDateTaskDpk.Value);
