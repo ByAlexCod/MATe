@@ -136,7 +136,7 @@ namespace MATeUI
                 foreach (var con in Authentification.CurrentCtxUser.CurrentUser.ConversationDictionary.Values)
                 {
                     ChatWDF newwdf = new ChatWDF(con, _ctxuser.CurrentUser);
-                    _dicform.Add(con.TheOtherOne, newwdf);
+                    if(!_dicform.ContainsKey(con.TheOtherOne)) _dicform.Add(con.TheOtherOne, newwdf);
                     if (con.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "new message");
                     else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "nothing new");
                 }
