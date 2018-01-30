@@ -113,10 +113,10 @@ namespace MATeUI
                     sendFileOrMessageUCOnDetailUIEmployee._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
                 }
                 sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Clear();
-                foreach (var con in _dicform.Values)
+                foreach (var con in _ctxuser.CurrentUser.ConversationDictionary.Values)
                 {
-                    if (con.Conversation.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Conversation.TheOtherOne.Mail, "new message");
-                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.Conversation.TheOtherOne.Mail, "nothing new");
+                    if (con.ToSee) sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "new message");
+                    else sendFileOrMessageUCOnDetailUIEmployee.ListConversation.Rows.Add(con.TheOtherOne.Mail, "nothing new");
                 }
             }
         }
