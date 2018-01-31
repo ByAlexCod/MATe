@@ -145,7 +145,7 @@ namespace MATeUI
             } catch { return null; }
         }
 
-        private void sendbtn_Click(object sender, EventArgs e)
+        private void Sendbtn_Click(object sender, EventArgs e)
         {
             string message = Messagetxb.Text;
             string tosend = message + "#" + _user.Mail;
