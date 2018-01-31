@@ -47,19 +47,21 @@
             this._mainPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this._mainPage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this._mainPage.Location = new System.Drawing.Point(0, 0);
+            this._mainPage.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this._mainPage.Name = "_mainPage";
             this._mainPage.SelectedIndex = 0;
-            this._mainPage.Size = new System.Drawing.Size(1028, 514);
+            this._mainPage.Size = new System.Drawing.Size(2344, 1241);
             this._mainPage.TabIndex = 0;
             // 
             // _pageProjects
             // 
             this._pageProjects.Controls.Add(this.detailProjectOnBody);
             this._pageProjects.Controls.Add(this.projectManagementOnBody);
-            this._pageProjects.Location = new System.Drawing.Point(4, 25);
+            this._pageProjects.Location = new System.Drawing.Point(8, 44);
+            this._pageProjects.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this._pageProjects.Name = "_pageProjects";
-            this._pageProjects.Padding = new System.Windows.Forms.Padding(3);
-            this._pageProjects.Size = new System.Drawing.Size(1020, 485);
+            this._pageProjects.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this._pageProjects.Size = new System.Drawing.Size(2328, 1189);
             this._pageProjects.TabIndex = 0;
             this._pageProjects.Text = "Project";
             this._pageProjects.UseVisualStyleBackColor = true;
@@ -68,9 +70,10 @@
             // 
             this.detailProjectOnBody.AutoScroll = true;
             this.detailProjectOnBody.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detailProjectOnBody.Location = new System.Drawing.Point(3, 71);
+            this.detailProjectOnBody.Location = new System.Drawing.Point(6, 137);
+            this.detailProjectOnBody.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.detailProjectOnBody.Name = "detailProjectOnBody";
-            this.detailProjectOnBody.Size = new System.Drawing.Size(1014, 411);
+            this.detailProjectOnBody.Size = new System.Drawing.Size(2316, 1046);
             this.detailProjectOnBody.TabIndex = 1;
             this.detailProjectOnBody.Load += new System.EventHandler(this.DetailProjectOnBody_Load);
             // 
@@ -80,19 +83,21 @@
             this.projectManagementOnBody.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("projectManagementOnBody.BackgroundImage")));
             this.projectManagementOnBody.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.projectManagementOnBody.Dock = System.Windows.Forms.DockStyle.Top;
-            this.projectManagementOnBody.Location = new System.Drawing.Point(3, 3);
+            this.projectManagementOnBody.Location = new System.Drawing.Point(6, 6);
+            this.projectManagementOnBody.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.projectManagementOnBody.Name = "projectManagementOnBody";
-            this.projectManagementOnBody.Size = new System.Drawing.Size(1014, 68);
+            this.projectManagementOnBody.Size = new System.Drawing.Size(2316, 131);
             this.projectManagementOnBody.TabIndex = 0;
             this.projectManagementOnBody.Load += new System.EventHandler(this.ProjectManagementOnBody_Load);
             // 
             // _pageCollaborators
             // 
             this._pageCollaborators.Controls.Add(this.colaborators1);
-            this._pageCollaborators.Location = new System.Drawing.Point(4, 25);
+            this._pageCollaborators.Location = new System.Drawing.Point(8, 44);
+            this._pageCollaborators.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this._pageCollaborators.Name = "_pageCollaborators";
-            this._pageCollaborators.Padding = new System.Windows.Forms.Padding(3);
-            this._pageCollaborators.Size = new System.Drawing.Size(1020, 485);
+            this._pageCollaborators.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this._pageCollaborators.Size = new System.Drawing.Size(2040, 936);
             this._pageCollaborators.TabIndex = 1;
             this._pageCollaborators.Text = "Collaborators";
             this._pageCollaborators.UseVisualStyleBackColor = true;
@@ -100,19 +105,20 @@
             // colaborators1
             // 
             this.colaborators1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.colaborators1.Location = new System.Drawing.Point(3, 3);
-            this.colaborators1.Margin = new System.Windows.Forms.Padding(2);
+            this.colaborators1.Location = new System.Drawing.Point(6, 6);
+            this.colaborators1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.colaborators1.Name = "colaborators1";
-            this.colaborators1.Size = new System.Drawing.Size(1014, 479);
+            this.colaborators1.Size = new System.Drawing.Size(2028, 924);
             this.colaborators1.TabIndex = 0;
             // 
             // BossBodyUC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this._mainPage);
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "BossBodyUC";
-            this.Size = new System.Drawing.Size(1028, 514);
+            this.Size = new System.Drawing.Size(2344, 1241);
             this._mainPage.ResumeLayout(false);
             this._pageProjects.ResumeLayout(false);
             this._pageCollaborators.ResumeLayout(false);

@@ -46,9 +46,10 @@
             this.connexionBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.connexionBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.connexionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.connexionBtn.Location = new System.Drawing.Point(551, 217);
+            this.connexionBtn.Location = new System.Drawing.Point(1102, 417);
+            this.connexionBtn.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.connexionBtn.Name = "connexionBtn";
-            this.connexionBtn.Size = new System.Drawing.Size(77, 30);
+            this.connexionBtn.Size = new System.Drawing.Size(154, 58);
             this.connexionBtn.TabIndex = 0;
             this.connexionBtn.Text = "Log In";
             this.connexionBtn.UseVisualStyleBackColor = true;
@@ -56,9 +57,10 @@
             // 
             // userNameTbx
             // 
-            this.userNameTbx.Location = new System.Drawing.Point(469, 91);
+            this.userNameTbx.Location = new System.Drawing.Point(938, 175);
+            this.userNameTbx.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.userNameTbx.Name = "userNameTbx";
-            this.userNameTbx.Size = new System.Drawing.Size(233, 20);
+            this.userNameTbx.Size = new System.Drawing.Size(462, 31);
             this.userNameTbx.TabIndex = 1;
             this.userNameTbx.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -66,9 +68,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(505, 68);
+            this.label1.Location = new System.Drawing.Point(1010, 131);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 20);
+            this.label1.Size = new System.Drawing.Size(320, 37);
             this.label1.TabIndex = 3;
             this.label1.Text = "Your Email Address";
             // 
@@ -76,37 +79,38 @@
             // 
             this.IpLb.AutoSize = true;
             this.IpLb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IpLb.Location = new System.Drawing.Point(527, 142);
-            this.IpLb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.IpLb.Location = new System.Drawing.Point(1054, 273);
+            this.IpLb.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IpLb.Name = "IpLb";
-            this.IpLb.Size = new System.Drawing.Size(121, 20);
+            this.IpLb.Size = new System.Drawing.Size(227, 37);
             this.IpLb.TabIndex = 6;
             this.IpLb.Text = "Select your IP";
             // 
             // ListIpCmb
             // 
             this.ListIpCmb.FormattingEnabled = true;
-            this.ListIpCmb.Location = new System.Drawing.Point(469, 164);
-            this.ListIpCmb.Margin = new System.Windows.Forms.Padding(2);
+            this.ListIpCmb.Location = new System.Drawing.Point(938, 315);
+            this.ListIpCmb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ListIpCmb.Name = "ListIpCmb";
-            this.ListIpCmb.Size = new System.Drawing.Size(233, 21);
+            this.ListIpCmb.Size = new System.Drawing.Size(462, 33);
             this.ListIpCmb.TabIndex = 7;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-2, -101);
+            this.pictureBox1.Location = new System.Drawing.Point(-4, -194);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(488, 452);
+            this.pictureBox1.Size = new System.Drawing.Size(976, 869);
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
             // Authentification
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(709, 351);
+            this.ClientSize = new System.Drawing.Size(1398, 613);
             this.Controls.Add(this.ListIpCmb);
             this.Controls.Add(this.IpLb);
             this.Controls.Add(this.label1);
@@ -114,9 +118,9 @@
             this.Controls.Add(this.connexionBtn);
             this.Controls.Add(this.pictureBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MaximumSize = new System.Drawing.Size(725, 390);
-            this.MinimumSize = new System.Drawing.Size(725, 390);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MaximumSize = new System.Drawing.Size(1424, 684);
+            this.MinimumSize = new System.Drawing.Size(1424, 684);
             this.Name = "Authentification";
             this.Text = "MATe - By IN\'TECH";
             this.TransparencyKey = System.Drawing.Color.Red;
