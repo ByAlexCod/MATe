@@ -88,7 +88,6 @@
             this.projectManagementOnBody.Name = "projectManagementOnBody";
             this.projectManagementOnBody.Size = new System.Drawing.Size(2316, 131);
             this.projectManagementOnBody.TabIndex = 0;
-            this.projectManagementOnBody.Load += new System.EventHandler(this.ProjectManagementOnBody_Load);
             // 
             // _pageCollaborators
             // 

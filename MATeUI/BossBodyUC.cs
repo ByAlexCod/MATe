@@ -341,8 +341,8 @@ namespace MATeUI
                         return;
                     }
                 }
-               
-           
+
+                
                 foreach (Tasker item in p.Tasks.Values)
                 {
                     foreach (SubTask sub in item.SubTasks.Values)
@@ -371,10 +371,10 @@ namespace MATeUI
                     detailProjectOnBody._dgTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Project);
                 }
 
-                foreach (SubTask item in task.SubTasks.Values)
+                /*foreach (SubTask item in task.SubTasks.Values)
                 {
                     detailProjectOnBody._dgSubTasks.Rows.Add(item.Name, item.DateLimit.ToShortDateString(), item.Worker);
-                }
+                }*/
                 
                 foreach (Employee empl in p.Members.Values)
                 {
@@ -495,16 +495,6 @@ namespace MATeUI
                 }
                 
             }    
-        }
-
-        private void ProjectManagementOnBody_Load(object sender, EventArgs e)
-        {
-            var tt = sender;
-        }
-        protected override void OnLoad(EventArgs e)
-        {
-            base.OnLoad(e);
-            
         }
     }
 }
