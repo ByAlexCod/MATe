@@ -118,6 +118,7 @@ namespace MATeUI
                 {
                     detailProjectOnBody._dgEmployees.Rows.Add(item.Firstname, item.Lastname, item.Mail, item.IP);
                 }
+                _ctxuser.SaveAs("-Context.MATe");
 
             }
         }
@@ -172,6 +173,8 @@ namespace MATeUI
             projectManagementOnBody._projectListCbx.SelectedItem = p;
             detailProjectOnBody._validateProjectBtn.Enabled = false;
             projectManagementOnBody._projectStatusLbl.Text = "Project has been validated By The Boss";
+            _ctxuser.SaveAs("-Context.MATe");
+
         }
 
         int indexTask;
@@ -240,6 +243,7 @@ namespace MATeUI
                     projectManagementOnBody._projectListCbx.SelectedItem = null;
                     p = null;
                 }
+                _ctxuser.SaveAs("-Context.MATe");
             }
         }
         private void OnChangeProjectManger(object sender, EventArgs e)
@@ -267,6 +271,7 @@ namespace MATeUI
             detailProjectOnBody._firstNameLbl.Text = p.Projectmanager.Firstname;
             detailProjectOnBody._lastNameLbl.Text = p.Projectmanager.Lastname;
             detailProjectOnBody._mailLbl.Text = p.Projectmanager.Mail;
+            _ctxuser.SaveAs("-Context.MATe");
         }
 
 
@@ -296,6 +301,8 @@ namespace MATeUI
                 ctx.PersonsDictionary.Values.ElementAt(index).CurrentWorkingProject = p;
                 projectManagementOnBody._projectListCbx.SelectedItem = p;
                 detailProjectOnBody._dgMemberInProject.Rows.Add(emp.Firstname, emp.Lastname, emp.Mail);
+                _ctxuser.SaveAs("-Context.MATe");
+
             }
         }
 
@@ -390,7 +397,7 @@ namespace MATeUI
 
 
                 projectManagementOnBody._projectListCbx.SelectedItem = p;
-
+                _ctxuser.SaveAs("-Context.MATe");
             }
         }
 
@@ -427,6 +434,7 @@ namespace MATeUI
                         MessageBox.Show("Update completed");
                         return;
                     }
+                    _ctxuser.SaveAs("-Context.MATe");
                 }
             }
         }
