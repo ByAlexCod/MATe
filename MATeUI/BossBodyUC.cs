@@ -50,9 +50,9 @@ namespace MATeUI
         }
         void SomethingChanged()
         {
-            while(true)
+            while (true)
             {
-                if(Network.SyncerReceiver._newReceive)
+                if (Network.SyncerReceiver._newReceive)
                 {
                     this.Invoke(myDelegate);
                     Network.SyncerReceiver._newReceive = false;
