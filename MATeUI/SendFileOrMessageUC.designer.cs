@@ -60,6 +60,9 @@ namespace MATeUI
             this.ListConversation = new System.Windows.Forms.DataGridView();
             this.Destination = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OpenFileBtn = new System.Windows.Forms.Button();
+            this.ListFile = new System.Windows.Forms.ListView();
+            this.button1 = new System.Windows.Forms.Button();
             this._panelMessage.SuspendLayout();
             this._panelSelectedFolder.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -248,10 +251,42 @@ namespace MATeUI
             this.LastMessage.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.LastMessage.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
+            // OpenFileBtn
+            // 
+            this.OpenFileBtn.Location = new System.Drawing.Point(69, 306);
+            this.OpenFileBtn.Name = "OpenFileBtn";
+            this.OpenFileBtn.Size = new System.Drawing.Size(75, 23);
+            this.OpenFileBtn.TabIndex = 25;
+            this.OpenFileBtn.Text = "Open";
+            this.OpenFileBtn.UseVisualStyleBackColor = true;
+            this.OpenFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
+            // 
+            // ListFile
+            // 
+            this.ListFile.Location = new System.Drawing.Point(69, 345);
+            this.ListFile.Name = "ListFile";
+            this.ListFile.Size = new System.Drawing.Size(121, 97);
+            this.ListFile.TabIndex = 26;
+            this.ListFile.UseCompatibleStateImageBehavior = false;
+            this.ListFile.View = System.Windows.Forms.View.List;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(69, 465);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Send File";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // SendFileOrMessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ListFile);
+            this.Controls.Add(this.OpenFileBtn);
             this.Controls.Add(this.ListConversation);
             this.Controls.Add(this.label2);
             this.Controls.Add(this._panelMessage);
@@ -295,5 +330,8 @@ namespace MATeUI
         internal System.Windows.Forms.DataGridView ListConversation;
         private System.Windows.Forms.DataGridViewTextBoxColumn Destination;
         private System.Windows.Forms.DataGridViewTextBoxColumn LastMessage;
+        private System.Windows.Forms.Button OpenFileBtn;
+        private System.Windows.Forms.ListView ListFile;
+        private System.Windows.Forms.Button button1;
     }
 }

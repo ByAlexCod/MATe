@@ -75,6 +75,7 @@ namespace MATeUI
                 MessageBox.Show("username or/and password invalid ");
                 return;
             }
+            if (!Directory.Exists("Document")) Directory.CreateDirectory("Document");
             if (_currentCtx.CurrentUser is MATeV2.Boss)
             {
                 using (var ct = _currentCtx.ObtainAccessor())
@@ -92,11 +93,9 @@ namespace MATeUI
             }
             else if (_currentCtx.CurrentUser is Employee)
             {
-                
                     //SyncerSender send = new SyncerSender(_currentCtx);
                     //send.PrepareDatas("-Context.MATe", "sync", "zipsync", 15000);
                     //send.SpreadDatas();
-                
                 EmployeeUI eUI = new EmployeeUI();
                 MATe.Services.Service.Start(_currentCtx, userNameTbx.Text.Trim(), ListIpCmb.SelectedIndex);
                 ChatWDF.InitializeListener(_currentCtx.CurrentUser,1807);
