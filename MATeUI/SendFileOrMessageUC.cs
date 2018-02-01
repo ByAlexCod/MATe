@@ -128,9 +128,14 @@ namespace MATeUI
         }
         private void DltBtn_Click(object sender, EventArgs e)
         {
-            string name=ListFile.SelectedItems.ToString();
-            MessageBox.Show(name);
-
+            if (ListFile.SelectedItems.Count > 0)
+            {
+                string filename = ListFile.SelectedItems[0].Text;
+                string targetPath = "Document";
+                string destFile = System.IO.Path.Combine(targetPath, filename);
+                File.Delete(destFile);
+                ListFile.Items.RemoveAt(ListFile.SelectedIndices[0]);
+            }
         }
     }
 }
