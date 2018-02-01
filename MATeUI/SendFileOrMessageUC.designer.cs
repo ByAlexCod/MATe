@@ -63,6 +63,8 @@ namespace MATeUI
             this.OpenFileBtn = new System.Windows.Forms.Button();
             this.ListFile = new System.Windows.Forms.ListView();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.DltBtn = new System.Windows.Forms.Button();
             this._panelMessage.SuspendLayout();
             this._panelSelectedFolder.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -255,9 +257,9 @@ namespace MATeUI
             // 
             this.OpenFileBtn.Location = new System.Drawing.Point(69, 306);
             this.OpenFileBtn.Name = "OpenFileBtn";
-            this.OpenFileBtn.Size = new System.Drawing.Size(75, 23);
+            this.OpenFileBtn.Size = new System.Drawing.Size(83, 33);
             this.OpenFileBtn.TabIndex = 25;
-            this.OpenFileBtn.Text = "Open";
+            this.OpenFileBtn.Text = "Browser ...";
             this.OpenFileBtn.UseVisualStyleBackColor = true;
             this.OpenFileBtn.Click += new System.EventHandler(this.OpenFileBtn_Click);
             // 
@@ -265,25 +267,47 @@ namespace MATeUI
             // 
             this.ListFile.Location = new System.Drawing.Point(69, 345);
             this.ListFile.Name = "ListFile";
-            this.ListFile.Size = new System.Drawing.Size(121, 97);
+            this.ListFile.Size = new System.Drawing.Size(231, 97);
             this.ListFile.TabIndex = 26;
             this.ListFile.UseCompatibleStateImageBehavior = false;
             this.ListFile.View = System.Windows.Forms.View.List;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(69, 465);
+            this.button1.Location = new System.Drawing.Point(159, 447);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(141, 39);
             this.button1.TabIndex = 27;
             this.button1.Text = "Send File";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(159, 307);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(141, 32);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "Check again";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // DltBtn
+            // 
+            this.DltBtn.Location = new System.Drawing.Point(69, 448);
+            this.DltBtn.Name = "DltBtn";
+            this.DltBtn.Size = new System.Drawing.Size(83, 38);
+            this.DltBtn.TabIndex = 29;
+            this.DltBtn.Text = "Delete";
+            this.DltBtn.UseVisualStyleBackColor = true;
+            this.DltBtn.Click += new System.EventHandler(this.DltBtn_Click);
+            // 
             // SendFileOrMessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.DltBtn);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ListFile);
             this.Controls.Add(this.OpenFileBtn);
@@ -333,5 +357,7 @@ namespace MATeUI
         private System.Windows.Forms.Button OpenFileBtn;
         private System.Windows.Forms.ListView ListFile;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button DltBtn;
     }
 }

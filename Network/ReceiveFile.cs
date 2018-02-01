@@ -64,7 +64,6 @@ namespace Network
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    //netstream.Close();
                 }
             }
         }

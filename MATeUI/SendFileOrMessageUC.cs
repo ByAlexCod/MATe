@@ -47,7 +47,6 @@ namespace MATeUI
                 string[] files = System.IO.Directory.GetFiles("Document");
                 foreach (string s in files)
                 {
-                    // Use static Path methods to extract only the file name from the path.
                     fileName = System.IO.Path.GetFileName(s);
                     ListFile.Items.Add(fileName);
                 }
@@ -82,6 +81,7 @@ namespace MATeUI
                             string filename = Path.GetFileName(((FileStream)myStream).Name);
                             string destFile = System.IO.Path.Combine(targetPath, filename);
                             System.IO.File.Copy(((FileStream)myStream).Name, destFile, true);
+                            ListFile.Items.Add(filename);
                             MessageBox.Show(((FileStream)myStream).Name);
                         }
                     }
@@ -102,11 +102,35 @@ namespace MATeUI
             ZipFile.CreateFromDirectory("Document", "bonjour.zip");
             SendFile a = new SendFile();
             int rowindex = _dgEmployees.CurrentCell.RowIndex;
-
             string userselected = _dgEmployees.Rows[rowindex].Cells[2].Value.ToString();
             Person selectedPerson = _ctxuser.Context.PersonsDictionary[userselected];
             a.SendTCP("bonjour.zip", selectedPerson.IPString, 18000);
             File.Delete("bonjour.zip");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            refreshlistfile();   
+        }
+        void refreshlistfile()
+        {
+            ListFile.Clear();
+            string fileName;
+            if (System.IO.Directory.Exists("Document"))
+            {
+                string[] files = System.IO.Directory.GetFiles("Document");
+                foreach (string s in files)
+                {
+                    fileName = System.IO.Path.GetFileName(s);
+                    ListFile.Items.Add(fileName);
+                }
+            }
+        }
+        private void DltBtn_Click(object sender, EventArgs e)
+        {
+            string name=ListFile.SelectedItems.ToString();
+            MessageBox.Show(name);
+
         }
     }
 }

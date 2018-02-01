@@ -26,6 +26,9 @@ namespace MATeUI
         {
             
             InitializeComponent();
+            Thread a = new Thread(ReceiveFileThread);
+            a.IsBackground = true;
+            a.Start();
         }
         public static ContextAndUserManager CurrentCtxUser => _currentCtx;
 
@@ -37,6 +40,12 @@ namespace MATeUI
             {
                 ListIpCmb.Items.Add(ip.ToString());
             }
+            
+        }
+        void ReceiveFileThread()
+        {
+            ReceiveFile rc = new ReceiveFile();
+            rc.ReceiveTCP(18000);
         }
 
         
@@ -61,7 +70,7 @@ namespace MATeUI
                 //nouvelle fenetre
                 //demande de l ip + mail
                 //lancement du requester avec mdp beurk
-                var req = new RequestBoss();
+                var req = new RequestBoss((string)ListIpCmb.SelectedValue,userNameTbx.Text);
                 req.ShowDialog();
             }
             if (newUser == true) Thread.Sleep(4000);

@@ -16,13 +16,18 @@ namespace MATeUI
     public partial class RequestBoss : Form
     {
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
-        public RequestBoss()
+        List<string> _ips;
+        public RequestBoss(string yourip,string mail)
         {
             InitializeComponent();
+            MailTbx.Text = mail;
+            _ips = new List<string>();
             foreach (IPAddress ip in localIPs)
             {
                 IPsCbx.Items.Add(ip.ToString());
+                _ips.Add(ip.ToString());
             }
+            IPsCbx.SelectedIndex = _ips.IndexOf(yourip);
         }
 
         private void RequestBtn_Click(object sender, EventArgs e)
