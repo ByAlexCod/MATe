@@ -76,9 +76,9 @@ namespace MATeUI
             // 
             // _sendBtn
             // 
-            this._sendBtn.Location = new System.Drawing.Point(340, 415);
+            this._sendBtn.Location = new System.Drawing.Point(340, 403);
             this._sendBtn.Name = "_sendBtn";
-            this._sendBtn.Size = new System.Drawing.Size(114, 23);
+            this._sendBtn.Size = new System.Drawing.Size(114, 32);
             this._sendBtn.TabIndex = 19;
             this._sendBtn.Text = "Send";
             this._sendBtn.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@ namespace MATeUI
             // 
             this._messageText.Location = new System.Drawing.Point(29, 14);
             this._messageText.Name = "_messageText";
-            this._messageText.Size = new System.Drawing.Size(258, 123);
+            this._messageText.Size = new System.Drawing.Size(258, 105);
             this._messageText.TabIndex = 15;
             this._messageText.Text = "";
             // 
@@ -256,17 +256,17 @@ namespace MATeUI
             // 
             // ListFile
             // 
-            this.ListFile.Location = new System.Drawing.Point(82, 43);
+            this.ListFile.Location = new System.Drawing.Point(31, 42);
             this.ListFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ListFile.Name = "ListFile";
-            this.ListFile.Size = new System.Drawing.Size(174, 80);
+            this.ListFile.Size = new System.Drawing.Size(270, 104);
             this.ListFile.TabIndex = 26;
             this.ListFile.UseCompatibleStateImageBehavior = false;
             this.ListFile.View = System.Windows.Forms.View.List;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(149, 126);
+            this.button1.Location = new System.Drawing.Point(153, 154);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 32);
@@ -288,7 +288,7 @@ namespace MATeUI
             // 
             // DltBtn
             // 
-            this.DltBtn.Location = new System.Drawing.Point(82, 127);
+            this.DltBtn.Location = new System.Drawing.Point(86, 155);
             this.DltBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.DltBtn.Name = "DltBtn";
             this.DltBtn.Size = new System.Drawing.Size(62, 31);
