@@ -222,12 +222,12 @@ namespace MATeUI
             if (sendFileOrMessageUCOnDetailUIEmployee._sendFileRbtn.Checked == true)
             {
                 sendFileOrMessageUCOnDetailUIEmployee._panelMessage.Visible = false;
-                sendFileOrMessageUCOnDetailUIEmployee._panelSelectedFolder.Visible = true;
+                sendFileOrMessageUCOnDetailUIEmployee._panelSendFile.Visible = true;
             }
             if (sendFileOrMessageUCOnDetailUIEmployee._sendMessageRbtn.Checked == true)
             {
                 sendFileOrMessageUCOnDetailUIEmployee._panelMessage.Visible = true;
-                sendFileOrMessageUCOnDetailUIEmployee._panelSelectedFolder.Visible = false;
+                sendFileOrMessageUCOnDetailUIEmployee._panelSendFile.Visible = false;
 
             }
         }
