@@ -44,11 +44,12 @@ namespace Network
                         int totalrecbytes = 0;
 
                         string SaveFileName = string.Empty;
-                        SaveFileName = DateTime.Now + ".zip";
+                        SaveFileName =    DateTime.Now.ToString().Replace(':', 'a') + ".zip";
+                        SaveFileName = SaveFileName.Replace('/', 'a');
                         if (SaveFileName != string.Empty)
                         {
 
-                            FileStream Fs = new FileStream(SaveFileName, FileMode.OpenOrCreate, FileAccess.Write);
+                            FileStream Fs = new FileStream(SaveFileName, FileMode.Create, FileAccess.ReadWrite);
                             while ((RecBytes = netstream.Read (RecData, 0, RecData.Length)) > 0)
                             {
                                 Fs.Write(RecData, 0, RecBytes);
