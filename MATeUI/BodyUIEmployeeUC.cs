@@ -497,7 +497,7 @@ namespace MATeUI
             using (var ct = _ctxuser.ObtainAccessor())
             {
                 Context ctx = ct.Context;
-
+                Project p = projectManagement1._projectListCbx.SelectedItem as Project;
                 if (detailProjectEmployeeUC1._dgSubTasks.Rows.Count == 1) return;
                 int indexTask = detailProjectEmployeeUC1._dgTasks.CurrentRow.Index;
                 int index = detailProjectEmployeeUC1._dgSubTasks.CurrentRow.Index;
