@@ -277,6 +277,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ValidateProject(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null) return;
             if (p.Tasks.Count <= 0) return;
             Tasker task = p.Tasks.Values.Where(tt => tt.IsValidated != true).FirstOrDefault();
@@ -311,6 +312,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ValidateTask(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null) return;
             if (p.Tasks.Count <= 0) return;
             //if (detailProjectEmployeeUC1._dgTasks.CurrentCell == null) return;
@@ -360,6 +362,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void CreateSubTask(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null)
             {
                 MessageBox.Show("SELECT A PROJECT FIRST");
@@ -400,6 +403,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void CreateTask(object sender, EventArgs e)
         {
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             if (p == null)
             {
                 MessageBox.Show("SELECT A PROJECT FIRST");
@@ -546,7 +550,7 @@ namespace MATeUI
         int indexTask;
         private void ShowDetailTask(object sender, EventArgs e)
         {
-          
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             
             if (p != null)
             {
@@ -602,7 +606,7 @@ namespace MATeUI
         /// <param name="e"></param>
         private void ShowDetailProject(object sender, EventArgs e)
         {
-            p = sender as Project;
+            Project p = projectManagement1._projectListCbx.SelectedItem as Project;
             foreach (var item in p.Tasks.Values)
             {
                 if  (item.DateLimit.Day == DateTime.Today.Day &&
