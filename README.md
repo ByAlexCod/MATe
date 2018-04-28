@@ -1,2 +1,3 @@
-# MATe.Rep.V2
-New repository due to bugs with v1.
+# MATe
+PeerToPeer collaboration software.
+Follow me on twitter for news https://twitter.com/Nestopii
